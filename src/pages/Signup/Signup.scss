@@ -1,1 +1,118 @@
 @import '../../styles/common.scss';
+
+.signup_view {
+  display: flex;
+  flex-direction: column;
+  margin: 200px 200px 200px 200px;
+  h1 {
+    font-size: 30px;
+  }
+
+  .signup_name {
+    margin-top: 20px;
+    span {
+      font-size: 10px;
+      color: gray;
+    }
+    input {
+      width: 300px;
+      height: 30px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .signup_phone {
+    span {
+      position: flex;
+      font-size: 10px;
+      color: gray;
+    }
+    input {
+      width: 300px;
+      height: 30px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      position: fixed;
+      width: 100px;
+      height: 30px;
+      background-color: black;
+      color: white;
+      border-radius: 20px;
+    }
+    .check_phone {
+      display: inline-block;
+    }
+  }
+
+  .signup_detail {
+    margin-top: 30px;
+    span {
+      margin-top: 15px;
+      position: flex;
+      font-size: 10px;
+      color: gray;
+    }
+    input {
+      margin-bottom: 10px;
+      width: 300px;
+      height: 30px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+    }
+  }
+
+  .signup_check {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    input {
+      margin-top: 20px;
+    }
+    span {
+      font-weight: bolder;
+    }
+  }
+
+  .footer_button {
+    .signup {
+      color: white;
+      font-weight: bolder;
+      background-color: salmon;
+      width: 300px;
+      height: 50px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .kakao {
+      background-color: #ffd700;
+      width: 300px;
+      height: 50px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .facebook {
+      background-color: #0a6ecd;
+      color: white;
+      width: 300px;
+      height: 50px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .naver {
+      background-color: #64cd3c;
+      color: white;
+      width: 300px;
+      height: 50px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
