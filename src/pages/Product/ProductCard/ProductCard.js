@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 
+import { RiEyeCloseLine } from 'react-icons/ri';
+
 import './ProductCard.scss';
 
 export class ProductCard extends Component {
   render() {
     return (
-      <div className="ProductCard">
+      <li
+        className="ProductCard"
+        style={{ backgroundColor: this.props.backgroundColor }}
+      >
         <header>
           <h2>
-            제품설명
+            {this.props.efficacy}
             <br />
-            <strong>제품이름</strong>
+            <strong>{this.props.name}</strong>
           </h2>
-          {/* 아이콘 3개 받아오기 */}
-          {/* 이미지 */}
+          <RiEyeCloseLine />
+          {/* iconUrl : 세개일 경우 ? */}
+          {this.props.pillImage}
         </header>
         <section>
-          {/* info */}
-          {/* quantity */}
-          {/* price */}
-          {/* add */}
-          {/* button */}
+          {this.props.description}
+          {this.props.quantity}
+          {this.props.price}
+          {this.props.addedDec}
+          <button>아이콘 + 장바구니 담기</button>
         </section>
-      </div>
+      </li>
     );
   }
 }

@@ -5,6 +5,23 @@ import ProductCard from './ProductCard/ProductCard';
 import './Product.scss';
 
 export class Product extends Component {
+  constructor() {
+    super();
+    this.state = {
+      productCard: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/data/ProductData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productCard: data,
+        });
+      });
+  }
+
   render() {
     return (
       <div className="Product">
@@ -18,7 +35,24 @@ export class Product extends Component {
         <section className="ProductBody">
           <h2 className="sr-only">Product Body</h2>
           <ul className="ProductList">
-            <ProductCard />
+            {this.state.productCard.map(product => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  backgroundColor={product.backgroundColor}
+                  efficacy={product.efficacy}
+                  name={product.name}
+                  icon={product.icon}
+                  pillImage={product.pillImage}
+                  description={product.description}
+                  quantity={product.quantity}
+                  price={product.price}
+                  addedDec={product.addedDec}
+                />
+              );
+            })}
+
+            {/* 맵함수의 고유한 값으로 symbol 가능? */}
           </ul>
         </section>
       </div>

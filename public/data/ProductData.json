@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "backgroundColor": "blue",
+    "efficacy": "피부 건강을 위한",
+    "name": "히알루론산 스피루리나",
+    "icon": "",
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": "피부보습/피부건강/항산화에 도움",
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 2,
+    "backgroundColor": "red",
+    "efficacy": "피부 건강을 위한",
+    "name": "히알루론산 스피루리나",
+    "icon": "",
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": "피부보습/피부건강/항산화에 도움",
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  }
+]
