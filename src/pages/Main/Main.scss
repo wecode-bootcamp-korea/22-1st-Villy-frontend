@@ -2,19 +2,59 @@
 
 .Main {
   height: 100vh;
+
   main {
     background-image: url(http://localhost:3000/images/main.jpg);
-    height: 100%;
-    max-height: 1100px;
+    height: 75%;
+    max-height: 1000px;
     background-size: cover;
+    background-position: center;
     @include display-flex(center, center);
     flex-direction: column;
-    h1 {
-      font-size: 5vw;
-      margin-right: 200px;
-      line-height: 110%;
-      font-weight: bold;
-      color: $color-font;
+
+    .mainTextWrap {
+      @include display-flex(space-around, flex-start);
+      flex-direction: column;
+      height: 50%;
+
+      h1 {
+        font-size: 100px;
+        line-height: 1.25;
+        font-weight: bold;
+        color: $color-font;
+      }
+
+      p {
+        font-size: 30px;
+        line-height: 1.25;
+        color: $color-font;
+
+        strong {
+          font-weight: bold;
+        }
+      }
+
+      button {
+        height: 80px;
+        width: 240px;
+        border-radius: 40px;
+        margin-top: 30px;
+        box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.15);
+        background-color: $color-logo;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+      }
+    }
+  }
+
+  .footTop {
+    height: 150px;
+    @include display-flex(center, center);
+    background-color: bisque;
+
+    h2 {
+      font-size: 30px;
     }
   }
 }

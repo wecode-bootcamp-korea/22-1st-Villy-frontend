@@ -3,7 +3,7 @@
 .FootSlide {
   overflow: hidden;
   .slide {
-    height: 537px;
+    height: 300px;
     // width: 100vw;
     transition: transform 0.5s;
     @include display-flex(center, center);
@@ -11,10 +11,10 @@
 
     li {
       width: 100vw;
-      height: 80%;
+      height: 100%;
       display: inline-block;
       border: 1px solid black;
-      background-color: aquamarine;
+      background-color: bisque;
     }
   }
 }
