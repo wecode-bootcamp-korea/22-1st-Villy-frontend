@@ -7,7 +7,6 @@ class Login extends React.Component {
     this.state = {
       userId: '',
       userPw: '',
-      btnControl: 'disabled',
     };
   }
 
@@ -19,7 +18,7 @@ class Login extends React.Component {
   };
 
   // 로그인 성공 여부
-  LoginFetch = () => {
+  loginFetch = () => {
     fetch('http://10.58.5.217:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -64,7 +63,7 @@ class Login extends React.Component {
             <button
               type="button"
               className="loginButton"
-              onClick={this.LoginFetch}
+              onClick={this.loginFetch}
               disabled={
                 userId.includes('@') && userPw.length > 4 ? false : true
               }
