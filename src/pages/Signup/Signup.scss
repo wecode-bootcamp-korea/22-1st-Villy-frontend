@@ -4,7 +4,7 @@
   width: 600px;
   display: flex;
   flex-direction: column;
-  margin: 100px 200px 100px 700px;
+  margin: 100px 200px 100px 600px;
   h1 {
     font-size: 30px;
     margin-bottom: 20px;
@@ -66,10 +66,13 @@
   .check_all {
     display: inline-block;
     border-bottom: 1px solid lightgray;
-    width: 600px;
+    width: 500px;
     margin-top: 30px;
     padding-bottom: 30px;
     font-weight: bolder;
+    input {
+      margin-right: 10px;
+    }
   }
 
   .signup_check {
@@ -78,11 +81,12 @@
     margin-bottom: 30px;
     input {
       margin-top: 10px;
+      margin-right: 10px;
     }
   }
 
   .footer_button {
-    text-align: center;
+    margin-left: 100px;
     .signup {
       color: white;
       font-weight: bolder;
