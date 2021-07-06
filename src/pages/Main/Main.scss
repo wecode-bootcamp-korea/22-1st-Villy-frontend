@@ -15,7 +15,7 @@
     .mainTextWrap {
       @include display-flex(space-around, flex-start);
       flex-direction: column;
-      height: 50%;
+      height: 70%;
 
       h1 {
         font-size: 100px;
