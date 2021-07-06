@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
+import './ProductDec.scss';
+
 export class ProductDec extends Component {
   render() {
-    console.log(this.props.discriptionList);
+    const { description } = this.props;
     return (
       <div>
-        <li>{this.props.discriptionList}</li>
+        <li className="productDec">{description}</li>
       </div>
     );
   }

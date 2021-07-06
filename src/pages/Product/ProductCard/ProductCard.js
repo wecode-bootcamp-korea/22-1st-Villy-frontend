@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 
-// import ProductDec from './ProductDec/ProductDec';
+import ProductDec from './ProductDec/ProductDec';
 
-// import { RiEyeCloseLine } from 'react-icons/ri';
-// import { GiMuscleUp } from 'react-icons/gi';
-// import { BsArrowRepeat } from 'react-icons/bs';
-// import { CgGirl } from 'react-icons/cg';
+import { RiEyeCloseLine } from 'react-icons/ri';
+import { GiMuscleUp } from 'react-icons/gi';
+import { BsArrowRepeat } from 'react-icons/bs';
+import { CgGirl } from 'react-icons/cg';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 import './ProductCard.scss';
-// import ProductDec from './ProductDec/ProductDec';
 
 export class ProductCard extends Component {
   render() {
-    console.log(
-      this.props.productCard.description,
-      `this.props.productCard.description`
-    );
-    console.log(this.props.productCard, `this.props.productCard`);
+    // console.log(
+    //   `this.props.ProductCard.description.descriptionList`,
+    //   this.props.ProductCard.description.descriptionList
+    // );
     const {
       backgroundColor,
       efficacy,
       name,
-      // icon,
+      icon,
       pillImage,
       description,
       quantity,
@@ -40,13 +38,14 @@ export class ProductCard extends Component {
               <br />
               <strong>{name}</strong>
             </h2>
+
             <ul className="icon">
-              {/* 여기도 데이터로 받아와야함 */}
-              {/* <RiEyeCloseLine />
+              <RiEyeCloseLine />
               <GiMuscleUp />
               <BsArrowRepeat />
-              <CgGirl /> */}
-              {this.props.description}
+              <CgGirl />
+              {/* 아이콘을 데이터로 받아올 수 있을까? */}
+              {/* {icon ? icon.map(iconItem => {}) : null} */}
             </ul>
           </div>
           <div className="toRight">
@@ -55,17 +54,22 @@ export class ProductCard extends Component {
         </header>
         <section className="ProductCardBody">
           <div className="toLeft">
-            {description.descriptionList && (
-              <ul className="description">
-                {description.discriptionList.map(discriptionList => {
-                  return <li>{discriptionList}</li>;
-                })}
-              </ul>
-            )}
+            <ul className="description">
+              {description
+                ? description.map(descriptionItem => {
+                    return (
+                      <ProductDec
+                        key={descriptionItem.id}
+                        description={descriptionItem.descriptionList}
+                      />
+                    );
+                  })
+                : null}
+            </ul>
           </div>
           <div className="toRight">
             <p className="quantity">{quantity}일</p>
-            <p> {price}원</p>
+            <p>{price}원</p>
           </div>
         </section>
         <footer className="ProductCardFooter">

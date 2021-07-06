@@ -5,18 +5,16 @@
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
-      { "id": 1, "iconList": "눈" },
-      { "id": 1, "iconList": "탄력" },
-      { "id": 1, "iconList": "혈액순환 " },
-      { "id": 1, "iconList": "피부" }
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "피부보습/피부건강/항산화에 도움" },
+      { "id": 9, "iconSrc": "피부보습/피부건강/항산화에 도움" }
     ],
     "pillImage": "../images/productSample01.jpg",
     "description": [
-      { "id": 1, "discriptionList": "피부보습/피부건강/항산화에 도움" },
-      { "id": 2, "discriptionList": "국내 최초 2중 기능성 제품" },
-      { "id": 3, "discriptionList": "국내산 쌀겨추출분말 함유" }
+      { "id": 9, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 8, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 7, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
-
     "quantity": 30,
     "price": 19500,
     "addedDec": "더보기"
@@ -25,10 +23,18 @@
     "id": 2,
     "backgroundColor": "red",
     "efficacy": "피부 건강을 위한",
-    "name": "히알루론산 스피루리나",
-    "icon": "",
+    "name": "홍삼 옥사뭐시",
+    "icon": [
+      { "id": 9, "iconList": "<RiEyeCloseLine />" },
+      { "id": 9, "iconList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 9, "iconList": "피부보습/피부건강/항산화에 도움" }
+    ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
-    "description": "피부보습/피부건강/항산화에 도움",
+    "description": [
+      { "id": 4, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 5, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 6, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
     "quantity": 30,
     "price": 19500,
     "addedDec": "더보기"
