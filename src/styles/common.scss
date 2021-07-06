@@ -1,14 +1,3 @@
-$color-mainBg: #fbded5;
-$color-logo: #f35c36;
-$color-font: #333333;
-$color-bg: #fafafa;
-
-@mixin display-flex($justify: center, $align: center) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
-
 @font-face {
   font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
