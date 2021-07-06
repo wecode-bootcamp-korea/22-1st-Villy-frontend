@@ -33,27 +33,12 @@ export class Product extends Component {
           </h1>
         </header>
         <section className="ProductBody">
-          <h2 className="sr-only">Product Body</h2>
+          {/* <h2 className="sr-only">Product Body</h2> */}
+          {/* 맵함수의 고유한 값으로 symbol 가능? */}
           <ul className="ProductList">
             {this.state.productCard.map(product => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  // productCard={product}
-                  backgroundColor={product.backgroundColor}
-                  efficacy={product.efficacy}
-                  name={product.name}
-                  icon={product.icon}
-                  pillImage={product.pillImage}
-                  description={product.description}
-                  quantity={product.quantity}
-                  price={product.price}
-                  addedDec={product.addedDec}
-                />
-              );
+              return <ProductCard key={product.id} productCard={product} />;
             })}
-
-            {/* 맵함수의 고유한 값으로 symbol 가능? */}
           </ul>
         </section>
       </div>
