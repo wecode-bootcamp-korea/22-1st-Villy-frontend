@@ -13,7 +13,7 @@ class Nav extends React.Component {
             <a href="">추천성분</a>
           </li>
           <li class>
-            <a href="">제품보기</a>
+            <a href="/Product">제품보기</a>
           </li>
           <li class>
             <a href="">고객후기</a>
@@ -22,7 +22,7 @@ class Nav extends React.Component {
             <a href="">장바구니</a>
           </li>
           <li class>
-            <a href="">로그인</a>
+            <a href="/Login">로그인</a>
           </li>
         </ul>
       </nav>
