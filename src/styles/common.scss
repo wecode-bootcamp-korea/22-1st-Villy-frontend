@@ -1,7 +1,6 @@
 $color-mainBg: #fbded5;
 $color-logo: #f35c36;
 $color-font: #333333;
-$color-bg: #fafafa;
 
 @mixin display-flex($justify: center, $align: center) {
   display: flex;
@@ -21,15 +20,6 @@ $color-bg: #fafafa;
   font-style: normal;
   font-weight: 400;
   src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-}
-
-.sr-only {
-  position: absolute;
-  z-index: -100;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
 }
 
 // /* MEDIA QUERY  */

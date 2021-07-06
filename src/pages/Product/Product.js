@@ -39,6 +39,7 @@ export class Product extends Component {
               return (
                 <ProductCard
                   key={product.id}
+                  // productCard={product}
                   backgroundColor={product.backgroundColor}
                   efficacy={product.efficacy}
                   name={product.name}

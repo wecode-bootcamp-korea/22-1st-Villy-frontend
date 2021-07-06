@@ -1,6 +1,45 @@
+@import '../../../styles/common.scss';
+
 .ProductCard {
   width: 412px;
   height: 333px;
   padding: 30px 20px;
-  // background-color: red;
+  border: 1px solid red;
+  .ProductCardHeader {
+    @include display-flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+  }
+
+  .toLeft {
+  }
+
+  .toRight {
+    .pillImage {
+      width: 100px;
+      height: 50px;
+      border: 1px solid red;
+    }
+  }
+
+  .ProductCardBody {
+    @include display-flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+  }
+
+  .ProductCardFooter {
+    display: flex;
+    border: 1px solid blue;
+    .addedDec {
+      text-decoration: underline;
+    }
+
+    .cartBtn {
+      border: 1px solid #000000;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }

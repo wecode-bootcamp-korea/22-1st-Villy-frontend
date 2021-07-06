@@ -3,6 +3,9 @@
 .Product {
   .ProductHeader {
     height: 590px;
+    background-image: url('http://localhost:3000/images/productPageBg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
     //반응형일 때 height 490px
     background-color: coral;
   }
@@ -10,6 +13,6 @@
   .ProductBody {
     @include display-flex;
     padding: 50px 0;
-    background-color: $color-bg;
+    background-color: #fafafa;
   }
 }
