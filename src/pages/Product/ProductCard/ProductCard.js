@@ -21,7 +21,7 @@ export class ProductCard extends Component {
       backgroundColor,
       efficacy,
       name,
-      icon,
+      // icon,
       pillImage,
       description,
       quantity,

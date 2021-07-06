@@ -38,5 +38,45 @@
     "quantity": 30,
     "price": 19500,
     "addedDec": "더보기"
+  },
+  {
+    "id": 10,
+    "backgroundColor": "#858585",
+    "efficacy": "피부 건강을 위한",
+    "name": "홍삼 옥사뭐시",
+    "icon": [
+      { "id": 11, "iconList": "<RiEyeCloseLine />" },
+      { "id": 12, "iconList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 13, "iconList": "피부보습/피부건강/항산화에 도움" }
+    ],
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": [
+      { "id": 14, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 15, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 16, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 16,
+    "backgroundColor": "blue",
+    "efficacy": "피부 건강을 위한",
+    "name": "홍삼 옥사뭐시",
+    "icon": [
+      { "id": 17, "iconList": "<RiEyeCloseLine />" },
+      { "id": 18, "iconList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 19, "iconList": "피부보습/피부건강/항산화에 도움" }
+    ],
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": [
+      { "id": 20, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 21, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 22, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
   }
 ]
