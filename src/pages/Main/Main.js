@@ -3,14 +3,6 @@ import FootSlide from './Footer/FootSlide';
 import './Main.scss';
 
 export class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-      slideList: [],
-      setList: {},
-    };
-  }
-
   render() {
     return (
       <div className="Main">
