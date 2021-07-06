@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import './Signup.scss';
 
 class Signup extends React.Component {
@@ -15,18 +15,22 @@ class Signup extends React.Component {
           <span>연락처</span>
           <br />
           <div className="check_phone">
-            <input
-              type="text"
-              placeholder="연락처('-' 제외)를 입력해 주세요."
-            />
-            <button type="button" className="button">
-              인증번호 발송
-            </button>
+            <span>
+              <input
+                type="text"
+                placeholder="연락처('-' 제외)를 입력해 주세요."
+              />
+              <button type="button" className="button">
+                인증번호 발송
+              </button>
+            </span>
             <br></br>
-            <input type="text" placeholder="인증번호를 입력해 주세요." />
-            <button type="button" className="button">
-              확인
-            </button>
+            <span>
+              <input type="text" placeholder="인증번호를 입력해 주세요." />
+              <button type="button" className="button">
+                확인
+              </button>
+            </span>
           </div>
         </div>
         <div className="signup_detail">
@@ -43,16 +47,17 @@ class Signup extends React.Component {
           <input type="password" placeholder="비밀번호를 다시 입력해 주세요." />
           <br />
         </div>
+        <div className="check_all">
+          <input type="checkbox"></input>
+          모두 동의하기
+        </div>
         <div className="signup_check">
-          <span>
-            <input type="checkbox"></input>모두 동의하기
-          </span>
-          <br />
-          <input type="checkbox"></input>만 14세 이상입니다.
+          <input type="checkbox"></input>
+          만 14세 이상입니다.
           <br />
           <input type="checkbox"></input>이용 약관 동의
         </div>
-        <div class="footer_button">
+        <div className="footer_button">
           <button type="button" className="signup">
             회원가입
           </button>

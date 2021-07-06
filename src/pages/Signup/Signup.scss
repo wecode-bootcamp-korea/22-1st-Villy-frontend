@@ -1,51 +1,59 @@
 @import '../../styles/common.scss';
 
 .signup_view {
+  width: 600px;
   display: flex;
   flex-direction: column;
-  margin: 200px 200px 200px 200px;
+  margin: 100px 200px 100px 700px;
   h1 {
     font-size: 30px;
+    margin-bottom: 20px;
   }
 
   .signup_name {
     margin-top: 20px;
     span {
-      font-size: 10px;
+      font-size: 13px;
       color: gray;
     }
     input {
-      width: 300px;
-      height: 30px;
+      width: 500px;
+      height: 40px;
+      padding: 10px;
       border: 1px solid lightgray;
       border-radius: 5px;
-      margin-bottom: 20px;
+      margin-top: 5px;
+      margin-bottom: 30px;
     }
   }
 
   .signup_phone {
     span {
       position: flex;
-      font-size: 10px;
+      font-size: 13px;
       color: gray;
     }
     input {
-      width: 300px;
-      height: 30px;
+      width: 400px;
+      height: 40px;
+      padding: 10px;
       border: 1px solid lightgray;
       border-radius: 5px;
+      margin-top: 5px;
       margin-bottom: 10px;
     }
-    button {
-      position: fixed;
-      width: 100px;
-      height: 30px;
-      background-color: black;
-      color: white;
-      border-radius: 20px;
-    }
+
     .check_phone {
-      display: inline-block;
+      span {
+        button {
+          margin-left: 10px;
+          width: 100px;
+          height: 30px;
+          background-color: black;
+          color: white;
+          border-radius: 20px;
+        }
+      }
     }
   }
 
@@ -54,16 +62,27 @@
     span {
       margin-top: 15px;
       position: flex;
-      font-size: 10px;
+      font-size: 13px;
       color: gray;
     }
     input {
-      margin-bottom: 10px;
-      width: 300px;
-      height: 30px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 500px;
+      height: 40px;
       border: 1px solid lightgray;
       border-radius: 5px;
     }
+  }
+
+  .check_all {
+    display: inline-block;
+    border-bottom: 1px solid lightgray;
+    width: 600px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    font-weight: bolder;
   }
 
   .signup_check {
@@ -71,14 +90,12 @@
     margin-top: 20px;
     margin-bottom: 30px;
     input {
-      margin-top: 20px;
-    }
-    span {
-      font-weight: bolder;
+      margin-top: 10px;
     }
   }
 
   .footer_button {
+    text-align: center;
     .signup {
       color: white;
       font-weight: bolder;
@@ -86,7 +103,8 @@
       width: 300px;
       height: 50px;
       border-radius: 20px;
-      margin-bottom: 20px;
+      margin-top: 40px;
+      margin-bottom: 50px;
     }
 
     .kakao {
