@@ -45,7 +45,7 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
-      { "id": 11, "iconList": "<RiEyeCloseLine />" },
+      { "id": 11, "iconList": "피부보습/피부건강/항산화에 도움" },
       { "id": 12, "iconList": "피부보습/피부건강/항산화에 도움" },
       { "id": 13, "iconList": "피부보습/피부건강/항산화에 도움" }
     ],
