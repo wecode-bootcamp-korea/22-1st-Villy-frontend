@@ -2,12 +2,23 @@
 
 .Product {
   .ProductHeader {
+    @include display-flex;
+    justify-content: flex-start;
+
     height: 590px;
     background-image: url('http://localhost:3000/images/productPageBg.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    //반응형일 때 height 490px
+    //반응형 height 490px
     background-color: coral;
+  }
+  h1 {
+    margin-left: 20%;
+    font-size: 36px;
+    //반응형  font-size: 36px;
+    line-height: 45px;
+    font-weight: bold;
+    color: #ffffff;
   }
 
   .ProductBody {
