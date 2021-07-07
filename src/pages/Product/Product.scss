@@ -1,16 +1,30 @@
 @import '../../styles/common.scss';
 
+// common 추가
+a {
+  color: $color-font;
+  text-decoration: none;
+  outline: none;
+}
+
+// a:hover,
+// a:active {
+//   text-decoration: none;
+//   color: #fff;
+//   background-color: #f59000;
+// }
+
 .Product {
   .ProductHeader {
     @include display-flex;
     justify-content: flex-start;
 
     height: 590px;
-    background-image: url('http://localhost:3000/images/productPageBg.jpg');
+    background-image: url('http://localhost:3000/images/producHeader.jpg');
     background-repeat: no-repeat;
     background-position: center;
     //반응형 height 490px
-    background-color: coral;
+    background-color: #e8c700;
   }
   h1 {
     margin-left: 20%;

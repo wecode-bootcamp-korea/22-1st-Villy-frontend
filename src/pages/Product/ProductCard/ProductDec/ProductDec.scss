@@ -1,3 +1,14 @@
 .productDec {
-  list-style: disc;
+  margin-bottom: 8px;
+  font-size: 13px;
+  & ::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: #333;
+  }
 }

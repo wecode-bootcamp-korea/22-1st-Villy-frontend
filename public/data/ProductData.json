@@ -1,13 +1,14 @@
 [
   {
     "id": 1,
-    "backgroundColor": "none",
+    "backgroundColor": "#E9F9FE",
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
       { "id": 9, "iconSrc": "RiEyeCloseLine" },
-      { "id": 9, "iconSrc": "피부보습/피부건강/항산화에 도움" },
-      { "id": 9, "iconSrc": "피부보습/피부건강/항산화에 도움" }
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
     ],
     "pillImage": "../images/productSample01.jpg",
     "description": [
@@ -21,13 +22,14 @@
   },
   {
     "id": 2,
-    "backgroundColor": "red",
+    "backgroundColor": "#E0B5BA",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
-      { "id": 9, "iconList": "<RiEyeCloseLine />" },
-      { "id": 9, "iconList": "피부보습/피부건강/항산화에 도움" },
-      { "id": 9, "iconList": "피부보습/피부건강/항산화에 도움" }
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -41,13 +43,14 @@
   },
   {
     "id": 10,
-    "backgroundColor": "#858585",
+    "backgroundColor": "#EFE9D9",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
-      { "id": 11, "iconList": "피부보습/피부건강/항산화에 도움" },
-      { "id": 12, "iconList": "피부보습/피부건강/항산화에 도움" },
-      { "id": 13, "iconList": "피부보습/피부건강/항산화에 도움" }
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -61,19 +64,124 @@
   },
   {
     "id": 16,
-    "backgroundColor": "blue",
+    "backgroundColor": "#B1D9F1",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
-      { "id": 17, "iconList": "<RiEyeCloseLine />" },
-      { "id": 18, "iconList": "피부보습/피부건강/항산화에 도움" },
-      { "id": 19, "iconList": "피부보습/피부건강/항산화에 도움" }
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
       { "id": 20, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 21, "descriptionList": "국내 최초 2중 기능성 제품" },
       { "id": 22, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 23,
+    "backgroundColor": "#EAE9E9",
+    "efficacy": "피부 건강을 위한",
+    "name": "히알루론산 스피루리나",
+    "icon": [
+      { "id": 24, "iconSrc": "RiEyeCloseLine" },
+      { "id": 25, "iconSrc": "피부보습/피부건강/항산화에 도움" },
+      { "id": 26, "iconSrc": "피부보습/피부건강/항산화에 도움" }
+    ],
+    "pillImage": "../images/productSample01.jpg",
+    "description": [
+      { "id": 27, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 28, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 29, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 30,
+    "backgroundColor": "#AEE19E",
+    "efficacy": "피부 건강을 위한",
+    "name": "홍삼 옥사뭐시",
+    "icon": [
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
+    ],
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": [
+      { "id": 34, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 35, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 36, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 37,
+    "backgroundColor": "#FFF0A6",
+    "efficacy": "피부 건강을 위한",
+    "name": "홍삼 옥사뭐시",
+    "icon": [
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
+    ],
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": [
+      { "id": 41, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 42, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 43, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 44,
+    "backgroundColor": "#CBC5E8",
+    "efficacy": "피부 건강을 위한",
+    "name": "히알루론산 스피루리나",
+    "icon": [
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
+    ],
+    "pillImage": "../images/productSample01.jpg",
+    "description": [
+      { "id": 48, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 49, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 50, "descriptionList": "국내산 쌀겨추출분말 함유" }
+    ],
+    "quantity": 30,
+    "price": 19500,
+    "addedDec": "더보기"
+  },
+  {
+    "id": 51,
+    "backgroundColor": "#FAD4BF",
+    "efficacy": "피부 건강을 위한",
+    "name": "홍삼 옥사뭐시",
+    "icon": [
+      { "id": 9, "iconSrc": "RiEyeCloseLine" },
+      { "id": 9, "iconSrc": "GiMuscleUp" },
+      { "id": 9, "iconSrc": "BsArrowRepeat" },
+      { "id": 9, "iconSrc": "CgGirl" }
+    ],
+    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "description": [
+      { "id": 55, "descriptionList": "피부보습/피부건강/항산화에 도움" },
+      { "id": 56, "descriptionList": "국내 최초 2중 기능성 제품" },
+      { "id": 57, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
     "price": 19500,

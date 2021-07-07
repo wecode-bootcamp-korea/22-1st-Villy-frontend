@@ -1,6 +1,11 @@
 @import '../../styles/common.scss';
 
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
   display: flex;
   margin-top: 30px;
   align-items: center;
@@ -10,6 +15,7 @@
     width: 100px;
     height: 60px;
   }
+
   ul {
     display: inline;
     margin: 20px;
@@ -23,6 +29,18 @@
       color: black;
       font-weight: bolder;
       text-decoration: none;
+      &:hover {
+        cursor: pointer;
+        opacity: 2;
+        transition: 0.1s;
+        color: #ff8200;
+      }
+      &:active {
+        color: #ff8200;
+      }
+      &:enabled {
+        color: #ff8200;
+      }
     }
   }
 }
