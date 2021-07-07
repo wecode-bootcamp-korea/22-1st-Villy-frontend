@@ -1,34 +1,47 @@
-@import '../../styles/common.scss';
+@import '../../styles/reset.scss';
 
-body {
-  background-color: #e9e9e9;
+@mixin border-radius {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
-.login_view {
-  display: block;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 100px;
-  .logo img {
-    width: 100px;
-    height: 60px;
-    margin-bottom: 50px;
-  }
+.Login {
+  background-color: #e9e9e9;
 
-  .login_input {
-    display: inline-grid;
-    margin-bottom: 50px;
-    input {
-      width: 300px;
-      height: 50px;
-      border: 1px solid gray;
-      border-radius: 5px;
-      padding: 20px;
-      margin-bottom: 20px;
+  .loginView {
+    text-align: center;
+    // padding-top: 100px;
+    // padding-bottom: 179px;
+
+    .loginImg {
+      .loginLogo {
+        width: 100px;
+        height: 60px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .loginForm {
+      display: inline-grid;
+      margin-bottom: 60px;
+      text-align: center;
+
+      .loginInput {
+        width: 300px;
+        height: 50px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
     }
 
     .btn {
-      button {
+      text-align: center;
+
+      .loginButton {
         color: white;
         font-weight: bolder;
         background-color: #fddcaa;
@@ -37,21 +50,26 @@ body {
         border: none;
         border-radius: 20px;
         margin-top: 20px;
+
         &:hover {
           cursor: pointer;
           opacity: 0.4;
         }
+
         &:enabled {
           background-color: #ff9614;
         }
       }
     }
-    p {
+
+    .loginText {
       margin-top: 30px;
       color: gray;
-      a {
+
+      .loginFormLink {
         text-decoration: none;
         color: gray;
+
         &:hover {
           cursor: pointer;
           opacity: 2;
@@ -59,42 +77,30 @@ body {
         }
       }
     }
-  }
 
-  .footer_button {
-    .kakao {
-      background-color: #ffd700;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
+    .footerButton {
+      .kakao {
+        background-color: #ffd700;
+        @include border-radius;
+      }
 
-    .facebook {
-      background-color: #0a6ecd;
-      color: white;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
+      .facebook {
+        background-color: #0a6ecd;
+        color: white;
+        @include border-radius;
+      }
 
-    .naver {
-      background-color: #64cd3c;
-      color: white;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-    }
+      .naver {
+        background-color: #64cd3c;
+        color: white;
+        @include border-radius;
+      }
 
-    .apple {
-      background-color: black;
-      color: white;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
+      .apple {
+        background-color: black;
+        color: white;
+        @include border-radius;
+      }
     }
   }
 }
