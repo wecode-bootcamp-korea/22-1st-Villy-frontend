@@ -8,6 +8,7 @@ export class Product extends Component {
     this.state = {
       productCard: [],
       cardBackground: CARDBACKGROUND,
+      isModalOn: false,
     };
   }
 
@@ -21,15 +22,14 @@ export class Product extends Component {
       });
   }
 
+  // 모달창 구현 중 입니다 !
+  // handleClick = () => {
+  //   this.setState({
+  //     isModalOn: !this.state.isModalOn,
+  //   });
+  // };
+
   render() {
-    // const a =
-    //   this.state.cardBackground &&
-    //   this.state.cardBackground.map((el, idx) => {
-    //     return console.log(idx, `idx`);
-    //   });
-
-    // console.log(a);
-
     return (
       <div className="Product">
         <header className="productHeader">
@@ -41,13 +41,26 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
-          {/* 맵함수의 고유한 값으로 symbol 가능? */}
           <ul className="productList">
             {this.state.productCard.map(product => (
-              <ProductCard key={product.id} productCard={product} />
+              <ProductCard
+                key={product.id}
+                productCard={product}
+                // 모달찰 구현중 입니다.
+                // handleClick={this.handleClick}
+                cardBackground={
+                  this.state.cardBackground &&
+                  this.state.cardBackground.map(cardColor => {
+                    return { cardColor };
+                  })
+                }
+              />
             ))}
           </ul>
         </section>
+        {/* 모달창 구현 중입니다 ! */}
+        {/* <button style={{ cursor: 'pointer' }}>실험!</button>
+        {this.state.isModalOn && <div>자식요소에서 일어나는 이벤트 반영</div>} */}
       </div>
     );
   }

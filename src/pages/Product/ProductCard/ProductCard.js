@@ -14,6 +14,8 @@ export class ProductCard extends Component {
       isCartButton: false,
       isRemoveIcon: <AiOutlinePlus className="addIcon" />,
       isChangeText: '장바구니 담기',
+      // 클릭 카운터 함수 기능 구현 중
+      // clickCount: 0,
     };
   }
 
@@ -22,6 +24,8 @@ export class ProductCard extends Component {
       isCartButton: !this.state.isCartButton,
       isChangeText: '장바구니 추가됨',
       isRemoveIcon: '',
+      // 클릭 카운터 함수 기능 구현 중
+      // clickCount: this.state.clickCount + 1,
     });
   };
 
@@ -29,8 +33,17 @@ export class ProductCard extends Component {
     const { efficacy, name, icon, pillImage, description, quantity, price } =
       this.props.productCard;
 
+    const { cardBackground } = this.props;
+    //확인을 위한 콘솔
+    console.log(cardBackground[0]);
+
     return (
-      <li className="ProductCard">
+      <li
+        className="ProductCard"
+        style={{
+          backgroundColor: 'lavender',
+        }}
+      >
         <header className="productCardHeader">
           <div className="nameBox">
             <h2>
@@ -86,6 +99,8 @@ export class ProductCard extends Component {
             <span className="buttonText">{this.state.isChangeText}</span>
           </button>
         </footer>
+        {/* 클릭 카운터 기능 구현중 */}
+        {/* {this.state.clickCount} */}
       </li>
     );
   }
