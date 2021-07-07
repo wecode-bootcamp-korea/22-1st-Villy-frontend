@@ -1,44 +1,58 @@
 @import '../../styles/common.scss';
 
-.signup_view {
+@mixin border-color {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+@mixin border-radius {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.signupView {
   width: 600px;
   display: flex;
   flex-direction: column;
   margin: 100px 200px 100px 600px;
+
   h1 {
     font-size: 30px;
     margin-bottom: 20px;
   }
 
-  .signup_name {
+  .signupName {
     margin-top: 20px;
-    span {
+
+    .signupHeader {
       font-size: 13px;
       color: gray;
     }
-    input {
+
+    .signupInput {
+      @include border-color;
       width: 500px;
       height: 40px;
       padding: 10px;
-      border: 1px solid lightgray;
-      border-radius: 5px;
       margin-top: 5px;
       margin-bottom: 20px;
     }
   }
 
   .signup_phone {
-    span {
+    .signupHeader {
       position: flex;
       font-size: 13px;
       color: gray;
     }
-    input {
+
+    .signupInput {
+      @include border-color;
       width: 500px;
       height: 40px;
       padding: 10px;
-      border: 1px solid lightgray;
-      border-radius: 5px;
       margin-top: 5px;
       margin-bottom: 10px;
     }
@@ -46,20 +60,20 @@
 
   .signup_detail {
     margin-top: 30px;
-    span {
-      margin-top: 15px;
+
+    .signupHeader {
       position: flex;
       font-size: 13px;
       color: gray;
     }
-    input {
+
+    .signupInput {
+      @include border-color;
       margin-top: 5px;
       margin-bottom: 20px;
       padding: 10px;
       width: 500px;
       height: 40px;
-      border: 1px solid lightgray;
-      border-radius: 5px;
     }
   }
 
@@ -70,58 +84,51 @@
     margin-top: 30px;
     padding-bottom: 30px;
     font-weight: bolder;
-    input {
+
+    .signupCheckbox {
       margin-right: 10px;
     }
   }
 
-  .signup_check {
+  .checkDetail {
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 30px;
-    input {
+
+    .signupCheckbox {
       margin-top: 10px;
       margin-right: 10px;
     }
   }
 
-  .footer_button {
+  .footerButton {
     margin-left: 100px;
-    .signup {
+
+    .signupSubmit {
+      @include border-radius;
       color: white;
       font-weight: bolder;
       background-color: salmon;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
       margin-top: 40px;
       margin-bottom: 50px;
     }
 
     .kakao {
+      @include border-radius;
       background-color: #ffd700;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
+      color: white;
     }
 
     .facebook {
+      @include border-radius;
       background-color: #0a6ecd;
       color: white;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
     }
 
     .naver {
+      @include border-radius;
       background-color: #64cd3c;
       color: white;
-      width: 300px;
-      height: 50px;
-      border-radius: 20px;
-      margin-bottom: 20px;
     }
   }
 }
