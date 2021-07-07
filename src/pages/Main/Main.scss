@@ -13,12 +13,13 @@
     flex-direction: column;
 
     .mainTextWrap {
-      @include display-flex(space-around, flex-start);
+      @include display-flex(center, flex-start);
       flex-direction: column;
-      height: 70%;
+      padding-right: 170px;
+      height: 100%;
 
       h1 {
-        font-size: 100px;
+        font-size: 75px;
         line-height: 1.25;
         font-weight: bold;
         color: $color-font;
@@ -49,7 +50,7 @@
   }
 
   .footTop {
-    height: 150px;
+    height: 100px;
     @include display-flex(center, center);
     background-color: bisque;
 

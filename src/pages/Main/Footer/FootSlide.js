@@ -48,12 +48,15 @@ export class FootSlide extends Component {
         slideCtrBtnValue: this.state.slideCtrBtnValue + 1,
       });
     }
+    console.log(`this.state.transValue`, this.state.transValue);
   };
 
   slideHandler = e => {
-    const value = e.target.value * -100;
+    let value = e.target.value * -100;
     clearInterval();
     this.setState({ transValue: value });
+    console.log(`this.state.transValue`, this.state.transValue);
+    console.log(`e.target.value`, e.target.value);
   };
 
   render() {
