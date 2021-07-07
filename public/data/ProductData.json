@@ -1,7 +1,6 @@
 [
   {
     "id": 1,
-    "backgroundColor": "#E9F9FE",
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
@@ -18,11 +17,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "addedDescription": "더보기"
   },
   {
     "id": 2,
-    "backgroundColor": "#E0B5BA",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
@@ -39,11 +37,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 10,
-    "backgroundColor": "#EFE9D9",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
@@ -60,11 +57,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 16,
-    "backgroundColor": "#B1D9F1",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
@@ -81,11 +77,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 23,
-    "backgroundColor": "#EAE9E9",
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
@@ -101,11 +96,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 30,
-    "backgroundColor": "#AEE19E",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
@@ -122,11 +116,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 37,
-    "backgroundColor": "#FFF0A6",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
@@ -143,11 +136,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 44,
-    "backgroundColor": "#CBC5E8",
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
@@ -164,11 +156,10 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   },
   {
     "id": 51,
-    "backgroundColor": "#FAD4BF",
     "efficacy": "피부 건강을 위한",
     "name": "홍삼 옥사뭐시",
     "icon": [
@@ -185,6 +176,6 @@
     ],
     "quantity": 30,
     "price": 19500,
-    "addedDec": "더보기"
+    "add": "더보기"
   }
 ]

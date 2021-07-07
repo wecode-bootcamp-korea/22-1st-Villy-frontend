@@ -22,7 +22,7 @@ export class ProductCard extends Component {
       description,
       quantity,
       price,
-      addedDec,
+      add,
     } = this.props.productCard;
 
     return (
@@ -50,25 +50,24 @@ export class ProductCard extends Component {
           <section className="ProductCardBody">
             <div className="decBox">
               <ul className="description">
-                {description
-                  ? description.map(descriptionItem => {
-                      return (
-                        <ProductDec
-                          key={descriptionItem.id}
-                          description={descriptionItem.descriptionList}
-                        />
-                      );
-                    })
-                  : null}
+                {description &&
+                  description.map(descriptionItem => {
+                    return (
+                      <ProductDec
+                        key={descriptionItem.id}
+                        description={descriptionItem.descriptionList}
+                      />
+                    );
+                  })}
               </ul>
             </div>
-            <div className="qaunAndpriceBox">
+            <div className="quantityAndpriceBox">
               <p className="quantity">{quantity}일분</p>
               <p className="price">{price}원</p>
             </div>
           </section>
           <footer className="ProductCardFooter">
-            <p className="addedDec">{addedDec}</p>
+            <p className="add">{add}</p>
             <Link to="/Main">
               <button className="cartBtn">
                 <AiOutlinePlus />

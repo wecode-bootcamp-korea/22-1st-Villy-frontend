@@ -1,10 +1,10 @@
 @import '../../../styles/common.scss';
+@import '../../../styles/variables.scss';
 
 .ProductCard {
-  width: 412px;
-  height: 333px;
+  width: 415px;
   margin: 0 10px 20px 0;
-  padding: 30px 20px;
+  padding: 30px 30px;
   border-radius: 10px;
   box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.05);
 
@@ -28,6 +28,7 @@
   .pillImgBox {
     display: flex;
     align-self: center;
+
     .pillImage {
       width: 100px;
       height: 50px;
@@ -39,7 +40,7 @@
     justify-content: space-between;
     height: 72px;
 
-    .qaunAndpriceBox {
+    .quantityAndpriceBox {
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -58,7 +59,7 @@
     flex-direction: column;
     margin-top: 14px;
 
-    .addedDec {
+    .add {
       margin-bottom: 20px;
       font-size: 14px;
       font-weight: bold;

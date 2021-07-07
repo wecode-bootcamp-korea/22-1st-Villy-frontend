@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import ProductCard from './ProductCard/ProductCard';
-
 import './Product.scss';
 
 export class Product extends Component {
@@ -33,12 +31,12 @@ export class Product extends Component {
           </h1>
         </header>
         <section className="ProductBody">
-          {/* <h2 className="sr-only">Product Body</h2> */}
+          <h2 className="sr-only">Product Body</h2>
           {/* 맵함수의 고유한 값으로 symbol 가능? */}
           <ul className="ProductList">
-            {this.state.productCard.map(product => {
-              return <ProductCard key={product.id} productCard={product} />;
-            })}
+            {this.state.productCard.map(product => (
+              <ProductCard key={product.id} productCard={product} />
+            ))}
           </ul>
         </section>
       </div>
