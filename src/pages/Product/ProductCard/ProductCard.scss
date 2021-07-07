@@ -94,6 +94,10 @@
       &:hover {
         cursor: pointer;
       }
+      &:disabled {
+        background-color: #dddddd;
+        color: #ffffff;
+      }
       .addIcon {
         margin-right: 10px;
       }

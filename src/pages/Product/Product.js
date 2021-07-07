@@ -22,13 +22,13 @@ export class Product extends Component {
   }
 
   render() {
-    const a =
-      this.state.cardBackground &&
-      this.state.cardBackground.map((el, idx) => {
-        return console.log(idx, `idx`);
-      });
+    // const a =
+    //   this.state.cardBackground &&
+    //   this.state.cardBackground.map((el, idx) => {
+    //     return console.log(idx, `idx`);
+    //   });
 
-    console.log(a);
+    // console.log(a);
 
     return (
       <div className="Product">

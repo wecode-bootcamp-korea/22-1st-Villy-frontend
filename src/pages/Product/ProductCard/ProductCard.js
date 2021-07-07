@@ -8,8 +8,21 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import './ProductCard.scss';
 
 export class ProductCard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isCartButton: false,
+      isRemoveIcon: <AiOutlinePlus className="addIcon" />,
+      isChangeText: '장바구니 담기',
+    };
+  }
+
   handleCartButton = () => {
-    console.log(`클릭!`);
+    this.setState({
+      isCartButton: !this.state.isCartButton,
+      isChangeText: '장바구니 추가됨',
+      isRemoveIcon: '',
+    });
   };
 
   render() {
@@ -64,9 +77,13 @@ export class ProductCard extends Component {
         </section>
         <footer className="productCardFooter">
           <p className="add">더보기</p>
-          <button className="cartBtn" onClick={this.handleCartButton}>
-            <AiOutlinePlus className="addIcon" />
-            <span className="buttonText">장바구니 담기</span>
+          <button
+            className="cartBtn"
+            onClick={this.handleCartButton}
+            disabled={this.state.isCartButton}
+          >
+            {this.state.isRemoveIcon}
+            <span className="buttonText">{this.state.isChangeText}</span>
           </button>
         </footer>
       </li>
