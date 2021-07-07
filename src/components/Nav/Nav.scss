@@ -1,4 +1,4 @@
-@import '../../styles/common.scss';
+@import '../../styles/variables.scss';
 
 .navbar {
   @include display-flex(center, center);
@@ -6,36 +6,44 @@
   left: 0;
   right: 0;
   background-color: white;
-  .navLogo img {
-    display: flex;
-    width: 100px;
-    height: 60px;
+
+  .navLogo {
+    .logo_img {
+      display: flex;
+      width: 100px;
+      height: 60px;
+    }
   }
 
-  ul {
+  .nav_menu {
     display: inline;
     margin: 20px;
     margin-left: 250px;
     justify-content: space-between;
-  }
-  li {
-    display: inline;
-    margin-left: 40px;
-    a {
-      color: black;
-      font-weight: bolder;
-      text-decoration: none;
-      &:hover {
-        cursor: pointer;
-        opacity: 2;
-        transition: 0.1s;
-        color: #ff8200;
-      }
-      &:active {
-        color: #ff8200;
-      }
-      &:enabled {
-        color: #ff8200;
+
+    .nav_list {
+      display: inline;
+      margin-left: 10px;
+
+      .nav_link {
+        list-style: none;
+        text-decoration: none;
+        color: black;
+        font-weight: bolder;
+        padding: 20px;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 2;
+          transition: 0.1s;
+          color: #ff8200;
+        }
+        &:active {
+          color: #ff8200;
+        }
+        &:enabled {
+          color: #ff8200;
+        }
       }
     }
   }
