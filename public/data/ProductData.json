@@ -16,8 +16,7 @@
       { "id": 7, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "addedDescription": "더보기"
+    "price": 19500
   },
   {
     "id": 2,
@@ -36,8 +35,7 @@
       { "id": 6, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 10,
@@ -56,8 +54,7 @@
       { "id": 16, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 16,
@@ -76,8 +73,7 @@
       { "id": 22, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 23,
@@ -95,8 +91,7 @@
       { "id": 29, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 30,
@@ -115,8 +110,7 @@
       { "id": 36, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 37,
@@ -135,8 +129,7 @@
       { "id": 43, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 44,
@@ -155,8 +148,7 @@
       { "id": 50, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   },
   {
     "id": 51,
@@ -175,7 +167,6 @@
       { "id": 57, "descriptionList": "국내산 쌀겨추출분말 함유" }
     ],
     "quantity": 30,
-    "price": 19500,
-    "add": "더보기"
+    "price": 19500
   }
 ]

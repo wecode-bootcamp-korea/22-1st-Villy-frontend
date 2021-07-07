@@ -17,7 +17,7 @@ a {
 // }
 
 .Product {
-  .ProductHeader {
+  .productHeader {
     @include display-flex;
     justify-content: flex-start;
 
@@ -37,9 +37,16 @@ a {
     color: #ffffff;
   }
 
-  .ProductBody {
+  .productBody {
     @include display-flex;
-    padding: 50px 0;
+    padding: 50px 200px;
     background-color: #fafafa;
+
+    .productList {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 840px;
+    }
   }
 }
