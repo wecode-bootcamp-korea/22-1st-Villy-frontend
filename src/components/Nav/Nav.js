@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends React.Component {
@@ -6,25 +7,25 @@ class Nav extends React.Component {
     return (
       <nav className="navbar">
         <div className="navLogo">
-          <a href="/Login">
-            <img alt="logo" src="../images/logo.png"></img>
-          </a>
+          <Link to="/Login">
+            <img alt="logo" src="http://localhost:3000/images/logo.png" />
+          </Link>
         </div>
         <ul className="menu">
           <li>
-            <a href="">추천성분</a>
+            <Link to="">추천성분</Link>
           </li>
           <li>
-            <a href="/Product">제품보기</a>
+            <Link to="/Product">제품보기</Link>
           </li>
           <li>
-            <a href="">고객후기</a>
+            <Link to="">고객후기</Link>
           </li>
           <li>
-            <a href="">장바구니</a>
+            <Link to="">장바구니</Link>
           </li>
           <li>
-            <a href="/Login">로그인</a>
+            <Link to="/Login">로그인</Link>
           </li>
         </ul>
       </nav>
