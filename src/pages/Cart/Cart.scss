@@ -1,0 +1,134 @@
+@import '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.Cart {
+  margin: 100px 200px 100px 500px;
+
+  .cartView {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+
+    .cartTop {
+      display: flex;
+      margin-bottom: 30px;
+      justify-content: space-between;
+
+      h1 {
+        font-weight: bolder;
+        font-size: 30px;
+      }
+
+      .cartTopBtn {
+        button {
+          font-weight: bolder;
+          color: $color-font;
+          padding: 10px;
+          background-color: white;
+          border: 1px solid lightgray;
+          border-radius: 20px;
+        }
+      }
+    }
+
+    .cartList {
+      display: inline-flex;
+      border-bottom: 1px solid lightgray;
+
+      input {
+        margin-top: 40px;
+      }
+      .listDetail {
+        margin-top: 30px;
+        display: inline-flex;
+        flex-direction: column;
+        .listFont {
+          text-decoration: underline;
+        }
+      }
+      .countBtn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .btnDetail {
+          padding: 10px;
+          button {
+            border: 1px solid lightgray;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px;
+          }
+        }
+
+        .productPrice {
+          display: flex;
+        }
+      }
+    }
+
+    .cartDetail {
+      margin-top: 40px;
+
+      .cartRead {
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .deliveryPrice {
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .productView {
+        padding: 10px;
+
+        .productDiscount {
+          background-color: gray;
+          padding: 10px;
+          padding-bottom: 10px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .deliveryDiscount {
+          background-color: lightgray;
+          padding: 10px;
+          padding-bottom: 10px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .pointDiscount {
+          background-color: lightgray;
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .cartPrice {
+      margin-top: 30px;
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      .totalPrice {
+        font-weight: bolder;
+        font-size: 20px;
+        color: salmon;
+      }
+    }
+
+    .cartFooterBtn {
+      margin-top: 50px;
+      text-align: center;
+      button {
+        width: 300px;
+        border-radius: 20px;
+        color: white;
+        padding: 10px;
+        background-color: lightsalmon;
+      }
+    }
+  }
+}
