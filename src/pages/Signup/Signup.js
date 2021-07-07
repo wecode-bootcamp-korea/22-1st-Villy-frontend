@@ -1,5 +1,5 @@
 import React from 'react';
-import { chkEmail, chkPwd, chkName, chkAddress } from './Validation';
+import { chkEmail, chkPwd, chkName, chkPhone } from './Validation';
 import './Signup.scss';
 
 class Signup extends React.Component {
@@ -52,15 +52,15 @@ class Signup extends React.Component {
       this.pwRef.current.value = '';
     }
 
-    if (chkAddress(this.state.address) === false) {
-      alert('주소를 입력해주세요.');
+    if (chkPhone(this.state.phone) === false) {
+      alert('번호를 입력해주세요.');
     }
 
     if (
       chkName(this.state.name) &&
       chkEmail(this.state.email) &&
       chkPwd(this.state.pw) &&
-      chkAddress(this.state.address) === true
+      chkPhone(this.state.phone) === true
     ) {
       alert('회원가입 완료');
     } else {
@@ -119,7 +119,7 @@ class Signup extends React.Component {
           <input
             type="text"
             name="phone"
-            placeholder="연락처('-' 제외)를 입력해 주세요."
+            placeholder="연락처를 입력해 주세요."
             onChange={this.phoneInput}
             onKeyPress={this.handleKeyPress}
           />

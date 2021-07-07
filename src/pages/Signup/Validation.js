@@ -17,8 +17,8 @@ export function chkName(name) {
   }
 }
 
-export function chkAddress(address) {
-  if (address === '') {
+export function chkPhone(phone) {
+  if (phone === '') {
     return false;
   } else {
     return true;
