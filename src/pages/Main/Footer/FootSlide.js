@@ -6,8 +6,7 @@ export class FootSlide extends Component {
   constructor() {
     super();
     this.state = {
-      transValue: 0,
-      slideCtrBtnValue: 0,
+      slideNumber: 0,
       slideList: [
         {
           id: 0,
@@ -38,69 +37,60 @@ export class FootSlide extends Component {
     setInterval(this.autoSlide, 2500);
   }
 
+  componentWillUnmount() {
+    clearInterval();
+  }
+
   autoSlide = () => {
-    const { transValue, slideList } = this.state;
-    if (transValue === (slideList.length - 1) * -100) {
-      this.setState({ transValue: 0, slideCtrBtnValue: 0 });
+    const { slideNumber, slideList } = this.state;
+    if (slideNumber >= slideList.length - 1) {
+      this.setState({ slideNumber: 0 });
     } else {
-      this.setState({
-        transValue: this.state.transValue - 100,
-        slideCtrBtnValue: this.state.slideCtrBtnValue + 1,
-      });
+      this.setState({ slideNumber: this.state.slideNumber + 1 });
     }
-    console.log(`this.state.transValue`, this.state.transValue);
   };
 
   slideHandler = e => {
-    let value = e.target.value * -100;
-    clearInterval();
-    this.setState({ transValue: value });
-    console.log(`this.state.transValue`, this.state.transValue);
-    console.log(`e.target.value`, e.target.value);
+    const value = e.currentTarget.value;
+    this.setState({ slideNumber: Number(value) });
   };
 
   render() {
-    const { slideList, transValue, slideCtrBtnValue } = this.state;
-    const slideWidth = slideList.length;
-    let slideStyle = {
-      width: slideWidth * 100 + 'vw',
-      transform: 'translate(' + transValue + 'vw)',
-    };
-
+    const { slideList, slideNumber } = this.state;
     return (
       <div className="FootSlide">
-        <ul className="slide" style={slideStyle}>
-          {slideList.map(el => {
-            return (
-              <li key={el.id}>
-                <div>
-                  <img src={el.icon} alt={el.alt} />
-                  <h2>{el.description}</h2>
-                  <p> {el.user}</p>
-                </div>
-              </li>
-            );
-          })}
+        <button onClick={() => clearInterval()}>asdf</button>
+        <ul
+          className="slide"
+          style={{ transform: `translateX(${-100 * slideNumber}vw)` }}
+        >
+          {slideList.map(slide => (
+            <li className="slideList" key={slide.id} value={slide.id}>
+              <article className="slideContent">
+                <img src={slide.icon} alt={slide.alt} />
+                <h2>{slide.description}</h2>
+                <p> {slide.user}</p>
+              </article>
+            </li>
+          ))}
         </ul>
-        <div className="FootSlideBt">
-          <ul>
-            {slideList.map(el => {
-              return (
-                <li key={el.id}>
-                  <button
-                    className="slideCtr"
-                    onClick={this.slideHandler}
-                    value={el.id}
-                  >
-                    {slideCtrBtnValue === el.id ? (
-                      <BiRadioCircleMarked />
-                    ) : (
-                      <BiRadioCircle />
-                    )}
-                  </button>
-                </li>
-              );
-            })}
+        <div className="slideButtonWrap">
+          <ul className="slideButtons">
+            {slideList.map(button => (
+              <li className="slideButtonList" key={button.id}>
+                <button
+                  className="slideControlButton"
+                  onClick={this.slideHandler}
+                  value={button.id}
+                >
+                  {slideNumber === button.id ? (
+                    <BiRadioCircleMarked />
+                  ) : (
+                    <BiRadioCircle />
+                  )}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
