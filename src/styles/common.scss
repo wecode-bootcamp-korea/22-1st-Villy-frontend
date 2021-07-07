@@ -1,25 +1,17 @@
-$color-mainBg: #fbded5;
-$color-logo: #f35c36;
-$color-font: #333333;
-
-@mixin display-flex($justify: center, $align: center) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
-
-@font-face {
-  font-family: 'Nanum Gothic Coding', monospace;
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
-}
-
 @font-face {
   font-family: 'Noto Sans KR', sans-serif;
   font-style: normal;
   font-weight: 400;
   src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+}
+
+.sr-only {
+  position: absolute;
+  z-index: -100;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
 }
 
 // /* MEDIA QUERY  */
