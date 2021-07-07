@@ -5,6 +5,8 @@ import './Signup.scss';
 class Signup extends React.Component {
   emailRef = React.createRef();
   pwRef = React.createRef();
+  nameRef = React.createRef();
+  phoneRef = React.createRef();
 
   state = {
     name: '',
@@ -40,20 +42,22 @@ class Signup extends React.Component {
   checkAll = e => {
     if (chkName(this.state.name) === false) {
       alert('이름을 입력해주세요.');
+      // this.nameRef.current.value = '';
     }
 
     if (chkEmail(this.state.email) === false) {
       alert('이메일 형식이 유효하지 않습니다.');
-      this.emailRef.current.value = '';
+      // this.emailRef.current.value = '';
     }
 
     if (chkPwd(this.state.pw) === false) {
-      alert('영문,숫자를 혼합하여 6~12자 이내로 만들어주세요.');
-      this.pwRef.current.value = '';
+      alert('영문,숫자,특수문자를 혼합하여 6~20자 이내로 입력해주세요.');
+      // this.pwRef.current.value = '';
     }
 
     if (chkPhone(this.state.phone) === false) {
       alert('번호를 입력해주세요.');
+      // this.phoneRef.current.value = '';
     }
 
     if (
@@ -96,7 +100,6 @@ class Signup extends React.Component {
   };
 
   render() {
-    console.log(this.state.name);
     return (
       <div className="signup_view">
         <h1>회원가입</h1>
