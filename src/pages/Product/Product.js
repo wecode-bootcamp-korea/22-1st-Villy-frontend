@@ -7,6 +7,7 @@ export class Product extends Component {
     super();
     this.state = {
       productCard: [],
+      cardBackground: CARDBACKGROUND,
     };
   }
 
@@ -21,6 +22,14 @@ export class Product extends Component {
   }
 
   render() {
+    const a =
+      this.state.cardBackground &&
+      this.state.cardBackground.map((el, idx) => {
+        return console.log(idx, `idx`);
+      });
+
+    console.log(a);
+
     return (
       <div className="Product">
         <header className="productHeader">
@@ -45,3 +54,15 @@ export class Product extends Component {
 }
 
 export default Product;
+
+const CARDBACKGROUND = [
+  '#E9F9FE',
+  '#E0B5BA',
+  '#EFE9D9',
+  '#B1D9F1',
+  '#EAE9E9',
+  '#AEE19E',
+  '#FFF0A6',
+  '#CBC5E8',
+  '#FAD4BF',
+];

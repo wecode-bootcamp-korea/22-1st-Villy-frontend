@@ -1,32 +1,23 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
+import ProductIcon from './ProductIcon/ProductIcon';
 import ProductDescription from './ProductDescription/ProductDescription';
 
-// import { RiEyeCloseLine } from 'react-icons/ri';
-// import { GiMuscleUp } from 'react-icons/gi';
-// import { BsArrowRepeat } from 'react-icons/bs';
-// import { CgGirl } from 'react-icons/cg';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 import './ProductCard.scss';
-import { computeHeadingLevel } from '@testing-library/react';
 
 export class ProductCard extends Component {
+  handleCartButton = () => {
+    console.log(`클릭!`);
+  };
+
   render() {
-    const {
-      backgroundColor,
-      efficacy,
-      name,
-      icon,
-      pillImage,
-      description,
-      quantity,
-      price,
-    } = this.props.productCard;
+    const { efficacy, name, icon, pillImage, description, quantity, price } =
+      this.props.productCard;
 
     return (
-      <li className="ProductCard" style={{ backgroundColor: backgroundColor }}>
+      <li className="ProductCard">
         <header className="productCardHeader">
           <div className="nameBox">
             <h2>
@@ -36,15 +27,16 @@ export class ProductCard extends Component {
             </h2>
 
             <ul className="icon">
-              {/* map 함수 */}
-              {/* <Component icon={RiEyeCloseLine} /> */}
-
-              {/* {icon &&
+              {icon &&
                 icon.map(iconItem => {
                   return (
-                    <Component key={iconItem.id} iconSrc={iconItem.iconSrc} />
+                    <ProductIcon
+                      key={iconItem.id}
+                      src={iconItem.src}
+                      alt={iconItem.alt}
+                    />
                   );
-                })} */}
+                })}
             </ul>
           </div>
           <div className="pillImgBox">
@@ -72,12 +64,10 @@ export class ProductCard extends Component {
         </section>
         <footer className="productCardFooter">
           <p className="add">더보기</p>
-          <Link className="cartLink">
-            <button className="cartBtn">
-              <AiOutlinePlus className="addIcon" />
-              장바구니 담기
-            </button>
-          </Link>
+          <button className="cartBtn" onClick={this.handleCartButton}>
+            <AiOutlinePlus className="addIcon" />
+            <span className="buttonText">장바구니 담기</span>
+          </button>
         </footer>
       </li>
     );
