@@ -7,39 +7,29 @@ export class FootSlide extends Component {
     super();
     this.state = {
       slideNumber: 0,
-      slideList: [
-        {
-          id: 0,
-          icon: 'http://localhost:3000/images/supplements.png',
-          alt: 'supplements',
-          description: 'villy 프로젝트 화이팅!!',
-          user: '도화동 사시는 김태영님',
-        },
-        {
-          id: 1,
-          icon: 'http://localhost:3000/images/vitamin.png',
-          alt: 'vitamin',
-          description: '벡엔드 화이팅!!',
-          user: '공덕동 사시는 설지우님',
-        },
-        {
-          id: 2,
-          icon: 'http://localhost:3000/images/vitamins.png',
-          alt: 'vitamins',
-          description: '프론트엔드 화이팅!!!',
-          user: '안산 사시는 최명준님',
-        },
-      ],
+      slideList: [],
     };
   }
 
   componentDidMount() {
-    setInterval(this.autoSlide, 2500);
+    this.startSlide();
+    fetch('http://localhost:3000/data/MainSlide.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          slideList: data,
+        });
+      });
   }
 
   componentWillUnmount() {
-    clearInterval();
+    clearInterval(this.startSlide);
   }
+
+  startSlide = () => setInterval(this.autoSlide, 2500);
+  endSlide = () => clearInterval(this.startSlide);
 
   autoSlide = () => {
     const { slideNumber, slideList } = this.state;
@@ -59,7 +49,6 @@ export class FootSlide extends Component {
     const { slideList, slideNumber } = this.state;
     return (
       <div className="FootSlide">
-        <button onClick={() => clearInterval()}>asdf</button>
         <ul
           className="slide"
           style={{ transform: `translateX(${-100 * slideNumber}vw)` }}
