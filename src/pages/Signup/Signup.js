@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  validationEmail,
-  validationPwd,
-  validationName,
-  validationPhone,
-} from './Validation';
+import { validationFor } from './Validation';
 import './Signup.scss';
 
 class Signup extends React.Component {
@@ -12,7 +7,7 @@ class Signup extends React.Component {
     name: '',
     email: '',
     pw: '',
-    phone: '',
+    mobile: '',
   };
 
   handleInput = e => {
@@ -27,7 +22,7 @@ class Signup extends React.Component {
       alert('이름을 입력해주세요.');
     }
 
-    if (!validationPhone(this.state.phone)) {
+    if (!validationMobile(this.state.mobile)) {
       alert('번호를 입력해주세요.');
     }
 
@@ -41,45 +36,67 @@ class Signup extends React.Component {
 
     if (
       validationName(this.state.name) &&
-      validationPhone(this.state.phone) &&
+      validationMobile(this.state.mobile) &&
       validationEmail(this.state.email) &&
       validationPwd(this.state.pw)
     ) {
-      alert('회원가입 완료');
+      return true;
+      // alert('회원가입 완료');
     } else {
       alert('입력란을 다시 확인하세요.');
-    }
-  };
-
-  handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      this.doValidation();
+      return false;
     }
   };
 
   requestSignup = () => {
-    fetch('http://10.58.5.217:8000/users/signin', {
+    fetch('http://10.58.6.222:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         name: this.state.name,
+        mobile: this.state.mobile,
         email: this.state.email,
         password: this.state.pw,
-        phone: this.state.phone,
       }),
     })
-      .then(response => response.json())
-      .then(result => {
-        if (result.token) {
+      .then(res => res.json())
+      .then(res => {
+        if (res.access_token) {
           alert('회원가입 성공');
-          localStorage.setItem('access_token', result.token);
+          localStorage.setItem('access_token', res.access_token);
         } else {
           alert('회원가입 실패');
         }
       });
   };
 
+  handleKeyPress = e => {
+    if (e.key === 'Enter' && this.doValidation()) {
+      this.requestSignup();
+    }
+  };
+
+  // requestSignup = () => {
+  //   fetch('http://10.58.6.222:8000/users/signup', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       name: this.state.name,
+  //       phone: this.state.phone,
+  //       email: this.state.email,
+  //       password: this.state.pw,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(res_success => {
+  //       if (res_success) {
+  //         alert('회원가입 성공');
+  //         localStorage.setItem('access_token', res_success);
+  //       } else {
+  //         alert('회원가입 실패');
+  //       }
+  //     });
+  // };
+
   render() {
-    console.log(this.state.pw);
     return (
       <div className="Signup">
         <div className="signupView">
@@ -102,9 +119,9 @@ class Signup extends React.Component {
             <br />
             <input
               type="text"
-              name="phone"
+              name="mobile"
               className="signupInput"
-              value={this.state.phone}
+              value={this.state.mobile}
               placeholder="연락처를 입력해 주세요."
               onChange={this.handleInput}
               onKeyPress={this.handleKeyPress}
@@ -151,7 +168,8 @@ class Signup extends React.Component {
             <button
               type="submit"
               className="signupSubmit"
-              onClick={this.doValidation}
+              // onClick={this.doValidation}
+              // onClick={this.requestSignup}
             >
               회원가입
             </button>
