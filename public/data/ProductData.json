@@ -3,12 +3,11 @@
     "id": 1,
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
-
     "icon": [
-      { "id": 100, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 99, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 98, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 97, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "../images/productSample01.jpg",
     "description": [
@@ -24,10 +23,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼",
     "icon": [
-      { "id": 96, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 95, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 94, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 93, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -43,10 +42,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼",
     "icon": [
-      { "id": 92, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 91, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 90, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 89, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -62,10 +61,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼",
     "icon": [
-      { "id": 87, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 88, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 86, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 85, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -81,10 +80,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
-      { "id": 84, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 83, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 82, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 81, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "../images/productSample01.jpg",
     "description": [
@@ -100,10 +99,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼",
     "icon": [
-      { "id": 77, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 76, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 75, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 74, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -119,10 +118,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼",
     "icon": [
-      { "id": 73, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 72, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 71, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 70, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [
@@ -138,10 +137,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "히알루론산 스피루리나",
     "icon": [
-      { "id": 69, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 68, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 67, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 66, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "../images/productSample01.jpg",
     "description": [
@@ -157,10 +156,10 @@
     "efficacy": "피부 건강을 위한",
     "name": "홍삼",
     "icon": [
-      { "id": 65, "src": "images/exchange.svg", "alt": "혈액순환" },
-      { "id": 64, "src": "images/eye.svg", "alt": "눈건강" },
-      { "id": 63, "src": "images/muscles.svg", "alt": "탄력" },
-      { "id": 62, "src": "images/therapy.svg", "alt": "미용" }
+      { "id": 91, "src": "images/hairstyle.svg", "alt": "모발" },
+      { "id": 92, "src": "images/bone.svg", "alt": "뼈" },
+      { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
+      { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
     "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
     "description": [

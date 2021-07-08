@@ -93,14 +93,17 @@
       }
       color: #707070;
       box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.05);
+
       &:hover {
         cursor: pointer;
       }
+
       &:disabled {
         background-color: #dddddd;
         color: #ffffff;
         border: 1px solid #cfcfcf;
       }
+
       .addIcon {
         margin-right: 10px;
       }

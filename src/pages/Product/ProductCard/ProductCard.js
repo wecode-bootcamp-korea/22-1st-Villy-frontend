@@ -11,23 +11,11 @@ import './ProductCard.scss';
 export class ProductCard extends Component {
   constructor() {
     super();
-    this.state = {
-      addCart: false,
-    };
+    this.state = {};
   }
 
-  // button color 변경
-  handleCartButton = event => {
-    event.preventDefault();
-    this.setState({
-      addCart: !this.state.addCart,
-    });
-  };
-
   render() {
-    const { addCart } = this.state;
-
-    const { backgruonColor } = this.props;
+    const { addCart, backgruonColor, handleCartButton } = this.props;
 
     const { efficacy, name, icon, pillImage, description, quantity, price } =
       this.props.productCard;
@@ -83,8 +71,9 @@ export class ProductCard extends Component {
             <p className="add">더보기</p>
             <button
               className="cartBtn"
-              onClick={this.handleCartButton}
-              disabled={this.state.addCart}
+              // e => changeHeartColor(el.id, index)
+              onClick={handleCartButton}
+              disabled={addCart}
             >
               {!addCart && <AiOutlinePlus className="addIcon" />}
               {addCart ? '장바구니 추가됨' : '장바구니 담기'}

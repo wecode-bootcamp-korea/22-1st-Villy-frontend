@@ -8,13 +8,11 @@
     background-image: url('http://localhost:3000/images/producHeader.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    //반응형 height 490px
     background-color: #e8c700;
   }
   h1 {
     margin-left: 20%;
     font-size: 36px;
-    //반응형  font-size: 36px;
     line-height: 45px;
     font-weight: bold;
     color: #ffffff;
@@ -22,6 +20,7 @@
 
   .productBody {
     @include display-flex;
+    position: relative;
     flex-direction: column;
     padding: 50px 90px;
     background-color: #fafafa;
@@ -35,12 +34,24 @@
 
     .productList {
       display: flex;
-      // 미디어 쿼리에서 한줄만 보여지게 될 때 넣어줄 속성
-      // justify-content: center;
       flex-wrap: wrap;
       width: 100%;
       max-width: 840px;
       margin-top: 20px;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .productHeader {
+    height: 490px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .productList {
+    justify-content: center;
   }
 }

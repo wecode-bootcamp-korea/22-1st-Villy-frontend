@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import ProductCard from './ProductCard/ProductCard';
+import ProductModal from './ProductModal/ProductModal';
 import './Product.scss';
 
 export class Product extends Component {
@@ -10,6 +9,7 @@ export class Product extends Component {
     super();
     this.state = {
       productCard: [],
+      addCart: false,
       isModalOn: false,
     };
   }
@@ -24,15 +24,15 @@ export class Product extends Component {
       });
   }
 
-  // 모달창 구현 중 입니다 !
-  handleClick = () => {};
+  handleCartButton = event => {
+    event.preventDefault();
 
-  ShowModal = () => {
-    console.log('클릭쓰!');
     this.setState({
-      isModalOn: !this.state.isModalOn,
+      addCart: !this.state.addCart,
     });
   };
+
+  // isModalOn: !this.state.isModalOn,
 
   render() {
     return (
@@ -46,21 +46,7 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
-          {/* 기능 확인 위한 코드 */}
-          <ul className="ProdcutCategory">
-            <li>
-              <Link>혈액순환</Link>
-            </li>
-            <li>
-              <Link>눈</Link>
-            </li>
-            <li>
-              <Link>탄력</Link>
-            </li>
-            <li>
-              <Link>피부</Link>
-            </li>
-          </ul>
+
           <ul className="productList">
             {this.state.productCard.map((product, idx) => (
               <ProductCard
@@ -70,16 +56,17 @@ export class Product extends Component {
                   BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
                 }
                 handleCartButton={this.handleCartButton}
-                // 모달찰 구현중 입니다.
+                addCart={this.state.addCart}
               />
             ))}
           </ul>
+          <ul className="ProductModal">
+            {this.state.isModalOn &&
+              this.state.productCard.map(modal => (
+                <ProductModal key={modal.id} name={modal.name} />
+              ))}
+          </ul>
         </section>
-        {/* 모달창 구현 중입니다 ! */}
-        <button style={{ cursor: 'pointer' }} onClick={this.handleClick}>
-          실험!
-        </button>
-        {this.state.isModalOn && <div>자식요소에서 일어나는 이벤트 반영</div>}
       </div>
     );
   }
