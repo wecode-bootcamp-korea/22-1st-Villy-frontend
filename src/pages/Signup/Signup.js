@@ -79,7 +79,6 @@ class Signup extends React.Component {
   };
 
   render() {
-    console.log(this.state.pw);
     return (
       <div className="Signup">
         <div className="signupView">
