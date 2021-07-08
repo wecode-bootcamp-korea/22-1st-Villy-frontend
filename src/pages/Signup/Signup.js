@@ -22,6 +22,10 @@ class Signup extends React.Component {
     console.log(userInputs);
     userInputs.forEach(el => {
       console.log(validationFor[el[0]](el[1]));
+      if (!validationFor[el[0]](el[1])) {
+        alert('양식에 맞지 않습니다');
+        ret;
+      }
     });
 
     // if (!validationName(this.state.name)) {
@@ -113,7 +117,7 @@ class Signup extends React.Component {
               value={this.state.name}
               placeholder="이름을 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
+              // onKeyPress={this.handleKeyPress}
             />
           </div>
           <div className="signupPhone">
@@ -126,7 +130,7 @@ class Signup extends React.Component {
               value={this.state.mobile}
               placeholder="연락처를 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
+              // onKeyPress={this.handleKeyPress}
             />
           </div>
           <div className="signupDetail">
@@ -139,7 +143,7 @@ class Signup extends React.Component {
               value={this.state.email}
               placeholder="아이디(이메일)를 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
+              // onKeyPress={this.handleKeyPress}
             />
             <br />
             <span className="signupHeader">비밀번호</span>
@@ -151,7 +155,7 @@ class Signup extends React.Component {
               value={this.state.pw}
               placeholder="비밀번호를 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
+              // onKeyPress={this.handleKeyPress}
             />
             <br />
           </div>
@@ -170,7 +174,7 @@ class Signup extends React.Component {
             <button
               type="submit"
               className="signupSubmit"
-              onClick={this.doValidation}
+              onKeyPress={this.handleKeyPress}
               // onClick={this.requestSignup}
             >
               회원가입

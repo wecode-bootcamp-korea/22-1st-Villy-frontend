@@ -26,7 +26,7 @@ function validationMobile(mobile) {
 
 export const validationFor = {
   name: validationName,
-  pw: validationPwd,
-  email: validationEmail,
   mobile: validationMobile,
+  email: validationEmail,
+  pw: validationPwd,
 };
