@@ -25,10 +25,27 @@
     padding: 50px 90px;
     background-color: #fafafa;
 
-    .ProdcutCategory {
+    .productCategory {
       @include display-flex;
-      li {
+      padding-bottom: 10px;
+
+      .categoryList {
+        width: 100px;
         margin-right: 10px;
+        padding-bottom: 5px;
+
+        .goCategories {
+          @include display-flex;
+
+          img {
+            width: 30px;
+            margin-right: 10px;
+          }
+        }
+        &:hover {
+          border-bottom: 2px solid #f1584b;
+          transition: all 0.35s ease-in-out;
+        }
       }
     }
 

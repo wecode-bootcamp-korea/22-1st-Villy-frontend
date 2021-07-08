@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import ProductCard from './ProductCard/ProductCard';
 import ProductModal from './ProductModal/ProductModal';
 import './Product.scss';
@@ -46,6 +48,33 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
+
+          <ul className="productCategory">
+            <li className="categoryList">
+              <Link className="goCategories">
+                <img src="images/hairstyle.svg" alt="모발" />
+                <span className="categoryText">모발</span>
+              </Link>
+            </li>
+            <li className="categoryList">
+              <Link className="goCategories">
+                <img src="images/bone.svg" alt="뼈" />
+                <span className="categoryText">뼈</span>
+              </Link>
+            </li>
+            <li className="categoryList">
+              <Link className="goCategories">
+                <img src="images/therapy.svg" alt="피부" />
+                <span className="categoryText">피부</span>
+              </Link>
+            </li>
+            <li className="categoryList">
+              <Link className="goCategories">
+                <img src="images/height.svg" alt="성장" />
+                <span className="categoryText">성장</span>
+              </Link>
+            </li>
+          </ul>
 
           <ul className="productList">
             {this.state.productCard.map((product, idx) => (
