@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
-import './ProductDetial.scss';
+import './ProductDetail.scss';
 
-export class ProductDetial extends Component {
+export class ProductDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      productData: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/data/ProductData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productData: data,
+        });
+      });
+  }
   render() {
+    console.log(`this.state`, this.state);
     return (
-      <div className="ProductDetial">
-        <ProductDetial>
-          <div className="ProductDetialTextWrap">
+      <div className="ProductDetail">
+        <main>
+          <div className="headTextWrap">
             <h1>
               내 몸에 필요한
               <br />
-              비타민 궁금하세요?
+              {/* 필수 영양소{porouctData[0].name} */}
             </h1>
             <p>
               나만을 위한 맞춤비타민을 찾아보세요!
@@ -18,13 +37,13 @@ export class ProductDetial extends Component {
             </p>
             <button>지금 시작하기</button>
           </div>
-        </ProductDetial>
-        <div className="footTop">
+        </main>
+        <section className="comment">
           <h2>그동안 고민 많았죠?</h2>
-        </div>
+        </section>
       </div>
     );
   }
 }
 
-export default ProductDetial;
+export default ProductDetail;

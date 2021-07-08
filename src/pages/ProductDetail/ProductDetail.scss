@@ -1,10 +1,10 @@
 @import '../../styles/variables.scss';
 
-.Main {
+.ProductDetail {
   height: 100vh;
 
   main {
-    background-image: url(http://localhost:3000/images/main.jpg);
+    background-image: url('');
     height: 75%;
     max-height: 1000px;
     background-size: cover;
@@ -12,7 +12,7 @@
     @include display-flex(center, center);
     flex-direction: column;
 
-    .mainTextWrap {
+    .headTextWrap {
       @include display-flex(center, flex-start);
       flex-direction: column;
       padding-right: 170px;
@@ -49,7 +49,7 @@
     }
   }
 
-  .footTop {
+  .comment {
     height: 100px;
     @include display-flex(center, center);
     background-color: bisque;
