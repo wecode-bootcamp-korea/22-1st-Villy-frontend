@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
+import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
+
 import './ProductDetail.scss';
 
 export class ProductDetail extends Component {
@@ -7,6 +9,8 @@ export class ProductDetail extends Component {
     super();
     this.state = {
       productData: [],
+      cartToggleOn: false,
+      recommendToggleOn: false,
       backgroundColor: {
         1: '#E9F9FE',
         2: '#E0B5BA',
@@ -33,11 +37,17 @@ export class ProductDetail extends Component {
       });
   }
 
+  ToggleFunction = event => {
+    const name = event.currentTarget.name;
+    this.setState({ [`${name}ToggleOn`]: !this.state[`${name}ToggleOn`] });
+  };
+
   render() {
     if (!this.state.productData[0]) {
       return <div>..Loading</div>;
     } else {
-      const { productData, backgroundColor } = this.state;
+      const { productData, backgroundColor, cartToggleOn, recommendToggleOn } =
+        this.state;
       return (
         <div className="ProductDetail">
           <main style={{ backgroundColor: backgroundColor[productData[0].id] }}>
@@ -63,14 +73,38 @@ export class ProductDetail extends Component {
                   <FaCreativeCommonsPdAlt className="certificationIcon" />
                 </li>
               </ul>
-              <button className="cartButton">장바구니 담기</button>
+              <button
+                name="cart"
+                className={`cartButton ${cartToggleOn ? 'On' : 'Off'}`}
+                onClick={this.ToggleFunction}
+              >
+                장바구니 담기
+              </button>
             </header>
             <img className="productImg">{/* 제품 이미지 */}</img>
           </main>
           <section className="comment">
             <div className="question">
-              <div className="answer"></div>
+              <div className="recommendTitle">
+                <p className="recommendTitileText">써보니까 너무 좋아요!</p>
+              </div>
+              <div className="recommendButtonWrap">
+                <button name="recommend" onClick={this.ToggleFunction}>
+                  {recommendToggleOn ? (
+                    <RiArrowUpSLine className="recommendToggleButtonIcon" />
+                  ) : (
+                    <RiArrowDownSLine className="recommendToggleButtonIcon" />
+                  )}
+                </button>
+              </div>
             </div>
+            {recommendToggleOn && (
+              <div className="answer">
+                <p className="recommendDescription">
+                  언제나 애용하고 있습니다.
+                </p>
+              </div>
+            )}
           </section>
         </div>
       );

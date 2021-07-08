@@ -3,30 +3,7 @@ import './Nav.scss';
 
 class Nav extends React.Component {
   render() {
-    return (
-      <nav className="navbar">
-        <div className="navLogo">
-          <img alt="logo" src="../images/logo.png"></img>
-        </div>
-        <ul className="menu">
-          <li>
-            <a href="/">추천성분</a>
-          </li>
-          <li>
-            <a href="/Product">제품보기</a>
-          </li>
-          <li>
-            <a href="/">고객후기</a>
-          </li>
-          <li>
-            <a href="/">장바구니</a>
-          </li>
-          <li>
-            <a href="/Login">로그인</a>
-          </li>
-        </ul>
-      </nav>
-    );
+    return <nav className="navbar"></nav>;
   }
 }
 
