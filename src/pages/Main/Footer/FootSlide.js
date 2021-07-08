@@ -5,7 +5,7 @@ import './FootSlide.scss';
 export class FootSlide extends Component {
   constructor() {
     super();
-    this.setSlideRef = React.createRef();
+    this.slideIntervalId = React.createRef();
     this.state = {
       slideCardNumber: 0,
       slideList: [
@@ -35,14 +35,14 @@ export class FootSlide extends Component {
   }
 
   componentDidMount() {
-    this.setSlideRef.current = setInterval(this.autoSlide, 2500);
+    this.slideIntervalId.current = setInterval(this.moveNextSlide, 2500);
   }
 
   componentWillUnmount() {
-    clearInterval(this.setSlideRef.current);
+    clearInterval(this.slideIntervalId.current);
   }
 
-  autoSlide = () => {
+  moveNextSlide = () => {
     const { slideCardNumber, slideList } = this.state;
     const nextSlideCardNumber =
       slideCardNumber > slideList.length - 2 ? 0 : slideCardNumber + 1;
@@ -50,8 +50,7 @@ export class FootSlide extends Component {
   };
 
   slideHandler = e => {
-    const value = e.currentTarget.value;
-    this.setState({ slideCardNumber: Number(value) });
+    this.setState({ slideCardNumber: Number(e.currentTarget.value) });
   };
 
   render() {
@@ -65,9 +64,9 @@ export class FootSlide extends Component {
           {slideList.map(({ id, icon, alt, description, user }) => (
             <li className="slideList" key={id} value={id}>
               <article className="slideContent">
-                <img src={icon} alt={alt} />
+                <img className="slideIcon" src={icon} alt={alt} />
                 <h2>{description}</h2>
-                <p> {user}</p>
+                <p className="recomendUser"> {user}</p>
               </article>
             </li>
           ))}

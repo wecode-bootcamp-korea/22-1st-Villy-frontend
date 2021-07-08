@@ -1,56 +1,58 @@
 @import '../../styles/variables.scss';
 
-.mainPage {
-  @include display-flex(center, center);
-  background-image: url(http://localhost:3000/images/main.jpg);
-  background-size: cover;
-  background-position: center;
+.Main {
+  .mainPage {
+    @include display-flex(center, center);
+    background-image: url(http://localhost:3000/images/main.jpg);
+    background-size: cover;
+    background-position: center;
 
-  .mainTextWrap {
-    @include display-flex(none, flex-start);
-    flex-direction: column;
-    height: 800px;
-    width: 900px;
-    padding-top: 200px;
+    .mainTextWrap {
+      @include display-flex(none, flex-start);
+      flex-direction: column;
+      height: 800px;
+      width: 900px;
+      padding-top: 200px;
 
-    h1 {
-      font-size: 75px;
-      line-height: 1.25;
-      font-weight: bold;
-      color: $color-font;
-    }
-
-    p {
-      margin-top: 20px;
-      font-size: 25px;
-      line-height: 1.25;
-      color: $color-font;
-
-      strong {
+      h1 {
+        font-size: 75px;
+        line-height: 1.25;
         font-weight: bold;
+        color: $color-font;
+      }
+
+      .promotionDescription {
+        margin-top: 20px;
+        font-size: 25px;
+        line-height: 1.25;
+        color: $color-font;
+
+        .recomendPeple {
+          font-weight: bold;
+        }
+      }
+
+      .recommendButton {
+        height: 70px;
+        width: 200px;
+        border-radius: 40px;
+        margin-top: 50px;
+        box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.15);
+        background-color: $color-logo;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
       }
     }
-
-    .recommendButton {
-      height: 70px;
-      width: 200px;
-      border-radius: 40px;
-      margin-top: 50px;
-      box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.15);
-      background-color: $color-logo;
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-    }
   }
-}
 
-.footSlideTop {
-  height: 100px;
-  @include display-flex(center, center);
-  background-color: bisque;
+  .footSlideTop {
+    height: 100px;
+    @include display-flex(center, center);
+    background-color: bisque;
 
-  h2 {
-    font-size: 30px;
+    h2 {
+      font-size: 30px;
+    }
   }
 }
