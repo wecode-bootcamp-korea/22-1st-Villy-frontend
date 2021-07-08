@@ -9,7 +9,7 @@ export function validationPwd(pw) {
   // 영문+숫자+특수문자를 포함하는 6~20자리
   let reg_pwd =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/;
-  return !reg_pwd.test(pw);
+  return reg_pwd.test(pw);
 }
 
 export function validationName(name) {

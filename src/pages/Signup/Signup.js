@@ -33,6 +33,11 @@ class Signup extends React.Component {
       this.nameRef.current.value = '';
     }
 
+    if (validationPhone(this.state.phone) === false) {
+      alert('번호를 입력해주세요.');
+      this.phoneRef.current.value = '';
+    }
+
     if (validationEmail(this.state.email) === false) {
       alert('이메일 형식이 유효하지 않습니다.');
       this.emailRef.current.value = '';
@@ -43,16 +48,11 @@ class Signup extends React.Component {
       this.pwRef.current.value = '';
     }
 
-    if (validationPhone(this.state.phone) === false) {
-      alert('번호를 입력해주세요.');
-      this.phoneRef.current.value = '';
-    }
-
     if (
       validationName(this.state.name) &&
+      validationPhone(this.state.phone) &&
       validationEmail(this.state.email) &&
-      validationPwd(this.state.pw) &&
-      validationPhone(this.state.phone)
+      validationPwd(this.state.pw)
     ) {
       alert('회원가입 완료');
     } else {
