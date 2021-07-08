@@ -4,36 +4,41 @@
 .Cart {
   display: flex;
   justify-content: center;
+  color: $color-font;
 
-  h2 {
+  .cartListTitle {
     font-weight: bolder;
     font-size: 23px;
   }
 
   .cartView {
-    margin-top: 150px;
     display: flex;
-    flex-direction: column;
     width: 800px;
+    margin-top: 150px;
+    flex-direction: column;
 
     .cartTop {
       display: flex;
       margin-bottom: 30px;
       justify-content: space-between;
 
-      h1 {
+      .cartTopTitle {
         font-size: 30px;
       }
 
-      .cartTopBtn {
-        button {
-          margin-right: 10px;
-          font-weight: bolder;
-          color: $color-font;
+      .cartTopButtonWrppaer {
+        .topBtn {
           padding: 10px;
+          margin-right: 10px;
+          color: $color-font;
           background-color: white;
           border: 1px solid lightgray;
           border-radius: 20px;
+          font-weight: bolder;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -44,11 +49,12 @@
       border-top: 1px solid lightgray;
       border-bottom: 1px solid lightgray;
 
-      input[type='checkbox' i] {
-        margin-top: 70px;
+      input[type='checkbox'] {
+        margin-top: 30px;
+        zoom: 2;
       }
 
-      img {
+      .cartListImg {
         width: 100px;
         height: 100px;
         margin-top: 20px;
@@ -57,49 +63,58 @@
       }
 
       .listDetail {
+        display: inline-flex;
+        flex-direction: column;
         width: 700px;
         margin-top: 30px;
         margin-left: 15px;
-        display: inline-flex;
-        flex-direction: column;
+
         .listFont {
-          font-size: 20px;
           margin-left: 10px;
+          font-size: 20px;
           text-decoration: underline;
         }
       }
-      .countBtn {
+
+      .countButtonWrppaer {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
         .btnDetail {
           padding: 10px;
-          span {
+
+          .countNum {
+            padding: 20px;
             align-items: center;
             font-weight: bolder;
             font-size: 20px;
-            padding: 20px;
           }
-          button {
+
+          .countButton {
             width: 40px;
             height: 40px;
+            padding: 0;
             background: #fff;
             border: 1px solid #dfdfdf;
-            outline: none;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             text-align: center;
-            padding: 0;
+            outline: none;
+
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
 
-        .productPrice {
+        .boxRight {
           display: flex;
 
-          p {
-            font-weight: bolder;
+          .boxPrice {
             margin-left: 397px;
+            font-size: 20px;
+            font-weight: bolder;
           }
         }
       }
@@ -107,19 +122,21 @@
 
     .cartDetail {
       margin-top: 40px;
+
       .cartBox {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         .cartRead {
-          padding-bottom: 30px;
           display: flex;
+          padding-bottom: 30px;
           justify-content: space-between;
         }
+
         .deliveryPrice {
+          @extend .cartRead;
           padding-bottom: 20px;
-          display: flex;
-          justify-content: space-between;
         }
       }
 
@@ -127,54 +144,54 @@
         padding: 10px;
 
         .productDiscount {
+          display: flex;
+          padding: 20px;
           background-color: #f0f0f0;
-          padding: 20px;
-          padding-bottom: 20px;
-          display: flex;
           justify-content: space-between;
+
+          .discountTitle {
+            font-weight: bolder;
+          }
         }
+
         .deliveryDiscount {
+          @extend .productDiscount;
           background-color: #fafafa;
-          padding: 20px;
-          padding-bottom: 20px;
-          display: flex;
-          justify-content: space-between;
         }
+
         .pointDiscount {
-          background-color: #fafafa;
-          padding: 20px;
-          display: flex;
-          justify-content: space-between;
+          @extend .deliveryDiscount;
         }
       }
     }
 
     .cartPrice {
+      display: flex;
       margin-top: 30px;
       padding-bottom: 10px;
-      display: flex;
       justify-content: space-between;
+
       .totalPrice {
+        color: salmon;
         font-weight: bolder;
         font-size: 20px;
-        color: salmon;
       }
     }
 
-    .cartFooterBtn {
+    .cartFooterButtonWrppaer {
       margin-top: 110px;
       text-align: center;
 
-      button {
+      .resultBtn {
+        width: 300px;
+        padding: 20px;
+        color: white;
+        background-color: red;
+        border-radius: 30px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
         font-weight: bolder;
         font-size: 15px;
-        width: 300px;
-        border-radius: 30px;
-        color: white;
-        padding: 20px;
-        background-color: red;
         cursor: pointer;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
       }
     }
   }

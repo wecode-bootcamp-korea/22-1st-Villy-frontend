@@ -6,29 +6,40 @@ class Cart extends React.Component {
     return (
       <div className="Cart">
         <div className="cartView">
-          <div className="cartTop">
-            <h1>장바구니</h1>
-            <div className="cartTopBtn">
-              <button type="button">+ 제품추가</button>
-              <button type="button">휴지통</button>
+          <header className="cartTop">
+            <h1 className="cartTopTitle">장바구니</h1>
+            <div className="cartTopButtonWrppaer">
+              <button type="button" className="topBtn">
+                + 제품추가
+              </button>
+              <button type="button" className="topBtn">
+                삭제
+              </button>
             </div>
-          </div>
-
-          <h2>정기구독 제품</h2>
+          </header>
+          <h2 className="cartListTitle">정기구독 제품</h2>
           <div className="cartList">
             <input type="checkbox" />
-            <img alt="이미지" src="http://localhost:3000/images/pill1.jpeg" />
+            <img
+              alt="비타민"
+              className="cartListImg"
+              src="/images/pill1.jpeg"
+            />
             <div className="listDetail">
               <p className="listFont">히알루론산 스피루리나</p>
               <br />
-              <div className="countBtn">
+              <div className="countButtonWrppaer">
                 <div className="btnDetail">
-                  <button type="button">-</button>
-                  <span>1</span>
-                  <button type="button">+</button>
+                  <button type="button" className="countButton">
+                    -
+                  </button>
+                  <span className="countNum">1</span>
+                  <button type="button" className="countButton">
+                    +
+                  </button>
                 </div>
-                <div className="productPrice">
-                  <p>19,500원</p>
+                <div className="boxRight">
+                  <p className="boxPrice">19,500원</p>
                 </div>
               </div>
             </div>
@@ -47,7 +58,7 @@ class Cart extends React.Component {
             </div>
             <div className="productView">
               <div className="productDiscount">
-                <p>정기구독 할인혜택</p>
+                <p className="discountTitle">정기구독 할인혜택</p>
                 <p>총 2,500원</p>
               </div>
               <div className="deliveryDiscount">
@@ -64,8 +75,10 @@ class Cart extends React.Component {
             <p>총 결제금액</p>
             <p className="totalPrice">19,500원</p>
           </div>
-          <div className="cartFooterBtn">
-            <button type="submit">결제하기</button>
+          <div className="cartFooterButtonWrppaer">
+            <button type="submit" className="resultBtn">
+              결제하기
+            </button>
           </div>
         </div>
       </div>
