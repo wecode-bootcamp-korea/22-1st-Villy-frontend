@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import './ProductDetail.scss';
 
 export class ProductDetail extends Component {
@@ -40,21 +41,36 @@ export class ProductDetail extends Component {
       return (
         <div className="ProductDetail">
           <main style={{ backgroundColor: backgroundColor[productData[0].id] }}>
-            <div className="headTextWrap">
+            <header className="headTextWrap">
               <h1>
-                {productData[0].efficacy}
+                <span>{productData[0].efficacy}</span>
                 <br />
                 {productData[0].name}
               </h1>
+              <ul className="propertyIcons">
+                {/* 아이콘 map */}
+                <li></li>
+              </ul>
               <p>
-                나만을 위한 맞춤비타민을 찾아보세요!
-                <br /> 이미 <strong>587,064명</strong>이 추천받았습니다.
+                {/* 세부 설명 */}
+                <strong>{/*가격*/}</strong>
               </p>
-              <button>지금 시작하기</button>
-            </div>
+              <ul className="certificationIcons">
+                <li className="certificationIconList">
+                  <FaCreativeCommons className="certificationIcon" />
+                </li>
+                <li className="certificationIconList">
+                  <FaCreativeCommonsPdAlt className="certificationIcon" />
+                </li>
+              </ul>
+              <button className="cartButton">장바구니 담기</button>
+            </header>
+            <img className="productImg">{/* 제품 이미지 */}</img>
           </main>
           <section className="comment">
-            <h2>그동안 고민 많았죠?</h2>
+            <div className="question">
+              <div className="answer"></div>
+            </div>
           </section>
         </div>
       );

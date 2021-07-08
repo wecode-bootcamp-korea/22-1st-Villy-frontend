@@ -4,29 +4,32 @@
   height: 100vh;
 
   main {
+    @include display-flex(space-evenly, center);
     height: 75%;
     max-height: 1000px;
     background-size: cover;
     background-position: center;
-    @include display-flex(center, center);
-    flex-direction: column;
 
     .headTextWrap {
       @include display-flex(center, flex-start);
       flex-direction: column;
-      padding-right: 170px;
       height: 100%;
 
       h1 {
-        font-size: 75px;
+        font-size: 36px;
         line-height: 1.25;
         font-weight: bold;
         color: $color-font;
+
+        span {
+          font-weight: normal;
+        }
       }
 
       p {
-        font-size: 30px;
+        font-size: 16px;
         line-height: 1.25;
+        padding-top: 30px;
         color: $color-font;
 
         strong {
@@ -34,7 +37,16 @@
         }
       }
 
-      button {
+      .certificationIconList {
+        float: left;
+        padding-left: 15px;
+
+        .certificationIcon {
+          font-size: 40px;
+        }
+      }
+
+      .cartButton {
         height: 80px;
         width: 240px;
         border-radius: 40px;
@@ -46,15 +58,16 @@
         color: white;
       }
     }
+    .productImg {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+    }
   }
 
   .comment {
     height: 100px;
     @include display-flex(center, center);
-    background-color: bisque;
-
-    h2 {
-      font-size: 30px;
-    }
+    background-color: white;
   }
 }
