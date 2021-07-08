@@ -23,7 +23,8 @@ class Cart extends React.Component {
               <br />
               <div className="countBtn">
                 <div className="btnDetail">
-                  <button type="button">-</button>1
+                  <button type="button">-</button>
+                  <span>1</span>
                   <button type="button">+</button>
                 </div>
                 <div className="productPrice">

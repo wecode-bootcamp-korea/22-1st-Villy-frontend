@@ -44,7 +44,7 @@
       border-top: 1px solid lightgray;
       border-bottom: 1px solid lightgray;
 
-      input {
+      input[type='checkbox' i] {
         margin-top: 70px;
       }
 
@@ -53,17 +53,19 @@
         height: 100px;
         margin-top: 20px;
         margin-left: 10px;
+        margin-bottom: 20px;
       }
 
       .listDetail {
         width: 700px;
         margin-top: 30px;
+        margin-left: 15px;
         display: inline-flex;
         flex-direction: column;
         .listFont {
           font-size: 20px;
+          margin-left: 10px;
           text-decoration: underline;
-          margin-left: 20px;
         }
       }
       .countBtn {
@@ -73,11 +75,22 @@
 
         .btnDetail {
           padding: 10px;
+          span {
+            align-items: center;
+            font-weight: bolder;
+            font-size: 20px;
+            padding: 20px;
+          }
           button {
-            border: 1px solid lightgray;
-            border-radius: 20px;
-            padding: 10px;
-            margin: 10px;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 1px solid #dfdfdf;
+            outline: none;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            padding: 0;
           }
         }
 
@@ -114,21 +127,21 @@
         padding: 10px;
 
         .productDiscount {
-          background-color: gray;
+          background-color: #f0f0f0;
           padding: 20px;
           padding-bottom: 20px;
           display: flex;
           justify-content: space-between;
         }
         .deliveryDiscount {
-          background-color: lightgray;
+          background-color: #fafafa;
           padding: 20px;
           padding-bottom: 20px;
           display: flex;
           justify-content: space-between;
         }
         .pointDiscount {
-          background-color: lightgray;
+          background-color: #fafafa;
           padding: 20px;
           display: flex;
           justify-content: space-between;
@@ -149,15 +162,19 @@
     }
 
     .cartFooterBtn {
-      margin-top: 50px;
+      margin-top: 110px;
       text-align: center;
 
       button {
+        font-weight: bolder;
+        font-size: 15px;
         width: 300px;
-        border-radius: 20px;
+        border-radius: 30px;
         color: white;
-        padding: 10px;
-        background-color: lightsalmon;
+        padding: 20px;
+        background-color: red;
+        cursor: pointer;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
       }
     }
   }
