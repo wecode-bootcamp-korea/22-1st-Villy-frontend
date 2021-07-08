@@ -43,14 +43,14 @@ class Login extends React.Component {
     return (
       <div className="Login">
         <div className="loginView">
-          <div className="loginImg">
+          <div className="logoWrapper">
             <img
               alt="logo"
               className="loginLogo"
               src="http://localhost:3000/images/logo.png"
             />
           </div>
-          <div className="loginForm">
+          <form className="loginForm">
             <input
               type="text"
               name="userId"
@@ -81,7 +81,7 @@ class Login extends React.Component {
                 회원가입
               </Link>
             </p>
-          </div>
+          </form>
           <div className="footerButton">
             <button type="button" className="kakao">
               KAKAO 로그인
