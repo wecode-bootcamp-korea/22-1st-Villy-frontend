@@ -18,34 +18,36 @@ class Signup extends React.Component {
   };
 
   doValidation = e => {
-    if (!validationName(this.state.name)) {
-      alert('이름을 입력해주세요.');
-    }
+    const userInputs = Object.entries(this.state);
+    console.log(userInputs);
+    userInputs.forEach(el => {
+      console.log(validationFor[el[0]](el[1]));
+    });
 
-    if (!validationMobile(this.state.mobile)) {
-      alert('번호를 입력해주세요.');
-    }
-
-    if (!validationEmail(this.state.email)) {
-      alert('이메일 형식이 유효하지 않습니다.');
-    }
-
-    if (!validationPwd(this.state.pw)) {
-      alert('영문,숫자,특수문자를 혼합하여 6~20자 이내로 입력해주세요.');
-    }
-
-    if (
-      validationName(this.state.name) &&
-      validationMobile(this.state.mobile) &&
-      validationEmail(this.state.email) &&
-      validationPwd(this.state.pw)
-    ) {
-      return true;
-      // alert('회원가입 완료');
-    } else {
-      alert('입력란을 다시 확인하세요.');
-      return false;
-    }
+    // if (!validationName(this.state.name)) {
+    //   alert('이름을 입력해주세요.');
+    // }
+    // if (!validationMobile(this.state.mobile)) {
+    //   alert('번호를 입력해주세요.');
+    // }
+    // if (!validationEmail(this.state.email)) {
+    //   alert('이메일 형식이 유효하지 않습니다.');
+    // }
+    // if (!validationPwd(this.state.pw)) {
+    //   alert('영문,숫자,특수문자를 혼합하여 6~20자 이내로 입력해주세요.');
+    // }
+    // if (
+    //   validationName(this.state.name) &&
+    //   validationMobile(this.state.mobile) &&
+    //   validationEmail(this.state.email) &&
+    //   validationPwd(this.state.pw)
+    // ) {
+    //   return true;
+    //   // alert('회원가입 완료');
+    // } else {
+    //   alert('입력란을 다시 확인하세요.');
+    //   return false;
+    // }
   };
 
   requestSignup = () => {
@@ -168,7 +170,7 @@ class Signup extends React.Component {
             <button
               type="submit"
               className="signupSubmit"
-              // onClick={this.doValidation}
+              onClick={this.doValidation}
               // onClick={this.requestSignup}
             >
               회원가입
