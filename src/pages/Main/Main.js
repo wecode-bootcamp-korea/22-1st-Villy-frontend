@@ -6,7 +6,7 @@ export class Main extends Component {
   render() {
     return (
       <div className="Main">
-        <main>
+        <main className="mainPage">
           <header className="mainTextWrap">
             <h1>
               내 몸에 필요한

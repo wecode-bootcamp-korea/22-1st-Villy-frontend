@@ -5,60 +5,69 @@ import './FootSlide.scss';
 export class FootSlide extends Component {
   constructor() {
     super();
+    this.setSlideRef = React.createRef();
     this.state = {
-      slideNumber: 0,
-      slideList: [],
+      slideCardNumber: 0,
+      slideList: [
+        {
+          id: 0,
+          icon: 'http://localhost:3000/images/supplements.png',
+          alt: 'supplements',
+          description: 'villy 프로젝트 화이팅!!',
+          user: '도화동 사시는 김태영님',
+        },
+        {
+          id: 1,
+          icon: 'http://localhost:3000/images/vitamin.png',
+          alt: 'vitamin',
+          description: '벡엔드 화이팅!!',
+          user: '공덕동 사시는 설지우님',
+        },
+        {
+          id: 2,
+          icon: 'http://localhost:3000/images/vitamins.png',
+          alt: 'vitamins',
+          description: '프론트엔드 화이팅!!!',
+          user: '안산 사시는 최명준님',
+        },
+      ],
     };
   }
 
   componentDidMount() {
-    this.startSlide();
-    fetch('http://localhost:3000/data/MainSlide.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          slideList: data,
-        });
-      });
+    this.setSlideRef.current = setInterval(this.autoSlide, 2500);
   }
 
   componentWillUnmount() {
-    clearInterval(this.startSlide);
+    clearInterval(this.setSlideRef.current);
   }
 
-  startSlide = () => setInterval(this.autoSlide, 2500);
-  endSlide = () => clearInterval(this.startSlide);
-
   autoSlide = () => {
-    const { slideNumber, slideList } = this.state;
-    if (slideNumber >= slideList.length - 1) {
-      this.setState({ slideNumber: 0 });
-    } else {
-      this.setState({ slideNumber: this.state.slideNumber + 1 });
-    }
+    const { slideCardNumber, slideList } = this.state;
+    const nextSlideCardNumber =
+      slideCardNumber > slideList.length - 2 ? 0 : slideCardNumber + 1;
+    this.setState({ slideCardNumber: nextSlideCardNumber });
   };
 
   slideHandler = e => {
     const value = e.currentTarget.value;
-    this.setState({ slideNumber: Number(value) });
+    this.setState({ slideCardNumber: Number(value) });
   };
 
   render() {
-    const { slideList, slideNumber } = this.state;
+    const { slideList, slideCardNumber } = this.state;
     return (
       <div className="FootSlide">
         <ul
           className="slide"
-          style={{ transform: `translateX(${-100 * slideNumber}vw)` }}
+          style={{ transform: `translateX(${-100 * slideCardNumber}vw)` }}
         >
-          {slideList.map(slide => (
-            <li className="slideList" key={slide.id} value={slide.id}>
+          {slideList.map(({ id, icon, alt, description, user }) => (
+            <li className="slideList" key={id} value={id}>
               <article className="slideContent">
-                <img src={slide.icon} alt={slide.alt} />
-                <h2>{slide.description}</h2>
-                <p> {slide.user}</p>
+                <img src={icon} alt={alt} />
+                <h2>{description}</h2>
+                <p> {user}</p>
               </article>
             </li>
           ))}
@@ -72,7 +81,7 @@ export class FootSlide extends Component {
                   onClick={this.slideHandler}
                   value={button.id}
                 >
-                  {slideNumber === button.id ? (
+                  {slideCardNumber === button.id ? (
                     <BiRadioCircleMarked />
                   ) : (
                     <BiRadioCircle />
