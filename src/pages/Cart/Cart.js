@@ -17,7 +17,7 @@ class Cart extends React.Component {
           <h2>정기구독 제품</h2>
           <div className="cartList">
             <input type="checkbox" />
-            <img alt="이미지" src="http://localhost:3000/images/logo.png" />
+            <img alt="이미지" src="http://localhost:3000/images/pill1.jpeg" />
             <div className="listDetail">
               <p className="listFont">히알루론산 스피루리나</p>
               <br />
@@ -34,13 +34,15 @@ class Cart extends React.Component {
           </div>
 
           <div className="cartDetail">
-            <div className="cartRead">
-              <p>정기구독 제품합계</p>
-              <p>19,500원</p>
-            </div>
-            <div className="deliveryPrice">
-              <p>배송비</p>
-              <p>2,500원</p>
+            <div className="cartBox">
+              <div className="cartRead">
+                <p>정기구독 제품합계</p>
+                <p>19,500원</p>
+              </div>
+              <div className="deliveryPrice">
+                <p>배송비</p>
+                <p>2,500원</p>
+              </div>
             </div>
             <div className="productView">
               <div className="productDiscount">

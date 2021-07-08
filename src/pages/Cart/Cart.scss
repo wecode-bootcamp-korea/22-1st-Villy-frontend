@@ -2,12 +2,19 @@
 @import '../../styles/variables.scss';
 
 .Cart {
-  margin: 100px 200px 100px 500px;
+  display: flex;
+  justify-content: center;
+
+  h2 {
+    font-weight: bolder;
+    font-size: 23px;
+  }
 
   .cartView {
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 800px;
 
     .cartTop {
       display: flex;
@@ -15,12 +22,12 @@
       justify-content: space-between;
 
       h1 {
-        font-weight: bolder;
         font-size: 30px;
       }
 
       .cartTopBtn {
         button {
+          margin-right: 10px;
           font-weight: bolder;
           color: $color-font;
           padding: 10px;
@@ -33,17 +40,30 @@
 
     .cartList {
       display: inline-flex;
+      margin-top: 20px;
+      border-top: 1px solid lightgray;
       border-bottom: 1px solid lightgray;
 
       input {
-        margin-top: 40px;
+        margin-top: 70px;
       }
+
+      img {
+        width: 100px;
+        height: 100px;
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+
       .listDetail {
+        width: 700px;
         margin-top: 30px;
         display: inline-flex;
         flex-direction: column;
         .listFont {
+          font-size: 20px;
           text-decoration: underline;
+          margin-left: 20px;
         }
       }
       .countBtn {
@@ -63,22 +83,31 @@
 
         .productPrice {
           display: flex;
+
+          p {
+            font-weight: bolder;
+            margin-left: 397px;
+          }
         }
       }
     }
 
     .cartDetail {
       margin-top: 40px;
-
-      .cartRead {
-        padding-bottom: 10px;
+      .cartBox {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-      }
-      .deliveryPrice {
-        padding-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
+        .cartRead {
+          padding-bottom: 30px;
+          display: flex;
+          justify-content: space-between;
+        }
+        .deliveryPrice {
+          padding-bottom: 20px;
+          display: flex;
+          justify-content: space-between;
+        }
       }
 
       .productView {
@@ -86,21 +115,21 @@
 
         .productDiscount {
           background-color: gray;
-          padding: 10px;
-          padding-bottom: 10px;
+          padding: 20px;
+          padding-bottom: 20px;
           display: flex;
           justify-content: space-between;
         }
         .deliveryDiscount {
           background-color: lightgray;
-          padding: 10px;
-          padding-bottom: 10px;
+          padding: 20px;
+          padding-bottom: 20px;
           display: flex;
           justify-content: space-between;
         }
         .pointDiscount {
           background-color: lightgray;
-          padding: 10px;
+          padding: 20px;
           display: flex;
           justify-content: space-between;
         }
@@ -122,6 +151,7 @@
     .cartFooterBtn {
       margin-top: 50px;
       text-align: center;
+
       button {
         width: 300px;
         border-radius: 20px;
