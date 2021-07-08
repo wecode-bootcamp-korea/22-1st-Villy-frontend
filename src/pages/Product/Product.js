@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import ProductCard from './ProductCard/ProductCard';
 import './Product.scss';
 
@@ -7,7 +10,6 @@ export class Product extends Component {
     super();
     this.state = {
       productCard: [],
-      cardBackground: CARDBACKGROUND,
       isModalOn: false,
     };
   }
@@ -23,11 +25,14 @@ export class Product extends Component {
   }
 
   // 모달창 구현 중 입니다 !
-  // handleClick = () => {
-  //   this.setState({
-  //     isModalOn: !this.state.isModalOn,
-  //   });
-  // };
+  handleClick = () => {};
+
+  ShowModal = () => {
+    console.log('클릭쓰!');
+    this.setState({
+      isModalOn: !this.state.isModalOn,
+    });
+  };
 
   render() {
     return (
@@ -41,34 +46,46 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
+          {/* 기능 확인 위한 코드 */}
+          <ul className="ProdcutCategory">
+            <li>
+              <Link>혈액순환</Link>
+            </li>
+            <li>
+              <Link>눈</Link>
+            </li>
+            <li>
+              <Link>탄력</Link>
+            </li>
+            <li>
+              <Link>피부</Link>
+            </li>
+          </ul>
           <ul className="productList">
-            {this.state.productCard.map(product => (
+            {this.state.productCard.map((product, idx) => (
               <ProductCard
                 key={product.id}
                 productCard={product}
-                // 모달찰 구현중 입니다.
-                // handleClick={this.handleClick}
-                cardBackground={
-                  this.state.cardBackground &&
-                  this.state.cardBackground.map(cardColor => {
-                    return { cardColor };
-                  })
+                backgruonColor={
+                  BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
                 }
+                handleCartButton={this.handleCartButton}
+                // 모달찰 구현중 입니다.
               />
             ))}
           </ul>
         </section>
         {/* 모달창 구현 중입니다 ! */}
-        {/* <button style={{ cursor: 'pointer' }}>실험!</button>
-        {this.state.isModalOn && <div>자식요소에서 일어나는 이벤트 반영</div>} */}
+        <button style={{ cursor: 'pointer' }} onClick={this.handleClick}>
+          실험!
+        </button>
+        {this.state.isModalOn && <div>자식요소에서 일어나는 이벤트 반영</div>}
       </div>
     );
   }
 }
 
-export default Product;
-
-const CARDBACKGROUND = [
+const BACKGROUNDCOLOR_LIST = [
   '#E9F9FE',
   '#E0B5BA',
   '#EFE9D9',
@@ -79,3 +96,5 @@ const CARDBACKGROUND = [
   '#CBC5E8',
   '#FAD4BF',
 ];
+
+export default Product;

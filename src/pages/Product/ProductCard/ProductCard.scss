@@ -2,7 +2,7 @@
 @import '../../../styles/variables.scss';
 
 .ProductCard {
-  // min-width: 415px;
+  min-width: 415px;
   margin: 0 10px 20px 0;
   padding: 30px 30px;
   border-radius: 10px;
@@ -87,8 +87,10 @@
       border: none;
       border-radius: 30px;
       background-color: #ffffff;
-      font-size: 16px;
-      font-weight: bold;
+      font: {
+        size: 16px;
+        weight: bold;
+      }
       color: #707070;
       box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.05);
       &:hover {

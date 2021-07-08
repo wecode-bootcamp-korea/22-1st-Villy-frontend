@@ -22,7 +22,7 @@
   {
     "id": 2,
     "efficacy": "피부 건강을 위한",
-    "name": "홍삼 옥사뭐시",
+    "name": "홍삼",
     "icon": [
       { "id": 96, "src": "images/exchange.svg", "alt": "혈액순환" },
       { "id": 95, "src": "images/eye.svg", "alt": "눈건강" },
@@ -41,7 +41,7 @@
   {
     "id": 10,
     "efficacy": "피부 건강을 위한",
-    "name": "홍삼 옥사뭐시",
+    "name": "홍삼",
     "icon": [
       { "id": 92, "src": "images/exchange.svg", "alt": "혈액순환" },
       { "id": 91, "src": "images/eye.svg", "alt": "눈건강" },
@@ -60,7 +60,7 @@
   {
     "id": 16,
     "efficacy": "피부 건강을 위한",
-    "name": "홍삼 옥사뭐시",
+    "name": "홍삼",
     "icon": [
       { "id": 87, "src": "images/exchange.svg", "alt": "혈액순환" },
       { "id": 88, "src": "images/eye.svg", "alt": "눈건강" },
@@ -98,7 +98,7 @@
   {
     "id": 30,
     "efficacy": "피부 건강을 위한",
-    "name": "홍삼 옥사뭐시",
+    "name": "홍삼",
     "icon": [
       { "id": 77, "src": "images/exchange.svg", "alt": "혈액순환" },
       { "id": 76, "src": "images/eye.svg", "alt": "눈건강" },
@@ -117,7 +117,7 @@
   {
     "id": 37,
     "efficacy": "피부 건강을 위한",
-    "name": "홍삼 옥사뭐시",
+    "name": "홍삼",
     "icon": [
       { "id": 73, "src": "images/exchange.svg", "alt": "혈액순환" },
       { "id": 72, "src": "images/eye.svg", "alt": "눈건강" },
@@ -155,7 +155,7 @@
   {
     "id": 51,
     "efficacy": "피부 건강을 위한",
-    "name": "홍삼 옥사뭐시",
+    "name": "홍삼",
     "icon": [
       { "id": 65, "src": "images/exchange.svg", "alt": "혈액순환" },
       { "id": 64, "src": "images/eye.svg", "alt": "눈건강" },

@@ -1,26 +1,9 @@
-@import '../../styles/common.scss';
 @import '../../styles/variables.scss';
-
-// common 추가
-
-a {
-  color: $color-font;
-  text-decoration: none;
-  outline: none;
-}
-
-// a:hover,
-// a:active {
-//   text-decoration: none;
-//   color: #fff;
-//   background-color: #f59000;
-// }
 
 .Product {
   .productHeader {
     @include display-flex;
     justify-content: flex-start;
-
     height: 590px;
     background-image: url('http://localhost:3000/images/producHeader.jpg');
     background-repeat: no-repeat;
@@ -39,15 +22,25 @@ a {
 
   .productBody {
     @include display-flex;
+    flex-direction: column;
     padding: 50px 90px;
     background-color: #fafafa;
 
+    .ProdcutCategory {
+      @include display-flex;
+      li {
+        margin-right: 10px;
+      }
+    }
+
     .productList {
       display: flex;
-      justify-content: center;
+      // 미디어 쿼리에서 한줄만 보여지게 될 때 넣어줄 속성
+      // justify-content: center;
       flex-wrap: wrap;
       width: 100%;
       max-width: 840px;
+      margin-top: 20px;
     }
   }
 }
