@@ -8,15 +8,10 @@ import {
 import './Signup.scss';
 
 class Signup extends React.Component {
-  nameRef = React.createRef();
-  phoneRef = React.createRef();
-  emailRef = React.createRef();
-  pwRef = React.createRef();
-
   state = {
     name: '',
     email: '',
-    password: '',
+    pw: '',
     phone: '',
   };
 
@@ -27,25 +22,21 @@ class Signup extends React.Component {
     });
   };
 
-  checkAll = e => {
-    if (validationName(this.state.name) === false) {
+  doValidation = e => {
+    if (!validationName(this.state.name)) {
       alert('이름을 입력해주세요.');
-      this.nameRef.current.value = '';
     }
 
-    if (validationPhone(this.state.phone) === false) {
+    if (!validationPhone(this.state.phone)) {
       alert('번호를 입력해주세요.');
-      this.phoneRef.current.value = '';
     }
 
-    if (validationEmail(this.state.email) === false) {
+    if (!validationEmail(this.state.email)) {
       alert('이메일 형식이 유효하지 않습니다.');
-      this.emailRef.current.value = '';
     }
 
-    if (validationPwd(this.state.pw) === false) {
+    if (!validationPwd(this.state.pw)) {
       alert('영문,숫자,특수문자를 혼합하여 6~20자 이내로 입력해주세요.');
-      this.pwRef.current.value = '';
     }
 
     if (
@@ -62,11 +53,11 @@ class Signup extends React.Component {
 
   handleKeyPress = e => {
     if (e.key === 'Enter') {
-      this.checkAll();
+      this.doValidation();
     }
   };
 
-  signUpFetch = () => {
+  requestSignup = () => {
     fetch('http://10.58.5.217:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -78,9 +69,9 @@ class Signup extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.token !== undefined) {
+        if (result.token) {
           alert('회원가입 성공');
-          localStorage.setItem('access_token :', result.token);
+          localStorage.setItem('access_token', result.token);
         } else {
           alert('회원가입 실패');
         }
@@ -88,7 +79,7 @@ class Signup extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.pw);
     return (
       <div className="Signup">
         <div className="signupView">
@@ -101,13 +92,12 @@ class Signup extends React.Component {
               name="name"
               className="signupInput"
               value={this.state.name}
-              ref={this.nameRef}
               placeholder="이름을 입력해 주세요."
               onChange={this.handleInput}
               onKeyPress={this.handleKeyPress}
             />
           </div>
-          <div className="signup_phone">
+          <div className="signupPhone">
             <span className="signupHeader">연락처</span>
             <br />
             <input
@@ -115,13 +105,12 @@ class Signup extends React.Component {
               name="phone"
               className="signupInput"
               value={this.state.phone}
-              ref={this.phoneRef}
               placeholder="연락처를 입력해 주세요."
               onChange={this.handleInput}
               onKeyPress={this.handleKeyPress}
             />
           </div>
-          <div className="signup_detail">
+          <div className="signupDetail">
             <span className="signupHeader">아이디</span>
             <br />
             <input
@@ -129,7 +118,6 @@ class Signup extends React.Component {
               name="email"
               className="signupInput"
               value={this.state.email}
-              ref={this.emailRef}
               placeholder="아이디(이메일)를 입력해 주세요."
               onChange={this.handleInput}
               onKeyPress={this.handleKeyPress}
@@ -139,17 +127,16 @@ class Signup extends React.Component {
             <br />
             <input
               type="password"
-              name="password"
+              name="pw"
               className="signupInput"
               value={this.state.pw}
-              ref={this.pwRef}
               placeholder="비밀번호를 입력해 주세요."
               onChange={this.handleInput}
               onKeyPress={this.handleKeyPress}
             />
             <br />
           </div>
-          <div className="check_all">
+          {/* <div className="check_all">
             <input type="checkbox" className="signupCheckbox"></input>
             모두 동의하기
           </div>
@@ -159,12 +146,12 @@ class Signup extends React.Component {
             <br />
             <input type="checkbox" className="signupCheckbox"></input>이용 약관
             동의
-          </div>
+          </div> */}
           <div className="footerButton">
             <button
               type="submit"
               className="signupSubmit"
-              onClick={this.checkAll}
+              onClick={this.doValidation}
             >
               회원가입
             </button>

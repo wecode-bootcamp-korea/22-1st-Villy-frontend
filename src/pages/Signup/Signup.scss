@@ -12,123 +12,123 @@
   margin-bottom: 20px;
 }
 
-.signupView {
-  width: 600px;
+@mixin input-style {
+  width: 500px;
+  height: 40px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.Signup {
   display: flex;
-  flex-direction: column;
-  margin: 100px 200px 100px 600px;
+  justify-content: center;
 
-  h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
+  .signupView {
+    width: 600px;
+    margin-top: 100px;
+    flex-direction: column;
 
-  .signupName {
-    margin-top: 20px;
-
-    .signupHeader {
-      font-size: 13px;
-      color: gray;
-    }
-
-    .signupInput {
-      @include border-color;
-      width: 500px;
-      height: 40px;
-      padding: 10px;
-      margin-top: 5px;
+    h1 {
       margin-bottom: 20px;
-    }
-  }
-
-  .signup_phone {
-    .signupHeader {
-      position: flex;
-      font-size: 13px;
-      color: gray;
+      font-size: 30px;
     }
 
-    .signupInput {
-      @include border-color;
-      width: 500px;
-      height: 40px;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
-  }
+    .signupName {
+      margin-top: 20px;
 
-  .signup_detail {
-    margin-top: 30px;
+      .signupHeader {
+        font-size: 13px;
+        color: gray;
+      }
 
-    .signupHeader {
-      position: flex;
-      font-size: 13px;
-      color: gray;
+      .signupInput {
+        @include border-color;
+        @include input-style;
+        margin-bottom: 20px;
+      }
     }
 
-    .signupInput {
-      @include border-color;
-      margin-top: 5px;
-      margin-bottom: 20px;
-      padding: 10px;
-      width: 500px;
-      height: 40px;
-    }
-  }
+    .signupPhone {
+      .signupHeader {
+        color: gray;
+        font-size: 13px;
+      }
 
-  .check_all {
-    display: inline-block;
-    border-bottom: 1px solid lightgray;
-    width: 500px;
-    margin-top: 30px;
-    padding-bottom: 30px;
-    font-weight: bolder;
-
-    .signupCheckbox {
-      margin-right: 10px;
-    }
-  }
-
-  .checkDetail {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 30px;
-
-    .signupCheckbox {
-      margin-top: 10px;
-      margin-right: 10px;
-    }
-  }
-
-  .footerButton {
-    margin-left: 100px;
-
-    .signupSubmit {
-      @include border-radius;
-      color: white;
-      font-weight: bolder;
-      background-color: salmon;
-      margin-top: 40px;
-      margin-bottom: 50px;
+      .signupInput {
+        @include border-color;
+        @include input-style;
+        margin-bottom: 10px;
+      }
     }
 
-    .kakao {
-      @include border-radius;
-      background-color: #ffd700;
-      color: white;
+    .signupDetail {
+      margin-top: 30px;
+
+      .signupHeader {
+        color: gray;
+        font-size: 13px;
+      }
+
+      .signupInput {
+        @include border-color;
+        @include input-style;
+        margin-bottom: 20px;
+      }
     }
 
-    .facebook {
-      @include border-radius;
-      background-color: #0a6ecd;
-      color: white;
-    }
+    // .checkAll {
+    //   display: inline-block;
+    //   width: 500px;
+    //   margin-top: 30px;
+    //   padding-bottom: 30px;
+    //   border-bottom: 1px solid lightgray;
+    //   font-weight: bolder;
 
-    .naver {
-      @include border-radius;
-      background-color: #64cd3c;
-      color: white;
+    //   .signupCheckbox {
+    //     margin-right: 10px;
+    //   }
+    // }
+
+    // .checkDetail {
+    //   display: inline-block;
+    //   margin-top: 20px;
+    //   margin-bottom: 30px;
+
+    //   .signupCheckbox {
+    //     margin-top: 10px;
+    //     margin-right: 10px;
+    //   }
+    // }
+
+    .footerButton {
+      margin-left: 100px;
+
+      .signupSubmit {
+        @include border-radius;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        color: white;
+        font-weight: bolder;
+        background-color: salmon;
+      }
+
+      .kakao {
+        @include border-radius;
+        color: white;
+        background-color: #ffd700;
+      }
+
+      .facebook {
+        @include border-radius;
+        @extend .kakao;
+        background-color: #0a6ecd;
+      }
+
+      .naver {
+        @include border-radius;
+        @extend .kakao;
+        background-color: #64cd3c;
+      }
     }
   }
 }
