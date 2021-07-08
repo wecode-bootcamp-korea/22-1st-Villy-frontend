@@ -7,29 +7,29 @@ class Nav extends React.Component {
     return (
       <nav className="navbar">
         <div className="navLogo">
-          <Link to="/Login">
+          <Link to="/login">
             <img
               alt="logo"
-              className="logo_img"
+              className="logoImg"
               src="http://localhost:3000/images/logo.png"
             />
           </Link>
         </div>
-        <ul className="nav_menu">
-          <li className="nav_list">
-            <Link className="nav_link" to="">
+        <ul className="navMenu">
+          <li className="navList">
+            <Link className="navLink" to="">
               추천성분
             </Link>
-            <Link className="nav_link" to="/Product">
+            <Link className="navLink" to="/product">
               제품보기
             </Link>
-            <Link className="nav_link" to="">
+            <Link className="navLink" to="">
               고객후기
             </Link>
-            <Link className="nav_link" to="">
+            <Link className="navLink" to="">
               장바구니
             </Link>
-            <Link className="nav_link" to="/Login">
+            <Link className="navLink" to="/login">
               로그인
             </Link>
           </li>

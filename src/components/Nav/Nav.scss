@@ -6,26 +6,28 @@
   left: 0;
   right: 0;
   background-color: white;
+  margin-top: 15px;
 
   .navLogo {
-    .logo_img {
+    .logoImg {
       display: flex;
       width: 100px;
       height: 60px;
     }
   }
 
-  .nav_menu {
+  .navMenu {
     display: inline;
     margin: 20px;
     margin-left: 250px;
     justify-content: space-between;
 
-    .nav_list {
+    .navList {
       display: inline;
       margin-left: 10px;
+      font-size: 20px;
 
-      .nav_link {
+      .navLink {
         list-style: none;
         text-decoration: none;
         color: black;
