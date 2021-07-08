@@ -31,6 +31,7 @@ export class Product extends Component {
 
     this.setState({
       addCart: !this.state.addCart,
+      isModalOn: !this.state.addCar,
     });
   };
 
