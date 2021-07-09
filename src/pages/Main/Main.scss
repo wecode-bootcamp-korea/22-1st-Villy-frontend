@@ -47,12 +47,42 @@
   }
 
   .footSlideTop {
-    height: 100px;
+    height: 80px;
     @include display-flex(center, center);
-    background-color: bisque;
+    background-color: moccasin;
 
     h2 {
-      font-size: 30px;
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .Main {
+    .mainPage {
+      .mainTextWrap {
+        padding-left: 30px;
+
+        h1 {
+          font-size: 45px;
+        }
+
+        .promotionDescription {
+          font-size: 18px;
+        }
+
+        .recommendButton {
+          height: 40px;
+          width: 150px;
+          margin-top: 25px;
+          font-size: 15px;
+        }
+      }
+    }
+    .footSlideTop {
+      h2 {
+        font-size: 15px;
+      }
     }
   }
 }
