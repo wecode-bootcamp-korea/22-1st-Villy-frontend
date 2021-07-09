@@ -1,1 +1,52 @@
-@import '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.navbar {
+  @include display-flex(center, center);
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  background-color: white;
+
+  .navLogo {
+    .logoImg {
+      display: flex;
+      width: 100px;
+      height: 60px;
+    }
+  }
+
+  .navMenu {
+    display: inline;
+    margin: 20px;
+    margin-left: 250px;
+    justify-content: space-between;
+
+    .navList {
+      display: inline;
+      margin-left: 10px;
+      font-size: 15px;
+
+      .navLink {
+        padding: 20px;
+        color: black;
+        font-weight: bolder;
+        list-style: none;
+        text-decoration: none;
+
+        &:hover {
+          color: #ff8200;
+          cursor: pointer;
+          opacity: 2;
+          transition: 0.1s;
+        }
+        &:active {
+          color: #ff8200;
+        }
+        &:enabled {
+          color: #ff8200;
+        }
+      }
+    }
+  }
+}
