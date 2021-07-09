@@ -8,7 +8,7 @@ export class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
-      productData: [],
+      productData: {},
       cartToggleOn: false,
       recommendToggleOn: false,
       backgroundColor: {
@@ -26,13 +26,11 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/ProductData.json', {
-      method: 'GET',
-    })
+    fetch('http://10.58.2.138:8000/products/1')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data,
+          productData: data.message,
         });
       });
   }
@@ -46,25 +44,38 @@ export class ProductDetail extends Component {
     if (!this.state.productData[0]) {
       return <div>..Loading</div>;
     } else {
-      const { productData, backgroundColor, cartToggleOn, recommendToggleOn } =
-        this.state;
+      const { backgroundColor, cartToggleOn, recommendToggleOn } =
+        this.state.productData;
+      const {
+        icon_name,
+        icon_image_url,
+        productDescription,
+        productID,
+        productName,
+        productPrice,
+        thumbnail_image_url,
+        icon,
+      } = this.state.productData[0];
+      console.log(`this.state.productData[0]`, this.state.productData[0]);
       return (
         <div className="ProductDetail">
-          <main style={{ backgroundColor: backgroundColor[productData[0].id] }}>
+          <main>
+            {/* <main style={{ backgroundColor: backgroundColor[productID] }}> */}
             <header className="headTextWrap">
+              {icon_name.map((el, index) => (
+                <p key={index}>{el}</p>
+              ))}
               <h1>
-                <span>{productData[0].efficacy}</span>
                 <br />
-                {productData[0].name}
+                {productName}
               </h1>
               <ul className="propertyIcons">
-                {/* 아이콘 map */}
-                <li></li>
+                {icon_image_url.map((el, index) => (
+                  <img key={index} src={el} alt="icon" />
+                ))}
               </ul>
-              <p>
-                {/* 세부 설명 */}
-                <strong>{/*가격*/}</strong>
-              </p>
+              <p>{productDescription}</p>
+              <strong>{productPrice}</strong>
               <ul className="certificationIcons">
                 <li className="certificationIconList">
                   <FaCreativeCommons className="certificationIcon" />
@@ -81,7 +92,7 @@ export class ProductDetail extends Component {
                 장바구니 담기
               </button>
             </header>
-            <img className="productImg">{/* 제품 이미지 */}</img>
+            <i className={thumbnail_image_url}></i>
           </main>
           <section className="comment">
             <div className="question">
