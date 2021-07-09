@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import ProductCard from './ProductCard/ProductCard';
-import ProductModal from './ProductModal/ProductModal';
+// import ProductModal from './ProductModal/ProductModal';
 import './Product.scss';
 
 export class Product extends Component {
@@ -26,16 +24,20 @@ export class Product extends Component {
       });
   }
 
+  // 데이터가 한 번에 전달되는 문제 확인
   handleCartButton = event => {
+    console.log('클릭쓰');
+    console.log(event, `이벤트`);
+    // console.log(event.target, `이벤트 타겟`);
+    // console.log(event.target.value, `이벤트 타겟 밸류`);
+
     event.preventDefault();
 
     this.setState({
       addCart: !this.state.addCart,
-      isModalOn: !this.state.addCar,
+      isModalOn: !this.state.false,
     });
   };
-
-  // isModalOn: !this.state.isModalOn,
 
   render() {
     return (
@@ -52,28 +54,32 @@ export class Product extends Component {
 
           <ul className="productCategory">
             <li className="categoryList">
-              <Link className="goCategories">
-                <img src="images/hairstyle.svg" alt="모발" />
-                <span className="categoryText">모발</span>
-              </Link>
+              <input type="checkbox" name="category" value="" />
+              <span className="categoryText">ALL</span>
             </li>
             <li className="categoryList">
-              <Link className="goCategories">
-                <img src="images/bone.svg" alt="뼈" />
-                <span className="categoryText">뼈</span>
-              </Link>
+              <input type="checkbox" name="category" value="모발" />
+              <img
+                className="iconImage"
+                src="images/hairstyle.svg"
+                alt="모발"
+              />
+              <span className="categoryText">모발</span>
             </li>
             <li className="categoryList">
-              <Link className="goCategories">
-                <img src="images/therapy.svg" alt="피부" />
-                <span className="categoryText">피부</span>
-              </Link>
+              <input type="checkbox" name="category" value="뼈" />
+              <img className="iconImage" src="images/bone.svg" alt="뼈" />
+              <span className="categoryText">뼈</span>
             </li>
             <li className="categoryList">
-              <Link className="goCategories">
-                <img src="images/height.svg" alt="성장" />
-                <span className="categoryText">성장</span>
-              </Link>
+              <input type="checkbox" name="category" value="피부" />
+              <img className="iconImage" src="images/therapy.svg" alt="피부" />
+              <span className="categoryText">피부</span>
+            </li>
+            <li className="categoryList">
+              <input type="checkbox" name="color" value="성장" />
+              <img className="iconImage" src="images/height.svg" alt="성장" />
+              <span className="categoryText">성장</span>
             </li>
           </ul>
 
@@ -86,16 +92,15 @@ export class Product extends Component {
                   BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
                 }
                 handleCartButton={this.handleCartButton}
-                addCart={this.state.addCart}
               />
             ))}
           </ul>
-          <ul className="ProductModal">
+          {/* <ul className="ProductModal">
             {this.state.isModalOn &&
               this.state.productCard.map(modal => (
                 <ProductModal key={modal.id} name={modal.name} />
               ))}
-          </ul>
+          </ul> */}
         </section>
       </div>
     );

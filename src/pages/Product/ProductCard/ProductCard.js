@@ -71,7 +71,6 @@ export class ProductCard extends Component {
             <p className="add">더보기</p>
             <button
               className="cartBtn"
-              // e => changeHeartColor(el.id, index)
               onClick={handleCartButton}
               disabled={addCart}
             >
