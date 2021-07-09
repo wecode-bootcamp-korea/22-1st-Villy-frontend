@@ -6,7 +6,7 @@ export class ProductIcon extends Component {
   render() {
     return (
       <li className="ProductIcon">
-        <img src={this.props.icon_image_url} />
+        <img alt="추후데이터받기" src={this.props.icon_image_url} />
       </li>
     );
   }

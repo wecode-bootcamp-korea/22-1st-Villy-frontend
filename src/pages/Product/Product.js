@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import ProductCard from './ProductCard/ProductCard';
-// import ProductModal from './ProductModal/ProductModal';
 import './Product.scss';
-// import { AiOutlineBgColors } from 'react-icons/ai';
 
 export class Product extends Component {
   constructor() {
@@ -85,13 +83,6 @@ export class Product extends Component {
               />
             ))}
           </ul>
-          <button onClick={this.popupProductModal}>실험용</button>
-          {/* <ul className="ProductModal">
-            {this.state.isModalOn &&
-              this.state.productCard.map(modal => (
-                <ProductModal key={modal.id} name={modal.name} />
-              ))}
-          </ul> */}
         </section>
       </div>
     );

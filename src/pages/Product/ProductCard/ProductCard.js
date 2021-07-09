@@ -25,8 +25,6 @@ export class ProductCard extends Component {
   };
 
   render() {
-    console.log(this.props.productCard);
-
     const { backgroundColor } = this.props;
 
     const {
