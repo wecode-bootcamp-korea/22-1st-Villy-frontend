@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { POST_SIGNIN_API } from '../../../src/config.js';
+// import { POST_SIGNIN_API } from '../../../src/config.js';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -21,27 +21,27 @@ class Login extends React.Component {
   };
 
   // Back이랑 연결하는 fetch 함수
-  requestLogin = () => {
-    fetch(`${POST_SIGNIN_API}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        email: this.state.userId,
-        password: this.state.userPw,
-        //로그인 test용 하드코딩
-        // name: '김코드',
-        // mobile: '010-1234-2223',
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.access_token) {
-          alert('로그인 성공');
-          localStorage.setItem('access_token', res.access_token);
-        } else {
-          alert('로그인 실패');
-        }
-      });
-  };
+  // requestLogin = () => {
+  //   fetch(`${POST_SIGNIN_API}`, {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       email: this.state.userId,
+  //       password: this.state.userPw,
+  //       //로그인 test용 하드코딩
+  //       // name: '김코드',
+  //       // mobile: '010-1234-2223',
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       if (res.access_token) {
+  //         alert('로그인 성공');
+  //         localStorage.setItem('access_token', res.access_token);
+  //       } else {
+  //         alert('로그인 실패');
+  //       }
+  //     });
+  // };
 
   render() {
     const { userId, userPw } = this.state;
@@ -49,11 +49,7 @@ class Login extends React.Component {
       <div className="Login">
         <div className="loginView">
           <div className="logoWrapper">
-            <img
-              alt="logo"
-              className="loginLogo"
-              src="http://localhost:3000/images/logo.png"
-            />
+            <img alt="logo" className="loginLogo" src="/images/logo.png" />
           </div>
           <form className="loginForm">
             <input
