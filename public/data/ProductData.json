@@ -9,7 +9,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "../images/productSample01.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 9, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 8, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -28,7 +28,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 4, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 5, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -47,7 +47,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 14, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 15, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -66,7 +66,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 20, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 21, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -85,7 +85,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "../images/productSample01.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 80, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 79, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -104,7 +104,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 34, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 35, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -123,7 +123,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 41, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 42, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -142,7 +142,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "../images/productSample01.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 48, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 49, "descriptionList": "국내 최초 2중 기능성 제품" },
@@ -161,7 +161,7 @@
       { "id": 90, "src": "images/therapy.svg", "alt": "피부" },
       { "id": 89, "src": "images/height.svg", "alt": "성장" }
     ],
-    "pillImage": "https://www.pharm.or.kr:442/images/sb_photo/big3/A11APPPPP283701.jpg",
+    "pillUrl": "fas fa-pills",
     "description": [
       { "id": 55, "descriptionList": "피부보습/피부건강/항산화에 도움" },
       { "id": 56, "descriptionList": "국내 최초 2중 기능성 제품" },

@@ -4,8 +4,7 @@ import './ProductDescription.scss';
 
 export class ProductDescription extends Component {
   render() {
-    const { description } = this.props;
-    return <li className="productDescription">{description}</li>;
+    return <li className="productDescription">{this.props.summary}</li>;
   }
 }
 

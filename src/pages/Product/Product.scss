@@ -70,7 +70,11 @@
 
   .productBody {
     .productCategory {
-      max-width: 415px;
+      max-width: 400px;
+
+      .iconImage {
+        display: none;
+      }
     }
 
     .productList {

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ProductCard from './ProductCard/ProductCard';
 // import ProductModal from './ProductModal/ProductModal';
 import './Product.scss';
+// import { AiOutlineBgColors } from 'react-icons/ai';
 
 export class Product extends Component {
   constructor() {
@@ -15,31 +16,24 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/ProductData.json')
+    fetch('http://10.58.2.138:8000/products')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productCard: data,
+          productCard: data.message,
         });
       });
   }
 
-  // 데이터가 한 번에 전달되는 문제 확인
-  handleCartButton = event => {
-    console.log('클릭쓰');
-    console.log(event, `이벤트`);
-    // console.log(event.target, `이벤트 타겟`);
-    // console.log(event.target.value, `이벤트 타겟 밸류`);
-
-    event.preventDefault();
-
+  popupProductModal = () => {
     this.setState({
-      addCart: !this.state.addCart,
-      isModalOn: !this.state.false,
+      isModalOn: !this.state.isModalOn,
     });
   };
 
   render() {
+    const { productCard } = this.state;
+
     return (
       <div className="Product">
         <header className="productHeader">
@@ -54,47 +48,44 @@ export class Product extends Component {
 
           <ul className="productCategory">
             <li className="categoryList">
-              <input type="checkbox" name="category" value="" />
-              <span className="categoryText">ALL</span>
-            </li>
-            <li className="categoryList">
               <input type="checkbox" name="category" value="모발" />
               <img
+                alt="모발"
                 className="iconImage"
                 src="images/hairstyle.svg"
-                alt="모발"
               />
               <span className="categoryText">모발</span>
             </li>
             <li className="categoryList">
               <input type="checkbox" name="category" value="뼈" />
-              <img className="iconImage" src="images/bone.svg" alt="뼈" />
+              <img className="iconImage" alt="뼈" src="images/bone.svg" />
               <span className="categoryText">뼈</span>
             </li>
             <li className="categoryList">
               <input type="checkbox" name="category" value="피부" />
-              <img className="iconImage" src="images/therapy.svg" alt="피부" />
+              <img className="iconImage" alt="피부" src="images/therapy.svg" />
               <span className="categoryText">피부</span>
             </li>
             <li className="categoryList">
               <input type="checkbox" name="color" value="성장" />
-              <img className="iconImage" src="images/height.svg" alt="성장" />
+              <img className="iconImage" alt="성장" src="images/height.svg" />
               <span className="categoryText">성장</span>
             </li>
           </ul>
 
           <ul className="productList">
-            {this.state.productCard.map((product, idx) => (
+            {productCard.map((product, idx) => (
               <ProductCard
-                key={product.id}
+                key={idx}
                 productCard={product}
-                backgruonColor={
+                backgroundColor={
                   BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
                 }
                 handleCartButton={this.handleCartButton}
               />
             ))}
           </ul>
+          <button onClick={this.popupProductModal}>실험용</button>
           {/* <ul className="ProductModal">
             {this.state.isModalOn &&
               this.state.productCard.map(modal => (

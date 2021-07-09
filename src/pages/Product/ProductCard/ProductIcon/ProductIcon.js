@@ -6,7 +6,7 @@ export class ProductIcon extends Component {
   render() {
     return (
       <li className="ProductIcon">
-        <img src={this.props.src} alt={this.props.alt} />
+        <img src={this.props.icon_image_url} />
       </li>
     );
   }

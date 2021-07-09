@@ -11,71 +11,76 @@ import './ProductCard.scss';
 export class ProductCard extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      addCart: false,
+    };
   }
 
-  render() {
-    const { addCart, backgruonColor, handleCartButton } = this.props;
+  handleCartButton = event => {
+    event.preventDefault();
 
-    const { efficacy, name, icon, pillImage, description, quantity, price } =
-      this.props.productCard;
+    this.setState({
+      addCart: !this.state.addCart,
+    });
+  };
+
+  render() {
+    console.log(this.props.productCard);
+
+    const { backgroundColor } = this.props;
+
+    const {
+      productName,
+      icon_image_url,
+      thumbnail_image_url,
+      summary,
+      productTablet,
+      productPrice,
+    } = this.props.productCard;
 
     return (
-      <li className="ProductCard" style={{ backgroundColor: backgruonColor }}>
+      <li className="ProductCard" style={{ backgroundColor }}>
         <Link to="/detail">
           <header className="productCardHeader">
             <div className="nameBox">
               <h2>
-                {efficacy}
-                <br />
-                <strong>{name}</strong>
+                <strong>{productName}</strong>
               </h2>
 
               <ul className="icon">
-                {icon &&
-                  icon.map(iconItem => {
-                    return (
-                      <ProductIcon
-                        key={iconItem.id}
-                        src={iconItem.src}
-                        alt={iconItem.alt}
-                      />
-                    );
-                  })}
+                {icon_image_url.map((iconImage, idx) => (
+                  <ProductIcon key={idx} icon_image_url={iconImage} />
+                ))}
               </ul>
             </div>
             <div className="pillImgBox">
-              <img className="pillImage" src={pillImage} alt="pillImage" />
+              <i className={`pillImage ${thumbnail_image_url}`} />
             </div>
           </header>
           <section className="productCardBody">
             <div className="descriptonBox">
               <ul className="description">
-                {description &&
-                  description.map(descriptionItem => {
-                    return (
-                      <ProductDescription
-                        key={descriptionItem.id}
-                        description={descriptionItem.descriptionList}
-                      />
-                    );
-                  })}
+                {summary.map((descriptionItem, idx) => (
+                  <ProductDescription key={idx} summary={descriptionItem} />
+                ))}
               </ul>
             </div>
             <div className="quantityAndpriceBox">
-              <p className="quantity">{quantity}일분</p>
-              <p className="price">{price}원</p>
+              <p className="quantity">{productTablet}일분</p>
+              <p className="price">
+                {parseInt(productPrice).toLocaleString()}원
+              </p>
             </div>
           </section>
           <footer className="productCardFooter">
             <p className="add">더보기</p>
             <button
               className="cartBtn"
-              onClick={handleCartButton}
-              disabled={addCart}
+              onClick={this.handleCartButton}
+              disabled={this.state.addCart}
             >
-              {!addCart && <AiOutlinePlus className="addIcon" />}
-              {addCart ? '장바구니 추가됨' : '장바구니 담기'}
+              {!this.state.addCart && <AiOutlinePlus className="addIcon" />}
+              {this.state.addCart ? '장바구니 추가됨' : '장바구니 담기'}
             </button>
           </footer>
         </Link>
