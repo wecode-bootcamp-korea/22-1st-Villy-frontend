@@ -19,7 +19,7 @@
 
     .cartTop {
       display: flex;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       justify-content: space-between;
 
       .cartTopTitle {
@@ -161,6 +161,7 @@
 
         .pointDiscount {
           @extend .deliveryDiscount;
+          border-bottom: 2px solid black;
         }
       }
     }
@@ -170,6 +171,11 @@
       margin-top: 30px;
       padding-bottom: 10px;
       justify-content: space-between;
+
+      .totalPriceText {
+        font-size: 18px;
+        font-weight: bolder;
+      }
 
       .totalPrice {
         color: salmon;
@@ -195,4 +201,8 @@
       }
     }
   }
+}
+
+@media screen {
+  max-width: 1024;
 }

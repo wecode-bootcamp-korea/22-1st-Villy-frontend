@@ -72,7 +72,7 @@ class Cart extends React.Component {
             </div>
           </div>
           <div className="cartPrice">
-            <p>총 결제금액</p>
+            <p className="totalPriceText">총 결제금액</p>
             <p className="totalPrice">19,500원</p>
           </div>
           <div className="cartFooterButtonWrppaer">
