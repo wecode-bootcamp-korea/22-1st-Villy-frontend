@@ -10,6 +10,7 @@ class Signup extends React.Component {
     mobile: '',
   };
 
+  // 입력 함수
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({
@@ -17,14 +18,14 @@ class Signup extends React.Component {
     });
   };
 
+  // Validation을 체크하는 함수
   doValidation = e => {
     const userInputs = Object.entries(this.state);
     console.log(userInputs);
     userInputs.forEach(el => {
       console.log(validationFor[el[0]](el[1]));
       if (!validationFor[el[0]](el[1])) {
-        alert('양식에 맞지 않습니다');
-        ret;
+        return alert('양식에 맞지 않습니다');
       }
     });
 
@@ -54,6 +55,7 @@ class Signup extends React.Component {
     // }
   };
 
+  // Back이랑 연결하는 fetch 함수
   requestSignup = () => {
     fetch('http://10.58.6.222:8000/users/signup', {
       method: 'POST',
@@ -75,9 +77,10 @@ class Signup extends React.Component {
       });
   };
 
+  // 입력 완료 후 실행되는 함수
   handleKeyPress = e => {
     if (e.key === 'Enter' && this.doValidation()) {
-      this.requestSignup();
+      return this.requestSignup();
     }
   };
 
@@ -154,6 +157,7 @@ class Signup extends React.Component {
               className="signupInput"
               value={this.state.pw}
               placeholder="비밀번호를 입력해 주세요."
+              onKeyPress={this.handleKeyPress}
               onChange={this.handleInput}
               // onKeyPress={this.handleKeyPress}
             />
@@ -174,24 +178,11 @@ class Signup extends React.Component {
             <button
               type="submit"
               className="signupSubmit"
-              onKeyPress={this.handleKeyPress}
+
               // onClick={this.requestSignup}
             >
               회원가입
             </button>
-            <br />
-            <button type="button" className="kakao">
-              KAKAO 로그인
-            </button>
-            <br />
-            <button type="button" className="facebook">
-              FACEBOOK
-            </button>
-            <br />
-            <button type="button" className="naver">
-              NAVER
-            </button>
-            <br />
           </div>
         </div>
       </div>

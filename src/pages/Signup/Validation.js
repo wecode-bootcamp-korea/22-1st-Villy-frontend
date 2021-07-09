@@ -24,6 +24,7 @@ function validationMobile(mobile) {
   return reg_mobile.test(mobile);
 }
 
+// 위의 Validation을 모두 합친 객체
 export const validationFor = {
   name: validationName,
   mobile: validationMobile,
