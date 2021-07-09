@@ -1,8 +1,14 @@
-@font-face {
-  font-family: 'Noto Sans KR', sans-serif;
+* {
+  font-family: 'Noto Sans KR', sans-serif !important;
   font-style: normal;
   font-weight: 400;
   src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+}
+
+a {
+  color: #333333;
+  text-decoration: none;
+  outline: none;
 }
 
 .sr-only {
@@ -13,5 +19,3 @@
   overflow: hidden;
   opacity: 0;
 }
-
-// /* MEDIA QUERY  */
