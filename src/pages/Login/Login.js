@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { POST_SIGNIN_API } from '../../../src/config.js';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -21,18 +22,18 @@ class Login extends React.Component {
 
   // Back이랑 연결하는 fetch 함수
   requestLogin = () => {
-    fetch('http://10.58.5.217:8000/users/signin', {
+    fetch(`${POST_SIGNIN_API}`, {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.userId,
         password: this.state.userPw,
       }),
     })
-      .then(response => response.json())
-      .then(result => {
-        if (result.token) {
+      .then(res => res.json())
+      .then(res => {
+        if (res.access_token) {
           alert('로그인 성공');
-          localStorage.setItem('access_token', result.token);
+          localStorage.setItem('access_token', res.access_token);
         } else {
           alert('로그인 실패');
         }
