@@ -11,6 +11,7 @@ class Login extends React.Component {
     };
   }
 
+  // 입력 함수
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -18,7 +19,7 @@ class Login extends React.Component {
     });
   };
 
-  // 로그인 성공 여부
+  // Back이랑 연결하는 fetch 함수
   requestLogin = () => {
     fetch('http://10.58.5.217:8000/users/signin', {
       method: 'POST',
@@ -65,12 +66,12 @@ class Login extends React.Component {
               placeholder="비밀번호를 입력하세요."
               onChange={this.handleChange}
             />
-            <div className="btn">
+            <div className="loginButton">
               <button
                 type="button"
-                className="loginButton"
+                className="loginBtn"
                 onClick={this.requestLogin}
-                disabled={!(userId.includes('@') && userPw.length > 4)}
+                disabled={!(userId.includes('@') && userPw.length > 6)}
               >
                 로그인
               </button>
@@ -82,24 +83,6 @@ class Login extends React.Component {
               </Link>
             </p>
           </form>
-          <div className="footerButton">
-            <button type="button" className="kakao">
-              KAKAO 로그인
-            </button>
-            <br />
-            <button type="button" className="facebook">
-              FACEBOOK
-            </button>
-            <br />
-            <button type="button" className="naver">
-              NAVER
-            </button>
-            <br />
-            <button type="button" className="apple">
-              APPLE
-            </button>
-            <br />
-          </div>
         </div>
       </div>
     );
