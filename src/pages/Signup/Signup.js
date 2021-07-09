@@ -1,6 +1,6 @@
 import React from 'react';
 // import { validationFor } from './Validation';
-// import { POST_SIGNUP_API } from '../../../src/config.js';
+import { POST_SIGNUP_API } from '../../../src/config.js';
 import './Signup.scss';
 
 class Signup extends React.Component {
@@ -58,26 +58,26 @@ class Signup extends React.Component {
   // };
 
   // Back이랑 연결하는 fetch 함수
-  // requestSignup = () => {
-  //   fetch(`${POST_SIGNUP_API}`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       name: this.state.name,
-  //       mobile: this.state.mobile,
-  //       email: this.state.email,
-  //       password: this.state.pw,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       if (res.access_token) {
-  //         alert('회원가입 성공');
-  //         localStorage.setItem('access_token', res.access_token);
-  //       } else {
-  //         alert('회원가입 실패');
-  //       }
-  //     });
-  // };
+  requestSignup = () => {
+    fetch(`${POST_SIGNUP_API}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.name,
+        mobile: this.state.mobile,
+        email: this.state.email,
+        password: this.state.pw,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.access_token) {
+          alert('회원가입 성공');
+          localStorage.setItem('access_token', res.access_token);
+        } else {
+          alert('회원가입 실패');
+        }
+      });
+  };
 
   // 입력 완료 후 실행되는 함수
   handleKeyPress = e => {
@@ -105,7 +105,6 @@ class Signup extends React.Component {
               value={this.state.name}
               placeholder="이름을 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
             />
           </div>
           <div className="signupInputWrapper">
@@ -118,7 +117,6 @@ class Signup extends React.Component {
               value={this.state.mobile}
               placeholder="연락처를 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
             />
           </div>
           <div className="signupInputWrapper">
@@ -131,7 +129,6 @@ class Signup extends React.Component {
               value={this.state.email}
               placeholder="아이디(이메일)를 입력해 주세요."
               onChange={this.handleInput}
-              onKeyPress={this.handleKeyPress}
             />
             <br />
           </div>
@@ -164,6 +161,7 @@ class Signup extends React.Component {
             <button
               type="submit"
               className="signupSubmit"
+              onKeyPress={this.handleKeyPress}
               onClick={this.requestSignup}
             >
               회원가입
