@@ -1,5 +1,10 @@
 @import '../../styles/reset.scss';
 
+@mixin login_Input_Button_Form {
+  width: 400px;
+  height: 60px;
+}
+
 .Login {
   display: flex;
   height: 100vh;
@@ -24,8 +29,7 @@
       text-align: center;
 
       .loginInput {
-        width: 300px;
-        height: 50px;
+        @include login_Input_Button_Form;
         padding: 20px;
         margin-bottom: 20px;
         border: 1px solid gray;
@@ -37,8 +41,7 @@
       text-align: center;
 
       .loginBtn {
-        width: 300px;
-        height: 50px;
+        @include login_Input_Button_Form;
         margin-top: 20px;
         color: white;
         background-color: #fddcaa;
