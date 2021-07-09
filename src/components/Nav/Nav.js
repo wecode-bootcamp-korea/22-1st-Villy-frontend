@@ -3,19 +3,6 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      menuList: [
-        { name: '추천상품', link: '/login' },
-        { name: '제품보기', link: '/product' },
-        { name: '고객후기', link: '/login' },
-        { name: '장바구니', link: '/cart' },
-        { name: '로그인', link: '/login' },
-      ],
-    };
-  }
-
   render() {
     return (
       <nav className="navbar">
@@ -26,10 +13,10 @@ class Nav extends React.Component {
         </div>
         <ul className="navMenu">
           <li className="navList">
-            {this.state.menuList.map((menu, i) => {
+            {MENU_LIST.map((link, name) => {
               return (
-                <Link className="navLink" to={menu.link} key={i}>
-                  {menu.name}
+                <Link className="navLink" to={link.link} key={name}>
+                  {link.name}
                 </Link>
               );
             })}
@@ -39,5 +26,13 @@ class Nav extends React.Component {
     );
   }
 }
+
+const MENU_LIST = [
+  { name: '추천상품', link: '/' },
+  { name: '제품보기', link: '/product' },
+  { name: '고객후기', link: '/' },
+  { name: '장바구니', link: '/cart' },
+  { name: '로그인', link: '/login' },
+];
 
 export default Nav;
