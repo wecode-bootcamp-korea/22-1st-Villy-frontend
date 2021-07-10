@@ -3,19 +3,35 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends React.Component {
+  constructor() {
+    super();
+    this.click = React.createRef();
+  }
+
+  handle = event => {
+    console.log(event);
+    return 'a';
+  };
+
   render() {
     return (
       <nav className="navbar">
         <div className="navLogo">
-          <Link to="/login">
+          <Link to="/">
             <img alt="logo" className="logoImg" src="/images/logo.png" />
           </Link>
         </div>
         <ul className="navMenu">
           <li className="navList">
-            {MENU_LIST.map((link, name) => {
+            {MENU_LIST.map((link, index) => {
               return (
-                <Link className="navLink" to={link.link} key={name}>
+                <Link
+                  className={`navLink ${this.handle}`}
+                  to={link.link}
+                  ref={this.click}
+                  key={index}
+                  onClick={() => this.handle(index)}
+                >
                   {link.name}
                 </Link>
               );
