@@ -61,13 +61,13 @@ export class ProductDetail extends Component {
         <div className="ProductDetail">
           <main style={{ backgroundColor: backgroundColor[productID] }}>
             <header className="headTextWrap">
-              <ul className="summaryList">
+              {/* <ul className="summaryList">
                 {summary.map((summary, index) => (
                   <li className="summary" key={index}>
                     {summary}
                   </li>
                 ))}
-              </ul>
+              </ul> */}
               <h1>{productName}</h1>
               <div className="propertyIcons">
                 {icon_image_url.map((icon, index) => (
