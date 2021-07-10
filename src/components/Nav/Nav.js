@@ -7,11 +7,27 @@ class Nav extends React.Component {
     super();
     this.state = {
       navActiveNumber: '',
+      isNavTransper: false,
     };
   }
 
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnMount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
+
+  handleScroll = () => {
+    if (window.pageYOffset > 0 && window.pageYOffset < 2) {
+      this.setState({ isNavTransper: true });
+    } else if (window.pageYOffset === 0) {
+      this.setState({ isNavTransper: false });
+    }
+  };
+
   navActiveHandler = clickedNavNumber => {
-    console.log(`clickedNavNumber`, clickedNavNumber);
     if (!clickedNavNumber) {
       this.setState({ navActiveNumber: '' });
     }
@@ -19,9 +35,20 @@ class Nav extends React.Component {
   };
 
   render() {
-    const { navActiveNumber } = this.state;
+    const { navActiveNumber, isNavTransper } = this.state;
+    console.log(`this.state.isNavtransper`, this.state.isNavTransper);
     return (
-      <nav className="navbar">
+      <nav
+        className="navbar"
+        style={
+          isNavTransper
+            ? {
+                boxShadow: 'rgba(0, 0, 0, 0.14) 0px 0px 6px 0px',
+                background: 'white',
+              }
+            : { boxShadow: '', background: '' }
+        }
+      >
         <div className="navLogo">
           <Link to="/">
             <img
@@ -34,21 +61,19 @@ class Nav extends React.Component {
         </div>
         <ul className="navMenu">
           <li className="navList">
-            {MENU_LIST.map((link, index) => {
-              return (
-                <Link
-                  className={`navLink ${
-                    navActiveNumber === index ? 'active' : 'disactive'
-                  }`}
-                  to={link.link}
-                  key={index}
-                  name={index}
-                  onClick={() => this.navActiveHandler(index)}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
+            {MENU_LIST.map((link, index) => (
+              <Link
+                className={`navLink ${
+                  navActiveNumber === index ? 'active' : 'disactive'
+                }`}
+                to={link.link}
+                key={index}
+                name={index}
+                onClick={() => this.navActiveHandler(index)}
+              >
+                {link.name}
+              </Link>
+            ))}
           </li>
         </ul>
       </nav>
