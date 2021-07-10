@@ -10,15 +10,17 @@ export class Product extends Component {
       productCard: [],
       addCart: false,
       isModalOn: false,
+      isChecked: false,
     };
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.138:8000/products')
+    fetch('./data/ProductData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productCard: data.message,
+          // productCard: data.message,
+          productCard: data,
         });
       });
   }
@@ -29,8 +31,15 @@ export class Product extends Component {
     });
   };
 
+  // 이부분추가
+  handleCheckBox = () => {
+    this.setState({
+      isChecked: !this.state.isChecked,
+    });
+  };
+
   render() {
-    const { productCard } = this.state;
+    const { productCard, isChecked } = this.state;
 
     return (
       <div className="Product">
@@ -44,30 +53,54 @@ export class Product extends Component {
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
 
+          {/* 이부분추가 */}
           <ul className="productCategory">
             <li className="categoryList">
-              <input type="checkbox" name="category" value="모발" />
+              <input
+                type="checkbox"
+                checked={isChecked}
+                name="efficacy"
+                value="모발"
+                onClick={this.handleCheckBox}
+              />
               <img
                 alt="모발"
                 className="iconImage"
                 src="images/hairstyle.svg"
               />
-              <span className="categoryText">모발</span>
+              모발
             </li>
             <li className="categoryList">
-              <input type="checkbox" name="category" value="뼈" />
-              <img className="iconImage" alt="뼈" src="images/bone.svg" />
-              <span className="categoryText">뼈</span>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                name="efficacy"
+                value="뼈"
+                onClick={this.handleCheckBox}
+              />
+              <img className="iconImage" alt="뼈" src="images/bone.svg" />뼈
             </li>
             <li className="categoryList">
-              <input type="checkbox" name="category" value="피부" />
+              <input
+                type="checkbox"
+                checked={isChecked}
+                name="efficacy"
+                value="피부"
+                onClick={this.handleCheckBox}
+              />
               <img className="iconImage" alt="피부" src="images/therapy.svg" />
-              <span className="categoryText">피부</span>
+              피부
             </li>
             <li className="categoryList">
-              <input type="checkbox" name="color" value="성장" />
+              <input
+                type="checkbox"
+                checked={isChecked}
+                name="efficacy"
+                value="성장"
+                onClick={this.handleCheckBox}
+              />
               <img className="iconImage" alt="성장" src="images/height.svg" />
-              <span className="categoryText">성장</span>
+              성장
             </li>
           </ul>
 

@@ -45,11 +45,11 @@ export class ProductCard extends Component {
                 <strong>{productName}</strong>
               </h2>
 
-              <ul className="icon">
+              {/* <ul className="icon">
                 {icon_image_url.map((iconImage, idx) => (
                   <ProductIcon key={idx} icon_image_url={iconImage} />
                 ))}
-              </ul>
+              </ul> */}
             </div>
             <div className="pillImgBox">
               <i className={`pillImage ${thumbnail_image_url}`} />
@@ -57,11 +57,11 @@ export class ProductCard extends Component {
           </header>
           <section className="productCardBody">
             <div className="descriptonBox">
-              <ul className="description">
+              {/* <ul className="description">
                 {summary.map((descriptionItem, idx) => (
                   <ProductDescription key={idx} summary={descriptionItem} />
                 ))}
-              </ul>
+              </ul> */}
             </div>
             <div className="quantityAndpriceBox">
               <p className="quantity">{productTablet}일분</p>
