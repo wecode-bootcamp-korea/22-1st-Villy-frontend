@@ -10,17 +10,26 @@ class Nav extends React.Component {
     };
   }
 
-  handle = clickedNavNumber =>
+  navActiveHandler = clickedNavNumber => {
+    console.log(`clickedNavNumber`, clickedNavNumber);
+    if (!clickedNavNumber) {
+      this.setState({ navActiveNumber: '' });
+    }
     this.setState({ navActiveNumber: clickedNavNumber });
+  };
 
   render() {
-    console.log(`this.state.navActiveNumber`, this.state.navActiveNumber);
     const { navActiveNumber } = this.state;
     return (
       <nav className="navbar">
         <div className="navLogo">
           <Link to="/">
-            <img alt="logo" className="logoImg" src="/images/logo.png" />
+            <img
+              alt="logo"
+              className="logoImg"
+              src="/images/logo.png"
+              onClick={this.navActiveHandler}
+            />
           </Link>
         </div>
         <ul className="navMenu">
@@ -28,11 +37,13 @@ class Nav extends React.Component {
             {MENU_LIST.map((link, id) => {
               return (
                 <Link
-                  className={navActiveNumber === id ? 'a' : 'b'}
+                  className={`navLink ${
+                    navActiveNumber === id ? 'active' : 'disactive'
+                  }`}
                   to={link.link}
                   key={id}
                   name={id}
-                  onClick={() => this.handle(id)}
+                  onClick={() => this.navActiveHandler(id)}
                 >
                   {link.name}
                 </Link>

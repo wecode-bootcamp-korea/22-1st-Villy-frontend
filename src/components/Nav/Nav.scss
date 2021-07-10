@@ -34,6 +34,10 @@
         list-style: none;
         text-decoration: none;
 
+        &.active {
+          color: $color-logo;
+        }
+
         &:hover {
           color: $color-logo;
           cursor: pointer;
