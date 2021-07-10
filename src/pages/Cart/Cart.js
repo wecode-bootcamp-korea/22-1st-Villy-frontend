@@ -3,6 +3,14 @@ import CartOrder from './CartOrder/CartOrder';
 import './Cart.scss';
 
 class Cart extends React.Component {
+  handleRemove = id => {
+    const { cartList } = this.props;
+    const nextList = cartList.filter(cart => {
+      return cart.id !== id;
+    });
+    this.setState({ cartList: nextList });
+  };
+
   render() {
     return (
       <div className="Cart">
@@ -13,12 +21,8 @@ class Cart extends React.Component {
               <button type="button" className="topBtn">
                 + 제품추가
               </button>
-              <button type="button" className="topBtn">
-                삭제
-              </button>
             </div>
           </header>
-
           <CartOrder />
         </div>
       </div>

@@ -5,7 +5,7 @@ class CartCount extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: 0,
+      value: 1,
     };
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleDecrement = this.handleDecrement.bind(this);
@@ -24,7 +24,6 @@ class CartCount extends React.Component {
   }
 
   render() {
-    console.log(this.value);
     return (
       <>
         <div className="btnDetail">
@@ -35,7 +34,7 @@ class CartCount extends React.Component {
           >
             -
           </button>
-          <span className="countNum">{this.state.value + 1}</span>
+          <span className="countNum">{this.state.value}</span>
           <button
             type="button"
             className="countButton"
