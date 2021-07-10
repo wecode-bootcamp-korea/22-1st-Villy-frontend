@@ -5,15 +5,17 @@ import './Nav.scss';
 class Nav extends React.Component {
   constructor() {
     super();
-    this.click = React.createRef();
+    this.state = {
+      navActiveNumber: '',
+    };
   }
 
-  handle = event => {
-    console.log(event);
-    return 'a';
-  };
+  handle = clickedNavNumber =>
+    this.setState({ navActiveNumber: clickedNavNumber });
 
   render() {
+    console.log(`this.state.navActiveNumber`, this.state.navActiveNumber);
+    const { navActiveNumber } = this.state;
     return (
       <nav className="navbar">
         <div className="navLogo">
@@ -23,14 +25,14 @@ class Nav extends React.Component {
         </div>
         <ul className="navMenu">
           <li className="navList">
-            {MENU_LIST.map((link, index) => {
+            {MENU_LIST.map((link, id) => {
               return (
                 <Link
-                  className={`navLink ${this.handle}`}
+                  className={navActiveNumber === id ? 'a' : 'b'}
                   to={link.link}
-                  ref={this.click}
-                  key={index}
-                  onClick={() => this.handle(index)}
+                  key={id}
+                  name={id}
+                  onClick={() => this.handle(id)}
                 >
                   {link.name}
                 </Link>
@@ -44,11 +46,11 @@ class Nav extends React.Component {
 }
 
 const MENU_LIST = [
-  { name: '추천상품', link: '/' },
-  { name: '제품보기', link: '/product' },
-  { name: '고객후기', link: '/' },
-  { name: '장바구니', link: '/cart' },
-  { name: '로그인', link: '/login' },
+  { id: 1, name: '추천상품', link: '/' },
+  { id: 2, name: '제품보기', link: '/product' },
+  { id: 3, name: '고객후기', link: '/' },
+  { id: 4, name: '장바구니', link: '/cart' },
+  { id: 5, name: '로그인', link: '/login' },
 ];
 
 export default Nav;
