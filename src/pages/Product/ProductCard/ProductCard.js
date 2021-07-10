@@ -1,137 +1,90 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import ProductCard from './ProductCard/ProductCard';
-// import './Product.scss';
+import ProductIcon from './ProductIcon/ProductIcon';
+import ProductDescription from './ProductDescription/ProductDescription';
 
-export class Product extends Component {
+import { AiOutlinePlus } from 'react-icons/ai';
+
+import './ProductCard.scss';
+
+export class ProductCard extends Component {
   constructor() {
     super();
     this.state = {
-      productCard: [],
       addCart: false,
-      isModalOn: false,
-      isChecked: false,
     };
   }
 
-  componentDidMount() {
-    fetch('./data/ProductData.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          // productCard: data.message,
-          productCard: data,
-        });
-      });
-  }
+  handleCartButton = event => {
+    event.preventDefault();
 
-  popupProductModal = () => {
     this.setState({
-      isModalOn: !this.state.isModalOn,
-    });
-  };
-
-  // 이부분추가
-  handleCheckBox = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
+      addCart: !this.state.addCart,
     });
   };
 
   render() {
-    const { productCard, isChecked } = this.state;
+    const { backgroundColor } = this.props;
+
+    const {
+      productName,
+      icon_image_url,
+      thumbnail_image_url,
+      summary,
+      productTablet,
+      productPrice,
+    } = this.props.productCard;
 
     return (
-      <div className="Product">
-        <header className="productHeader">
-          <h1>
-            건강한 삶을 위한
-            <br />
-            빌리의 연구와 도전은 계속됩니다.
-          </h1>
-        </header>
-        <section className="productBody">
-          <h2 className="sr-only">Product Body</h2>
+      <li className="ProductCard" style={{ backgroundColor }}>
+        <Link to="/detail">
+          <header className="productCardHeader">
+            <div className="nameBox">
+              <h2>
+                <strong>{productName}</strong>
+              </h2>
 
-          {/* 이부분추가 */}
-          <ul className="productCategory">
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                checked={isChecked}
-                name="efficacy"
-                value="모발"
-                onClick={this.handleCheckBox}
-              />
-              <img
-                alt="모발"
-                className="iconImage"
-                src="images/hairstyle.svg"
-              />
-              모발
-            </li>
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                checked={isChecked}
-                name="efficacy"
-                value="뼈"
-                onClick={this.handleCheckBox}
-              />
-              <img className="iconImage" alt="뼈" src="images/bone.svg" />뼈
-            </li>
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                checked={isChecked}
-                name="efficacy"
-                value="피부"
-                onClick={this.handleCheckBox}
-              />
-              <img className="iconImage" alt="피부" src="images/therapy.svg" />
-              피부
-            </li>
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                checked={isChecked}
-                name="efficacy"
-                value="성장"
-                onClick={this.handleCheckBox}
-              />
-              <img className="iconImage" alt="성장" src="images/height.svg" />
-              성장
-            </li>
-          </ul>
-
-          <ul className="productList">
-            {productCard.map((product, idx) => (
-              <ProductCard
-                key={idx}
-                productCard={product}
-                backgroundColor={
-                  BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
-                }
-                handleCartButton={this.handleCartButton}
-              />
-            ))}
-          </ul>
-        </section>
-      </div>
+              <ul className="icon">
+                {icon_image_url.map((iconImage, idx) => (
+                  <ProductIcon key={idx} icon_image_url={iconImage} />
+                ))}
+              </ul>
+            </div>
+            <div className="pillImgBox">
+              <i className={`pillImage ${thumbnail_image_url}`} />
+            </div>
+          </header>
+          <section className="productCardBody">
+            <div className="descriptonBox">
+              <ul className="description">
+                {summary.map((descriptionItem, idx) => (
+                  <ProductDescription key={idx} summary={descriptionItem} />
+                ))}
+              </ul>
+            </div>
+            <div className="quantityAndpriceBox">
+              <p className="quantity">{productTablet}일분</p>
+              <p className="price">
+                {parseInt(productPrice).toLocaleString()}원
+              </p>
+            </div>
+          </section>
+          <footer className="productCardFooter">
+            <p className="add">더보기</p>
+            <button
+              className="cartBtn"
+              onClick={this.handleCartButton}
+              disabled={this.state.addCart}
+            >
+              {!this.state.addCart && <AiOutlinePlus className="addIcon" />}
+              {this.state.addCart ? '장바구니 추가됨' : '장바구니 담기'}
+            </button>
+          </footer>
+        </Link>
+      </li>
     );
   }
 }
 
-const BACKGROUNDCOLOR_LIST = [
-  '#E9F9FE',
-  '#E0B5BA',
-  '#EFE9D9',
-  '#B1D9F1',
-  '#EAE9E9',
-  '#AEE19E',
-  '#FFF0A6',
-  '#CBC5E8',
-  '#FAD4BF',
-];
-
-export default Product;
+export default ProductCard;
