@@ -1,0 +1,53 @@
+@import '../../../styles/variables.scss';
+
+.cartList {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-top: 1px solid lightgray;
+
+  .productList {
+    display: flex;
+  }
+
+  input[type='checkbox'] {
+    margin-top: 30px;
+    zoom: 2;
+  }
+
+  .cartListImg {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  .listDetail {
+    display: inline-flex;
+    flex-direction: column;
+    width: 700px;
+    margin-top: 30px;
+    margin-left: 15px;
+
+    .listFont {
+      margin-left: 10px;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+  }
+
+  .countButtonWrppaer {
+    @include display-flex;
+
+    .boxRight {
+      display: flex;
+
+      .boxPrice {
+        margin-left: 397px;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+    }
+  }
+}

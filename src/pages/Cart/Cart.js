@@ -1,5 +1,5 @@
 import React from 'react';
-import CartList from './CartList';
+import CartOrder from './CartOrder/CartOrder';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -19,7 +19,7 @@ class Cart extends React.Component {
             </div>
           </header>
 
-          <CartList />
+          <CartOrder />
         </div>
       </div>
     );

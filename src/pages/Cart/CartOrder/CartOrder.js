@@ -1,25 +1,33 @@
 import React from 'react';
-import CartCount from './CartCount';
+import CartList from '../CartList/CartList';
+import './CartOrder.scss';
 
-class CartList extends React.Component {
+class CartOrder extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      cartList: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/data/CartListData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cartList: data,
+        });
+      });
+  }
+
   render() {
+    const { cartList } = this.state;
     return (
       <>
         <h2 className="cartListTitle">정기구독 제품</h2>
-        <div className="cartList">
-          <input type="checkbox" />
-          <img alt="비타민" className="cartListImg" src="/images/pill1.jpeg" />
-          <div className="listDetail">
-            <p className="listFont">히알루론산 스피루리나</p>
-            <br />
-            <div className="countButtonWrppaer">
-              <CartCount />
-              <div className="boxRight">
-                <p className="boxPrice">19,500원</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CartList cartList={cartList} />
 
         <div className="cartDetail">
           <div className="cartBox">
@@ -61,4 +69,4 @@ class CartList extends React.Component {
   }
 }
 
-export default CartList;
+export default CartOrder;

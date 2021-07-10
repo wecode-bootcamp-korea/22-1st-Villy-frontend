@@ -1,4 +1,5 @@
 import React from 'react';
+import './CartCount.scss';
 
 class CartCount extends React.Component {
   constructor() {
