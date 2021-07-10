@@ -1,0 +1,12 @@
+@import '../../../../styles/variables.scss';
+
+.productDescription {
+  margin-bottom: 8px;
+  font-size: 13px;
+
+  &::before {
+    content: '·';
+    margin-right: 5px;
+    line-height: 14px;
+  }
+}
