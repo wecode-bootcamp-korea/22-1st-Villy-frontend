@@ -1,0 +1,19 @@
+{
+  "productID": 7,
+  "productName": "VitmainC",
+  "productPrice": 13900,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 C는 뼈, 피부 및 결합 조직을 형성, 성장 및 복구하는 데 필수적인 요소이다.\n 또한 혈관의 정상 기능에 필수적인 역할을 한다.\n 체내에서 적혈구를 만드는 데 필요한 철분을 흡수하는 데도 도움을 준다.",
+  "icon_image_url": [
+    "images/bone.svg",
+    "images/hairstyle.svg",
+    "images/height.svg"
+  ],
+  "icon_name": ["모발", "뼈", "피부"],
+  "summary": [
+    "두피의 혈액순환을 개선",
+    "백혈구 기능 개선을 통한 면역 강화",
+    "강력한 항상화제"
+  ]
+}

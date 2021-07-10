@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { GET_PRODUCTS_EFFICACY_API } from '../../config.js';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 
@@ -26,11 +27,11 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.2.138:8000/products/1')
+    fetch(`${GET_PRODUCTS_EFFICACY_API}/1.json`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data.message,
+          productData: data,
         });
       });
   }
@@ -41,41 +42,54 @@ export class ProductDetail extends Component {
   };
 
   render() {
-    if (!this.state.productData[0]) {
+    if (!this.state.productData.productID) {
       return <div>..Loading</div>;
     } else {
-      const { backgroundColor, cartToggleOn, recommendToggleOn } =
-        this.state.productData;
+      const { backgroundColor, cartToggleOn, recommendToggleOn } = this.state;
       const {
-        icon_name,
         icon_image_url,
         productDescription,
         productID,
         productName,
         productPrice,
         thumbnail_image_url,
-        icon,
-      } = this.state.productData[0];
-      console.log(`this.state.productData[0]`, this.state.productData[0]);
+        productTablet,
+        summary,
+      } = this.state.productData;
+
       return (
         <div className="ProductDetail">
-          <main>
-            {/* <main style={{ backgroundColor: backgroundColor[productID] }}> */}
+          <main style={{ backgroundColor: backgroundColor[productID] }}>
             <header className="headTextWrap">
-              {icon_name.map((el, index) => (
-                <p key={index}>{el}</p>
-              ))}
-              <h1>
-                <br />
-                {productName}
-              </h1>
-              <ul className="propertyIcons">
-                {icon_image_url.map((el, index) => (
-                  <img key={index} src={el} alt="icon" />
+              <ul className="summaryList">
+                {summary.map((summary, index) => (
+                  <li className="summary" key={index}>
+                    {summary}
+                  </li>
                 ))}
               </ul>
-              <p>{productDescription}</p>
-              <strong>{productPrice}</strong>
+              <h1>{productName}</h1>
+              <div className="propertyIcons">
+                {icon_image_url.map((icon, index) => (
+                  <img
+                    className="propertyIcon"
+                    key={index}
+                    src={icon}
+                    alt="icon"
+                  />
+                ))}
+              </div>
+              {productDescription.split(`\n`).map((line, index) => (
+                <p key={index} className="productDescription">
+                  {line}
+                </p>
+              ))}
+              <div className="productSaleInfo">
+                <span className="tablet">{productTablet}일분</span>
+                <span className="price">
+                  {parseInt(productPrice).toLocaleString()}원
+                </span>
+              </div>
               <ul className="certificationIcons">
                 <li className="certificationIconList">
                   <FaCreativeCommons className="certificationIcon" />
@@ -97,7 +111,7 @@ export class ProductDetail extends Component {
           <section className="comment">
             <div className="question">
               <div className="recommendTitle">
-                <p className="recommendTitileText">써보니까 너무 좋아요!</p>
+                <p className="recommendTitileText">생생 후기를 읽어보세요!</p>
               </div>
               <div className="recommendButtonWrap">
                 <button name="recommend" onClick={this.ToggleFunction}>
@@ -113,6 +127,7 @@ export class ProductDetail extends Component {
               <div className="answer">
                 <p className="recommendDescription">
                   언제나 애용하고 있습니다.
+                  <br /> -직장인 김모씨-
                 </p>
               </div>
             )}

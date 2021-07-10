@@ -1,0 +1,15 @@
+{
+  "productID": 5,
+  "productName": "VitaminB6",
+  "productPrice": 10600,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 B6는 단백질과 아미노산의 대사를 촉진하고 신경전달물질 합성에 보조 효소로 작용한다.\n 비타민 B6의 일부인 피리독신은 온몸에 산소를 전달하는 헤모글로빈을 만드는데 도움을 준다.",
+  "icon_image_url": ["images/bone.svg"],
+  "icon_name": ["모발"],
+  "summary": [
+    "아미노산의 이용에 도움",
+    "단백질과 지방의 체내 이용 향상",
+    "면역체게 강화"
+  ]
+}

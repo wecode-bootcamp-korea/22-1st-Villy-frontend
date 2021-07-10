@@ -1,0 +1,15 @@
+{
+  "productID": 1,
+  "productName": "VitaminA",
+  "productPrice": 19500,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 A는 눈과 피부를 튼튼하게 유지 시켜주고\n 면역력 향상에 도움을 준다.\n 피부의 세포를 유지하고 피지와 땀의 분비를 촉진하여\n 피부를 부드럽고 매끄럽게 해준다.",
+  "icon_image_url": ["images/height.svg", "images/therapy.svg"],
+  "icon_name": ["성장", "피부"],
+  "summary": [
+    "눈의 성장과 발육지원",
+    "야맹증, 감염 예방",
+    "피부 점막을 정상으로 유지"
+  ]
+}

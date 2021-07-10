@@ -4,48 +4,69 @@
   height: 100vh;
 
   main {
-    @include display-flex(space-evenly, center);
+    @include display-flex(center, center);
     height: 75%;
     max-height: 1000px;
+    padding-right: 100px;
     background-size: cover;
     background-position: center;
 
     .headTextWrap {
-      @include display-flex(center, flex-start);
+      @include display-flex(space-around, flex-start);
       flex-direction: column;
-      height: 100%;
+      height: 450px;
+      width: 500px;
+
+      .summary {
+        line-height: 1.4;
+        font-size: 13px;
+      }
 
       h1 {
         font-size: 36px;
         line-height: 1.25;
         font-weight: bold;
         color: $color-font;
+      }
 
-        span {
-          font-weight: normal;
+      .propertyIcons {
+        @include display-flex(space-around, center);
+        width: 150px;
+        height: 40px;
+
+        .propertyIcon {
+          height: 30px;
         }
       }
 
-      p {
-        font-size: 16px;
-        line-height: 1.25;
-        padding-top: 30px;
+      .productDescription {
+        font-size: 18px;
         color: $color-font;
-
-        strong {
-          font-weight: bold;
-        }
+        line-height: 1.3;
       }
 
-      .certificationIconList {
-        float: left;
-        padding-left: 15px;
-
-        .certificationIcon {
-          font-size: 40px;
-        }
+      .productSaleInfo {
+        @include display-flex(space-around, center);
+        width: 200px;
+        height: 40px;
+        font-weight: bold;
+        font-size: 20px;
       }
 
+      .certificationIcons {
+        @include display-flex(space-around, center);
+        width: 200px;
+        height: 40px;
+
+        .certificationIconList {
+          float: left;
+          padding-left: 15px;
+
+          .certificationIcon {
+            font-size: 40px;
+          }
+        }
+      }
       .Off {
         background-color: $color-logo;
       }
@@ -73,10 +94,9 @@
         }
       }
     }
-    .productImg {
-      height: 100px;
-      width: 100px;
-      background-color: red;
+    i {
+      font-size: 100px;
+      margin-left: 50px;
     }
   }
 
@@ -118,6 +138,8 @@
 
       .recommendDescription {
         font-size: 18px;
+        line-height: 1.3;
+        text-align: center;
       }
     }
   }
