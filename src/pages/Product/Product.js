@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// import { GET_PRODUCTS_API } from '../../../src/config.js';
+
 import ProductCard from './ProductCard/ProductCard';
 
 import './Product.scss';
@@ -11,39 +13,32 @@ export class Product extends Component {
       productCard: [],
       addCart: false,
       isModalOn: false,
-      // isChecked: false,
-      // currentId: 1,
-      // 최초 state값을 무엇으로 줘야하지 ?
+      currentId: 0,
     };
   }
 
   componentDidMount() {
-    fetch('http://192.168.0.19:8000/products')
+    fetch('./data/ProductData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
           productCard: data.message,
-          // productCard: data,
         });
       });
   }
 
-  // handleCheckBox = id => {
-  //   console.log('이건 onchange');
-  //   this.setState({
-  //     currentId: id,
-  //     isChecked: !this.state.isChecked,
-  //   });
-  // };
-
-  // popupProductModal = () => {
-  //   this.setState({
-  //     isModalOn: !this.state.isModalOn,
-  //   });
-  // };
+  handleCheckBox = id => {
+    fetch('./data/ProductData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          currentId: id,
+        });
+      });
+  };
 
   render() {
-    console.log();
+    console.log(this.state.currentId);
 
     const { productCard } = this.state;
 
@@ -58,57 +53,37 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
-
           {/* 이부분추가 */}
-          <ul className="productCategory">
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                // checked={!isChecked}
-                name="efficacy"
-                value="모발"
-                // onChange={() => this.handleCheckBox(1)}
-              />
-              <img
-                alt="모발"
-                className="iconImage"
-                src="images/hairstyle.svg"
-              />
-              모발
-            </li>
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                // checked={this.state.currentId}
-                name="efficacy"
-                value="뼈"
-                // onChange={() => this.handleCheckBox(2)}
-              />
-              <img className="iconImage" alt="뼈" src="images/bone.svg" />뼈
-            </li>
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                // checked={this.state.currentId}
-                name="efficacy"
-                value="피부"
-                // onChange={() => this.handleCheckBox(3)}
-              />
-              <img className="iconImage" alt="피부" src="images/therapy.svg" />
-              피부
-            </li>
-            <li className="categoryList">
-              <input
-                type="checkbox"
-                // checked={this.state.currentId}
-                name="efficacy"
-                value="성장"
-                // onChange={() => this.handleCheckBox(4)}
-              />
-              <img className="iconImage" alt="성장" src="images/height.svg" />
-              성장
-            </li>
-          </ul>
+          <form className="productCategory">
+            <input
+              type="checkbox"
+              name="efficacy"
+              value="모발"
+              onChange={() => this.handleCheckBox(1)}
+            />
+            모발
+            <input
+              type="checkbox"
+              name="efficacy"
+              value="뼈"
+              onChange={() => this.handleCheckBox(2)}
+            />
+            뼈
+            <input
+              type="checkbox"
+              name="efficacy"
+              value="피부"
+              onChange={() => this.handleCheckBox(3)}
+            />
+            피부
+            <input
+              type="checkbox"
+              name="efficacy"
+              value="성장"
+              onChange={() => this.handleCheckBox(4)}
+            />
+            성장
+          </form>
 
           <ul className="productList">
             {productCard.map((product, idx) => (
