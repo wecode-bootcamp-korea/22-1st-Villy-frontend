@@ -34,16 +34,16 @@ class Nav extends React.Component {
         </div>
         <ul className="navMenu">
           <li className="navList">
-            {MENU_LIST.map((link, id) => {
+            {MENU_LIST.map((link, index) => {
               return (
                 <Link
                   className={`navLink ${
-                    navActiveNumber === id ? 'active' : 'disactive'
+                    navActiveNumber === index ? 'active' : 'disactive'
                   }`}
                   to={link.link}
-                  key={id}
-                  name={id}
-                  onClick={() => this.navActiveHandler(id)}
+                  key={index}
+                  name={index}
+                  onClick={() => this.navActiveHandler(index)}
                 >
                   {link.name}
                 </Link>
@@ -57,8 +57,8 @@ class Nav extends React.Component {
 }
 
 const MENU_LIST = [
-  { id: 1, name: '추천상품', link: '/' },
-  { id: 2, name: '제품보기', link: '/product' },
+  { id: 8, name: '추천상품', link: '/' },
+  { id: 9, name: '제품보기', link: '/product' },
   { id: 3, name: '고객후기', link: '/' },
   { id: 4, name: '장바구니', link: '/cart' },
   { id: 5, name: '로그인', link: '/login' },
