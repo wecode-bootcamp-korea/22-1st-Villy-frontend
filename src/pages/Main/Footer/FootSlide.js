@@ -32,10 +32,10 @@ export class FootSlide extends Component {
           className="slide"
           style={{ transform: `translateX(${-100 * slideCardNumber}vw)` }}
         >
-          {SLIDE_LIST.map(({ id, icon, alt, description, user }) => (
+          {SLIDE_LIST.map(({ id, icon, description, user }) => (
             <li className="slideList" key={id} value={id}>
               <article className="slideContent">
-                <img className="slideIcon" src={icon} alt={alt} />
+                <i className={icon}></i>
                 <div className="slideTextWrap">
                   {description.split('\n').map((line, index) => (
                     <p key={index} className="slideText">
@@ -76,7 +76,7 @@ export default FootSlide;
 const SLIDE_LIST = [
   {
     id: 0,
-    icon: 'http://localhost:3000/images/supplements.png',
+    icon: 'fas fa-pills',
     alt: 'supplements',
     description:
       '냉장고 구석,\n 다 먹지도 못한 영양제가 \n자리만 차지하고 있어요.',
@@ -84,7 +84,7 @@ const SLIDE_LIST = [
   },
   {
     id: 1,
-    icon: 'http://localhost:3000/images/vitamin.png',
+    icon: 'fas fa-tablets',
     alt: 'vitamin',
     description:
       '유통기한은 이미 다 지나버렸고,\n 다시 구매하려니 어떤 걸 사야 할지 고민돼요.',
@@ -92,21 +92,17 @@ const SLIDE_LIST = [
   },
   {
     id: 2,
-    icon: 'http://localhost:3000/images/vitamins.png',
+    icon: 'fas fa-cookie-bite',
     alt: 'vitamins',
     description: '세상 다양한 비타민들.\n 서로자기가 최고라고만 말하고 있어요.',
     user: '성남 사시는 최명준님',
   },
   {
     id: 3,
-    icon: 'http://localhost:3000/images/vitamins.png',
+    icon: 'far fa-question-circle',
     alt: 'vitamins',
     description:
       '화장품처럼 비타민도 같이 섭취하면 \n 안좋은 성분이 있을까요? 궁금해요.',
     user: '선릉 사시는 위코드님',
   },
 ];
-//<i class="fas fa-pills"></i>
-//<i class="fas fa-tablets"></i>
-//<i class="fas fa-cookie-bite"></i>
-//<i class="far fa-question-circle"></i>
