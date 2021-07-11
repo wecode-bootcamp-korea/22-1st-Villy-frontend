@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import { GET_PRODUCTS_API } from '../../../src/config.js';
+import { GET_PRODUCTS_API } from '../../../src/config.js';
 
 import ProductCard from './ProductCard/ProductCard';
 
@@ -13,12 +13,16 @@ export class Product extends Component {
       productCard: [],
       addCart: false,
       isModalOn: false,
-      currentId: 0,
+      checked: false,
+      bone: false,
+      hair: false,
+      growth: false,
+      skin: false,
     };
   }
 
   componentDidMount() {
-    fetch('./data/ProductData.json')
+    fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -27,19 +31,32 @@ export class Product extends Component {
       });
   }
 
-  handleCheckBox = id => {
-    fetch('./data/ProductData.json')
+  handleCheckBox = event => {
+    console.log(this.state.bone, `this.state.bone`);
+    console.log(this.state.hair, `this.state.hair`);
+    console.log(this.state.growth, `this.state.growth`);
+    console.log(this.state.skin, `this.state.skin`);
+
+    fetch(`${GET_PRODUCTS_API}?efficacy=${event.target.value}`)
       .then(res => res.json())
       .then(data => {
-        this.setState({
-          currentId: id,
-        });
+        if (event.target.value) {
+          this.setState({
+            productCard: data.message,
+          });
+        } else {
+          this.setState({
+            productCard: data.message,
+          });
+        }
       });
+    // this.setState({
+    //   checked: !this.state.checked,
+    // });
   };
 
   render() {
-    console.log(this.state.currentId);
-
+    console.log(this.state.productCard);
     const { productCard } = this.state;
 
     return (
@@ -53,36 +70,40 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
-          {/* 이부분추가 */}
+
           <form className="productCategory">
             <input
               type="checkbox"
-              name="efficacy"
-              value="모발"
-              onChange={() => this.handleCheckBox(1)}
-            />
-            모발
-            <input
-              type="checkbox"
-              name="efficacy"
-              value="뼈"
-              onChange={() => this.handleCheckBox(2)}
+              name="bone"
+              value="1"
+              checked={this.state.checked.value}
+              onChange={this.handleCheckBox}
             />
             뼈
             <input
               type="checkbox"
-              name="efficacy"
-              value="피부"
-              onChange={() => this.handleCheckBox(3)}
+              name="hair"
+              value="2"
+              checked={this.state.checked.value}
+              onChange={this.handleCheckBox}
             />
-            피부
+            모발
             <input
               type="checkbox"
-              name="efficacy"
-              value="성장"
-              onChange={() => this.handleCheckBox(4)}
+              name="growth"
+              value="3"
+              checked={this.state.checked.value}
+              onChange={this.handleCheckBox}
             />
             성장
+            <input
+              type="checkbox"
+              name="skin"
+              value="4"
+              checked={this.state.checked.value}
+              onChange={this.handleCheckBox}
+            />
+            피부
           </form>
 
           <ul className="productList">

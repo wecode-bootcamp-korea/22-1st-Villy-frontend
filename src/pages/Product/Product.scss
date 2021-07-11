@@ -28,7 +28,6 @@
     .productCategory {
       @include display-flex;
       padding-bottom: 10px;
-
       .categoryList {
         @include display-flex;
         width: 100px;
