@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { GET_PRODUCTS_API } from '../../../src/config.js';
+// import { GET_PRODUCTS_API } from '../../../src/config.js';
 
 import ProductCard from './ProductCard/ProductCard';
 
@@ -12,8 +12,7 @@ export class Product extends Component {
     this.state = {
       productCard: [],
       addCart: false,
-      isModalOn: false,
-      checked: false,
+      // checked: false,
       bone: false,
       hair: false,
       growth: false,
@@ -22,7 +21,8 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}`)
+    // fetch(`${GET_PRODUCTS_API}`)
+    fetch('./data/ProductData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -31,32 +31,54 @@ export class Product extends Component {
       });
   }
 
-  handleCheckBox = event => {
-    console.log(this.state.bone, `this.state.bone`);
-    console.log(this.state.hair, `this.state.hair`);
-    console.log(this.state.growth, `this.state.growth`);
-    console.log(this.state.skin, `this.state.skin`);
+  makeCondition = () => {
+    let test = [];
 
-    fetch(`${GET_PRODUCTS_API}?efficacy=${event.target.value}`)
+    if (this.state.bone) {
+      test.push(`efficacy=1`);
+    }
+
+    if (this.state.hair) {
+      test.push(`efficacy=2`);
+    }
+
+    if (this.state.growth) {
+      test.push(`efficacy=3`);
+    }
+
+    if (this.state.skin) {
+      test.push(`efficacy=4`);
+    }
+
+    console.log(test.join('&'));
+    console.log(`./data/ProductData.json?${test.join('&')}`);
+    // fetch(`${GET_PRODUCTS_API}?`)
+    fetch(`./data/ProductData.json?${test.join('&')}`)
       .then(res => res.json())
       .then(data => {
-        if (event.target.value) {
-          this.setState({
-            productCard: data.message,
-          });
-        } else {
-          this.setState({
-            productCard: data.message,
-          });
-        }
+        this.setState({
+          productCard: data.message,
+        });
       });
-    // this.setState({
-    //   checked: !this.state.checked,
-    // });
+  };
+
+  handleCheckBox = event => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+    console.dir(event);
+    console.log(event.target.checked);
+
+    this.setState(
+      {
+        [event.target.name]: !this.state[event.target.name],
+      },
+      () => {
+        this.makeCondition();
+      }
+    );
   };
 
   render() {
-    console.log(this.state.productCard);
     const { productCard } = this.state;
 
     return (
@@ -72,37 +94,17 @@ export class Product extends Component {
           <h2 className="sr-only">Product Body</h2>
 
           <form className="productCategory">
-            <input
-              type="checkbox"
-              name="bone"
-              value="1"
-              checked={this.state.checked.value}
-              onChange={this.handleCheckBox}
-            />
-            뼈
-            <input
-              type="checkbox"
-              name="hair"
-              value="2"
-              checked={this.state.checked.value}
-              onChange={this.handleCheckBox}
-            />
+            <input type="checkbox" name="bone" onChange={this.handleCheckBox} />
+            <label>뼈</label>
+            <input type="checkbox" name="hair" onChange={this.handleCheckBox} />
             모발
             <input
               type="checkbox"
               name="growth"
-              value="3"
-              checked={this.state.checked.value}
               onChange={this.handleCheckBox}
             />
             성장
-            <input
-              type="checkbox"
-              name="skin"
-              value="4"
-              checked={this.state.checked.value}
-              onChange={this.handleCheckBox}
-            />
+            <input type="checkbox" name="skin" onChange={this.handleCheckBox} />
             피부
           </form>
 
