@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GET_PRODUCTS_EFFICACY_API } from '../../config.js';
+import { GET_PRODUCTS_API, POST_ADD_CART_API } from '../../config.js';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 
@@ -22,12 +22,13 @@ export class ProductDetail extends Component {
         7: '#FFF0A6',
         8: '#CBC5E8',
         9: '#FAD4BF',
+        10: '#E9F9FE',
       },
     };
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_EFFICACY_API}/1.json`)
+    fetch(`${GET_PRODUCTS_API}/1.json`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -36,7 +37,22 @@ export class ProductDetail extends Component {
       });
   }
 
-  ToggleFunction = event => {
+  //백엔드와 통신을 통해 확인 완료
+  // postCart = () => {
+  //   fetch(`${POST_ADD_CART_API}`, {
+  //     method: cartToggleOn ? 'DELETE' : 'POST',
+  //     body: JSON.stringify({
+  //       productID: 1,
+  //     }),
+  //   });
+  // };
+
+  addCart = event => {
+    this.postCart();
+    this.toggleFunction(event);
+  };
+
+  toggleFunction = event => {
     const name = event.currentTarget.name;
     this.setState({ [`${name}ToggleOn`]: !this.state[`${name}ToggleOn`] });
   };
@@ -54,20 +70,12 @@ export class ProductDetail extends Component {
         productPrice,
         thumbnail_image_url,
         productTablet,
-        summary,
       } = this.state.productData;
 
       return (
         <div className="ProductDetail">
           <main style={{ backgroundColor: backgroundColor[productID] }}>
             <header className="headTextWrap">
-              {/* <ul className="summaryList">
-                {summary.map((summary, index) => (
-                  <li className="summary" key={index}>
-                    {summary}
-                  </li>
-                ))}
-              </ul> */}
               <h1>{productName}</h1>
               <div className="propertyIcons">
                 {icon_image_url.map((icon, index) => (
@@ -101,7 +109,7 @@ export class ProductDetail extends Component {
               <button
                 name="cart"
                 className={`cartButton ${cartToggleOn ? 'On' : 'Off'}`}
-                onClick={this.ToggleFunction}
+                onClick={this.addCart}
               >
                 장바구니 담기
               </button>
@@ -114,7 +122,7 @@ export class ProductDetail extends Component {
                 <p className="recommendTitileText">생생 후기를 읽어보세요!</p>
               </div>
               <div className="recommendButtonWrap">
-                <button name="recommend" onClick={this.ToggleFunction}>
+                <button name="recommend" onClick={this.toggleFunction}>
                   {recommendToggleOn ? (
                     <RiArrowUpSLine className="recommendToggleButtonIcon" />
                   ) : (
