@@ -52,7 +52,11 @@ export class ProductCard extends Component {
               </ul>
             </div>
             <div className="pillImgBox">
-              <i className={`pillImage ${thumbnail_image_url}`} />
+              <img
+                className="pillImage"
+                alt={productName}
+                src={thumbnail_image_url}
+              />
             </div>
           </header>
           <section className="productCardBody">
