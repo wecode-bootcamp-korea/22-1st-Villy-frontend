@@ -8,10 +8,12 @@ import './ProductDetail.scss';
 export class ProductDetail extends Component {
   constructor() {
     super();
+    this.set = React.createRef();
     this.state = {
       productData: {},
       cartToggleOn: false,
       recommendToggleOn: false,
+      addedCartAlertList: [],
       backgroundColor: {
         1: '#E9F9FE',
         2: '#E0B5BA',
@@ -33,23 +35,37 @@ export class ProductDetail extends Component {
       .then(data => {
         this.setState({
           productData: data,
+          cartToggleOn: data.cart_exist,
         });
       });
   }
 
-  //백엔드와 통신을 통해 확인 완료
-  // postCart = () => {
-  //   fetch(`${POST_ADD_CART_API}`, {
-  //     method: cartToggleOn ? 'DELETE' : 'POST',
-  //     body: JSON.stringify({
-  //       productID: 1,
-  //     }),
-  //   });
-  // };
+  addedCartAlert = () => {
+    const { addedCartAlertList } = this.state;
+    addedCartAlertList.push('');
+    setTimeout(() => {
+      addedCartAlertList.pop();
+      this.setState({ addedCartAlertList: this.state.addedCartAlertList });
+    }, 3000);
+  };
 
-  addCart = event => {
+  postCart = () => {
+    const { cartToggleOn } = this.state;
+    if (cartToggleOn === true) {
+      this.addedCartAlert();
+    } else {
+      fetch(`${POST_ADD_CART_API}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          productID: 1,
+        }),
+      });
+    }
+  };
+
+  addCart = () => {
     this.postCart();
-    this.toggleFunction(event);
+    this.setState({ cartToggleOn: true });
   };
 
   toggleFunction = event => {
@@ -61,7 +77,12 @@ export class ProductDetail extends Component {
     if (!this.state.productData.productID) {
       return <div>..Loading</div>;
     } else {
-      const { backgroundColor, cartToggleOn, recommendToggleOn } = this.state;
+      const {
+        backgroundColor,
+        cartToggleOn,
+        recommendToggleOn,
+        addedCartAlertList,
+      } = this.state;
       const {
         icon_image_url,
         productDescription,
@@ -140,6 +161,15 @@ export class ProductDetail extends Component {
               </div>
             )}
           </section>
+          <div className="addedCartAlertWrap">
+            {addedCartAlertList.map((list, index) => {
+              return (
+                <div key={index} className="addedCartAlert">
+                  <p>이미 추가되었습니다.</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       );
     }
