@@ -1,4 +1,5 @@
 @import '../../styles/reset.scss';
+@import '../../styles/variables.scss';
 
 @mixin login_Input_Button_Form {
   width: 400px;
@@ -44,9 +45,10 @@
         @include login_Input_Button_Form;
         margin-top: 20px;
         color: white;
-        background-color: #fddcaa;
+        background-color: #ffa273;
         border: none;
         border-radius: 20px;
+        font-size: 15px;
         font-weight: bolder;
 
         &:hover {
@@ -54,7 +56,7 @@
         }
 
         &:enabled {
-          background-color: red;
+          background-color: $color-logo;
         }
       }
     }
@@ -68,7 +70,7 @@
         color: gray;
 
         &:hover {
-          color: red;
+          color: $color-font;
           font-weight: bolder;
           cursor: pointer;
           opacity: 2;
