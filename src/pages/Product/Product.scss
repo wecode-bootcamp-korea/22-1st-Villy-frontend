@@ -28,22 +28,23 @@
     .productCategory {
       @include display-flex;
       padding-bottom: 10px;
-      .categoryList {
+
+      .ProductCheckBox {
         @include display-flex;
         width: 100px;
         padding-bottom: 5px;
 
         input {
-          margin-right: 5px;
+          margin: 0 5px 10px 0;
         }
 
-        .iconImage {
-          width: 30px;
-          margin-right: 5px;
-        }
+        label {
+          @include display-flex;
 
-        .categoryText {
-          line-height: 30px;
+          .iconImage {
+            width: 30px;
+            margin-right: 5px;
+          }
         }
       }
     }
@@ -71,8 +72,10 @@
     .productCategory {
       max-width: 400px;
 
-      .iconImage {
-        display: none;
+      .ProductCheckBox {
+        .categoryText {
+          display: none;
+        }
       }
     }
 

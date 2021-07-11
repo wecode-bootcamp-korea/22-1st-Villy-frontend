@@ -12,7 +12,6 @@ export class Product extends Component {
     this.state = {
       productCard: [],
       addCart: false,
-      // checked: false,
       bone: false,
       hair: false,
       growth: false,
@@ -32,28 +31,26 @@ export class Product extends Component {
   }
 
   makeCondition = () => {
-    let test = [];
+    let fillter = [];
 
     if (this.state.bone) {
-      test.push(`efficacy=1`);
+      fillter.push(`efficacy=1`);
     }
 
     if (this.state.hair) {
-      test.push(`efficacy=2`);
+      fillter.push(`efficacy=2`);
     }
 
     if (this.state.growth) {
-      test.push(`efficacy=3`);
+      fillter.push(`efficacy=3`);
     }
 
     if (this.state.skin) {
-      test.push(`efficacy=4`);
+      fillter.push(`efficacy=4`);
     }
 
-    console.log(test.join('&'));
-    console.log(`./data/ProductData.json?${test.join('&')}`);
     // fetch(`${GET_PRODUCTS_API}?`)
-    fetch(`./data/ProductData.json?${test.join('&')}`)
+    fetch(`./data/ProductData.json?${fillter.join('&')}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -63,11 +60,6 @@ export class Product extends Component {
   };
 
   handleCheckBox = event => {
-    console.log(event.target.name);
-    console.log(event.target.value);
-    console.dir(event);
-    console.log(event.target.checked);
-
     this.setState(
       {
         [event.target.name]: !this.state[event.target.name],
@@ -76,6 +68,7 @@ export class Product extends Component {
         this.makeCondition();
       }
     );
+    console.log(this.state);
   };
 
   render() {
@@ -94,18 +87,62 @@ export class Product extends Component {
           <h2 className="sr-only">Product Body</h2>
 
           <form className="productCategory">
-            <input type="checkbox" name="bone" onChange={this.handleCheckBox} />
-            <label>뼈</label>
-            <input type="checkbox" name="hair" onChange={this.handleCheckBox} />
-            모발
-            <input
-              type="checkbox"
-              name="growth"
-              onChange={this.handleCheckBox}
-            />
-            성장
-            <input type="checkbox" name="skin" onChange={this.handleCheckBox} />
-            피부
+            <div className="ProductCheckBox">
+              <input
+                id="bone"
+                type="checkbox"
+                name="bone"
+                onChange={this.handleCheckBox}
+              />
+              <label for="bone">
+                <img className="iconImage" alt="hair" src="images/bone.svg" />
+                <span className="categoryText">뼈</span>
+              </label>
+            </div>
+            <div className="ProductCheckBox">
+              <input
+                id="hair"
+                type="checkbox"
+                name="hair"
+                onChange={this.handleCheckBox}
+              />
+              <label for="hair">
+                <img
+                  className="iconImage"
+                  alt="hair"
+                  src="images/hairstyle.svg"
+                />
+                <span className="categoryText">모발</span>
+              </label>
+            </div>
+            <div className="ProductCheckBox">
+              <input
+                id="growth"
+                type="checkbox"
+                name="growth"
+                onChange={this.handleCheckBox}
+              />
+              <label for="growth">
+                <img className="iconImage" alt="hair" src="images/height.svg" />
+                <span className="categoryText">성장</span>
+              </label>
+            </div>
+            <div className="ProductCheckBox">
+              <input
+                id="skin"
+                type="checkbox"
+                name="skin"
+                onChange={this.handleCheckBox}
+              />
+              <label for="skin">
+                <img
+                  className="iconImage"
+                  alt="hair"
+                  src="images/therapy.svg"
+                />
+                <span className="categoryText">피부</span>
+              </label>
+            </div>
           </form>
 
           <ul className="productList">
