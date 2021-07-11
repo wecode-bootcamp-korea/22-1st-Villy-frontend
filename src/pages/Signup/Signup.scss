@@ -1,4 +1,4 @@
-@import '../../styles/common.scss';
+@import '../../styles/variables.scss';
 
 // input창 테두리 스타일
 @mixin border-color {
@@ -96,7 +96,7 @@
         margin-top: 40px;
         margin-bottom: 50px;
         color: white;
-        background-color: salmon;
+        background-color: $color-logo;
         font-weight: bolder;
 
         &:hover {
