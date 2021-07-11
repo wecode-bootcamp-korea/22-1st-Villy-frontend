@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-class Nav extends React.Component {
+class Nav extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -20,7 +20,7 @@ class Nav extends React.Component {
   };
 
   handleScroll = () => {
-    if (window.pageYOffset > 0 && window.pageYOffset < 2) {
+    if (window.pageYOffset > 0) {
       this.setState({ isNavTransper: true });
     } else if (window.pageYOffset === 0) {
       this.setState({ isNavTransper: false });
