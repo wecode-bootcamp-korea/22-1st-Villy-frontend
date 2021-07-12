@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// import { GET_PRODUCTS_API } from '../../../src/config.js';
+import { GET_PRODUCTS_API } from '../../../src/config.js';
 
 import ProductCard from './ProductCard/ProductCard';
 
@@ -20,8 +20,8 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    // fetch(`${GET_PRODUCTS_API}`)
-    fetch('./data/ProductData.json')
+    // fetch('./data/ProductData.json')
+    fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -49,8 +49,10 @@ export class Product extends Component {
       fillter.push(`efficacy=4`);
     }
 
-    // fetch(`${GET_PRODUCTS_API}?`)
-    fetch(`./data/ProductData.json?${fillter.join('&')}`)
+    console.log(fillter.join('&'));
+
+    // fetch(`./data/ProductData.json?${fillter.join('&')}`)
+    fetch(`${GET_PRODUCTS_API}?${fillter.join('&')}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -72,6 +74,7 @@ export class Product extends Component {
   };
 
   render() {
+    console.log(this.state.productCard);
     const { productCard } = this.state;
 
     return (
