@@ -29,11 +29,12 @@ export class ProductCard extends Component {
 
     const {
       productName,
-      icon_image_url,
-      thumbnail_image_url,
-      summary,
-      productTablet,
       productPrice,
+      productTablet,
+      thumbnail_image_url,
+      icon_image_url,
+      summary,
+      icon_name,
     } = this.props.productCard;
 
     return (
@@ -47,7 +48,11 @@ export class ProductCard extends Component {
 
               <ul className="icon">
                 {icon_image_url.map((iconImage, idx) => (
-                  <ProductIcon key={idx} icon_image_url={iconImage} />
+                  <ProductIcon
+                    key={idx}
+                    icon_image_url={iconImage}
+                    icon_name={icon_name}
+                  />
                 ))}
               </ul>
             </div>
