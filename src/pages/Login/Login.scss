@@ -1,1 +1,81 @@
-@import '../../styles/common.scss';
+@import '../../styles/reset.scss';
+@import '../../styles/variables.scss';
+
+@mixin login_Input_Button_Form {
+  width: 400px;
+  height: 60px;
+}
+
+.Login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  background-color: #e9e9e9;
+
+  .loginView {
+    padding-top: 200px;
+    text-align: center;
+
+    .logoWrapper {
+      .loginLogo {
+        width: 100px;
+        height: 60px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .loginForm {
+      display: inline-grid;
+      margin-bottom: 60px;
+      text-align: center;
+
+      .loginInput {
+        @include login_Input_Button_Form;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+    }
+
+    .loginButton {
+      text-align: center;
+
+      .loginBtn {
+        @include login_Input_Button_Form;
+        margin-top: 20px;
+        color: white;
+        background-color: #ffa273;
+        border: none;
+        border-radius: 20px;
+        font-size: 15px;
+        font-weight: bolder;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:enabled {
+          background-color: $color-logo;
+        }
+      }
+    }
+
+    .loginText {
+      margin-top: 30px;
+      color: gray;
+
+      .loginFormLink {
+        text-decoration: none;
+        color: gray;
+
+        &:hover {
+          color: $color-font;
+          font-weight: bolder;
+          cursor: pointer;
+          opacity: 2;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "message": [
+    {
+      "productID": 1,
+      "productName": "VitaminA",
+      "productPrice": 19500,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 A는 눈과 피부를 튼튼하게 유지 시켜주고 면역력 향상에 도움을 준다. 피부의 세포를 유지하고 피지와 땀의 분비를 촉진하여 피부를 부드럽고 매끄럽게 해준다.",
+      "icon_image_url": ["images/height.svg", "images/therapy.svg"],
+      "icon_name": ["피부", "성장"],
+      "summary": [
+        "눈의 성장과 발육지원",
+        "야맹증, 감염 예방",
+        "피부 점막을 정상으로 유지"
+      ]
+    },
+    {
+      "productID": 2,
+      "productName": "VitaminB1",
+      "productPrice": 13500,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 B1은 탄수화물을 에너지로 만드는 과정을 도와준다. 여러가지 반응에 작용하는 조효소로, 신경 작용 조절, 식욕 증진, 소화액 촉진을 하는 데 도움되며 각기 예방을 한다.",
+      "icon_image_url": [],
+      "icon_name": [],
+      "summary": []
+    },
+    {
+      "productID": 3,
+      "productName": "VitaminB2",
+      "productPrice": 12400,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 B2는 건강한 피부, 손톱, 발톱, 그리고 머리털을 만드는 효능이 있다. 특히, 성장과 세포 재생을 도와고 구내염을 예방하기도 한다. 체내 유해한 활성 산소를 제어하는 항산화제 역할을 한다.",
+      "icon_image_url": ["images/therapy.svg"],
+      "icon_name": ["성장"],
+      "summary": [
+        "스트레스완화에 도움",
+        "신체의 성장 지원",
+        "건강한 피부, 탄력있는 피부 유지"
+      ]
+    },
+    {
+      "productID": 4,
+      "productName": "VitaminB3",
+      "productPrice": 12000,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 B3는 음주 후에 숙취를 유발하는 물질인 아세트알데하이드의 분해를 돕는다. 따라서 비타민 B3가 부족하면 술에 심하게 취하거나 숙취가 생길 수 있다. 또한 피부병, 구토, 변비, 설사, 소화장애, 두통, 피로, 기억상실 등의 증상이 나타날 수 있다.",
+      "icon_image_url": ["images/height.svg"],
+      "icon_name": ["피부"],
+      "summary": [
+        "신경과민 및 불면증 개선",
+        "만성두통과 편두통 예방",
+        "머리카락의 윤기 개선"
+      ]
+    },
+    {
+      "productID": 5,
+      "productName": "VitaminB6",
+      "productPrice": 10600,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 B6는 단백질과 아미노산의 대사를 촉진하고 신경전달물질 합성에 보조 효소로 작용한다. 비타민 B6의 일부인 피리독신은 온몸에 산소를 전달하는 헤모글로빈을 만드는데 도움을 준다.",
+      "icon_image_url": ["images/bone.svg"],
+      "icon_name": ["모발"],
+      "summary": [
+        "아미노산의 이용에 도움",
+        "단백질과 지방의 체내 이용 향상",
+        "면역체게 강화"
+      ]
+    },
+    {
+      "productID": 6,
+      "productName": "VitaminB9",
+      "productPrice": 11900,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 B9는 DNA 합성 및 복구, 세포 분열 및 세포 성장을 포함한 수많은 신체 기능에 필요하다. 태아의 신경고 혈관 발달에 중요하에 임산부와 노인에게 좋다.",
+      "icon_image_url": ["images/therapy.svg"],
+      "icon_name": ["성장"],
+      "summary": [
+        "노인 남성의 피로 해소와 체력증진에 도움",
+        "위장, 입 안의 점막 보호",
+        "기형아 예방"
+      ]
+    },
+    {
+      "productID": 7,
+      "productName": "VitmainC",
+      "productPrice": 13900,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 C는 뼈, 피부 및 결합 조직을 형성, 성장 및 복구하는 데 필수적인 요소이다. 또한 혈관의 정상 기능에 필수적인 역할을 한다. 체내에서 적혈구를 만드는 데 필요한 철분을 흡수하는 데도 도움을 준다.",
+      "icon_image_url": [
+        "images/bone.svg",
+        "images/hairstyle.svg",
+        "images/height.svg"
+      ],
+      "icon_name": ["모발", "뼈", "피부"],
+      "summary": [
+        "두피의 혈액순환을 개선",
+        "백혈구 기능 개선을 통한 면역 강화",
+        "강력한 항상화제"
+      ]
+    },
+    {
+      "productID": 8,
+      "productName": "VitmainD",
+      "productPrice": 21000,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 D는 지용성 비타민으로 칼슘 농도와 골밀도를 유지시켜 골다공증 위험을 예방하며 면역력을 높이는 역할을 한다. 충분한 섭취는 행복 호르몬 또는 세로토닌 합성에 관여해 우울감을 감소시켜준다. 또한 세포 성장을 조절하여 암을 예방하는 데 도움을 준다.",
+      "icon_image_url": ["images/hairstyle.svg"],
+      "icon_name": ["뼈"],
+      "summary": [
+        "뼈의 형성과 유지에 필요",
+        "골다공증발생 위험감소에 도움",
+        "칼슘과 인이 흡수되고 이용되는데 필요"
+      ]
+    },
+    {
+      "productID": 9,
+      "productName": "VitaminE",
+      "productPrice": 9900,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 E는 혈액 순환을 촉힌하며 이는 머리카락 성장에 잇어서 필수적이다. 그리고 항산화 작용으로 콜레스테롤 수치를 낮춰주고 노화방지에 도움을 준다. 우리 몸에 좋지 않은 화학 반응으로부터 세포를 보호하는 역할을 한다.",
+      "icon_image_url": ["images/bone.svg", "images/height.svg"],
+      "icon_name": ["모발", "피부"],
+      "summary": [
+        "몸의 산화 방지",
+        "근육의 기능 정상화 유지",
+        "머리카락에 수분을 공급"
+      ]
+    },
+    {
+      "productID": 10,
+      "productName": "VitaminH",
+      "productPrice": 27500,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 H는 탄수화물, 아미노산, 지방 등 대사에 관여한다. 골수의 기능을 도와 혈구의 형성을 원할하게 하며 남성 호르몬 분비에도 관여한다. 또한 모발조직 생성에 필요한 영양성분이다.",
+      "icon_image_url": ["images/bone.svg", "images/therapy.svg"],
+      "icon_name": ["모발", "성장"],
+      "summary": ["피부염 예방", "성장 정지 예방", "백발방지 및 탈.모.방.지"]
+    },
+    {
+      "productID": 11,
+      "productName": "VitaminK",
+      "productPrice": 13800,
+      "productTablet": 30,
+      "thumbnail_image_url": "fas fa-pills",
+      "productDescription": "비타민 K는 지용성 비타민의 한 종류로서 상처가 났을 때 빠르게 혈액이 응고되어 과다 출혈을 막아준다. 그리고 칼슘의 흡수를 도와 뼈 건강을 지켜주는 역할을 한다.",
+      "icon_image_url": ["images/hairstyle.svg"],
+      "icon_name": ["뼈"],
+      "summary": [
+        "뼈 조직의 단백질 합성",
+        "내출혈을 예방",
+        "미용시술에 의한 멍 진행을 단축시킴"
+      ]
+    }
+  ]
+}

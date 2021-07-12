@@ -1,0 +1,24 @@
+@import '../../../styles/variables.scss';
+
+.ProductModal {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+
+  .modalBox {
+    @include display-flex;
+    justify-content: flex-start;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(34, 168, 54, 0.8);
+    color: #ffffff;
+    font-size: 14px;
+    list-style-type: none;
+
+    .fa-check {
+      font-size: 25px;
+      margin-right: 10px;
+    }
+  }
+}
