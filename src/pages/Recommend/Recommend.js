@@ -22,7 +22,6 @@ export class Recommend extends Component {
                 <strong>내 건강을 알려줘!</strong>
               </h1>
             </header>
-
             <section className="surveyBody">
               <h2 className="sr-only">survey intro</h2>
               <p className="surveyCotent">
