@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GET_PRODUCTS_API } from '../../config';
+// import { GET_PRODUCTS_API } from '../../config';
 import ProductCard from './ProductCard/ProductCard';
 import './Product.scss';
 
@@ -19,8 +19,8 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    // fetch('./data/ProductData.json')
-    fetch(`${GET_PRODUCTS_API}`)
+    // fetch(`${GET_PRODUCTS_API}`)
+    fetch('./data/ProductData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -50,8 +50,8 @@ export class Product extends Component {
 
     console.log(fillter.join('&'));
 
-    // fetch(`./data/ProductData.json?${fillter.join('&')}`)
-    fetch(`${GET_PRODUCTS_API}?${fillter.join('&')}`)
+    // fetch(`${GET_PRODUCTS_API}?${fillter.join('&')}`)
+    fetch(`./data/ProductData.json?${fillter.join('&')}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -69,11 +69,9 @@ export class Product extends Component {
         this.makeCondition();
       }
     );
-    console.log(this.state);
   };
 
   render() {
-    console.log(this.state.productCard);
     const { productCard } = this.state;
 
     return (
