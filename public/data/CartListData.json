@@ -3,24 +3,28 @@
     "id": 1,
     "productImg": "/images/pill1.jpeg",
     "productName": "히알루론산 스피루리나",
-    "price": "19500원"
+    "price": 1000,
+    "ea": 1
   },
   {
     "id": 2,
     "productImg": "/images/pill1.jpeg",
     "productName": "히알루론산 스피루리나",
-    "price": "19500원"
+    "price": 1000,
+    "ea": 1
   },
   {
     "id": 3,
     "productImg": "/images/pill1.jpeg",
     "productName": "히알루론산 스피루리나",
-    "price": "19500원"
+    "price": 1000,
+    "ea": 1
   },
   {
     "id": 4,
     "productImg": "/images/pill1.jpeg",
     "productName": "히알루론산 스피루리나",
-    "price": "19500원"
+    "price": 1000,
+    "ea": 1
   }
 ]
