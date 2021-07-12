@@ -3,12 +3,69 @@ import CartCount from '../CartCount/CartCount';
 import './CartList.scss';
 
 class CartList extends React.Component {
-  handleClick = () => {
-    this.setState(cart => {
-      return {
-        cartList: cart.cartList.filter(li => !li.id),
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartList: [],
+      selectedArr: [],
+      deletedArr: [],
+    };
+  }
+
+  // removeCartItem = (event, id) => {
+  //   const { cartData } = this.state;
+  //   const newCartData = cartData.filter(cartItem => {
+  //     return parseInt(id) !== parseInt(cartItem.id);
+  //   });
+  //   const deletedData = cartData.filter(cartItem => {
+  //     return parseInt(id) === parseInt(cartItem.id);
+  //   });
+  //   this.setState({ cartData: newCartData, deletedArr: deletedData });
+  //   fetchDelete(
+  //     `${CART_API}:8000/orders/order-items/${event.target.dataset.id}`
+  //   )
+  //     .then(res => res.status)
+  //     .then(status => {
+  //       status === 204 ? alert('삭제성공') : alert('삭제를 실패하였습니다.');
+  //     });
+  // };
+
+  // handleClick = () => {
+  //   this.setState(cart => {
+  //     return {
+  //       cartList(cart.filter(cart => !cart.id));
+  //     };
+  //   });
+  // };
+
+  // 장바구니 리스트 제거
+  removeCartItem = id => {
+    const { cartList } = this.state;
+    const newCartData = cartList.filter(cartItem => {
+      return parseInt(id) !== parseInt(cartItem.id);
     });
+    const deletedData = cartList.filter(cartItem => {
+      return parseInt(id) === parseInt(cartItem.id);
+    });
+    this.setState({ cartList: newCartData, deletedArr: deletedData });
+  };
+
+  // deleteDiv() {
+  //   const deleteDiv = document.getElementById('productList');
+  //   deleteDiv.remove();
+  // }
+
+  // onRemove = () => {
+  //   cartList(cart.filter(user => user.id !== id));
+  // };
+
+  // 총 금액 계산
+  getTotalPrice = numArr => {
+    let totalPrice = 0;
+    numArr.forEach(el => {
+      totalPrice += el.count * el.price;
+    });
+    return totalPrice;
   };
 
   render() {
@@ -27,7 +84,7 @@ class CartList extends React.Component {
                   <button
                     type="button"
                     className="removeButton"
-                    onClick={this.handleClick}
+                    onClick={this.deleteDiv()}
                   >
                     삭제
                   </button>
