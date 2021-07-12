@@ -1,21 +1,17 @@
 @import '../../styles/variables.scss';
 
 .ProductDetail {
-  height: 100vh;
-
   main {
     @include display-flex(center, center);
-    height: 75%;
-    max-height: 1000px;
+    height: 550px;
     padding-right: 100px;
-    background-size: cover;
-    background-position: center;
 
     .headTextWrap {
       @include display-flex(space-around, flex-start);
       flex-direction: column;
       height: 450px;
       width: 500px;
+      // margin: 100px 0;
 
       .summary {
         line-height: 1.4;
@@ -59,7 +55,6 @@
         height: 40px;
 
         .certificationIconList {
-          float: left;
           padding-left: 15px;
 
           .certificationIcon {
