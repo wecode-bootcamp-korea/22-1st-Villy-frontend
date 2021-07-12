@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
-import { GET_PRODUCTS_API } from '../../../src/config.js';
-
+import { GET_PRODUCTS_API } from '../../config';
 import ProductCard from './ProductCard/ProductCard';
+import './Product.scss';
 
 import './Product.scss';
 
