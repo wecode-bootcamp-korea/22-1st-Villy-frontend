@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Recommend.scss';
 
 export class Recommend extends Component {
-  goToMain = () => {
-    this.props.history.push('/');
-  };
   render() {
     return (
-      <div className="Recommend">
+      <section className="Recommend">
+        <h2 className="sr-only">recommend</h2>
         <div className="surveyModal">
           <div className="surveyBox">
             <header className="surveyHeader">
-              <button class="closeButton" onClick={this.goToMain}>
-                <i class="fas fa-times" />
-              </button>
-              <span className="villyLogo">Villy</span>
+              <Link to="/">
+                <button class="closeButton">
+                  <i class="fas fa-times" />
+                </button>
+              </Link>
+              <div className="villyLogo">Villy</div>
               <h1>
                 빌리!
                 <br />
@@ -33,13 +34,14 @@ export class Recommend extends Component {
             </section>
             <footer className="surveyFooter">
               <button className="surveyButton">시작하기</button>
+
               <p className="caution">
                 ※ 질병의 진단 및 치료는 전문적인 의료기관을 이용하세요.
               </p>
             </footer>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

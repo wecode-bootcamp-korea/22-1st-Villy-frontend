@@ -17,10 +17,10 @@ $color-light-gray: #cccccc;
     width: 100%;
     padding: 50px 0;
     .surveyBox {
+      position: relative;
       display: flex;
       flex-direction: column;
       padding: 50px 150px;
-      position: relative;
       background-color: #ffffff;
 
       .surveyHeader {
@@ -43,7 +43,6 @@ $color-light-gray: #cccccc;
 
         .villyLogo {
           @include round50;
-          display: block;
           color: #ffffff;
           text-align: center;
           background-color: #f1584b;
