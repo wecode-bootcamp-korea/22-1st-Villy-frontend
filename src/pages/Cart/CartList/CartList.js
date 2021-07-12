@@ -7,30 +7,54 @@ class CartList extends React.Component {
     this.state = {
       count: 1,
       cartList: [
-        { id: '', count: '', price: '' },
-        { id: '', count: '' },
-        { id: '', count: '' },
-        { id: '', count: '' },
+        {
+          id: 1,
+          priceName: 'Cheese',
+          priceImg:
+            'https://images.unsplash.com/photo-1608666566023-e91b02683a5f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+          price: 19200,
+          count: 1,
+        },
       ],
-      selectedArr: [],
-      deletedArr: [],
     };
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleDecrement = this.handleDecrement.bind(this);
   }
 
-  handleIncrement = e => {
-    console.log(e.target.name);
-    this.setState({
-      cartList: this.state.cartList[e.target.name].count + 1,
+  handleIncrement = () => {
+    const cartList = this.state.cartList.map(cart => {
+      if (cart.id === cartList.id) {
+        return { ...cartList, count: cartList.count + 1 };
+      }
+      return cart;
     });
+    this.setState({ cartList });
   };
 
-  handleDecrement() {
-    this.setState({
-      count: this.state.count - 1,
+  handleDecrement = () => {
+    const cartList = this.state.cartList.map(cart => {
+      if (cart.id === cartList.id) {
+        const count = cartList.count - 1;
+        return { ...cartList, count: count <= 1 ? 1 : count };
+      }
+      return cart;
     });
-  }
+
+    this.setState({ cartList });
+  };
+
+  // handleIncrement = e => {
+  //   console.log(e.target.name);
+  //   this.setState({
+  //     cartList: this.state.cartList[e.target.name].count + 1,
+  //   });
+  // };
+
+  // handleDecrement() {
+  //   this.setState({
+  //     count: this.state.count - 1,
+  //   });
+  // }
 
   //cout e.target.id === this.state.countlist.id
 
