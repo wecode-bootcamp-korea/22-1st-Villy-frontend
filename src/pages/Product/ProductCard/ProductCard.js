@@ -34,8 +34,10 @@ export class ProductCard extends Component {
       summary,
       productTablet,
       productPrice,
+      cart_exist,
     } = this.props.productCard;
 
+    console.log(cart_exist);
     return (
       <li className="ProductCard" style={{ backgroundColor }}>
         <Link to="/detail">
