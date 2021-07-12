@@ -25,11 +25,16 @@ export class ProductCard extends Component {
       productTablet,
       productPrice,
       cart_exist,
+      productID,
     } = this.props.productCard;
 
     return (
-      <li className="ProductCard" style={{ backgroundColor }}>
-        <Link to="/detail">
+      <li
+        className="ProductCard"
+        style={{ backgroundColor }}
+        onClick={this.goToDetail}
+      >
+        <Link to={`/products/${productID}`}>
           <header className="productCardHeader">
             <div className="nameBox">
               <h2>
