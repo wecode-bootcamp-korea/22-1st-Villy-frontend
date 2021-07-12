@@ -8,7 +8,7 @@ class CartListNull extends React.Component {
         <img
           alt="상품 리스트 없음"
           className="nullImg"
-          src="./images/ListNull.png"
+          src="/images/ListNull.png"
         />
         <h1 className="nullTitle">장바구니에 추가된 제품이 없습니다.</h1>
         <p className="nullContent">
