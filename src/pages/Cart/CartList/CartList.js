@@ -39,16 +39,16 @@ class CartList extends React.Component {
   // };
 
   // 장바구니 리스트 제거
-  removeCartItem = id => {
-    const { cartList } = this.state;
-    const newCartData = cartList.filter(cartItem => {
-      return parseInt(id) !== parseInt(cartItem.id);
-    });
-    const deletedData = cartList.filter(cartItem => {
-      return parseInt(id) === parseInt(cartItem.id);
-    });
-    this.setState({ cartList: newCartData, deletedArr: deletedData });
-  };
+  // removeCartItem = id => {
+  //   const { cartList } = this.state;
+  //   const newCartData = cartList.filter(cartItem => {
+  //     return parseInt(id) !== parseInt(cartItem.id);
+  //   });
+  //   const deletedData = cartList.filter(cartItem => {
+  //     return parseInt(id) === parseInt(cartItem.id);
+  //   });
+  //   this.setState({ cartList: newCartData, deletedArr: deletedData });
+  // };
 
   // deleteDiv() {
   //   const deleteDiv = document.getElementById('productList');
@@ -81,11 +81,7 @@ class CartList extends React.Component {
               <div className="listDetail">
                 <div className="listTop">
                   <p className="listFont">{cart.productName}</p>
-                  <button
-                    type="button"
-                    className="removeButton"
-                    onClick={this.deleteDiv()}
-                  >
+                  <button type="button" className="removeButton">
                     삭제
                   </button>
                 </div>
