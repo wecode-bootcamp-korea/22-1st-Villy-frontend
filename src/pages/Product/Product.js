@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GET_PRODUCTS_API } from '../../config';
+// import { GET_PRODUCTS_API } from '../../config';
 import ProductCard from './ProductCard/ProductCard';
 import './Product.scss';
 
@@ -8,9 +8,6 @@ export class Product extends Component {
     super();
     this.state = {
       productCard: [],
-      addCart: false,
-      isModalOn: false,
-      isChecked: false,
     };
   }
 

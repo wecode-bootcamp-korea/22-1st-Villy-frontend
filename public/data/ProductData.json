@@ -14,7 +14,7 @@
         "야맹증, 감염 예방",
         "피부 점막을 정상으로 유지"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 2,
@@ -26,7 +26,7 @@
       "icon_image_url": [],
       "icon_name": [],
       "summary": [],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 3,
@@ -58,7 +58,7 @@
         "만성두통과 편두통 예방",
         "머리카락의 윤기 개선"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 5,
@@ -74,7 +74,7 @@
         "단백질과 지방의 체내 이용 향상",
         "면역체게 강화"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 6,
@@ -90,7 +90,7 @@
         "위장, 입 안의 점막 보호",
         "기형아 예방"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 7,
@@ -110,7 +110,7 @@
         "백혈구 기능 개선을 통한 면역 강화",
         "강력한 항상화제"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 8,
@@ -126,7 +126,7 @@
         "골다공증발생 위험감소에 도움",
         "칼슘과 인이 흡수되고 이용되는데 필요"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 9,
@@ -142,7 +142,7 @@
         "근육의 기능 정상화 유지",
         "머리카락에 수분을 공급"
       ],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 10,
@@ -154,7 +154,7 @@
       "icon_image_url": ["images/bone.svg", "images/therapy.svg"],
       "icon_name": ["모발", "성장"],
       "summary": ["피부염 예방", "성장 정지 예방", "백발방지 및 탈.모.방.지"],
-      "cart_exist": true
+      "cart_exist": false
     },
     {
       "productID": 11,
@@ -170,7 +170,7 @@
         "내출혈을 예방",
         "미용시술에 의한 멍 진행을 단축시킴"
       ],
-      "cart_exist": true
+      "cart_exist": false
     }
   ]
 }

@@ -9,19 +9,9 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import './ProductCard.scss';
 
 export class ProductCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      addCart: false,
-    };
-  }
-
   handleCartButton = event => {
     event.preventDefault();
-
-    this.setState({
-      addCart: !this.state.addCart,
-    });
+    // 여기에 POST
   };
 
   render() {
@@ -37,7 +27,6 @@ export class ProductCard extends Component {
       cart_exist,
     } = this.props.productCard;
 
-    console.log(cart_exist);
     return (
       <li className="ProductCard" style={{ backgroundColor }}>
         <Link to="/detail">
@@ -81,10 +70,10 @@ export class ProductCard extends Component {
             <button
               className="cartBtn"
               onClick={this.handleCartButton}
-              disabled={this.state.addCart}
+              disabled={cart_exist}
             >
-              {!this.state.addCart && <AiOutlinePlus className="addIcon" />}
-              {this.state.addCart ? '장바구니 추가됨' : '장바구니 담기'}
+              {!cart_exist && <AiOutlinePlus className="addIcon" />}
+              {cart_exist ? '장바구니 추가됨' : '장바구니 담기'}
             </button>
           </footer>
         </Link>
