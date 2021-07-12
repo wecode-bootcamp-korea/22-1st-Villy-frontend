@@ -1,0 +1,75 @@
+@import '../../../styles/variables.scss';
+
+.FootSlide {
+  overflow: hidden;
+
+  .slide {
+    @include display-flex(center, center);
+    width: fit-content;
+    transition: transform 0.5s;
+    background-color: moccasin;
+
+    .slideList {
+      display: inline-block;
+      background-color: moccasin;
+
+      .slideContent {
+        @include display-flex(space-between, center);
+        flex-direction: column;
+        width: 100vw;
+        padding: 25px;
+
+        i {
+          font-size: 40px;
+          margin-bottom: 30px;
+        }
+
+        .slideTextWrap {
+          line-height: 1.15;
+          text-align: center;
+
+          .slideText {
+            font-size: 48px;
+            font-weight: bold;
+          }
+        }
+
+        .recomendUser {
+          margin-top: 10px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .slideButtons {
+    @include display-flex(center, none);
+    height: 50px;
+    background-color: moccasin;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .FootSlide {
+    .slide {
+      .slideList {
+        .slideContent {
+          .slideIcon {
+            height: 30px;
+          }
+          .slideTextWrap {
+            .slideText {
+              font-size: 20px;
+            }
+          }
+          .recomendUser {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .slideButtons {
+      height: 30px;
+    }
+  }
+}
