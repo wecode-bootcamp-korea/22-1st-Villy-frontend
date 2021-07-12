@@ -1,16 +1,38 @@
 import React from 'react';
-import CartCount from '../CartCount/CartCount';
 import './CartList.scss';
 
 class CartList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartList: [],
+      count: 1,
+      cartList: [
+        { id: '', count: '', price: '' },
+        { id: '', count: '' },
+        { id: '', count: '' },
+        { id: '', count: '' },
+      ],
       selectedArr: [],
       deletedArr: [],
     };
+    this.handleIncrement = this.handleIncrement.bind(this);
+    this.handleDecrement = this.handleDecrement.bind(this);
   }
+
+  handleIncrement = e => {
+    console.log(e.target.name);
+    this.setState({
+      cartList: this.state.cartList[e.target.name].count + 1,
+    });
+  };
+
+  handleDecrement() {
+    this.setState({
+      count: this.state.count - 1,
+    });
+  }
+
+  //cout e.target.id === this.state.countlist.id
 
   // removeCartItem = (event, id) => {
   //   const { cartData } = this.state;
@@ -60,22 +82,21 @@ class CartList extends React.Component {
   // };
 
   // 총 금액 계산
-  getTotalPrice = numArr => {
-    let totalPrice = 0;
-    numArr.forEach(el => {
-      totalPrice += el.count * el.price;
-    });
-    return totalPrice;
-  };
+  // getTotalPrice = numArr => {
+  //   let totalPrice = 0;
+  //   numArr.forEach(el => {
+  //     totalPrice += el.count * el.price;
+  //   });
+  //   return totalPrice;
+  // };
 
   render() {
-    console.log(this.props.cartList);
     const { cartList } = this.props;
     return (
       <ul className="cartList">
-        {cartList.map((cart, id) => {
+        {cartList.map((cart, idx) => {
           return (
-            <li className="productList" key={cart.id}>
+            <li className="productList" key={cart.idx}>
               <input id={cart.id} type="checkbox" />
               <img alt="비타민" className="cartListImg" src={cart.productImg} />
               <div className="listDetail">
@@ -87,7 +108,24 @@ class CartList extends React.Component {
                 </div>
                 <br />
                 <div className="countButtonWrppaer">
-                  <CartCount />
+                  <div className="btnDetail">
+                    <button
+                      type="button"
+                      className="countButton"
+                      onClick={this.handleDecrement}
+                    >
+                      -
+                    </button>
+                    <span className="countNum">{this.state.count}</span>
+                    <button
+                      type="button"
+                      className="countButton"
+                      name={cart.id}
+                      onClick={this.handleIncrement}
+                    >
+                      +
+                    </button>
+                  </div>
                   <div className="boxRight">
                     <p className="boxPrice">{cart.price}</p>
                   </div>
