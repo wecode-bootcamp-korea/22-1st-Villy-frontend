@@ -1,4 +1,5 @@
 import React from 'react';
+import { CARTLIST } from '../../../src/config.js';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -7,53 +8,31 @@ class Cart extends React.Component {
     this.state = {
       cartList: [],
     };
-    // this.handleIncrement = this.handleIncrement.bind(this);
-    // this.handleDecrement = this.handleDecrement.bind(this);
   }
 
-  handleRemove = id => {
-    const { cartList } = this.props;
-    const nextList = cartList.filter(cart => {
-      return cart.id !== id;
+  postFetch = e => {
+    fetch(`${CARTLIST}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        productID: e.target.name,
+        quantity: 2,
+      }),
     });
-    this.setState({ cartList: nextList });
   };
+  //수량 변수화, then 데이타 받아오기 그리고 바로 랜더링 되기
 
   componentDidMount() {
-    fetch('/data/CartListData.json', {
+    fetch(`${CARTLIST}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          cartList: data,
+          cartList: data.product,
         });
-        console.log(data);
       });
   }
 
-  // handleIncrement = () => {
-  //   const cartList = this.state.cartList.map(cart => {
-  //     if (cart.id === cartList.id) {
-  //       return { ...cartList, count: cartList.count + 1 };
-  //     }
-  //     return cart;
-  //   });
-  //   this.setState({ cartList });
-  // };
-
-  // handleDecrement = () => {
-  //   const cartList = this.state.cartList.map(cart => {
-  //     if (cart.id === cartList.id) {
-  //       const count = cartList.count - 1;
-  //       return { ...cartList, count: count <= 1 ? 1 : count };
-  //     }
-  //     return cart;
-  //   });
-
-  //   this.setState({ cartList });
-  // };
-  // this.state.cartList[ex].ea + 1
   handleIncrement = e => {
     const id = Number(e.target.name);
     // console.log(`props`, e.target.name);
@@ -61,8 +40,8 @@ class Cart extends React.Component {
 
     const newCartList = [...this.state.cartList];
     // console.log(`ea`, newCartList[id].ea + 1);
-    const newEa = newCartList[id].ea + 1;
-    newCartList[id] = { ...newCartList[id], ea: newEa };
+    const newEa = newCartList[id].quantity + 1;
+    newCartList[id] = { ...newCartList[id], quantity: newEa };
 
     this.setState({
       cartList: newCartList,
@@ -73,10 +52,11 @@ class Cart extends React.Component {
     const id = Number(e.target.name);
 
     const newCartList = [...this.state.cartList];
-    const newEa = newCartList[id].ea - 1;
-    newCartList[id] = { ...newCartList[id], ea: newEa };
+    const newEa = newCartList[id].quantity - 1;
+    newCartList[id] = { ...newCartList[id], quantity: newEa };
 
-    if (newCartList[id].ea < 0) {
+    if (newCartList[id].quantity <= 0) {
+      return;
     }
 
     this.setState({
@@ -85,77 +65,37 @@ class Cart extends React.Component {
   };
 
   handleDelete = e => {
-    const cartList = this.state.cartList.filter(
-      cartList => cartList.id !== e.targer.id
+    fetch(`${CARTLIST}`, {
+      method: 'DELETE',
+      body: JSON.stringify({
+        productID: e.target.name,
+      }),
+    }).then(
+      fetch(`${CARTLIST}`, {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            cartList: data.product,
+          });
+        })
     );
-    this.setState({ cartList });
   };
-
-  // componentDidMount() {
-  //   this.setState({ cartList: this.props.cartList });
-  // }
-
-  //cout e.target.id === this.state.countlist.id
-
-  // removeCartItem = (event, id) => {
-  //   const { cartData } = this.state;
-  //   const newCartData = cartData.filter(cartItem => {
-  //     return parseInt(id) !== parseInt(cartItem.id);
-  //   });
-  //   const deletedData = cartData.filter(cartItem => {
-  //     return parseInt(id) === parseInt(cartItem.id);
-  //   });
-  //   this.setState({ cartData: newCartData, deletedArr: deletedData });
-  //   fetchDelete(
-  //     `${CART_API}:8000/orders/order-items/${event.target.dataset.id}`
-  //   )
-  //     .then(res => res.status)
-  //     .then(status => {
-  //       status === 204 ? alert('삭제성공') : alert('삭제를 실패하였습니다.');
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       if (res.access_token) {
+  //         alert('삭제 완료');
+  //         localStorage.setItem('access_token', res.access_token);
+  //       } else {
+  //         alert('삭제 실패');
+  //       }
   //     });
-  // };
-
-  // handleClick = () => {
-  //   this.setState(cart => {
-  //     return {
-  //       cartList(cart.filter(cart => !cart.id));
-  //     };
-  //   });
-  // };
-
-  // 장바구니 리스트 제거
-  // removeCartItem = id => {
-  //   const { cartList } = this.state;
-  //   const newCartData = cartList.filter(cartItem => {
-  //     return parseInt(id) !== parseInt(cartItem.id);
-  //   });
-  //   const deletedData = cartList.filter(cartItem => {
-  //     return parseInt(id) === parseInt(cartItem.id);
-  //   });
-  //   this.setState({ cartList: newCartData, deletedArr: deletedData });
-  // };
-
-  // deleteDiv() {
-  //   const deleteDiv = document.getElementById('productList');
-  //   deleteDiv.remove();
-  // }
-
-  // onRemove = () => {
-  //   cartList(cart.filter(user => user.id !== id));
-  // };
-
-  // 총 금액 계산
-  // getTotalPrice = numArr => {
-  //   let totalPrice = 0;
-  //   numArr.forEach(el => {
-  //     totalPrice += el.count * el.price;
-  //   });
-  //   return totalPrice;
   // };
 
   render() {
     const { cartList } = this.state;
-    console.log(`render`, this.state.cartList[0]);
+    console.log(`render`, this.state);
     return (
       <div className="Cart">
         <div className="cartView">
@@ -171,14 +111,23 @@ class Cart extends React.Component {
           <ul className="cartList">
             {cartList &&
               cartList.map(
-                ({ id, productName, productImg, price, ea }, idx) => {
+                (
+                  {
+                    productID,
+                    productName,
+                    thumbnail_image_url,
+                    productPrice,
+                    quantity,
+                  },
+                  idx
+                ) => {
                   return (
-                    <li className="productList" key={idx} name={id}>
+                    <li className="productList" key={idx} name={productID}>
                       <input type="checkbox" />
                       <img
                         alt="비타민"
                         className="cartListImg"
-                        src={productImg}
+                        src={thumbnail_image_url}
                       />
                       <div className="listDetail">
                         <div className="listTop">
@@ -187,6 +136,7 @@ class Cart extends React.Component {
                             type="button"
                             className="removeButton"
                             onClick={this.handleDelete}
+                            name={productID}
                           >
                             삭제
                           </button>
@@ -202,18 +152,20 @@ class Cart extends React.Component {
                             >
                               -
                             </button>
-                            <span className="countNum">{ea}</span>
+                            <span className="countNum">{quantity}</span>
                             <button
                               type="button"
                               className="countButton"
-                              name={idx}
-                              onClick={this.handleIncrement}
+                              name={productID}
+                              onClick={this.postFetch}
                             >
                               +
                             </button>
                           </div>
                           <div className="boxRight">
-                            <p className="boxPrice">{price}</p>
+                            <p className="boxPrice">
+                              {productPrice * quantity}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -254,7 +206,11 @@ class Cart extends React.Component {
             <p className="totalPrice">19,500원</p>
           </div>
           <div className="cartFooterButtonWrppaer">
-            <button type="submit" className="resultBtn">
+            <button
+              type="submit"
+              className="resultBtn"
+              onClick={this.postFetch}
+            >
               결제하기
             </button>
           </div>
