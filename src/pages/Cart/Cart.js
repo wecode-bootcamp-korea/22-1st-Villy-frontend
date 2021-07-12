@@ -76,9 +76,19 @@ class Cart extends React.Component {
     const newEa = newCartList[id].ea - 1;
     newCartList[id] = { ...newCartList[id], ea: newEa };
 
+    if (newCartList[id].ea < 0) {
+    }
+
     this.setState({
       cartList: newCartList,
     });
+  };
+
+  handleDelete = e => {
+    const cartList = this.state.cartList.filter(
+      cartList => cartList.id !== e.targer.id
+    );
+    this.setState({ cartList });
   };
 
   // componentDidMount() {
@@ -173,7 +183,11 @@ class Cart extends React.Component {
                       <div className="listDetail">
                         <div className="listTop">
                           <p className="listFont">{productName}</p>
-                          <button type="button" className="removeButton">
+                          <button
+                            type="button"
+                            className="removeButton"
+                            onClick={this.handleDelete}
+                          >
                             삭제
                           </button>
                         </div>
