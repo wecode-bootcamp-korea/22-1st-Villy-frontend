@@ -6,7 +6,7 @@ class Nav extends PureComponent {
   constructor() {
     super();
     this.state = {
-      navActiveNumber: '',
+      navActiveNumber: 0,
       isNavTransper: false,
     };
   }
@@ -29,8 +29,8 @@ class Nav extends PureComponent {
 
   navActiveHandler = index => {
     if (index === 'object') {
-      this.setState({ navActiveNumber: '' });
-    } else this.setState({ navActiveNumber: index });
+      this.setState({ navActiveNumber: 0 });
+    } else this.setState({ navActiveNumber: index + 1 });
   };
 
   render() {
@@ -52,7 +52,7 @@ class Nav extends PureComponent {
             {MENU_LIST.map((menu, index) => (
               <Link
                 className={`navLink ${
-                  navActiveNumber === index ? 'active' : 'disactive'
+                  navActiveNumber === index + 1 ? 'active' : 'disactive'
                 }`}
                 to={menu.link}
                 key={index}
