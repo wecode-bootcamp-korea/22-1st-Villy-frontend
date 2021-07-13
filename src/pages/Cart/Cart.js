@@ -7,35 +7,33 @@ class Cart extends React.Component {
     super();
     this.state = {
       cartList: [],
-      deleteBtn: false, // 조건부 렌더링
+      point: 0,
     };
-    console.log(this.state.cartList.length);
   }
 
   // 백엔드에 데이터 보내는 함수
-  postFetch = e => {
-    const target = this.state.cartList[e.target.name];
+  responseQuantity = (productID, quantity) => {
     fetch(`${CARTLIST}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        productID: target.productID,
-        quantity: target.quantity,
+        productID: productID,
+        quantity: quantity,
       }),
     });
-    console.log(this.state.cartList);
   };
 
   // 백엔드랑 연결
   componentDidMount() {
     fetch(`${CARTLIST}`, {
-      method: 'GET',
+      headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
       .then(res => {
+        console.log(`res`, res);
         this.setState({
           cartList: res.data,
+          point: res.point,
         });
-        console.log(this.state.cartList);
       });
   }
 
@@ -52,47 +50,37 @@ class Cart extends React.Component {
   //     });
   // }
 
-  handleIncrement = e => {
-    const id = Number(e.target.name);
-    this.postFetch(e);
-    // console.log(`props`, e.target.name);
-    // console.log(`state`, this.state.cartList);
-
+  handleIncrement = index => {
     const newCartList = [...this.state.cartList];
-    // console.log(`ea`, newCartList[id].ea + 1);
-    const newEa = newCartList[id].quantity + 1;
-    newCartList[id] = { ...newCartList[id], quantity: newEa };
-
+    const newEa = newCartList[index].quantity + 1;
+    newCartList[index] = { ...newCartList[index], quantity: newEa };
     this.setState({
       cartList: newCartList,
     });
+    // this.responseQuantity(this.state.cartList[index].productID, newEa + 1);
   };
 
-  handleDecrement = e => {
-    const id = Number(e.target.name);
-    this.postFetch(e);
-
+  handleDecrement = index => {
     const newCartList = [...this.state.cartList];
-    const newEa = newCartList[id].quantity - 1;
-    newCartList[id] = { ...newCartList[id], quantity: newEa };
-
-    if (newCartList[id].quantity <= 0) {
+    const newEa = newCartList[index].quantity - 1;
+    newCartList[index] = { ...newCartList[index], quantity: newEa };
+    if (newCartList[index].quantity <= 0) {
       return;
     }
-
     this.setState({
       cartList: newCartList,
     });
+    // this.responseQuantity(this.state.cartList[index].productID, newEa - 1);
   };
 
-  handleDelete = e => {
+  handleDelete = id => {
     fetch(`${CARTLIST}`, {
       method: 'DELETE',
       // headers: {
       //   'Content-Type': 'application/json',
       // },
       body: JSON.stringify({
-        productID: e.target.name,
+        productID: id,
       }),
     }).then(
       fetch(`${CARTLIST}`, {
@@ -101,16 +89,19 @@ class Cart extends React.Component {
         .then(res => res.json())
         .then(data => {
           this.setState({
-            cartList: data.product,
+            cartList: data.data,
           });
         })
     );
   };
 
   render() {
-    const { cartList, deleteBtn } = this.state;
-    console.log(this.state.cartList);
-    if (deleteBtn) {
+    const { cartList } = this.state;
+    const totalPrice = this.state.cartList
+      .map(cart => cart.productPrice * cart.quantity)
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    const result = parseInt(this.state.point - totalPrice);
+    if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
           <div className="cartView">
@@ -140,129 +131,112 @@ class Cart extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div className="Cart">
-          <div className="cartView">
-            <header className="cartTop">
-              <h1 className="cartTopTitle">장바구니</h1>
-              <div className="cartTopButtonWrppaer">
-                <button type="button" className="topBtn">
-                  + 제품추가
-                </button>
-              </div>
-            </header>
-            <h2 className="cartListTitle">정기구독 제품</h2>
-            <ul className="cartList">
-              {cartList &&
-                cartList.map(
-                  (
-                    {
-                      productID,
-                      productName,
-                      thumbnail_image_url,
-                      productPrice,
-                      quantity,
-                    },
-                    idx
-                  ) => {
-                    return (
-                      <li className="productList" key={idx} name={productID}>
-                        <input type="checkbox" />
+    }
+    return (
+      <div className="Cart">
+        <div className="cartView">
+          <header className="cartTop">
+            <h1 className="cartTopTitle">장바구니</h1>
+            <div className="cartTopButtonWrppaer">
+              <button type="button" className="topBtn">
+                + 제품추가
+              </button>
+            </div>
+          </header>
+          <h2 className="cartListTitle">정기구독 제품</h2>
+          <ul className="cartList">
+            {cartList &&
+              cartList.map(
+                (
+                  {
+                    productID,
+                    productName,
+                    thumbnail_image_url,
+                    productPrice,
+                    quantity,
+                  },
+                  index
+                ) => {
+                  return (
+                    <li className="productList" key={productID}>
+                      <div className="cartListImgWrapper">
                         <img
                           alt="비타민"
                           className="cartListImg"
                           src={thumbnail_image_url}
                         />
-                        <div className="listDetail">
-                          <div className="listTop">
-                            <p className="listFont">{productName}</p>
+                      </div>
+                      <div className="listDetail">
+                        <div className="listTop">
+                          <p className="listFont">{productName}</p>
+                          <button
+                            type="button"
+                            className="removeButton"
+                            onClick={() => this.handleDelete(productID)}
+                            name={productID}
+                          >
+                            삭제
+                          </button>
+                        </div>
+                        <br />
+                        <div className="countButtonWrppaer">
+                          <div className="btnDetail">
                             <button
                               type="button"
-                              className="removeButton"
-                              onClick={this.handleDelete}
-                              name={productID}
+                              className="countButton"
+                              onClick={() => this.handleDecrement(index)}
                             >
-                              삭제
+                              -
+                            </button>
+                            <span className="countNum">{quantity}</span>
+                            <button
+                              type="button"
+                              className="countButton"
+                              onClick={() => this.handleIncrement(index)}
+                            >
+                              +
                             </button>
                           </div>
-                          <br />
-                          <div className="countButtonWrppaer">
-                            <div className="btnDetail">
-                              <button
-                                type="button"
-                                className="countButton"
-                                name={idx}
-                                onClick={this.handleDecrement}
-                              >
-                                -
-                              </button>
-                              <span className="countNum">{quantity}</span>
-                              <button
-                                type="button"
-                                className="countButton"
-                                name={idx}
-                                onClick={this.handleIncrement}
-                              >
-                                +
-                              </button>
-                            </div>
-                            <div className="boxRight">
-                              <p className="boxPrice">
-                                {parseInt(productPrice * quantity)}
-                              </p>
-                            </div>
+                          <div className="boxRight">
+                            <p className="boxPrice">
+                              {(productPrice * quantity).toLocaleString()}원
+                            </p>
                           </div>
                         </div>
-                      </li>
-                    );
-                  }
-                )}
-            </ul>
-
-            <div className="cartDetail">
-              <div className="cartBox">
-                <div className="cartRead">
-                  <p>정기구독 제품합계</p>
-                  <p>0원</p>
-                </div>
-                <div className="deliveryPrice">
-                  <p>배송비</p>
-                  <p>2,500원</p>
-                </div>
+                      </div>
+                    </li>
+                  );
+                }
+              )}
+          </ul>
+          <div className="cartDetail">
+            <div className="productView">
+              <div className="productDiscount">
+                <p className="discountTitle">현재 보유 중인 포인트</p>
+                <p>{parseInt(this.state.point).toLocaleString()}P</p>
               </div>
-              <div className="productView">
-                <div className="productDiscount">
-                  <p className="discountTitle">정기구독 할인혜택</p>
-                  <p>0원</p>
-                </div>
-                <div className="deliveryDiscount">
-                  <p>배송비 무료</p>
-                  <p>-2,500원</p>
-                </div>
-                <div className="pointDiscount">
-                  <p>포인트 할인</p>
-                  <p>0원</p>
-                </div>
+              <div className="deliveryDiscount">
+                <p>차감 포인트</p>
+                <p>-{totalPrice.toLocaleString()}P</p>
               </div>
-            </div>
-            <div className="cartPrice">
-              <p className="totalPriceText">총 결제금액</p>
-              <p className="totalPrice">1000</p>
-            </div>
-            <div className="cartFooterButtonWrppaer">
-              <button
-                type="submit"
-                className="resultBtn"
-                onClick={this.postFetch}
-              >
-                결제하기
-              </button>
             </div>
           </div>
+          <div className="cartPrice">
+            <p className="totalPriceText">잔여 포인트</p>
+            <p className="totalPrice">{result.toLocaleString()}P</p>
+          </div>
+          <div className="cartFooterButtonWrppaer">
+            <button
+              type="submit"
+              className="resultBtn"
+              onClick={this.responseQuantity}
+            >
+              결제하기
+            </button>
+          </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
