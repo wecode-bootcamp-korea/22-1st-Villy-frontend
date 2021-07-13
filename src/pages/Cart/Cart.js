@@ -12,15 +12,16 @@ class Cart extends React.Component {
   }
 
   // 백엔드에 데이터 보내는 함수
-  // responseQuantity = (productID, quantity) => {
-  //   fetch(`${CARTLIST}`, {
-  //     method: 'PATCH',
-  //     body: JSON.stringify({
-  //       productID: productID,
-  //       quantity: quantity,
-  //     }),
-  //   });
-  // };
+  responseQuantity = (productID, quantity) => {
+    fetch(`${CARTLIST}`, {
+      method: 'PATCH',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        productID: productID,
+        quantity: quantity,
+      }),
+    });
+  };
 
   // 백엔드랑 연결
   componentDidMount() {
@@ -59,7 +60,7 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
-    // this.responseQuantity(this.state.cartList[index].productID, newEa);
+    this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
 
   // - 버튼 개수 감소 함수
@@ -75,7 +76,7 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
-    // this.responseQuantity(this.state.cartList[index].productID, newEa - 1);
+    this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
 
   // 장바구니 리스트 삭제 함수
@@ -85,25 +86,20 @@ class Cart extends React.Component {
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
-    // fetch(`${CARTLIST}`, {
-    //   method: 'DELETE',
-    //   // headers: {
-    //   //   'Content-Type': 'application/json',
-    //   // },
-    //   body: JSON.stringify({
-    //     productID: this.state.cartList[idx].productID,
-    //   }),
-    // }).then(
-    //   fetch(`${CARTLIST}`, {
-    //     method: 'GET',
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.setState({
-    //         cartList: data.data,
-    //       });
-    //     })
-    // );
+    fetch(`${CARTLIST}`, {
+      method: 'DELETE',
+      headers: { Authorization: localStorage.getItem('access_token') },
+    }).then(
+      fetch(`${CARTLIST}`, {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            cartList: res.data,
+          });
+        })
+    );
   };
 
   // handleDelete = cart => {
