@@ -19,44 +19,6 @@ class Signup extends React.Component {
     });
   };
 
-  // Validation을 체크하는 함수 (구현중...)
-  // doValidation = e => {
-  //   const userInputs = Object.entries(this.state);
-  //   console.log(userInputs);
-  //   userInputs.forEach(el => {
-  //     console.log(validationFor[el[0]](el[1]));
-  //     if (!validationFor[el[0]](el[1])) {
-  //       return alert('양식에 맞지 않습니다');
-  //     }
-  // });
-
-  // 리팩토링 이전 Validation 함수
-  // if (!validationName(this.state.name)) {
-  //   alert('이름을 입력해주세요.');
-  // }
-  // if (!validationMobile(this.state.mobile)) {
-  //   alert('번호를 입력해주세요.');
-  // }
-  // if (!validationEmail(this.state.email)) {
-  //   alert('이메일 형식이 유효하지 않습니다.');
-  // }
-  // if (!validationPwd(this.state.pw)) {
-  //   alert('영문,숫자,특수문자를 혼합하여 6~20자 이내로 입력해주세요.');
-  // }
-  // if (
-  //   validationName(this.state.name) &&
-  //   validationMobile(this.state.mobile) &&
-  //   validationEmail(this.state.email) &&
-  //   validationPwd(this.state.pw)
-  // ) {
-  //   return true;
-  //   // alert('회원가입 완료');
-  // } else {
-  //   alert('입력란을 다시 확인하세요.');
-  //   return false;
-  // }
-  // };
-
   // Back이랑 연결하는 fetch 함수
   requestSignup = () => {
     fetch(`${POST_SIGNUP_API}`, {
@@ -73,21 +35,20 @@ class Signup extends React.Component {
         if (res.access_token) {
           alert('회원가입 성공');
           localStorage.setItem('access_token', res.access_token);
+          this.goToMain();
         } else {
           alert('회원가입 실패');
         }
       });
   };
 
+  goToMain = () => this.props.history.push('/');
+
   // 입력 완료 후 실행되는 함수
   handleKeyPress = e => {
     if (e.key === 'Enter') {
       this.requestSignup();
     }
-    // (구현중...)
-    // if (e.key === 'Enter' && this.doValidation()) {
-    //   return this.requestSignup();
-    // }
   };
 
   render() {
