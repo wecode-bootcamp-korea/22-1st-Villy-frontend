@@ -7,105 +7,125 @@ class Cart extends React.Component {
     super();
     this.state = {
       cartList: [],
+      point: 0,
     };
   }
 
   // 백엔드에 데이터 보내는 함수
-  responseQuantity = (id, quantity) => {
-    fetch(`${POST_CARTS_API}`, {
-      method: 'PATCH',
-      body: JSON.stringify({
-        productID: id,
-        quantity: quantity,
-      }),
-    });
-  };
+  // responseQuantity = (productID, quantity) => {
+  //   fetch(`${POST_CARTS_API}`, {
+  //     method: 'PATCH',
+  //     body: JSON.stringify({
+  //       productID: productID,
+  //       quantity: quantity,
+  //     }),
+  //   });
+  // };
 
   // 백엔드랑 연결
-  componentDidMount() {
-    fetch(`${POST_CARTS_API}`, {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          cartList: res.data,
-        });
-      });
-  }
-
-  // mock data 연결
   // componentDidMount() {
-  //   fetch('/data/CartListData.json', {
-  //     method: 'GET',
+  //   fetch(`${POST_CARTS_API}`, {
+  //     headers: { Authorization: localStorage.getItem('access_token') },
   //   })
   //     .then(res => res.json())
-  //     .then(data => {
+  //     .then(res => {
+  //       console.log(`res`, res);
   //       this.setState({
-  //         cartList: data,
+  //         cartList: res.data,
+  //         point: res.point,
   //       });
   //     });
   // }
 
-  handleIncrement = productID => {
-    const id = Number(productID);
+  // mock data 연결
+  componentDidMount() {
+    fetch('/data/CartListData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cartList: data,
+        });
+      });
+  }
+
+  // + 버튼 개수 증가 함수
+  handleIncrement = index => {
     const newCartList = [...this.state.cartList];
-    // console.log(`ea`, newCartList[id].ea + 1);
-    const newEa = newCartList[id].quantity + 1;
-    newCartList[id] = { ...newCartList[id], quantity: newEa };
+    const newEa = newCartList[index].quantity + 1;
+    newCartList[index] = { ...newCartList[index], quantity: newEa };
 
     this.setState({
       cartList: newCartList,
     });
-    this.responseQuantity(id, newEa);
-    // console.log(`props`, e.target.name);
-    // console.log(`state`, this.state.cartList);
+    // this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
 
-  handleDecrement = productID => {
-    const id = Number(productID);
-
+  // - 버튼 개수 감소 함수
+  handleDecrement = index => {
     const newCartList = [...this.state.cartList];
-    const newEa = newCartList[id].quantity - 1;
-    newCartList[id] = { ...newCartList[id], quantity: newEa };
+    const newEa = newCartList[index].quantity - 1;
+    newCartList[index] = { ...newCartList[index], quantity: newEa };
 
-    if (newCartList[id].quantity <= 0) {
+    if (newCartList[index].quantity <= 0) {
       return;
     }
 
     this.setState({
       cartList: newCartList,
     });
-    this.responseQuantity(id.newEa);
+    // this.responseQuantity(this.state.cartList[index].productID, newEa - 1);
   };
 
-  handleDelete = id => {
-    fetch(`${POST_CARTS_API}`, {
-      method: 'DELETE',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
-      body: JSON.stringify({
-        productID: id,
-      }),
-    }).then(
-      fetch(`${POST_CARTS_API}`, {
-        method: 'GET',
-      })
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            cartList: data.data,
-          });
-        })
+  // 장바구니 리스트 삭제 함수
+  handleDelete = idx => {
+    console.log(this.state.cartList[idx].productID);
+    const newCartList = this.state.cartList.filter(
+      cartList => cartList.productID !== this.state.cartList[idx].productID
     );
+    this.setState({ cartList: newCartList });
+    // fetch(`${POST_CARTS_API}`, {
+    //   method: 'DELETE',
+    //   // headers: {
+    //   //   'Content-Type': 'application/json',
+    //   // },
+    //   body: JSON.stringify({
+    //     productID: this.state.cartList[idx].productID,
+    //   }),
+    // }).then(
+    //   fetch(`${POST_CARTS_API}`, {
+    //     method: 'GET',
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       this.setState({
+    //         cartList: data.data,
+    //       });
+    //     })
+    // );
   };
+
+  // handleDelete = cart => {
+  //   const cartList = this.state.cartList.filter(
+  //     item => item.option_id !== cart.option_id
+  //   );
+  //   this.setState({ cartList });
+  //   fetch(`${CART_API}/orders/cart/${cart.option_id}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       Authorization:
+  //         ‘eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.6LnewEjsNONVXSA0-O0GyvSR7aYTt_HIL4-evXu45HI’,
+  //     },
+  //     body: JSON.stringify({ cartList }),
+  //   });
 
   render() {
     const { cartList } = this.state;
     const totalPrice = cartList
       .map(cart => cart.productPrice * cart.quantity)
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    const resultPrice = parseInt(this.state.point - totalPrice);
 
     if (this.state.cartList.length === 0) {
       return (
@@ -153,13 +173,16 @@ class Cart extends React.Component {
           <ul className="cartList">
             {cartList &&
               cartList.map(
-                ({
-                  productID,
-                  productName,
-                  thumbnail_image_url,
-                  productPrice,
-                  quantity,
-                }) => {
+                (
+                  {
+                    productID,
+                    productName,
+                    thumbnail_image_url,
+                    productPrice,
+                    quantity,
+                  },
+                  index
+                ) => {
                   return (
                     <li className="productList" key={productID}>
                       <div className="cartListImgWrapper">
@@ -175,8 +198,7 @@ class Cart extends React.Component {
                           <button
                             type="button"
                             className="removeButton"
-                            onClick={() => this.handleDelete(productID)}
-                            name={productID}
+                            onClick={() => this.handleDelete(index)}
                           >
                             삭제
                           </button>
@@ -187,7 +209,7 @@ class Cart extends React.Component {
                             <button
                               type="button"
                               className="countButton"
-                              onClick={() => this.handleDecrement(productID)}
+                              onClick={() => this.handleDecrement(index)}
                             >
                               -
                             </button>
@@ -195,7 +217,7 @@ class Cart extends React.Component {
                             <button
                               type="button"
                               className="countButton"
-                              onClick={() => this.handleIncrement(productID)}
+                              onClick={() => this.handleIncrement(index)}
                             >
                               +
                             </button>
@@ -213,34 +235,20 @@ class Cart extends React.Component {
               )}
           </ul>
           <div className="cartDetail">
-            <div className="cartBox">
-              <div className="cartRead">
-                <p>보유 포인트</p>
-                <p>0원</p>
-              </div>
-              <div className="deliveryPrice">
-                <p>배송비</p>
-                <p>2,500원</p>
-              </div>
-            </div>
             <div className="productView">
               <div className="productDiscount">
                 <p className="discountTitle">현재 보유 중인 포인트</p>
-                <p>{this.state.spoint}</p>
-              </div>
-              <div className="deliveryDiscount">
-                <p>차감 포인트</p>
-                <p>0원</p>
+                <p>{parseInt(this.state.point).toLocaleString()}P</p>
               </div>
               <div className="pointDiscount">
-                <p>배송비 포함</p>
-                <p>-2,500원</p>
+                <p>차감 포인트</p>
+                <p>-{totalPrice.toLocaleString()}P</p>
               </div>
             </div>
           </div>
           <div className="cartPrice">
-            <p className="totalPriceText">총 결제금액</p>
-            <p className="totalPrice">{totalPrice.toLocaleString()}원</p>
+            <p className="totalPriceText">잔여 포인트</p>
+            <p className="totalPrice">{resultPrice.toLocaleString()}P</p>
           </div>
           <div className="cartFooterButtonWrppaer">
             <button

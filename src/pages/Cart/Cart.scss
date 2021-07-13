@@ -176,81 +176,57 @@
       }
     }
 
-    .cartDetail {
-      margin-top: 40px;
+    .productView {
+      padding: 10px;
 
-      .cartBox {
+      .productDiscount {
         @include cart-style;
-        flex-direction: column;
-
-        .cartRead {
-          @include cart-style;
-          padding-bottom: 30px;
-        }
-
-        .deliveryPrice {
-          @extend .cartRead;
-          padding-bottom: 20px;
-        }
-      }
-
-      .productView {
-        padding: 10px;
-
-        .productDiscount {
-          @include cart-style;
-          padding: 20px;
-          background-color: #f0f0f0;
-
-          .discountTitle {
-            font-weight: bolder;
-          }
-        }
-
-        .deliveryDiscount {
-          @extend .productDiscount;
-          background-color: #fafafa;
-        }
-
-        .pointDiscount {
-          @extend .deliveryDiscount;
-          border-bottom: 2px solid black;
-        }
-      }
-    }
-
-    .cartPrice {
-      @include cart-style;
-      margin-top: 30px;
-      padding-bottom: 10px;
-
-      .totalPriceText {
-        font-size: 18px;
-        font-weight: bolder;
-      }
-
-      .totalPrice {
-        color: $color-logo;
-        font-weight: bolder;
-        font-size: 20px;
-      }
-    }
-
-    .cartFooterButtonWrppaer {
-      margin-top: 110px;
-      text-align: center;
-
-      .resultBtn {
-        width: 300px;
         padding: 20px;
-        color: white;
-        background-color: $color-logo;
-        border-radius: 30px;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-        font-weight: bolder;
-        font-size: 15px;
-        cursor: pointer;
+        background-color: #f0f0f0;
+
+        .discountTitle {
+          font-weight: bolder;
+        }
       }
+
+      .pointDiscount {
+        @extend .productDiscount;
+        background-color: #fafafa;
+      }
+    }
+  }
+
+  .cartPrice {
+    @include cart-style;
+    margin-top: 30px;
+    padding-bottom: 10px;
+
+    .totalPriceText {
+      font-size: 18px;
+      font-weight: bolder;
+    }
+
+    .totalPrice {
+      color: $color-logo;
+      font-weight: bolder;
+      font-size: 20px;
+    }
+  }
+
+  .cartFooterButtonWrppaer {
+    margin-top: 110px;
+    text-align: center;
+
+    .resultBtn {
+      width: 300px;
+      padding: 20px;
+      color: white;
+      background-color: $color-logo;
+      border-radius: 30px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+      font-weight: bolder;
+      font-size: 15px;
+      cursor: pointer;
     }
   }
 }
