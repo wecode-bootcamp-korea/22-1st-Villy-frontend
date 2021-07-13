@@ -42,6 +42,45 @@
       }
     }
 
+    // 장바구니가 비었을시 보이는 페이지
+    .CartListNull {
+      @include display-flex;
+      margin-top: 200px;
+      flex-direction: column;
+
+      .nullImg {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+
+      .nullTitle {
+        margin-bottom: 30px;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+
+      .nullContent {
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .nullBtn {
+        width: 200px;
+        padding: 15px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        color: white;
+        background-color: $color-logo;
+        border-radius: 30px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        font-weight: bolder;
+        font-size: 15px;
+      }
+    }
+
     .cartList {
       display: inline-flex;
       flex-direction: column;
