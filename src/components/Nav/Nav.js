@@ -27,12 +27,10 @@ class Nav extends PureComponent {
     }
   };
 
-  navActiveHandler = event => {
-    console.log(`event.target`, event);
-    // const clickedNavNumber = event.target.name;
-    // if (clickedNavNumber === 'logo') {
-    //   this.setState({ navActiveNumber: '' });
-    // } else this.setState({ navActiveNumber: Number(clickedNavNumber) });
+  navActiveHandler = index => {
+    if (index === 'object') {
+      this.setState({ navActiveNumber: '' });
+    } else this.setState({ navActiveNumber: index });
   };
 
   render() {
@@ -58,7 +56,7 @@ class Nav extends PureComponent {
                 }`}
                 to={menu.link}
                 key={index}
-                onClick={this.navActiveHandler(index)}
+                onClick={() => this.navActiveHandler(index)}
               >
                 {menu.name}
               </Link>
