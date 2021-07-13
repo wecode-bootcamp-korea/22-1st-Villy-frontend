@@ -11,21 +11,8 @@ export class ProductDetail extends Component {
     this.set = React.createRef();
     this.state = {
       productData: {},
-      cartToggleOn: false,
       recommendToggleOn: false,
       addedCartAlertList: [],
-      backgroundColor: {
-        1: '#E9F9FE',
-        2: '#E0B5BA',
-        3: '#EFE9D9',
-        4: '#B1D9F1',
-        5: '#EAE9E9',
-        6: '#AEE19E',
-        7: '#FFF0A6',
-        8: '#CBC5E8',
-        9: '#FAD4BF',
-        10: '#E9F9FE',
-      },
     };
   }
 
@@ -35,23 +22,25 @@ export class ProductDetail extends Component {
       .then(data => {
         this.setState({
           productData: data,
-          cartToggleOn: data.cart_exist,
         });
       });
   }
 
-  addedCartAlert = () => {
-    const { addedCartAlertList } = this.state;
-    addedCartAlertList.push('');
-    setTimeout(() => {
-      addedCartAlertList.pop();
-      this.setState({ addedCartAlertList: this.state.addedCartAlertList });
-    }, 3000);
-  };
+  // addedCartAlert = () => {
+  //   const { addedCartAlertList } = this.state;
+  //   console.log(`added`, addedCartAlertList);
+  //   const copyAddedCartAlertList = [...addedCartAlertList];
+  //   copyAddedCartAlertList.push('');
+  //   console.log(`object`, copyAddedCartAlertList);
+  //   // this.setState({ copyAddedCartAlertList: copyAddedCartAlertList });
+  //   // setTimeout(() => {
+  //   //   copyAddedCartAlertList.pop();
+  //   //   this.setState({ addedCartAlertList: copyAddedCartAlertList });
+  //   // }, 3000);
+  // };
 
   postCart = () => {
-    const { cartToggleOn } = this.state;
-    if (cartToggleOn === true) {
+    if (this.state.productData.cart_exist) {
       this.addedCartAlert();
     } else {
       fetch(`${POST_ADD_CART_API}`, {
@@ -65,7 +54,9 @@ export class ProductDetail extends Component {
 
   addCart = () => {
     this.postCart();
-    this.setState({ cartToggleOn: true });
+    const copyProductData = { ...this.state.productData };
+    copyProductData.cart_exist = true;
+    this.setState({ productData: copyProductData });
   };
 
   toggleFunction = event => {
@@ -77,12 +68,7 @@ export class ProductDetail extends Component {
     if (!this.state.productData.productID) {
       return <div>..Loading</div>;
     } else {
-      const {
-        backgroundColor,
-        cartToggleOn,
-        recommendToggleOn,
-        addedCartAlertList,
-      } = this.state;
+      const { recommendToggleOn, addedCartAlertList } = this.state;
       const {
         icon_image_url,
         productDescription,
@@ -91,11 +77,11 @@ export class ProductDetail extends Component {
         productPrice,
         thumbnail_image_url,
         productTablet,
+        cart_exist,
       } = this.state.productData;
-
       return (
         <div className="ProductDetail">
-          <main style={{ backgroundColor: backgroundColor[productID] }}>
+          <main style={{ backgroundColor: BACKGROUND_COLOR[productID - 1] }}>
             <header className="headTextWrap">
               <h1>{productName}</h1>
               <div className="propertyIcons">
@@ -129,7 +115,7 @@ export class ProductDetail extends Component {
               </ul>
               <button
                 name="cart"
-                className={`cartButton ${cartToggleOn ? 'On' : 'Off'}`}
+                className={`cartButton ${cart_exist ? 'On' : 'Off'}`}
                 onClick={this.addCart}
               >
                 장바구니 담기
@@ -176,3 +162,16 @@ export class ProductDetail extends Component {
   }
 }
 export default ProductDetail;
+
+const BACKGROUND_COLOR = [
+  '#E9F9FE',
+  '#E0B5BA',
+  '#EFE9D9',
+  '#B1D9F1',
+  '#EAE9E9',
+  '#AEE19E',
+  '#FFF0A6',
+  '#CBC5E8',
+  '#FAD4BF',
+  '#E9F9FE',
+];

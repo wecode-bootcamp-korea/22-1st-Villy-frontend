@@ -27,51 +27,41 @@ class Nav extends PureComponent {
     }
   };
 
-  navActiveHandler = clickedNavNumber => {
-    if (!clickedNavNumber) {
+  navActiveHandler = event => {
+    const clickedNavNumber = event.target.name;
+    if (clickedNavNumber === 'logo') {
       this.setState({ navActiveNumber: '' });
-    }
-    this.setState({ navActiveNumber: clickedNavNumber });
+    } else this.setState({ navActiveNumber: Number(clickedNavNumber) });
   };
 
   render() {
     const { navActiveNumber, isNavTransper } = this.state;
-    console.log(`this.state.isNavtransper`, this.state.isNavTransper);
     return (
-      <nav
-        className="navbar"
-        style={
-          isNavTransper
-            ? {
-                boxShadow: 'rgba(0, 0, 0, 0.14) 0px 0px 6px 0px',
-                background: 'white',
-              }
-            : { boxShadow: '', background: '' }
-        }
-      >
+      <nav className={`navbar ${isNavTransper ? 'transper' : ''}`}>
         <div className="navLogo">
           <Link to="/">
             <img
               alt="logo"
               className="logoImg"
               src="/images/logo.png"
+              name={'logo'}
               onClick={this.navActiveHandler}
             />
           </Link>
         </div>
         <ul className="navMenu">
           <li className="navList">
-            {MENU_LIST.map((link, index) => (
+            {MENU_LIST.map((menu, index) => (
               <Link
                 className={`navLink ${
                   navActiveNumber === index ? 'active' : 'disactive'
                 }`}
-                to={link.link}
+                to={menu.link}
                 key={index}
                 name={index}
-                onClick={() => this.navActiveHandler(index)}
+                onClick={this.navActiveHandler}
               >
-                {link.name}
+                {menu.name}
               </Link>
             ))}
           </li>
@@ -82,11 +72,10 @@ class Nav extends PureComponent {
 }
 
 const MENU_LIST = [
-  { id: 8, name: '추천상품', link: '/' },
-  { id: 9, name: '제품보기', link: '/product' },
-  { id: 3, name: '고객후기', link: '/' },
-  { id: 4, name: '장바구니', link: '/cart' },
-  { id: 5, name: '로그인', link: '/login' },
+  { name: '추천상품', link: '/' },
+  { name: '제품보기', link: '/product' },
+  { name: '장바구니', link: '/cart' },
+  { name: '로그인', link: '/login' },
 ];
 
 export default Nav;
