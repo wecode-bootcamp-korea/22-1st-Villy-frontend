@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BiRadioCircleMarked, BiRadioCircle } from 'react-icons/bi';
 import './FootSlide.scss';
 export class FootSlide extends Component {
   constructor() {
