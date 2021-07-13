@@ -7,7 +7,6 @@ class Cart extends React.Component {
     super();
     this.state = {
       cartList: [],
-      deleteBtn: false, // 조건부 렌더링
     };
   }
 
@@ -105,8 +104,8 @@ class Cart extends React.Component {
   };
 
   render() {
-    const { cartList, deleteBtn } = this.state;
-    if (this.deleteBtn) {
+    const { cartList } = this.state;
+    if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
           <div className="cartView">
