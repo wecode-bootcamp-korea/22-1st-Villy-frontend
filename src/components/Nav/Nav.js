@@ -28,10 +28,11 @@ class Nav extends PureComponent {
   };
 
   navActiveHandler = event => {
-    const clickedNavNumber = event.target.name;
-    if (clickedNavNumber === 'logo') {
-      this.setState({ navActiveNumber: '' });
-    } else this.setState({ navActiveNumber: Number(clickedNavNumber) });
+    console.log(`event.target`, event);
+    // const clickedNavNumber = event.target.name;
+    // if (clickedNavNumber === 'logo') {
+    //   this.setState({ navActiveNumber: '' });
+    // } else this.setState({ navActiveNumber: Number(clickedNavNumber) });
   };
 
   render() {
@@ -44,7 +45,6 @@ class Nav extends PureComponent {
               alt="logo"
               className="logoImg"
               src="/images/logo.png"
-              name={'logo'}
               onClick={this.navActiveHandler}
             />
           </Link>
@@ -58,8 +58,7 @@ class Nav extends PureComponent {
                 }`}
                 to={menu.link}
                 key={index}
-                name={index}
-                onClick={this.navActiveHandler}
+                onClick={this.navActiveHandler(index)}
               >
                 {menu.name}
               </Link>
