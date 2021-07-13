@@ -7,49 +7,54 @@ class Cart extends React.Component {
     super();
     this.state = {
       cartList: [],
-      deleteBtn: this.cartList, // 조건부 렌더링
+      deleteBtn: false, // 조건부 렌더링
     };
+    console.log(this.state.cartList.length);
   }
 
   // 백엔드에 데이터 보내는 함수
   postFetch = e => {
+    const target = this.state.cartList[e.target.name];
     fetch(`${CARTLIST}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        productID: e.target.name,
-        quantity: 2, //수량 변수화, then 데이타 받아오기 그리고 바로 랜더링 되기
+        productID: target.productID,
+        quantity: target.quantity,
       }),
     });
+    console.log(this.state.cartList);
   };
 
   // 백엔드랑 연결
+  componentDidMount() {
+    fetch(`${CARTLIST}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cartList: res.data,
+        });
+        console.log(this.state.cartList);
+      });
+  }
+
+  // mock data 연결
   // componentDidMount() {
-  //   fetch(`${CARTLIST}`, {
+  //   fetch('/data/CartListData.json', {
   //     method: 'GET',
   //   })
   //     .then(res => res.json())
   //     .then(data => {
   //       this.setState({
-  //         cartList: data.product,
+  //         cartList: data,
   //       });
   //     });
   // }
 
-  // mock data 연결
-  componentDidMount() {
-    fetch('/data/CartListData.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          cartList: data,
-        });
-      });
-  }
-
   handleIncrement = e => {
     const id = Number(e.target.name);
+    this.postFetch(e);
     // console.log(`props`, e.target.name);
     // console.log(`state`, this.state.cartList);
 
@@ -65,6 +70,7 @@ class Cart extends React.Component {
 
   handleDecrement = e => {
     const id = Number(e.target.name);
+    this.postFetch(e);
 
     const newCartList = [...this.state.cartList];
     const newEa = newCartList[id].quantity - 1;
@@ -82,6 +88,9 @@ class Cart extends React.Component {
   handleDelete = e => {
     fetch(`${CARTLIST}`, {
       method: 'DELETE',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
       body: JSON.stringify({
         productID: e.target.name,
       }),
@@ -99,10 +108,9 @@ class Cart extends React.Component {
   };
 
   render() {
-    const { cartList } = this.state;
-    console.log(`render`, this.state.cartList);
-    console.log(`btn`, this.state.deleteBtn);
-    if (this.deleteBtn) {
+    const { cartList, deleteBtn } = this.state;
+    console.log(this.state.cartList);
+    if (deleteBtn) {
       return (
         <div className="Cart">
           <div className="cartView">
@@ -201,7 +209,7 @@ class Cart extends React.Component {
                             </div>
                             <div className="boxRight">
                               <p className="boxPrice">
-                                {productPrice * quantity}
+                                {parseInt(productPrice * quantity)}
                               </p>
                             </div>
                           </div>
