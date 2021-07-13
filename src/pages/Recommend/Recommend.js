@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+import { SurveyWelcome } from './Survey/SurveyWelcome';
+import { Survey01 } from './Survey/Survey01';
+import { Survey02 } from './Survey/Survey02';
+import { Survey03 } from './Survey/Survey03';
+import { Survey04 } from './Survey/Survey04';
+
 import './Recommend.scss';
 
 export class Recommend extends Component {
@@ -22,22 +29,12 @@ export class Recommend extends Component {
                 <strong>내 건강을 알려줘!</strong>
               </h1>
             </header>
-            <section className="surveyBody">
-              <h2 className="sr-only">survey intro</h2>
-              <p className="surveyCotent">
-                몇 가지 질문에 답하고
-                <br />
-                나에게 필요한 영양성분을 알아보세요.
-                <span className="surveyTime">약 3분정도 소요됩니다.</span>
-              </p>
-            </section>
-            <footer className="surveyFooter">
-              <button className="surveyButton">시작하기</button>
-
-              <p className="caution">
-                ※ 질병의 진단 및 치료는 전문적인 의료기관을 이용하세요.
-              </p>
-            </footer>
+            {/* 모드에 따라 아래 컴포넌트 바뀌기 */}
+            <SurveyWelcome />
+            <Survey01 />
+            <Survey02 />
+            <Survey03 />
+            <Survey04 />
           </div>
         </div>
       </section>
