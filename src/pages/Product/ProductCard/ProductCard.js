@@ -10,11 +10,28 @@ import './ProductCard.scss';
 
 export class ProductCard extends Component {
   handleCartButton = event => {
+    const targetName = event.target.name;
     event.preventDefault();
+    console.log(event.target.name);
+    console.log(this.props.productCard.cart_exist);
+    //전달해줄 값 정의
     // 여기에 POST
+    //조건 true면 리턴하고
+    if (this.props.productCard.cart_exist) {
+      return;
+    } else {
+      fetch('http://10.58.1.111:8000/carts', {
+        method: 'POST',
+        body: JSON.stringify({
+          productID: targetName,
+        }),
+      });
+    }
   };
 
   render() {
+    console.log(this.props.productCard);
+
     const { backgroundColor } = this.props;
 
     const {
@@ -73,6 +90,7 @@ export class ProductCard extends Component {
           <footer className="productCardFooter">
             <p className="add">더보기</p>
             <button
+              name={productID}
               className="cartBtn"
               onClick={this.handleCartButton}
               disabled={cart_exist}

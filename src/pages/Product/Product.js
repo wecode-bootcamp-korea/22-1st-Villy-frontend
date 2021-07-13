@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { GET_PRODUCTS_API } from '../../config';
+import { GET_PRODUCTS_API } from '../../config';
 import ProductCard from './ProductCard/ProductCard';
 import './Product.scss';
 
@@ -12,8 +12,8 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    // fetch(`${GET_PRODUCTS_API}`)
-    fetch('./data/productData.json')
+    // fetch('./data/productData.json')
+    fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
