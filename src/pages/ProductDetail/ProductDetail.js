@@ -51,8 +51,8 @@ export class ProductDetail extends Component {
         method: 'POST',
         body: JSON.stringify({
           productID: id,
-          headers: { Authorization: localStorage.getItem('access_token') },
         }),
+        headers: { Authorization: localStorage.getItem('access_token') },
       });
     }
   };

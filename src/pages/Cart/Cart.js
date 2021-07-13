@@ -19,6 +19,7 @@ class Cart extends React.Component {
         productID: productID,
         quantity: quantity,
       }),
+      headers: { Authorization: localStorage.getItem('access_token') },
     });
   };
 
@@ -57,7 +58,7 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
-    // this.responseQuantity(this.state.cartList[index].productID, newEa + 1);
+    this.responseQuantity(this.state.cartList[index].productID, newEa + 1);
   };
 
   handleDecrement = index => {
@@ -70,7 +71,7 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
-    // this.responseQuantity(this.state.cartList[index].productID, newEa - 1);
+    this.responseQuantity(this.state.cartList[index].productID, newEa - 1);
   };
 
   handleDelete = id => {
