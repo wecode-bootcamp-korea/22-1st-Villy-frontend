@@ -10,6 +10,7 @@ import './Product.scss';
 export class Product extends Component {
   constructor() {
     super();
+    this.myRef = React.createRef();
     this.state = {
       productCard: [],
       filterState: {
@@ -22,8 +23,8 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    // fetch('./data/ProductData.json');
-    fetch(`${GET_PRODUCTS_API}`)
+    // fetch(`${GET_PRODUCTS_API}`)
+    fetch('./data/productData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -31,6 +32,16 @@ export class Product extends Component {
         });
       });
   }
+
+  studyRef = () => {
+    this.myRef.current = {
+      ...this.myRef.current,
+      bone: false,
+      hair: false,
+      growth: false,
+      skin: false,
+    };
+  };
 
   makeCondition = () => {
     const filterMatch = {
@@ -61,7 +72,6 @@ export class Product extends Component {
           productCard: data.message,
         });
       });
-    console.log(`filtered>>>>>`, filtered);
   };
 
   handleCheckBox = event => {
@@ -81,6 +91,9 @@ export class Product extends Component {
   };
 
   render() {
+    console.log(this.myRef.current);
+    console.log(this.studyRef());
+
     const { productCard } = this.state;
 
     return (
