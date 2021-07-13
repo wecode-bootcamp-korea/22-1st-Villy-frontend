@@ -49,7 +49,7 @@ class Cart extends React.Component {
   // }
 
   handleIncrement = e => {
-    const id = Number(e.target.name);
+    const id = Number(e.target.idx);
     this.responseQuantity(e);
     // console.log(`props`, e.target.name);
     // console.log(`state`, this.state.cartList);
@@ -105,6 +105,10 @@ class Cart extends React.Component {
 
   render() {
     const { cartList } = this.state;
+    const totalPrice = cartList
+      .map(cart => cart.productPrice * cart.quantity)
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
     if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
@@ -163,7 +167,6 @@ class Cart extends React.Component {
                 ) => {
                   return (
                     <li className="productList" key={idx}>
-                      <input type="checkbox" />
                       <div className="cartListImgWrapper">
                         <img
                           alt="비타민"
@@ -217,7 +220,7 @@ class Cart extends React.Component {
           <div className="cartDetail">
             <div className="cartBox">
               <div className="cartRead">
-                <p>정기구독 제품합계</p>
+                <p>보유 포인트</p>
                 <p>0원</p>
               </div>
               <div className="deliveryPrice">
@@ -227,22 +230,22 @@ class Cart extends React.Component {
             </div>
             <div className="productView">
               <div className="productDiscount">
-                <p className="discountTitle">정기구독 할인혜택</p>
+                <p className="discountTitle">보유 포인트</p>
                 <p>0원</p>
               </div>
               <div className="deliveryDiscount">
-                <p>배송비 무료</p>
-                <p>-2,500원</p>
+                <p>차감 포인트</p>
+                <p>-0원</p>
               </div>
               <div className="pointDiscount">
-                <p>포인트 할인</p>
-                <p>0원</p>
+                <p>배송비 포함</p>
+                <p>-2,500원</p>
               </div>
             </div>
           </div>
           <div className="cartPrice">
             <p className="totalPriceText">총 결제금액</p>
-            <p className="totalPrice">1000</p>
+            <p className="totalPrice">{totalPrice.toLocaleString()}원</p>
           </div>
           <div className="cartFooterButtonWrppaer">
             <button
