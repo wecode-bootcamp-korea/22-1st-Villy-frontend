@@ -11,13 +11,12 @@ class Cart extends React.Component {
   }
 
   // 백엔드에 데이터 보내는 함수
-  responseQuantity = e => {
-    const target = this.state.cartList[e.target.name];
+  responseQuantity = (id, quantity) => {
     fetch(`${POST_CARTS_API}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        productID: target.productID,
-        quantity: target.quantity,
+        productID: id,
+        quantity: quantity,
       }),
     });
   };
@@ -48,12 +47,8 @@ class Cart extends React.Component {
   //     });
   // }
 
-  handleIncrement = e => {
-    const id = Number(e.target.idx);
-    this.responseQuantity(e);
-    // console.log(`props`, e.target.name);
-    // console.log(`state`, this.state.cartList);
-
+  handleIncrement = productID => {
+    const id = Number(productID);
     const newCartList = [...this.state.cartList];
     // console.log(`ea`, newCartList[id].ea + 1);
     const newEa = newCartList[id].quantity + 1;
@@ -62,11 +57,13 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
+    this.responseQuantity(id, newEa);
+    // console.log(`props`, e.target.name);
+    // console.log(`state`, this.state.cartList);
   };
 
-  handleDecrement = e => {
-    const id = Number(e.target.name);
-    this.responseQuantity(e);
+  handleDecrement = productID => {
+    const id = Number(productID);
 
     const newCartList = [...this.state.cartList];
     const newEa = newCartList[id].quantity - 1;
@@ -79,16 +76,17 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
+    this.responseQuantity(id.newEa);
   };
 
-  handleDelete = e => {
+  handleDelete = id => {
     fetch(`${POST_CARTS_API}`, {
       method: 'DELETE',
       // headers: {
       //   'Content-Type': 'application/json',
       // },
       body: JSON.stringify({
-        productID: e.target.name,
+        productID: id,
       }),
     }).then(
       fetch(`${POST_CARTS_API}`, {
@@ -97,7 +95,7 @@ class Cart extends React.Component {
         .then(res => res.json())
         .then(data => {
           this.setState({
-            cartList: data.product,
+            cartList: data.data,
           });
         })
     );
@@ -155,18 +153,15 @@ class Cart extends React.Component {
           <ul className="cartList">
             {cartList &&
               cartList.map(
-                (
-                  {
-                    productID,
-                    productName,
-                    thumbnail_image_url,
-                    productPrice,
-                    quantity,
-                  },
-                  idx
-                ) => {
+                ({
+                  productID,
+                  productName,
+                  thumbnail_image_url,
+                  productPrice,
+                  quantity,
+                }) => {
                   return (
-                    <li className="productList" key={idx}>
+                    <li className="productList" key={productID}>
                       <div className="cartListImgWrapper">
                         <img
                           alt="비타민"
@@ -180,7 +175,7 @@ class Cart extends React.Component {
                           <button
                             type="button"
                             className="removeButton"
-                            onClick={this.handleDelete}
+                            onClick={() => this.handleDelete(productID)}
                             name={productID}
                           >
                             삭제
@@ -192,7 +187,7 @@ class Cart extends React.Component {
                             <button
                               type="button"
                               className="countButton"
-                              onClick={() => this.handleDecrement(idx)}
+                              onClick={() => this.handleDecrement(productID)}
                             >
                               -
                             </button>
@@ -200,7 +195,7 @@ class Cart extends React.Component {
                             <button
                               type="button"
                               className="countButton"
-                              onClick={() => this.handleIncrement(idx)}
+                              onClick={() => this.handleIncrement(productID)}
                             >
                               +
                             </button>
@@ -231,7 +226,7 @@ class Cart extends React.Component {
             <div className="productView">
               <div className="productDiscount">
                 <p className="discountTitle">현재 보유 중인 포인트</p>
-                <p>{this.state.point}</p>
+                <p>{this.state.spoint}</p>
               </div>
               <div className="deliveryDiscount">
                 <p>차감 포인트</p>
