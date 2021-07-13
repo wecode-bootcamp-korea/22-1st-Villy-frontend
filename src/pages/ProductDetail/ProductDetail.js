@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { GET_PRODUCTS_API, POST_ADD_CART_API } from '../../config.js';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
@@ -70,7 +69,6 @@ export class ProductDetail extends Component {
   };
 
   render() {
-    console.log(`thus.state.productData`, this.state.productData);
     if (!this.state.productData.productName) {
       return <div>..Loading</div>;
     } else {
@@ -175,7 +173,7 @@ export class ProductDetail extends Component {
     }
   }
 }
-export default withRouter(ProductDetail);
+export default ProductDetail;
 
 const BACKGROUND_COLOR = [
   '#E9F9FE',

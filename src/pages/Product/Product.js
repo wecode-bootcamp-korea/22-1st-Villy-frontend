@@ -71,7 +71,6 @@ export class Product extends Component {
 
   render() {
     const { productCard } = this.state;
-
     return (
       <div className="Product">
         <header className="productHeader">
