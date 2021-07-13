@@ -97,7 +97,7 @@ class Cart extends React.Component {
   render() {
     const { cartList } = this.state;
     console.log(`render`, this.state);
-    if (!this.state.cartList.delete) {
+    if (this.state.deleteBtn) {
       return (
         <div className="Cart">
           <div className="cartView">
@@ -211,7 +211,7 @@ class Cart extends React.Component {
               <div className="cartBox">
                 <div className="cartRead">
                   <p>정기구독 제품합계</p>
-                  <p>19,500원</p>
+                  <p>0원</p>
                 </div>
                 <div className="deliveryPrice">
                   <p>배송비</p>
@@ -221,7 +221,7 @@ class Cart extends React.Component {
               <div className="productView">
                 <div className="productDiscount">
                   <p className="discountTitle">정기구독 할인혜택</p>
-                  <p>총 2,500원</p>
+                  <p>0원</p>
                 </div>
                 <div className="deliveryDiscount">
                   <p>배송비 무료</p>
@@ -235,7 +235,9 @@ class Cart extends React.Component {
             </div>
             <div className="cartPrice">
               <p className="totalPriceText">총 결제금액</p>
-              <p className="totalPrice">19,500원</p>
+              <p className="totalPrice">
+                {this.state.productPrice * this.state.quantity}
+              </p>
             </div>
             <div className="cartFooterButtonWrppaer">
               <button

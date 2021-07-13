@@ -1,5 +1,10 @@
 @import '../../styles/variables.scss';
 
+@mixin cart-style {
+  display: flex;
+  justify-content: space-between;
+}
+
 .Cart {
   display: flex;
   justify-content: center;
@@ -17,9 +22,8 @@
     margin-top: 150px;
 
     .cartTop {
-      display: flex;
+      @include cart-style;
       margin-bottom: 40px;
-      justify-content: space-between;
 
       .cartTopTitle {
         font-size: 30px;
@@ -70,8 +74,7 @@
       .nullBtn {
         width: 200px;
         padding: 15px;
-        margin-top: 40px;
-        margin-bottom: 50px;
+        margin: 40px 0px 50px 0px;
         color: white;
         background-color: $color-logo;
         border-radius: 30px;
@@ -99,21 +102,17 @@
         .cartListImg {
           width: 110px;
           height: 110px;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-bottom: 20px;
+          margin: 20px 0px 20px 10px;
         }
 
         .listDetail {
           display: inline-flex;
           flex-direction: column;
           width: 700px;
-          margin-top: 30px;
-          margin-left: 15px;
+          margin: 30px 0px 0px 15px;
 
           .listTop {
-            display: flex;
-            justify-content: space-between;
+            @include cart-style;
 
             .removeButton {
               width: 40px;
@@ -180,14 +179,12 @@
       margin-top: 40px;
 
       .cartBox {
-        display: flex;
+        @include cart-style;
         flex-direction: column;
-        justify-content: space-between;
 
         .cartRead {
-          display: flex;
+          @include cart-style;
           padding-bottom: 30px;
-          justify-content: space-between;
         }
 
         .deliveryPrice {
@@ -200,10 +197,9 @@
         padding: 10px;
 
         .productDiscount {
-          display: flex;
+          @include cart-style;
           padding: 20px;
           background-color: #f0f0f0;
-          justify-content: space-between;
 
           .discountTitle {
             font-weight: bolder;
@@ -223,10 +219,9 @@
     }
 
     .cartPrice {
-      display: flex;
+      @include cart-style;
       margin-top: 30px;
       padding-bottom: 10px;
-      justify-content: space-between;
 
       .totalPriceText {
         font-size: 18px;
