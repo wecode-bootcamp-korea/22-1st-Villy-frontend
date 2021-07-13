@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import { GET_PRODUCTS_API } from '../../config';
 
+import './ProductCategory.scss';
+
 export class ProductCategory extends Component {
   constructor() {
     super();
@@ -15,8 +17,6 @@ export class ProductCategory extends Component {
   }
 
   makeCondition = () => {
-    // 비동기 문제 있음
-    // 패치를 위한 함수를 만들어야할까?
     const filterMatch = {
       bone: 1,
       hair: 2,
@@ -39,8 +39,8 @@ export class ProductCategory extends Component {
       ''
     );
 
-    // fetch(`${GET_PRODUCTS_API}?${filtered}`)
-    fetch(`./data/ProductData.json${filtered}`)
+    // // fetch(`${GET_PRODUCTS_API}`)
+    fetch(`./data/ProductData.json?${filtered}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -51,17 +51,18 @@ export class ProductCategory extends Component {
 
   handleCheckBox = event => {
     const checkBoxName = event.target.name;
-    const tf = !this.state.filterState[checkBoxName];
-
+    const checkBoxNameState = !this.state.filterState[checkBoxName];
     this.setState(
       {
-        filterState: { ...this.state.filterState, [checkBoxName]: tf },
+        filterState: {
+          ...this.state.filterState,
+          [checkBoxName]: checkBoxNameState,
+        },
       },
       () => {
         this.makeCondition();
       }
     );
-    console.log(`this.state.filterState`, this.state.filterState);
   };
 
   render() {
@@ -106,7 +107,7 @@ const PRODUCT_CATEGORY = [
     categoryText: '성장',
   },
   {
-    // id: 4,
+    id: 4,
     name: 'skin',
     alt: 'skin',
     src: '/images/therapy.svg',

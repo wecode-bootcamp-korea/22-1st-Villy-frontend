@@ -16,7 +16,7 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    // fetch(`${GET_PRODUCTS_API}`)
+    // // fetch(`${GET_PRODUCTS_API}`)
     fetch('./data/ProductData.json')
       .then(res => res.json())
       .then(data => {
@@ -42,7 +42,7 @@ export class Product extends Component {
           <h2 className="sr-only">Product Body</h2>
 
           <form className="productCategory">
-            <ProductCategory />
+            <ProductCategory key={productCard.id} />
           </form>
 
           <ul className="productList">
