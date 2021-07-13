@@ -51,6 +51,7 @@ export class ProductDetail extends Component {
         method: 'POST',
         body: JSON.stringify({
           productID: id,
+          headers: { Authorization: localStorage.getItem('access_token') },
         }),
       });
     }
@@ -87,7 +88,7 @@ export class ProductDetail extends Component {
           <main
             style={{
               backgroundColor:
-                BACKGROUND_COLOR[this.props.match.params.productID],
+                BACKGROUND_COLOR[this.props.match.params.productID - 1],
             }}
           >
             <header className="headTextWrap">
