@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { GET_PRODUCTS_API } from '../../config';
+import { GET_PRODUCTS_API } from '../../../config';
 
 import './ProductCategory.scss';
 
@@ -14,6 +14,17 @@ export class ProductCategory extends Component {
         skin: false,
       },
     };
+  }
+
+  componentDidMount() {
+    // fetch(`${GET_PRODUCTS_API}`)
+    fetch(`${GET_PRODUCTS_API}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productCard: data.message,
+        });
+      });
   }
 
   makeCondition = () => {
@@ -33,20 +44,20 @@ export class ProductCategory extends Component {
         if (value) {
           return acc + `&efficacy=${filterMatch[key]}`;
         }
-
         return acc;
       },
       ''
     );
 
-    // // fetch(`${GET_PRODUCTS_API}`)
-    fetch(`./data/ProductData.json?${filtered}`)
+    // fetch(`${GET_PRODUCTS_API}?${filtered}`);
+    fetch(`${GET_PRODUCTS_API}?efficacy=1`)
       .then(res => res.json())
       .then(data => {
         this.setState({
           productCard: data.message,
         });
       });
+    console.log(filtered);
   };
 
   handleCheckBox = event => {
