@@ -21,27 +21,27 @@ class Login extends React.Component {
   };
 
   // Back이랑 연결하는 fetch 함수
-  // requestLogin = () => {
-  //   fetch(`${POST_SIGNIN_API}`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       email: this.state.userId,
-  //       password: this.state.userPw,
-  //       //로그인 test용 하드코딩
-  //       // name: '김코드',
-  //       // mobile: '010-1234-2223',
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       if (res.access_token) {
-  //         alert('로그인 성공');
-  //         localStorage.setItem('access_token', res.access_token);
-  //       } else {
-  //         alert('로그인 실패');
-  //       }
-  //     });
-  // };
+  requestLogin = () => {
+    fetch(`${POST_SIGNIN_API}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.userId,
+        password: this.state.userPw,
+        //로그인 test용 하드코딩
+        // name: '김코드',
+        // mobile: '010-1234-2223',
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.access_token) {
+          alert('로그인 성공');
+          localStorage.setItem('access_token', res.access_token);
+        } else {
+          alert('로그인 실패');
+        }
+      });
+  };
 
   render() {
     const { userId, userPw } = this.state;
