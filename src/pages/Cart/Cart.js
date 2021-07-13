@@ -230,12 +230,12 @@ class Cart extends React.Component {
             </div>
             <div className="productView">
               <div className="productDiscount">
-                <p className="discountTitle">보유 포인트</p>
-                <p>0원</p>
+                <p className="discountTitle">현재 보유 중인 포인트</p>
+                <p>{this.state.point}</p>
               </div>
               <div className="deliveryDiscount">
                 <p>차감 포인트</p>
-                <p>-0원</p>
+                <p>0원</p>
               </div>
               <div className="pointDiscount">
                 <p>배송비 포함</p>
