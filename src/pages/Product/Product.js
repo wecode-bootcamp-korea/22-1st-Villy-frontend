@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { GET_PRODUCTS_API } from '../../config';
-// import { GET_PRODUCTS_API } from '../../../src/config.js';
-
 import ProductCard from './ProductCard/ProductCard';
-
 import './Product.scss';
 
 export class Product extends Component {
@@ -11,15 +8,11 @@ export class Product extends Component {
     super();
     this.state = {
       productCard: [],
-      addCart: false,
-      bone: false,
-      hair: false,
-      growth: false,
-      skin: false,
     };
   }
 
   componentDidMount() {
+    // fetch('./data/productData.json')
     fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
@@ -29,48 +22,9 @@ export class Product extends Component {
       });
   }
 
-  makeCondition = () => {
-    let fillter = [];
-
-    if (this.state.bone) {
-      fillter.push(`efficacy=1`);
-    }
-
-    if (this.state.hair) {
-      fillter.push(`efficacy=2`);
-    }
-
-    if (this.state.growth) {
-      fillter.push(`efficacy=3`);
-    }
-
-    if (this.state.skin) {
-      fillter.push(`efficacy=4`);
-    }
-
-    // fetch(`${GET_PRODUCTS_API}?`)
-    fetch(`./data/ProductData.json?${fillter.join('&')}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productCard: data.message,
-        });
-      });
-  };
-
-  handleCheckBox = event => {
-    this.setState(
-      {
-        [event.target.name]: !this.state[event.target.name],
-      },
-      () => {
-        this.makeCondition();
-      }
-    );
-  };
-
   render() {
     const { productCard } = this.state;
+
     return (
       <div className="Product">
         <header className="productHeader">
@@ -82,65 +36,6 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
-
-          <form className="productCategory">
-            <div className="ProductCheckBox">
-              <input
-                id="bone"
-                type="checkbox"
-                name="bone"
-                onChange={this.handleCheckBox}
-              />
-              <label for="bone">
-                <img className="iconImage" alt="hair" src="images/bone.svg" />
-                <span className="categoryText">뼈</span>
-              </label>
-            </div>
-            <div className="ProductCheckBox">
-              <input
-                id="hair"
-                type="checkbox"
-                name="hair"
-                onChange={this.handleCheckBox}
-              />
-              <label for="hair">
-                <img
-                  className="iconImage"
-                  alt="hair"
-                  src="images/hairstyle.svg"
-                />
-                <span className="categoryText">모발</span>
-              </label>
-            </div>
-            <div className="ProductCheckBox">
-              <input
-                id="growth"
-                type="checkbox"
-                name="growth"
-                onChange={this.handleCheckBox}
-              />
-              <label for="growth">
-                <img className="iconImage" alt="hair" src="images/height.svg" />
-                <span className="categoryText">성장</span>
-              </label>
-            </div>
-            <div className="ProductCheckBox">
-              <input
-                id="skin"
-                type="checkbox"
-                name="skin"
-                onChange={this.handleCheckBox}
-              />
-              <label for="skin">
-                <img
-                  className="iconImage"
-                  alt="hair"
-                  src="images/therapy.svg"
-                />
-                <span className="categoryText">피부</span>
-              </label>
-            </div>
-          </form>
 
           <ul className="productList">
             {productCard.map((product, idx) => (

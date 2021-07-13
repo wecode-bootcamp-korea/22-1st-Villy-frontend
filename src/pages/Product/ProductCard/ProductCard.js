@@ -9,40 +9,46 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import './ProductCard.scss';
 
 export class ProductCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      addCart: false,
-    };
-  }
-
   handleCartButton = event => {
+    const targetName = event.target.name;
     event.preventDefault();
-
-    this.setState({
-      addCart: !this.state.addCart,
-    });
+    //전달해줄 값 정의
+    // 여기에 POST
+    //조건 true면 리턴하고
+    if (this.props.productCard.cart_exist) {
+      return;
+    } else {
+      fetch('http://10.58.1.111:8000/carts', {
+        method: 'POST',
+        body: JSON.stringify({
+          productID: targetName,
+        }),
+      });
+    }
   };
+
+  goToDetail = () =>
+    this.props.history.push(`product/${this.props.productCard.productID}`);
 
   render() {
     const { backgroundColor } = this.props;
 
     const {
       productName,
-      productPrice,
-      productTablet,
-      thumbnail_image_url,
       icon_image_url,
+      thumbnail_image_url,
       summary,
-      icon_name,
+      productTablet,
+      productPrice,
+      cart_exist,
+      productID,
     } = this.props.productCard;
+
     return (
       <li
         className="ProductCard"
         style={{ backgroundColor }}
-        onClick={() =>
-          this.props.history.push(`product/${this.props.productCard.productID}`)
-        }
+        onClick={this.goToDetail}
       >
         <header className="productCardHeader">
           <div className="nameBox">
@@ -52,11 +58,7 @@ export class ProductCard extends Component {
 
             <ul className="icon">
               {icon_image_url.map((iconImage, idx) => (
-                <ProductIcon
-                  key={idx}
-                  icon_image_url={iconImage}
-                  icon_name={icon_name}
-                />
+                <ProductIcon key={idx} icon_image_url={iconImage} />
               ))}
             </ul>
           </div>
@@ -84,12 +86,13 @@ export class ProductCard extends Component {
         <footer className="productCardFooter">
           <p className="add">더보기</p>
           <button
+            name={productID}
             className="cartBtn"
             onClick={this.handleCartButton}
-            disabled={this.state.addCart}
+            disabled={cart_exist}
           >
-            {!this.state.addCart && <AiOutlinePlus className="addIcon" />}
-            {this.state.addCart ? '장바구니 추가됨' : '장바구니 담기'}
+            {!cart_exist && <AiOutlinePlus className="addIcon" />}
+            {cart_exist ? '장바구니 추가됨' : '장바구니 담기'}
           </button>
         </footer>
       </li>

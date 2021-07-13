@@ -1,5 +1,10 @@
 @import '../../styles/variables.scss';
 
+@mixin cart-style {
+  display: flex;
+  justify-content: space-between;
+}
+
 .Cart {
   display: flex;
   justify-content: center;
@@ -17,9 +22,8 @@
     margin-top: 150px;
 
     .cartTop {
-      display: flex;
+      @include cart-style;
       margin-bottom: 40px;
-      justify-content: space-between;
 
       .cartTopTitle {
         font-size: 30px;
@@ -42,36 +46,90 @@
       }
     }
 
-    .cartList {
-      display: inline-flex;
-      margin-top: 20px;
-      border-top: 1px solid lightgray;
-      border-bottom: 1px solid lightgray;
+    // 장바구니가 비었을시 보이는 페이지
+    .CartListNull {
+      @include display-flex;
+      margin-top: 90px;
+      flex-direction: column;
 
-      input[type='checkbox'] {
-        margin-top: 30px;
-        zoom: 2;
-      }
-
-      .cartListImg {
-        width: 100px;
-        height: 100px;
-        margin-top: 20px;
-        margin-left: 10px;
+      .nullImg {
+        display: flex;
+        width: 50px;
+        height: 50px;
         margin-bottom: 20px;
       }
 
-      .listDetail {
-        display: inline-flex;
-        flex-direction: column;
-        width: 700px;
-        margin-top: 30px;
-        margin-left: 15px;
+      .nullTitle {
+        margin-bottom: 30px;
+        font-size: 20px;
+        font-weight: bolder;
+      }
 
-        .listFont {
-          margin-left: 10px;
-          font-size: 20px;
-          text-decoration: underline;
+      .nullContent {
+        text-align: center;
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .nullBtn {
+        width: 200px;
+        padding: 15px;
+        margin: 40px 0px 50px 0px;
+        color: white;
+        background-color: $color-logo;
+        border-radius: 30px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        font-weight: bolder;
+        font-size: 15px;
+      }
+    }
+
+    .cartList {
+      display: inline-flex;
+      flex-direction: column;
+      margin-top: 30px;
+      border-top: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+
+      .productList {
+        display: flex;
+
+        input[type='checkbox'] {
+          margin-top: 30px;
+          zoom: 2;
+        }
+
+        .cartListImg {
+          width: 70px;
+          height: 30px;
+          margin: 40px 40px 40px 40px;
+        }
+
+        .listDetail {
+          display: inline-flex;
+          flex-direction: column;
+          width: 700px;
+          margin: 30px 0px 0px 15px;
+
+          .listTop {
+            @include cart-style;
+
+            .removeButton {
+              width: 40px;
+              height: 27px;
+              padding: 0;
+              background: #fff;
+              border: 1px solid #dfdfdf;
+              border-radius: 10px;
+              text-align: center;
+            }
+
+            .listFont {
+              margin-left: 10px;
+              font-size: 20px;
+              text-decoration: underline;
+            }
+          }
         }
       }
 
@@ -79,8 +137,6 @@
         @include display-flex;
 
         .btnDetail {
-          padding: 10px;
-
           .countNum {
             padding: 20px;
             align-items: center;
@@ -121,14 +177,12 @@
       margin-top: 40px;
 
       .cartBox {
-        display: flex;
+        @include cart-style;
         flex-direction: column;
-        justify-content: space-between;
 
         .cartRead {
-          display: flex;
+          @include cart-style;
           padding-bottom: 30px;
-          justify-content: space-between;
         }
 
         .deliveryPrice {
@@ -141,10 +195,9 @@
         padding: 10px;
 
         .productDiscount {
-          display: flex;
+          @include cart-style;
           padding: 20px;
           background-color: #f0f0f0;
-          justify-content: space-between;
 
           .discountTitle {
             font-weight: bolder;
@@ -164,10 +217,9 @@
     }
 
     .cartPrice {
-      display: flex;
+      @include cart-style;
       margin-top: 30px;
       padding-bottom: 10px;
-      justify-content: space-between;
 
       .totalPriceText {
         font-size: 18px;
