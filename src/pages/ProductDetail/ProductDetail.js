@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { GET_PRODUCTS_API, POST_ADD_CART_API } from '../../config.js';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
@@ -17,11 +18,11 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}/1.json`)
+    fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data,
+          productData: data.message[0],
         });
       });
   }
@@ -43,7 +44,7 @@ export class ProductDetail extends Component {
     if (this.state.productData.cart_exist) {
       this.addedCartAlert();
     } else {
-      fetch(`${POST_ADD_CART_API}`, {
+      fetch(`${POST_ADD_CART_API}/`, {
         method: 'POST',
         body: JSON.stringify({
           productID: 1,
@@ -65,14 +66,14 @@ export class ProductDetail extends Component {
   };
 
   render() {
-    if (!this.state.productData.productID) {
+    console.log(`this.state.productData`, this.state.productData);
+    if (!this.state.productData.productName) {
       return <div>..Loading</div>;
     } else {
       const { recommendToggleOn, addedCartAlertList } = this.state;
       const {
         icon_image_url,
         productDescription,
-        productID,
         productName,
         productPrice,
         thumbnail_image_url,
@@ -81,7 +82,12 @@ export class ProductDetail extends Component {
       } = this.state.productData;
       return (
         <div className="ProductDetail">
-          <main style={{ backgroundColor: BACKGROUND_COLOR[productID - 1] }}>
+          <main
+            style={{
+              backgroundColor:
+                BACKGROUND_COLOR[this.props.match.params.productID],
+            }}
+          >
             <header className="headTextWrap">
               <h1>{productName}</h1>
               <div className="propertyIcons">
@@ -89,7 +95,7 @@ export class ProductDetail extends Component {
                   <img
                     className="propertyIcon"
                     key={index}
-                    src={icon}
+                    src={`../${icon}`}
                     alt="icon"
                   />
                 ))}
@@ -121,7 +127,11 @@ export class ProductDetail extends Component {
                 장바구니 담기
               </button>
             </header>
-            <i className={thumbnail_image_url}></i>
+            <img
+              className="productImage"
+              src={thumbnail_image_url}
+              alt="productImage"
+            />
           </main>
           <section className="comment">
             <div className="question">
@@ -147,7 +157,7 @@ export class ProductDetail extends Component {
               </div>
             )}
           </section>
-          <div className="addedCartAlertWrap">
+          {/* <div className="addedCartAlertWrap">
             {addedCartAlertList.map((list, index) => {
               return (
                 <div key={index} className="addedCartAlert">
@@ -155,13 +165,13 @@ export class ProductDetail extends Component {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       );
     }
   }
 }
-export default ProductDetail;
+export default withRouter(ProductDetail);
 
 const BACKGROUND_COLOR = [
   '#E9F9FE',
