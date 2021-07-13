@@ -98,18 +98,22 @@
           margin-top: 30px;
           zoom: 2;
         }
+        .cartListImgWrapper {
+          width: 80px;
+          margin-top: 30px;
 
-        .cartListImg {
-          width: 70px;
-          height: 30px;
-          margin: 40px 40px 40px 40px;
+          .cartListImg {
+            width: 70px;
+            height: 30px;
+            margin: 30px 20px 30px 30px;
+          }
         }
 
         .listDetail {
           display: inline-flex;
           flex-direction: column;
           width: 700px;
-          margin: 30px 0px 0px 15px;
+          margin: 30px 0px 20px 15px;
 
           .listTop {
             @include cart-style;
@@ -125,9 +129,10 @@
             }
 
             .listFont {
-              margin-left: 10px;
+              margin-left: 40px;
               font-size: 20px;
               text-decoration: underline;
+              text-underline-position: under;
             }
           }
         }
