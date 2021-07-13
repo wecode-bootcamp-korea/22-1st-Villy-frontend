@@ -25,6 +25,7 @@ $color-light-gray: #cccccc;
 
       .surveyHeader {
         margin-bottom: 50px;
+
         .closeButton {
           @include round50;
           position: absolute;
