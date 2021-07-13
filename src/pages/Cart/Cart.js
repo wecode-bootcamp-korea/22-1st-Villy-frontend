@@ -83,16 +83,6 @@ class Cart extends React.Component {
         })
     );
   };
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       if (res.access_token) {
-  //         alert('삭제 완료');
-  //         localStorage.setItem('access_token', res.access_token);
-  //       } else {
-  //         alert('삭제 실패');
-  //       }
-  //     });
-  // };
 
   render() {
     const { cartList } = this.state;
@@ -235,9 +225,7 @@ class Cart extends React.Component {
             </div>
             <div className="cartPrice">
               <p className="totalPriceText">총 결제금액</p>
-              <p className="totalPrice">
-                {this.state.productPrice * this.state.quantity}
-              </p>
+              <p className="totalPrice">1000</p>
             </div>
             <div className="cartFooterButtonWrppaer">
               <button
