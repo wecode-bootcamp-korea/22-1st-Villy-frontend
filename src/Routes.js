@@ -7,6 +7,7 @@ import Main from './pages/Main/Main';
 import Product from './pages/Product/Product';
 import Signup from './pages/Signup/Signup';
 import Recommend from './pages/Recommend/Recommend';
+import Cart from './pages/Cart/Cart';
 
 class Routes extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class Routes extends React.Component {
           <Route exact path="/product" component={Product} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/recommend" component={Recommend} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       </Router>
     );
