@@ -13,12 +13,14 @@ export class ProductDetail extends Component {
     this.state = {
       productData: {},
       recommendToggleOn: false,
-      addedCartAlertList: [],
+      // addedCartAlertList: [],
     };
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`)
+    fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`, {
+      headers: { Authorization: localStorage.getItem('access_token') },
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -41,13 +43,15 @@ export class ProductDetail extends Component {
   // };
 
   postCart = () => {
+    const id = this.props.match.params.productID;
     if (this.state.productData.cart_exist) {
-      this.addedCartAlert();
+      return;
+      // this.addedCartAlert();
     } else {
-      fetch(`${POST_ADD_CART_API}/`, {
+      fetch(`${POST_ADD_CART_API}`, {
         method: 'POST',
         body: JSON.stringify({
-          productID: 1,
+          productID: id,
         }),
       });
     }
@@ -66,11 +70,11 @@ export class ProductDetail extends Component {
   };
 
   render() {
-    console.log(`this.state.productData`, this.state.productData);
+    console.log(`thus.state.productData`, this.state.productData);
     if (!this.state.productData.productName) {
       return <div>..Loading</div>;
     } else {
-      const { recommendToggleOn, addedCartAlertList } = this.state;
+      const { recommendToggleOn } = this.state;
       const {
         icon_image_url,
         productDescription,

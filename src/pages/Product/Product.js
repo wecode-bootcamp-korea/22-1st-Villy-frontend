@@ -67,7 +67,6 @@ export class Product extends Component {
         this.makeCondition();
       }
     );
-    console.log(this.state);
   };
 
   render() {

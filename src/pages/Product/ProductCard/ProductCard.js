@@ -36,7 +36,6 @@ export class ProductCard extends Component {
       summary,
       icon_name,
     } = this.props.productCard;
-    console.log(`this.props.history`, this.props);
     return (
       <li
         className="ProductCard"
