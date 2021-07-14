@@ -28,7 +28,7 @@ class Nav extends PureComponent {
   };
 
   navActiveHandler = index => {
-    if (index === 'object') {
+    if (!parseInt(index)) {
       this.setState({ navActiveNumber: 0 });
     } else this.setState({ navActiveNumber: index + 1 });
   };
