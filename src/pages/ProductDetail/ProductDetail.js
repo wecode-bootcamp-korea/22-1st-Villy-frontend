@@ -70,6 +70,7 @@ export class ProductDetail extends Component {
   };
 
   render() {
+    console.log(`this.state`, this.state);
     if (!this.state.productData.productName) {
       return <div>..Loading</div>;
     } else {
@@ -103,8 +104,8 @@ export class ProductDetail extends Component {
                   />
                 ))}
               </div>
-              {productDescription.split(`\n`).map((line, index) => (
-                <p key={index} className="productDescription">
+              {productDescription.split(`\\n`).map((line, index) => (
+                <p key={index} className="productDetailDescription">
                   {line}
                 </p>
               ))}
