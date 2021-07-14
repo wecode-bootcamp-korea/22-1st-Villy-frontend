@@ -16,11 +16,11 @@ export class Survey02 extends Component {
 
         <form className="surveyForm">
           <div className="checkbox">
-            <input className="inputGender" type="checkbox" />
+            <input className="inputGender" name="gender" type="radio" />
             <label>여성</label>
           </div>
           <div className="checkbox">
-            <input className="inputGender" type="checkbox" />
+            <input className="inputGender" name="gender" type="radio" />
             <label>남성</label>
           </div>
           <div className="buttonBox">

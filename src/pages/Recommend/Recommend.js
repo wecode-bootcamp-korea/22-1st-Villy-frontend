@@ -23,7 +23,6 @@ export class Recommend extends Component {
       answer: this.state.answer.concat({ id: surveyId }),
     });
     this.handleNextButton(surveyId);
-    console.log('hallo');
   };
 
   handlePrevSubmmit = surveyId => {

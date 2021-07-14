@@ -15,6 +15,7 @@ export class Survey01 extends Component {
       [event.target.name]: event.target.value,
     });
   };
+
   render() {
     const { surveyId, handleNextSubmmit, handlePrevSubmmit } = this.props;
     return (

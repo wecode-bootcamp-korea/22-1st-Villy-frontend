@@ -10,7 +10,7 @@ export class Survey03 extends Component {
         <h2 className="surveyTitle">
           질문{this.props.surveyId - 1}
           <br />
-          <strong>데이터받아오기/님은 몇살이신가요?</strong>
+          <strong>데이터받아오기/님은 몇 살이신가요?</strong>
           <span className="subtitle">
             나이에 따라 필요한 영양성분이 달라질 수 있어요.
           </span>
