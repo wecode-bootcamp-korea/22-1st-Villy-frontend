@@ -32,7 +32,7 @@ class Cart extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartList: res.data,
+          cartList: res.product,
           point: res.point,
         });
       });
@@ -79,7 +79,7 @@ class Cart extends React.Component {
         .then(res => res.json())
         .then(res => {
           this.setState({
-            cartList: res.data,
+            cartList: res.product,
           });
         })
     );
@@ -97,7 +97,7 @@ class Cart extends React.Component {
         .then(res => res.json())
         .then(res => {
           this.setState({
-            cartList: res.data,
+            cartList: res.product,
           });
         })
     );
@@ -269,11 +269,7 @@ class Cart extends React.Component {
             <p className="totalPrice">{remainedPoint.toLocaleString()}P</p>
           </div>
           <div className="cartFooterButtonWrppaer">
-            <button
-              type="submit"
-              className="resultBtn"
-              onClick={this.responseQuantity}
-            >
+            <button type="submit" className="resultBtn" onClick={this.order}>
               결제하기
             </button>
           </div>
