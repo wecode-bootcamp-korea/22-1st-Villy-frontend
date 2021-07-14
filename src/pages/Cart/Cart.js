@@ -1,7 +1,6 @@
 import React from 'react';
 import { CARTLIST } from '../../../src/config.js';
 import './Cart.scss';
-
 class Cart extends React.Component {
   constructor() {
     super();
@@ -10,7 +9,6 @@ class Cart extends React.Component {
       point: 0,
     };
   }
-
   // 백엔드에 데이터 보내는 함수
   responseQuantity = (productID, quantity) => {
     fetch(`${CARTLIST}`, {
@@ -22,7 +20,6 @@ class Cart extends React.Component {
       }),
     });
   };
-
   // 백엔드랑 연결
   componentDidMount() {
     fetch(`${CARTLIST}`, {
@@ -37,7 +34,6 @@ class Cart extends React.Component {
         });
       });
   }
-
   // mock data 연결
   // componentDidMount() {
   //   fetch('/data/CartListData.json', {
@@ -50,35 +46,29 @@ class Cart extends React.Component {
   //       });
   //     });
   // }
-
   // + 버튼 개수 증가 함수
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
     const newEa = newCartList[index].quantity + 1;
     newCartList[index] = { ...newCartList[index], quantity: newEa };
-
     this.setState({
       cartList: newCartList,
     });
     this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
-
   // - 버튼 개수 감소 함수
   handleDecrement = index => {
     const newCartList = [...this.state.cartList];
     const newEa = newCartList[index].quantity - 1;
     newCartList[index] = { ...newCartList[index], quantity: newEa };
-
     if (newCartList[index].quantity <= 0) {
       return;
     }
-
     this.setState({
       cartList: newCartList,
     });
     this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
-
   // 장바구니 리스트 삭제 함수
   handleDelete = idx => {
     console.log(this.state.cartList[idx].productID);
@@ -101,28 +91,28 @@ class Cart extends React.Component {
         })
     );
   };
-
-  // handleDelete = cart => {
-  //   const cartList = this.state.cartList.filter(
-  //     item => item.option_id !== cart.option_id
-  //   );
-  //   this.setState({ cartList });
-  //   fetch(`${CART_API}/orders/cart/${cart.option_id}`, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       Authorization:
-  //         ‘eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.6LnewEjsNONVXSA0-O0GyvSR7aYTt_HIL4-evXu45HI’,
-  //     },
-  //     body: JSON.stringify({ cartList }),
-  //   });
-
+  handleDeleteAll = () => {
+    fetch(`${CARTLIST}`, {
+      method: 'DELETE',
+      headers: { Authorization: localStorage.getItem('access_token') },
+    }).then(
+      fetch(`${CARTLIST}`, {
+        headers: { Authorization: localStorage.getItem('access_token') },
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            cartList: res.data,
+          });
+        })
+    );
+  };
   render() {
     const { cartList } = this.state;
     const totalPrice = cartList
       .map(cart => cart.productPrice * cart.quantity)
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     const resultPrice = parseInt(this.state.point - totalPrice);
-
     if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
@@ -163,6 +153,13 @@ class Cart extends React.Component {
               <button type="button" className="topBtn">
                 + 제품추가
               </button>
+              <button
+                type="button"
+                className="topBtn"
+                onClick={this.handleDeleteAll}
+              >
+                전체 삭제
+              </button>
             </div>
           </header>
           <h2 className="cartListTitle">정기구독 제품</h2>
@@ -194,7 +191,7 @@ class Cart extends React.Component {
                           <button
                             type="button"
                             className="removeButton"
-                            onClick={() => this.handleDelete(index)}
+                            // onClick={() => this.handleDelete(index)}
                           >
                             삭제
                           </button>
@@ -260,5 +257,4 @@ class Cart extends React.Component {
     );
   }
 }
-
 export default Cart;
