@@ -12,43 +12,43 @@ class Cart extends React.Component {
   }
 
   // 백엔드에 데이터 보내는 함수
-  // responseQuantity = (productID, quantity) => {
-  //   fetch(`${POST_CARTS_API}`, {
-  //     method: 'PATCH',
-  //     body: JSON.stringify({
-  //       productID: productID,
-  //       quantity: quantity,
-  //     }),
-  //   });
-  // };
+  responseQuantity = (productID, quantity) => {
+    fetch(`${POST_CARTS_API}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        productID: productID,
+        quantity: quantity,
+      }),
+    });
+  };
 
   // 백엔드랑 연결
-  // componentDidMount() {
-  //   fetch(`${POST_CARTS_API}`, {
-  //     headers: { Authorization: localStorage.getItem('access_token') },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(`res`, res);
-  //       this.setState({
-  //         cartList: res.data,
-  //         point: res.point,
-  //       });
-  //     });
-  // }
-
-  // mock data 연결
   componentDidMount() {
-    fetch('/data/CartListData.json', {
-      method: 'GET',
+    fetch(`${POST_CARTS_API}`, {
+      headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
-      .then(data => {
+      .then(res => {
+        console.log(`res`, res);
         this.setState({
-          cartList: data,
+          cartList: res.data,
+          point: res.point,
         });
       });
   }
+
+  // mock data 연결
+  // componentDidMount() {
+  //   fetch('/data/CartListData.json', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         cartList: data,
+  //       });
+  //     });
+  // }
 
   // + 버튼 개수 증가 함수
   handleIncrement = index => {
@@ -59,7 +59,7 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
-    // this.responseQuantity(this.state.cartList[index].productID, newEa);
+    this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
 
   // - 버튼 개수 감소 함수
@@ -75,7 +75,7 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
-    // this.responseQuantity(this.state.cartList[index].productID, newEa - 1);
+    this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
 
   // 장바구니 리스트 삭제 함수
@@ -85,25 +85,20 @@ class Cart extends React.Component {
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
-    // fetch(`${POST_CARTS_API}`, {
-    //   method: 'DELETE',
-    //   // headers: {
-    //   //   'Content-Type': 'application/json',
-    //   // },
-    //   body: JSON.stringify({
-    //     productID: this.state.cartList[idx].productID,
-    //   }),
-    // }).then(
-    //   fetch(`${POST_CARTS_API}`, {
-    //     method: 'GET',
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.setState({
-    //         cartList: data.data,
-    //       });
-    //     })
-    // );
+    fetch(`${POST_CARTS_API}`, {
+      method: 'DELETE',
+      headers: { Authorization: localStorage.getItem('access_token') },
+    }).then(
+      fetch(`${POST_CARTS_API}`, {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            cartList: res.data,
+          });
+        })
+    );
   };
 
   // handleDelete = cart => {
@@ -137,6 +132,9 @@ class Cart extends React.Component {
                 <button type="button" className="topBtn">
                   + 제품추가
                 </button>
+                <button type="button" className="topBtn">
+                  전체 삭제
+                </button>
               </div>
             </header>
             <div className="CartListNull">
@@ -166,6 +164,13 @@ class Cart extends React.Component {
             <div className="cartTopButtonWrppaer">
               <button type="button" className="topBtn">
                 + 제품추가
+              </button>
+              <button
+                type="button"
+                className="topBtn"
+                onClick={() => this.handleDelete(this.state.index)}
+              >
+                전체 삭제
               </button>
             </div>
           </header>
@@ -198,7 +203,7 @@ class Cart extends React.Component {
                           <button
                             type="button"
                             className="removeButton"
-                            onClick={() => this.handleDelete(index)}
+                            // onClick={() => this.handleDelete(index)}
                           >
                             삭제
                           </button>
