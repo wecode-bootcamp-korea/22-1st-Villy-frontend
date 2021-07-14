@@ -40,7 +40,6 @@ export class ProductCard extends Component {
   // };
 
   render() {
-    console.log(this.props.p);
     const { backgroundColor } = this.props;
 
     const {
