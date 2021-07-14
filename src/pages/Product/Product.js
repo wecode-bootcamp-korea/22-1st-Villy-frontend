@@ -10,7 +10,7 @@ import './Product.scss';
 export class Product extends Component {
   constructor() {
     super();
-    this.myRef = React.createRef();
+    // this.myRef = React.createRef();
     this.state = {
       productCard: [],
       filterState: {
@@ -33,15 +33,15 @@ export class Product extends Component {
       });
   }
 
-  studyRef = () => {
-    this.myRef.current = {
-      ...this.myRef.current,
-      bone: false,
-      hair: false,
-      growth: false,
-      skin: false,
-    };
-  };
+  // changeRef = () => {
+  //   this.myRef.current = {
+  //     ...this.myRef.current,
+  //     bone: false,
+  //     hair: false,
+  //     growth: false,
+  //     skin: false,
+  //   };
+  // };
 
   makeCondition = () => {
     const filterMatch = {
@@ -64,6 +64,21 @@ export class Product extends Component {
       },
       ''
     );
+
+    // ref 적용중
+    // const filtered = Object.entries(this.myRef.current).reduce(
+    //   (acc, [key, value]) => {
+    //     if (!acc && value) {
+    //       return acc + `efficacy=${filterMatch[key]}`;
+    //     }
+
+    //     if (value) {
+    //       return acc + `&efficacy=${filterMatch[key]}`;
+    //     }
+    //     return acc;
+    //   },
+    //   ''
+    // );
 
     fetch(`${GET_PRODUCTS_API}?${filtered}`)
       .then(res => res.json())
@@ -90,9 +105,15 @@ export class Product extends Component {
     );
   };
 
+  // handleCheckBox = event => {
+  //   console.log(event.target.name);
+  //   console.log(this.myRef.current);
+  // };
+
   render() {
-    console.log(this.myRef.current);
-    console.log(this.studyRef());
+    // ref 적용
+    // console.log(this.changeRef);
+    // console.log(this.myRef.current);
 
     const { productCard } = this.state;
 
