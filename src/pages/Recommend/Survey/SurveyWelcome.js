@@ -4,6 +4,7 @@ import './SurveyWelcome.scss';
 
 export class SurveyWelcome extends Component {
   render() {
+    const { surveyId, handleNextSubmmit } = this.props;
     return (
       <div className="SuverveyWelcome">
         <section className="surveyBody">
@@ -18,7 +19,7 @@ export class SurveyWelcome extends Component {
         <footer className="surveyFooter">
           <button
             className="surveyButton"
-            onClick={() => this.props.handleSubmit(this.props.questionId)}
+            onClick={() => handleNextSubmmit(surveyId)}
           >
             시작하기
           </button>

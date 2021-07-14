@@ -18,13 +18,27 @@ export class Recommend extends Component {
     };
   }
 
-  handleSubmmit = surveyId => {
-    this.setState({ answer: this.state.answer.concat({ id: surveyId }) });
+  handleNextSubmmit = surveyId => {
+    this.setState({
+      answer: this.state.answer.concat({ id: surveyId }),
+    });
     this.handleNextButton(surveyId);
+    console.log('hallo');
+  };
+
+  handlePrevSubmmit = surveyId => {
+    this.setState({
+      answer: this.state.answer.pop({ id: surveyId }),
+    });
+    this.handlePrevButton(surveyId);
+  };
+
+  handlPrevButton = id => {
+    this.setState({ surveyId: id - 1 });
   };
 
   handleNextButton = id => {
-    this.setState({ survey: id + 1 });
+    this.setState({ surveyId: id + 1 });
   };
 
   render() {
@@ -32,31 +46,35 @@ export class Recommend extends Component {
       1: (
         <SurveyWelcome
           surveyId={this.state.surveyId}
-          handleSubmmit={this.handleSubmmit}
+          handleNextSubmmit={this.handleNextSubmmit}
         />
       ),
       2: (
         <Survey01
           surveyId={this.state.surveyId}
-          handleSubmmit={this.handleSubmmit}
+          handleNextSubmmit={this.handleNextSubmmit}
+          handlePrevSubmmit={this.handlePrevSubmmit}
         />
       ),
       3: (
         <Survey02
           surveyId={this.state.surveyId}
-          handleSubmmit={this.handleSubmmit}
+          handleNextSubmmit={this.handleNextSubmmit}
+          handlePrevSubmmit={this.handlePrevSubmmit}
         />
       ),
       4: (
         <Survey03
           surveyId={this.state.surveyId}
-          handleSubmmit={this.handleSubmmit}
+          handleNextSubmmit={this.handleNextSubmmit}
+          handlePrevSubmmit={this.handlePrevSubmmit}
         />
       ),
       5: (
         <Survey04
           surveyId={this.state.surveyId}
-          handleSubmmit={this.handleSubmmit}
+          handlePrevSubmmit={this.handlePrevSubmmit}
+          handleNextSubmmit={this.handleNextSubmmit}
         />
       ),
     };
@@ -80,7 +98,6 @@ export class Recommend extends Component {
               </h1>
             </header>
 
-            {/* 버튼  따라 아래 컴포넌트 바뀌기 */}
             <div className="SurveyBox">{survey[this.state.surveyId]}</div>
           </div>
         </div>
