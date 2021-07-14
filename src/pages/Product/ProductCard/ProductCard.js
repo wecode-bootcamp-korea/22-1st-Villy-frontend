@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { CARTLIST } from '../../../config';
+
 import ProductIcon from './ProductIcon/ProductIcon';
 import ProductDescription from './ProductDescription/ProductDescription';
 
@@ -9,28 +11,36 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import './ProductCard.scss';
 
 export class ProductCard extends Component {
-  handleCartButton = event => {
-    const targetName = event.target.name;
-    event.preventDefault();
-    //전달해줄 값 정의
-    // 여기에 POST
-    //조건 true면 리턴하고
-    if (this.props.productCard.cart_exist) {
-      return;
+  //조건에 따른 이동
+  goToDetail = event => {
+    const { cart_exist } = this.props.productCard;
+    if (event.target.className === 'cartBtn') {
+      if (cart_exist) {
+        return;
+      } else {
+        // 버튼 컬러를 변경하고, fetch해라(담아줄 정보값 : id, cart_exist는 true)
+        fetch(`${CARTLIST}`, {
+          method: 'POST',
+          headers: { Authorization: localStorage.getItem('access_token') },
+          body: JSON.stringify({
+            productID: event.target.name,
+          }),
+        });
+      }
     } else {
-      fetch('http://10.58.1.111:8000/carts', {
-        method: 'POST',
-        body: JSON.stringify({
-          productID: targetName,
-        }),
-      });
+      this.props.history.push(`product/${this.props.productCard.productID}`);
     }
   };
 
-  goToDetail = () =>
-    this.props.history.push(`product/${this.props.productCard.productID}`);
+  // addCart = () => {
+  //   const { cart_exist } = this.props.productCard;
+  //   const buttonState = { ...this.props.productCard };
+  //   buttonState.cart_exist = !cart_exist;
+  //   this.setState({ productCard: buttonState });
+  // };
 
   render() {
+    console.log(this.props.p);
     const { backgroundColor } = this.props;
 
     const {
@@ -88,8 +98,8 @@ export class ProductCard extends Component {
           <button
             name={productID}
             className="cartBtn"
-            onClick={this.handleCartButton}
             disabled={cart_exist}
+            onClick={this.addCart}
           >
             {!cart_exist && <AiOutlinePlus className="addIcon" />}
             {cart_exist ? '장바구니 추가됨' : '장바구니 담기'}

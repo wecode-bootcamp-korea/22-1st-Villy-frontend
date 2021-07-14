@@ -91,7 +91,7 @@ class Cart extends React.Component {
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
       fetch(`${CARTLIST}`, {
-        method: 'GET',
+        headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())
         .then(res => {
