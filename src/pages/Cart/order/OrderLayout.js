@@ -15,7 +15,7 @@ class OrderLayout extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          orderList: res,
+          orderList: res.product[0],
         });
         console.log(`res`, res);
       });
