@@ -7,7 +7,7 @@ class Signup extends React.Component {
   state = {
     name: '',
     email: '',
-    pw: '',
+    password: '',
     mobile: '',
   };
 
@@ -21,13 +21,14 @@ class Signup extends React.Component {
 
   // Back이랑 연결하는 fetch 함수
   requestSignup = () => {
+    const { name, mobile, email, password } = this.state;
     fetch(`${POST_SIGNUP_API}`, {
       method: 'POST',
       body: JSON.stringify({
-        name: this.state.name,
-        mobile: this.state.mobile,
-        email: this.state.email,
-        password: this.state.pw,
+        name: name,
+        mobile: mobile,
+        email: email,
+        password: password,
       }),
     })
       .then(res => res.json())
@@ -56,68 +57,25 @@ class Signup extends React.Component {
       <div className="Signup">
         <div className="signupView">
           <h1>회원가입</h1>
-          <div className="signupInputWrapper">
-            <span className="signupHeader">이름</span>
-            <br />
-            <input
-              type="text"
-              name="name"
-              className="signupInput"
-              value={this.state.name}
-              placeholder="이름을 입력해 주세요."
-              onChange={this.handleInput}
-            />
-          </div>
-          <div className="signupInputWrapper">
-            <span className="signupHeader">연락처</span>
-            <br />
-            <input
-              type="text"
-              name="mobile"
-              className="signupInput"
-              value={this.state.mobile}
-              placeholder="연락처를 입력해 주세요."
-              onChange={this.handleInput}
-            />
-          </div>
-          <div className="signupInputWrapper">
-            <span className="signupHeader">아이디</span>
-            <br />
-            <input
-              type="text"
-              name="email"
-              className="signupInput"
-              value={this.state.email}
-              placeholder="아이디(이메일)를 입력해 주세요."
-              onChange={this.handleInput}
-            />
-            <br />
-          </div>
-          <div className="signupInputWrapper">
-            <span className="signupHeader">비밀번호</span>
-            <br />
-            <input
-              type="password"
-              name="pw"
-              className="signupInput"
-              value={this.state.pw}
-              placeholder="비밀번호를 입력해 주세요."
-              onKeyPress={this.handleKeyPress}
-              onChange={this.handleInput}
-            />
-          </div>
-          {/* // 추가로 구현할 예정...
-          <div className="check_all">
-            <input type="checkbox" className="signupCheckbox"></input>
-            모두 동의하기
-          </div>
-          <div className="checkDetail">
-            <input type="checkbox" className="signupCheckbox"></input>
-            만 14세 이상입니다.
-            <br />
-            <input type="checkbox" className="signupCheckbox"></input>이용 약관
-            동의
-          </div> */}
+          {INPUT_INFO.map(
+            ({ title, type, name, value, placeholder }, index) => {
+              return (
+                <div key={index} className="signupInputWrapper">
+                  <span className="signupHeader">{title}</span>
+                  <br />
+                  <input
+                    type={type}
+                    name={name}
+                    className="signupInput"
+                    value={`${this.state[value]}`}
+                    placeholder={placeholder}
+                    onChange={this.handleInput}
+                  />
+                </div>
+              );
+            }
+          )}
+
           <div className="footerButton">
             <button
               type="submit"
@@ -133,5 +91,35 @@ class Signup extends React.Component {
     );
   }
 }
-
 export default Signup;
+
+const INPUT_INFO = [
+  {
+    title: '이름',
+    type: 'text',
+    name: 'name',
+    value: 'name',
+    placeholder: '이름을 입력해 주세요.',
+  },
+  {
+    title: '연락처',
+    type: 'text',
+    name: 'mobile',
+    value: 'mobile',
+    placeholder: '연락처를 입력해 주세요.',
+  },
+  {
+    title: '아이디',
+    type: 'text',
+    name: 'email',
+    value: 'email',
+    placeholder: '아이디(이메일)을 입력해 주세요.',
+  },
+  {
+    title: '비밀번호',
+    type: 'password',
+    name: 'password',
+    value: 'password',
+    placeholder: '비밀번호를 입력해 주세요.',
+  },
+];
