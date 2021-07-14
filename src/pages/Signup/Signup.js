@@ -1,5 +1,5 @@
 import React from 'react';
-// import { validationFor } from './Validation';
+import { validationFor } from './Validation';
 import { POST_SIGNUP_API } from '../../../src/config.js';
 import './Signup.scss';
 
@@ -16,6 +16,17 @@ class Signup extends React.Component {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
+    });
+  };
+
+  doValidation = () => {
+    const userInputs = Object.entries(this.state);
+    userInputs.forEach(el => {
+      if (!validationFor[el[0]](el[1])) {
+        return alert('양식에 맞지 않습니다');
+      } else {
+        this.requestSignup();
+      }
     });
   };
 
@@ -81,7 +92,7 @@ class Signup extends React.Component {
               type="submit"
               className="signupSubmit"
               onKeyPress={this.handleKeyPress}
-              onClick={this.requestSignup}
+              onClick={this.doValidation}
             >
               회원가입
             </button>
