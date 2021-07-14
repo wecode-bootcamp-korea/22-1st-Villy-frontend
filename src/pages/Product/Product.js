@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
 import { GET_PRODUCTS_API } from '../../config';
 import ProductCard from './ProductCard/ProductCard';
-import ProductCategory from './ProductCategory/ProductCategory';
-
 import './Product.scss';
-
-import './Product.scss';
-
 export class Product extends Component {
   constructor() {
     super();
     this.state = {
       productCard: [],
-      filterState: {
-        bone: false,
-        hair: false,
-        growth: false,
-        skin: false,
-      },
     };
   }
-
+  // cart_exit state 변경
+  changeProductCard = (productCard, index) => {
+    const newProductCardList = [...this.state.productCard];
+    newProductCardList[index] = productCard;
+    this.setState({
+      productCard: newProductCardList,
+    });
+  };
   componentDidMount() {
-    // fetch('./data/ProductData.json');
     fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
@@ -31,58 +26,9 @@ export class Product extends Component {
         });
       });
   }
-
-  makeCondition = () => {
-    const filterMatch = {
-      bone: 1,
-      hair: 2,
-      growth: 3,
-      skin: 4,
-    };
-
-    const filtered = Object.entries(this.state.filterState).reduce(
-      (acc, [key, value]) => {
-        if (!acc && value) {
-          return acc + `efficacy=${filterMatch[key]}`;
-        }
-
-        if (value) {
-          return acc + `&efficacy=${filterMatch[key]}`;
-        }
-        return acc;
-      },
-      ''
-    );
-
-    fetch(`${GET_PRODUCTS_API}?${filtered}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productCard: data.message,
-        });
-      });
-    console.log(`filtered>>>>>`, filtered);
-  };
-
-  handleCheckBox = event => {
-    const checkBoxName = event.target.name;
-    const checkBoxNameState = !this.state.filterState[checkBoxName];
-    this.setState(
-      {
-        filterState: {
-          ...this.state.filterState,
-          [checkBoxName]: checkBoxNameState,
-        },
-      },
-      () => {
-        this.makeCondition();
-      }
-    );
-  };
-
   render() {
     const { productCard } = this.state;
-
+    console.log(`productCard`, productCard);
     return (
       <div className="Product">
         <header className="productHeader">
@@ -94,24 +40,16 @@ export class Product extends Component {
         </header>
         <section className="productBody">
           <h2 className="sr-only">Product Body</h2>
-
-          <form className="productCategory">
-            <ProductCategory
-              key={productCard.id}
-              makeCondition={this.makeCondition}
-              handleCheckBox={this.handleCheckBox}
-            />
-          </form>
-
           <ul className="productList">
             {productCard.map((product, idx) => (
               <ProductCard
                 key={idx}
                 productCard={product}
+                index={idx}
                 backgroundColor={
                   BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
                 }
-                handleCartButton={this.handleCartButton}
+                changeProductCard={this.changeProductCard}
               />
             ))}
           </ul>
@@ -120,7 +58,6 @@ export class Product extends Component {
     );
   }
 }
-
 const BACKGROUNDCOLOR_LIST = [
   '#E9F9FE',
   '#E0B5BA',
@@ -132,5 +69,4 @@ const BACKGROUNDCOLOR_LIST = [
   '#CBC5E8',
   '#FAD4BF',
 ];
-
 export default Product;

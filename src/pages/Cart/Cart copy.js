@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { CARTLIST, POST_ORDER_API } from '../../../src/config.js';
 import './Cart.scss';
-
 class Cart extends React.Component {
   constructor() {
     super();
@@ -11,7 +9,6 @@ class Cart extends React.Component {
       point: 0,
     };
   }
-
   // 백엔드에 데이터 보내는 함수
   responseQuantity = (productID, quantity) => {
     fetch(`${CARTLIST}`, {
@@ -23,7 +20,6 @@ class Cart extends React.Component {
       }),
     });
   };
-
   // 백엔드랑 연결
   componentDidMount() {
     fetch(`${CARTLIST}`, {
@@ -32,43 +28,42 @@ class Cart extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartList: res.data,
+          cartList: res.product,
           point: res.point,
         });
+        console.log(`res`, res);
       });
   }
-
   // + 버튼 개수 증가 함수
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
-    const newQuantity = newCartList[index].quantity + 1;
-    newCartList[index] = { ...newCartList[index], quantity: newQuantity };
+    const newEa = newCartList[index].quantity + 1;
+    newCartList[index] = { ...newCartList[index], quantity: newEa };
     this.setState({
       cartList: newCartList,
     });
-    this.responseQuantity(this.state.cartList[index].productID, newQuantity);
+    this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
-
   // - 버튼 개수 감소 함수
   handleDecrement = index => {
     const newCartList = [...this.state.cartList];
-    const newQuantity = newCartList[index].quantity - 1;
-    newCartList[index] = { ...newCartList[index], quantity: newQuantity };
+    const newEa = newCartList[index].quantity - 1;
+    newCartList[index] = { ...newCartList[index], quantity: newEa };
     if (newCartList[index].quantity <= 0) {
       return;
     }
     this.setState({
       cartList: newCartList,
     });
-    this.responseQuantity(this.state.cartList[index].productID, newQuantity);
+    this.responseQuantity(this.state.cartList[index].productID, newEa);
   };
-
   // 장바구니 개별 삭제 함수
-  handleDeleteSelect = idx => {
+  handleDelete = idx => {
     const newCartList = this.state.cartList.filter(
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
+    console.log(this.state.cartList[idx].productID);
     fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
@@ -84,7 +79,6 @@ class Cart extends React.Component {
         })
     );
   };
-
   // 장바구니 전체 삭제 함수
   handleDeleteAll = () => {
     fetch(`${CARTLIST}`, {
@@ -128,11 +122,11 @@ class Cart extends React.Component {
 
   render() {
     const { cartList } = this.state;
+    console.log(`cartList`, cartList);
     const totalPrice = cartList
       .map(cart => cart.productPrice * cart.quantity)
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    const remainedPoint = parseInt(this.state.point - totalPrice);
-
+    const resultPrice = parseInt(this.state.point - totalPrice);
     if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
@@ -140,11 +134,9 @@ class Cart extends React.Component {
             <header className="cartTop">
               <h1 className="cartTopTitle">장바구니</h1>
               <div className="cartTopButtonWrppaer">
-                <Link to="./product">
-                  <button type="button" className="topBtn">
-                    + 제품추가
-                  </button>
-                </Link>
+                <button type="button" className="topBtn">
+                  + 제품추가
+                </button>
               </div>
             </header>
             <div className="CartListNull">
@@ -166,18 +158,15 @@ class Cart extends React.Component {
         </div>
       );
     }
-
     return (
       <div className="Cart">
         <div className="cartView">
           <header className="cartTop">
             <h1 className="cartTopTitle">장바구니</h1>
             <div className="cartTopButtonWrppaer">
-              <Link to="./product">
-                <button type="button" className="topBtn">
-                  + 제품추가
-                </button>
-              </Link>
+              <button type="button" className="topBtn">
+                + 제품추가
+              </button>
               <button
                 type="button"
                 className="topBtn"
@@ -216,7 +205,7 @@ class Cart extends React.Component {
                           <button
                             type="button"
                             className="removeButton"
-                            onClick={() => this.handleDeleteSelect(index)}
+                            onClick={() => this.handleDelete(index)}
                           >
                             삭제
                           </button>
@@ -266,14 +255,10 @@ class Cart extends React.Component {
           </div>
           <div className="cartPrice">
             <p className="totalPriceText">잔여 포인트</p>
-            <p className="totalPrice">{remainedPoint.toLocaleString()}P</p>
+            <p className="totalPrice">{resultPrice.toLocaleString()}P</p>
           </div>
           <div className="cartFooterButtonWrppaer">
-            <button
-              type="submit"
-              className="resultBtn"
-              onClick={this.responseQuantity}
-            >
+            <button type="submit" className="resultBtn" onClick={this.order}>
               결제하기
             </button>
           </div>
@@ -282,5 +267,4 @@ class Cart extends React.Component {
     );
   }
 }
-
 export default Cart;
