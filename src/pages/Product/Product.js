@@ -11,9 +11,17 @@ export class Product extends Component {
     };
   }
 
+  // cart_exit state 변경
+  changeProductCard = (productCard, index) => {
+    const newProductCardList = [...this.state.productCard];
+    newProductCardList[index] = productCard;
+    this.setState({
+      productCard: newProductCardList,
+    });
+  };
+
   componentDidMount() {
-    // fetch(`${GET_PRODUCTS_API}`)
-    fetch('./data/productData.json')
+    fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -42,10 +50,11 @@ export class Product extends Component {
               <ProductCard
                 key={idx}
                 productCard={product}
+                index={idx}
                 backgroundColor={
                   BACKGROUNDCOLOR_LIST[idx % BACKGROUNDCOLOR_LIST.length]
                 }
-                handleCartButton={this.handleCartButton}
+                changeProductCard={this.changeProductCard}
               />
             ))}
           </ul>
