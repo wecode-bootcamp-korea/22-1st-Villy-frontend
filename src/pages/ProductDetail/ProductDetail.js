@@ -17,37 +17,28 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}/1.json`)
+    fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`, {
+      headers: { Authorization: localStorage.getItem('access_token') },
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data,
+          productData: data.message[0],
         });
       });
   }
 
-  // addedCartAlert = () => {
-  //   const { addedCartAlertList } = this.state;
-  //   console.log(`added`, addedCartAlertList);
-  //   const copyAddedCartAlertList = [...addedCartAlertList];
-  //   copyAddedCartAlertList.push('');
-  //   console.log(`object`, copyAddedCartAlertList);
-  //   // this.setState({ copyAddedCartAlertList: copyAddedCartAlertList });
-  //   // setTimeout(() => {
-  //   //   copyAddedCartAlertList.pop();
-  //   //   this.setState({ addedCartAlertList: copyAddedCartAlertList });
-  //   // }, 3000);
-  // };
-
   postCart = () => {
+    const id = this.props.match.params.productID;
     if (this.state.productData.cart_exist) {
-      this.addedCartAlert();
+      return;
     } else {
       fetch(`${POST_ADD_CART_API}`, {
         method: 'POST',
         body: JSON.stringify({
-          productID: 1,
+          productID: id,
         }),
+        headers: { Authorization: localStorage.getItem('access_token') },
       });
     }
   };
@@ -147,15 +138,6 @@ export class ProductDetail extends Component {
               </div>
             )}
           </section>
-          <div className="addedCartAlertWrap">
-            {addedCartAlertList.map((list, index) => {
-              return (
-                <div key={index} className="addedCartAlert">
-                  <p>이미 추가되었습니다.</p>
-                </div>
-              );
-            })}
-          </div>
         </div>
       );
     }
