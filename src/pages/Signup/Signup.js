@@ -20,15 +20,17 @@ class Signup extends React.Component {
   };
 
   // Validation을 체크하는 함수 (구현중...)
-  doValidation = e => {
+  doValidation = () => {
     const userInputs = Object.entries(this.state);
     console.log(userInputs);
-    userInputs.forEach(el => {
-      console.log(validationFor[el[0]](el[1]));
-      if (validationFor[el[0]](el[1]) === false) {
-        return alert('양식에 맞지 않습니다');
-      } else this.requestSignup();
-    });
+    userInputs
+      .forEach(el => {
+        console.log(validationFor[el[0]](el[1]));
+        if (validationFor[el[0]](el[1]) === false) {
+          return alert('양식에 맞지 않습니다');
+        } else return;
+      })
+      .then(this.requestSignup());
   };
 
   // Back이랑 연결하는 fetch 함수
