@@ -11,25 +11,34 @@ import './ProductCard.scss';
 export class ProductCard extends Component {
   //조건에 따른 이동
   goToDetail = event => {
+    const { cart_exist } = this.props.productCard;
     if (event.target.className === 'cartBtn') {
-      if (this.productCard.cart_exist) {
+      if (cart_exist) {
         return;
       } else {
-        fetch('http://10.58.1.111:8000/carts', {
-          method: 'POST',
-          body: JSON.stringify({
-            productID: event.target.name,
-            cart_exist: !this.productCard.cart_exist,
-          }),
-        });
+        // 버튼 컬러를 변경하고, fetch해라(담아줄 정보값 : id, cart_exist는 true)
+        // fetch('http://10.58.1.111:8000/carts', {
+        //   method: 'POST',
+        //   body: JSON.stringify({
+        //     productID: event.target.name,
+        //     cart_exist: !cart_exist,
+        //   }),
+        // });
       }
     } else {
       this.props.history.push(`product/${this.props.productCard.productID}`);
     }
   };
 
+  // addCart = () => {
+  //   const { cart_exist } = this.props.productCard;
+  //   const buttonState = { ...this.props.productCard };
+  //   buttonState.cart_exist = !cart_exist;
+  //   this.setState({ productCard: buttonState });
+  // };
+
   render() {
-    console.log(this.props.productCard);
+    console.log(this.props.p);
     const { backgroundColor } = this.props;
 
     const {
@@ -84,7 +93,12 @@ export class ProductCard extends Component {
         </section>
         <footer className="productCardFooter">
           <p className="add">더보기</p>
-          <button name={productID} className="cartBtn" disabled={cart_exist}>
+          <button
+            name={productID}
+            className="cartBtn"
+            disabled={cart_exist}
+            onClick={this.addCart}
+          >
             {!cart_exist && <AiOutlinePlus className="addIcon" />}
             {cart_exist ? '장바구니 추가됨' : '장바구니 담기'}
           </button>
