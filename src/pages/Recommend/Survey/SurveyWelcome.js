@@ -16,7 +16,12 @@ export class SurveyWelcome extends Component {
           </p>
         </section>
         <footer className="surveyFooter">
-          <button className="surveyButton">시작하기</button>
+          <button
+            className="surveyButton"
+            onClick={() => this.props.handleSubmit(this.props.questionId)}
+          >
+            시작하기
+          </button>
 
           <p className="caution">
             ※ 질병의 진단 및 치료는 전문적인 의료기관을 이용하세요.
