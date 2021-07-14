@@ -1,5 +1,5 @@
 import React from 'react';
-import { CARTLIST } from '../../../src/config.js';
+import { CARTLIST, POST_ORDER_API } from '../../../src/config.js';
 import './Cart.scss';
 class Cart extends React.Component {
   constructor() {
@@ -107,6 +107,40 @@ class Cart extends React.Component {
         })
     );
   };
+
+  order = () => {
+    fetch(`${POST_ORDER_API}`, {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        products: {
+          product1: {
+            product_id: 5,
+            quantity: 1,
+          },
+          product2: {
+            product_id: 6,
+            quantity: 1,
+          },
+          product3: {
+            product_id: 8,
+            quantity: 1,
+          },
+        },
+      }),
+    }).then(
+      fetch(`${CARTLIST}`, {
+        headers: { Authorization: localStorage.getItem('access_token') },
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            cartList: res.data,
+          });
+        })
+    );
+  };
+
   render() {
     const { cartList } = this.state;
     const totalPrice = cartList
@@ -244,11 +278,7 @@ class Cart extends React.Component {
             <p className="totalPrice">{resultPrice.toLocaleString()}P</p>
           </div>
           <div className="cartFooterButtonWrppaer">
-            <button
-              type="submit"
-              className="resultBtn"
-              onClick={this.responseQuantity}
-            >
+            <button type="submit" className="resultBtn" onClick={this.order}>
               결제하기
             </button>
           </div>
