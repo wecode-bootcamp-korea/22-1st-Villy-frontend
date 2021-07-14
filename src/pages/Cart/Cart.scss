@@ -49,8 +49,8 @@
     // 장바구니가 비었을시 보이는 페이지
     .CartListNull {
       @include display-flex;
-      margin-top: 90px;
       flex-direction: column;
+      margin-top: 90px;
 
       .nullImg {
         display: flex;

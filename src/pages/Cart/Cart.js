@@ -1,6 +1,8 @@
 import React from 'react';
-import { CARTLIST } from '../../../src/config.js';
+import { Link } from 'react-router-dom';
+import { POST_CARTS_API } from '../../../src/config.js';
 import './Cart.scss';
+
 class Cart extends React.Component {
   constructor() {
     super();
@@ -9,9 +11,10 @@ class Cart extends React.Component {
       point: 0,
     };
   }
+
   // 백엔드에 데이터 보내는 함수
   responseQuantity = (productID, quantity) => {
-    fetch(`${CARTLIST}`, {
+    fetch(`${POST_CARTS_API}`, {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -20,24 +23,25 @@ class Cart extends React.Component {
       }),
     });
   };
+
   // 백엔드랑 연결
   componentDidMount() {
-    fetch(`${CARTLIST}`, {
+    fetch(`${POST_CARTS_API}`, {
       headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
       .then(res => {
-        console.log(`res`, res);
         this.setState({
           cartList: res.data,
           point: res.point,
         });
       });
   }
+
   // mock data 연결
   // componentDidMount() {
   //   fetch('/data/CartListData.json', {
-  //     method: 'GET',
+  //
   //   })
   //     .then(res => res.json())
   //     .then(data => {
@@ -46,41 +50,43 @@ class Cart extends React.Component {
   //       });
   //     });
   // }
+
   // + 버튼 개수 증가 함수
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
-    const newEa = newCartList[index].quantity + 1;
-    newCartList[index] = { ...newCartList[index], quantity: newEa };
+    const newQuantity = newCartList[index].quantity + 1;
+    newCartList[index] = { ...newCartList[index], quantity: newQuantity };
     this.setState({
       cartList: newCartList,
     });
-    this.responseQuantity(this.state.cartList[index].productID, newEa);
+    this.responseQuantity(this.state.cartList[index].productID, newQuantity);
   };
+
   // - 버튼 개수 감소 함수
   handleDecrement = index => {
     const newCartList = [...this.state.cartList];
-    const newEa = newCartList[index].quantity - 1;
-    newCartList[index] = { ...newCartList[index], quantity: newEa };
+    const newQuantity = newCartList[index].quantity - 1;
+    newCartList[index] = { ...newCartList[index], quantity: newQuantity };
     if (newCartList[index].quantity <= 0) {
       return;
     }
     this.setState({
       cartList: newCartList,
     });
-    this.responseQuantity(this.state.cartList[index].productID, newEa);
+    this.responseQuantity(this.state.cartList[index].productID, newQuantity);
   };
+
   // 장바구니 개별 삭제 함수
-  handleDelete = idx => {
-    console.log(this.state.cartList[idx].productID);
+  handleDeleteSelect = idx => {
     const newCartList = this.state.cartList.filter(
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
-    fetch(`${CARTLIST}/cartList[index].productID`, {
+    fetch(`${POST_CARTS_API}/cartList[idx].productID`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
-      fetch(`${CARTLIST}/cartList[index].productID`, {
+      fetch(`${POST_CARTS_API}`, {
         headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())
@@ -91,13 +97,14 @@ class Cart extends React.Component {
         })
     );
   };
+
   // 장바구니 전체 삭제 함수
   handleDeleteAll = () => {
-    fetch(`${CARTLIST}`, {
+    fetch(`${POST_CARTS_API}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
-      fetch(`${CARTLIST}`, {
+      fetch(`${POST_CARTS_API}`, {
         headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())
@@ -108,13 +115,14 @@ class Cart extends React.Component {
         })
     );
   };
+
   render() {
-    console.log(this.state.cartList);
     const { cartList } = this.state;
     const totalPrice = cartList
       .map(cart => cart.productPrice * cart.quantity)
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    const resultPrice = parseInt(this.state.point - totalPrice);
+    const remainedPoint = parseInt(this.state.point - totalPrice);
+
     if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
@@ -122,9 +130,11 @@ class Cart extends React.Component {
             <header className="cartTop">
               <h1 className="cartTopTitle">장바구니</h1>
               <div className="cartTopButtonWrppaer">
-                <button type="button" className="topBtn">
-                  + 제품추가
-                </button>
+                <Link to="./product">
+                  <button type="button" className="topBtn">
+                    + 제품추가
+                  </button>
+                </Link>
               </div>
             </header>
             <div className="CartListNull">
@@ -146,15 +156,18 @@ class Cart extends React.Component {
         </div>
       );
     }
+
     return (
       <div className="Cart">
         <div className="cartView">
           <header className="cartTop">
             <h1 className="cartTopTitle">장바구니</h1>
             <div className="cartTopButtonWrppaer">
-              <button type="button" className="topBtn">
-                + 제품추가
-              </button>
+              <Link to="./product">
+                <button type="button" className="topBtn">
+                  + 제품추가
+                </button>
+              </Link>
               <button
                 type="button"
                 className="topBtn"
@@ -193,7 +206,7 @@ class Cart extends React.Component {
                           <button
                             type="button"
                             className="removeButton"
-                            onClick={() => this.handleDelete(index)}
+                            onClick={() => this.handleDeleteSelect(index)}
                           >
                             삭제
                           </button>
@@ -243,7 +256,7 @@ class Cart extends React.Component {
           </div>
           <div className="cartPrice">
             <p className="totalPriceText">잔여 포인트</p>
-            <p className="totalPrice">{resultPrice.toLocaleString()}P</p>
+            <p className="totalPrice">{remainedPoint.toLocaleString()}P</p>
           </div>
           <div className="cartFooterButtonWrppaer">
             <button
@@ -259,4 +272,5 @@ class Cart extends React.Component {
     );
   }
 }
+
 export default Cart;
