@@ -104,24 +104,18 @@ class Cart extends React.Component {
   };
 
   order = () => {
+    const { cartList } = this.state;
+    cartList.forEach(list => {
+      for (let i in DELETE_PROPERTY) {
+        delete list[DELETE_PROPERTY[i]];
+      }
+    });
+    const orderList = { ...cartList };
     fetch(`${POST_ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
-        products: {
-          product1: {
-            product_id: 5,
-            quantity: 1,
-          },
-          product2: {
-            product_id: 6,
-            quantity: 1,
-          },
-          product3: {
-            product_id: 8,
-            quantity: 1,
-          },
-        },
+        products: orderList,
       }),
     }).then(this.props.history.push('/order'));
   };
@@ -280,3 +274,5 @@ class Cart extends React.Component {
 }
 
 export default Cart;
+
+const DELETE_PROPERTY = ['productName', 'productPrice', 'thumbnail_image_url'];
