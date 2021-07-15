@@ -11,7 +11,6 @@ class Signup extends React.Component {
     mobile: '',
   };
 
-  // 입력 함수
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({
@@ -21,39 +20,38 @@ class Signup extends React.Component {
 
   doValidation = () => {
     const userInputs = Object.entries(this.state);
-    console.log(userInputs);
-    userInputs.forEach(el => {
-      console.log(validationFor[el[0]](el[1]));
-      if (validationFor[el[0]](el[1]) === false) {
-        return alert('양식에 맞지 않습니다');
-      }
-    });
-    return this.requestSignup();
+    return userInputs.every(el => validationFor[el[0]](el[1]));
   };
 
-  // Back이랑 연결하는 fetch 함수
   requestSignup = () => {
-    fetch(`${POST_SIGNUP_API}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: this.state.name,
-        mobile: this.state.mobile,
-        email: this.state.email,
-        password: this.state.password,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.access_token) {
-          alert('회원가입 성공');
-          localStorage.setItem('access_token', res.access_token);
-        } else {
-          alert('회원가입 실패');
-        }
-      });
+    const { name, mobile, email, password } = this.state;
+    if (this.doValidation()) {
+      fetch(`${POST_SIGNUP_API}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          mobile,
+          email,
+          password,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.access_token) {
+            alert('회원가입 성공');
+            localStorage.setItem('access_token', res.access_token);
+            this.goToMain();
+          } else {
+            alert('회원가입 실패');
+          }
+        });
+    } else {
+      return alert('양식의 맞지 않습니다!');
+    }
   };
 
-  // 입력 완료 후 실행되는 함수
+  goToMain = () => this.props.history.push('/');
+
   handleKeyPress = e => {
     if (e.key === 'Enter') {
       this.requestSignup();
@@ -65,7 +63,6 @@ class Signup extends React.Component {
       <div className="Signup">
         <div className="signupView">
           <h1>회원가입</h1>
-
           {INPUT_INFO.map(
             ({ title, type, name, value, placeholder }, index) => {
               return (
@@ -80,17 +77,23 @@ class Signup extends React.Component {
                     placeholder={placeholder}
                     onChange={this.handleInput}
                     autoComplete="off"
+                    onKeyPress={
+                      index === INPUT_INFO.length - 1
+                        ? this.handleKeyPress
+                        : undefined
+                    }
                   />
                 </div>
               );
             }
           )}
+
           <div className="footerButton">
             <button
               type="submit"
               className="signupSubmit"
               onKeyPress={this.handleKeyPress}
-              onClick={this.doValidation}
+              onClick={this.requestSignup}
             >
               회원가입
             </button>
@@ -100,7 +103,6 @@ class Signup extends React.Component {
     );
   }
 }
-
 export default Signup;
 
 const INPUT_INFO = [
