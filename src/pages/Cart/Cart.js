@@ -40,18 +40,6 @@ class Cart extends React.Component {
       });
   }
 
-  // componentDidUpdate() {
-  //   fetch(`${CARTLIST}`, {
-  //     headers: { Authorization: localStorage.getItem('access_token') },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         cartList: res.product,
-  //       });
-  //     });
-  // }
-
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
     const newQuantity = newCartList[index].quantity + 1;
@@ -82,11 +70,11 @@ class Cart extends React.Component {
     const newCartList = this.state.cartList.filter(
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
-    this.setState({ cartList: newCartList });
+
     fetch(`${CARTLIST_API}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
-    });
+    }).then(() => this.setState({ cartList: newCartList }));
   };
 
   handleDeleteAll = () => {
@@ -108,12 +96,10 @@ class Cart extends React.Component {
 
   order = () => {
     const { cartList } = this.state;
-    cartList.forEach(list => {
-      for (let i in DELETE_PROPERTY) {
-        delete list[DELETE_PROPERTY[i]];
-      }
+    const orderList = cartList.map(cart => {
+      const { productID, quantity } = cart;
+      return { productID, quantity };
     });
-    const orderList = { ...cartList };
     fetch(`${ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
