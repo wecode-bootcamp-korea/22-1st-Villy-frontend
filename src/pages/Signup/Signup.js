@@ -76,6 +76,7 @@ class Signup extends React.Component {
                     value={`${this.state[value]}`}
                     placeholder={placeholder}
                     onChange={this.handleInput}
+                    autoComplete="off"
                     onKeyPress={
                       index === INPUT_INFO.length - 1
                         ? this.handleKeyPress
