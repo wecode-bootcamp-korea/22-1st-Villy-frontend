@@ -3,6 +3,8 @@ import { GET_PRODUCTS_API } from '../../config';
 import ProductCard from './ProductCard/ProductCard';
 import ProductCategory from './ProductCategory/ProductCategory';
 
+import { makeCondition } from '../../utils/productUtils';
+
 import './Product.scss';
 
 export class Product extends Component {
@@ -29,29 +31,10 @@ export class Product extends Component {
       });
   }
 
-  makeCondition = () => {
-    const filterMatch = {
-      bone: 1,
-      hair: 2,
-      growth: 3,
-      skin: 4,
-    };
-
-    const filtered = Object.entries(this.state.filterState).reduce(
-      (acc, [key, value]) => {
-        if (!acc && value) {
-          return acc + `efficacy=${filterMatch[key]}`;
-        }
-
-        if (value) {
-          return acc + `&efficacy=${filterMatch[key]}`;
-        }
-        return acc;
-      },
-      ''
-    );
-
-    fetch(`${GET_PRODUCTS_API}?${filtered}`)
+  //category-filter-fetch
+  fetchFiltering = () => {
+    const query = makeCondition(this.state.filterState);
+    fetch(`${GET_PRODUCTS_API}?${query}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -70,7 +53,7 @@ export class Product extends Component {
           [checkBoxName]: checkBoxNameState,
         },
       },
-      this.makeCondition
+      this.fetchFiltering
     );
   };
 
@@ -92,9 +75,9 @@ export class Product extends Component {
           <form className="productCategory">
             <ProductCategory
               key={productCard.id}
+              filtering={this.filtering}
               makeCondition={this.makeCondition}
               handleCheckBox={this.handleCheckBox}
-              fetchFilter={this.fetchFilter}
             />
           </form>
 
