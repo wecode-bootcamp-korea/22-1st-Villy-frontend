@@ -36,6 +36,18 @@ class Cart extends React.Component {
       });
   }
 
+  // componentDidUpdate() {
+  //   fetch(`${CARTLIST}`, {
+  //     headers: { Authorization: localStorage.getItem('access_token') },
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         cartList: res.product,
+  //       });
+  //     });
+  // }
+
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
     const newQuantity = newCartList[index].quantity + 1;
@@ -63,10 +75,10 @@ class Cart extends React.Component {
   };
 
   handleDeleteSelect = idx => {
-    const newCartList = this.state.cartList.filter(
-      cartList => cartList.productID !== this.state.cartList[idx].productID
-    );
-    this.setState({ cartList: newCartList });
+    // const newCartList = this.state.cartList.filter(
+    //   cartList => cartList.productID !== this.state.cartList[idx].productID
+    // );
+    // this.setState({ cartList: newCartList });
     fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
@@ -110,6 +122,7 @@ class Cart extends React.Component {
     });
 
     const orderList = { ...cartList };
+
     fetch(`${POST_ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
@@ -124,6 +137,7 @@ class Cart extends React.Component {
     const totalPrice = cartList
       .map(cart => cart.productPrice * cart.quantity)
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
     const remainedPoint = parseInt(this.state.point - totalPrice);
 
     if (this.state.cartList.length === 0) {
@@ -271,7 +285,6 @@ class Cart extends React.Component {
     );
   }
 }
-
 export default Cart;
 
 const DELETE_PROPERTY = ['productName', 'productPrice', 'thumbnail_image_url'];

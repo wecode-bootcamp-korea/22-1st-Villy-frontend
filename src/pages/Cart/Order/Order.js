@@ -35,7 +35,7 @@ class Order extends React.Component {
         </h1>
         <div className="orderContent">
           <p className="orderNum">주문 번호 : {orderList.orderNumber}</p>
-          <p className="orderNum">잔여 포인트 : {point}</p>
+          <p className="orderNum">잔여 포인트 : {point.toLocaleString()}P</p>
         </div>
         <Link to="/product">
           <button type="submit" className="orderBtn">
