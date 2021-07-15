@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CARTLIST_API, POST_ORDER_API } from '../../../src/config.js';
+import { CARTLIST_API, ORDER_API } from '../../../src/config.js';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -114,7 +114,7 @@ class Cart extends React.Component {
       }
     });
     const orderList = { ...cartList };
-    fetch(`${POST_ORDER_API}`, {
+    fetch(`${ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
