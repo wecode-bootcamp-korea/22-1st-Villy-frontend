@@ -1,9 +1,9 @@
 import React from 'react';
-import { POST_ORDER_API } from '../../../../src/config.js';
+import { POST_ORDER_API } from '../../../config.js';
 import { Link } from 'react-router-dom';
-import './OrderLayout.scss';
+import './Order.scss';
 
-class OrderLayout extends React.Component {
+class Order extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -47,4 +47,4 @@ class OrderLayout extends React.Component {
   }
 }
 
-export default OrderLayout;
+export default Order;
