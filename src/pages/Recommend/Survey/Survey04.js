@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 import { GET_PRODUCTS_API } from '../../../config';
 
 import './Survey.scss';
@@ -21,7 +21,7 @@ export class Survey04 extends Component {
           </span>
         </h2>
         <hr />
-        <form className="surveyForm">
+        <div className="surveyForm">
           <div className="checkbox">
             <input
               id="1"
@@ -78,10 +78,10 @@ export class Survey04 extends Component {
               제출
             </button>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
 }
 
-export default Survey04;
+export default withRouter(Survey04);
