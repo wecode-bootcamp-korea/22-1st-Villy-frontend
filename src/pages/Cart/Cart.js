@@ -91,24 +91,14 @@ class Cart extends React.Component {
 
   // 장바구니 개별 삭제 함수
   handleDeleteSelect = idx => {
-    // const newCartList = this.state.cartList.filter(
-    //   cartList => cartList.productID !== this.state.cartList[idx].productID
-    // );
-    // this.setState({ cartList: newCartList });
+    const newCartList = this.state.cartList.filter(
+      cartList => cartList.productID !== this.state.cartList[idx].productID
+    );
+    this.setState({ cartList: newCartList });
     fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
-    }).then(
-      fetch(`${CARTLIST}`, {
-        headers: { Authorization: localStorage.getItem('access_token') },
-      })
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            cartList: res.product,
-          });
-        })
-    );
+    });
   };
 
   // 장바구니 전체 삭제 함수
@@ -156,7 +146,7 @@ class Cart extends React.Component {
       .map(cart => cart.productPrice * cart.quantity)
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     const remainedPoint = parseInt(this.state.point - totalPrice);
-
+    console.log(`this.state.cartList`, this.state.cartList);
     if (this.state.cartList.length === 0) {
       return (
         <div className="Cart">
