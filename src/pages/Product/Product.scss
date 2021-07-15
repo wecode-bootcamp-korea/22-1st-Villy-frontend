@@ -5,11 +5,13 @@
     @include display-flex;
     justify-content: flex-start;
     height: 590px;
-    background-image: url('http://localhost:3000/images/producHeader.jpg');
+    background-image: url('https://images.unsplash.com/photo-1506365069540-904bcc762636?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80');
     background-repeat: no-repeat;
     background-position: center;
     background-color: #e8c700;
+    background-size: cover;
   }
+
   h1 {
     margin-left: 20%;
     font-size: 36px;
