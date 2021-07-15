@@ -24,6 +24,7 @@ export class Product extends Component {
         this.setState({
           productCard: data.message,
         });
+        console.log(`data`, data);
       });
   }
   render() {
