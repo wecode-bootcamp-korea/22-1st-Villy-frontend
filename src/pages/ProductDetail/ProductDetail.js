@@ -84,7 +84,7 @@ export class ProductDetail extends Component {
                   />
                 ))}
               </div>
-              {productDescription.split(`\n`).map((line, index) => (
+              {productDescription.split(`\\n`).map((line, index) => (
                 <p key={index} className="productDetailDescription">
                   {line}
                 </p>
