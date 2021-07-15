@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { POST_CARTS_API } from '../../../src/config.js';
+import { CARTLIST, POST_ORDER_API } from '../../../src/config.js';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -12,9 +12,8 @@ class Cart extends React.Component {
     };
   }
 
-  // 백엔드에 데이터 보내는 함수
   responseQuantity = (productID, quantity) => {
-    fetch(`${POST_CARTS_API}`, {
+    fetch(`${CARTLIST}`, {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -24,34 +23,19 @@ class Cart extends React.Component {
     });
   };
 
-  // 백엔드랑 연결
   componentDidMount() {
-    fetch(`${POST_CARTS_API}`, {
+    fetch(`${CARTLIST}`, {
       headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartList: res.data,
+          cartList: res.product,
           point: res.point,
         });
       });
   }
 
-  // mock data 연결
-  // componentDidMount() {
-  //   fetch('/data/CartListData.json', {
-  //
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         cartList: data,
-  //       });
-  //     });
-  // }
-
-  // + 버튼 개수 증가 함수
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
     const newQuantity = newCartList[index].quantity + 1;
@@ -59,61 +43,80 @@ class Cart extends React.Component {
     this.setState({
       cartList: newCartList,
     });
+
     this.responseQuantity(this.state.cartList[index].productID, newQuantity);
   };
 
-  // - 버튼 개수 감소 함수
   handleDecrement = index => {
     const newCartList = [...this.state.cartList];
     const newQuantity = newCartList[index].quantity - 1;
     newCartList[index] = { ...newCartList[index], quantity: newQuantity };
+
     if (newCartList[index].quantity <= 0) {
       return;
     }
     this.setState({
       cartList: newCartList,
     });
+
     this.responseQuantity(this.state.cartList[index].productID, newQuantity);
   };
 
-  // 장바구니 개별 삭제 함수
   handleDeleteSelect = idx => {
     const newCartList = this.state.cartList.filter(
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
-    fetch(`${POST_CARTS_API}/cartList[idx].productID`, {
+    fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
-      fetch(`${POST_CARTS_API}`, {
+      fetch(`${CARTLIST}`, {
         headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())
         .then(res => {
           this.setState({
-            cartList: res.data,
+            cartList: res.product,
           });
         })
     );
   };
 
-  // 장바구니 전체 삭제 함수
   handleDeleteAll = () => {
-    fetch(`${POST_CARTS_API}`, {
+    fetch(`${CARTLIST}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
-      fetch(`${POST_CARTS_API}`, {
+      fetch(`${CARTLIST}`, {
         headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())
         .then(res => {
           this.setState({
-            cartList: res.data,
+            cartList: res.product,
           });
         })
     );
+  };
+
+  order = () => {
+    const { cartList } = this.state;
+
+    cartList.forEach(list => {
+      for (let i in DELETE_PROPERTY) {
+        delete list[DELETE_PROPERTY[i]];
+      }
+    });
+
+    const orderList = { ...cartList };
+    fetch(`${POST_ORDER_API}`, {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        products: orderList,
+      }),
+    }).then(this.props.history.push('/order'));
   };
 
   render() {
@@ -259,11 +262,7 @@ class Cart extends React.Component {
             <p className="totalPrice">{remainedPoint.toLocaleString()}P</p>
           </div>
           <div className="cartFooterButtonWrppaer">
-            <button
-              type="submit"
-              className="resultBtn"
-              onClick={this.responseQuantity}
-            >
+            <button type="submit" className="resultBtn" onClick={this.order}>
               결제하기
             </button>
           </div>
@@ -274,3 +273,5 @@ class Cart extends React.Component {
 }
 
 export default Cart;
+
+const DELETE_PROPERTY = ['productName', 'productPrice', 'thumbnail_image_url'];
