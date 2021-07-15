@@ -29,6 +29,7 @@ class OrderLayout extends React.Component {
         <h1 className="orderTitle">주문해주셔서 감사합니다!</h1>
         <div className="orderContent">
           <p class="orderNum">주문번호 :{orderNumber}</p>
+          <p className="orderNum">잔여 포인트 :{point}</p>
         </div>
         <button type="submit" className="orderBtn">
           홈으로

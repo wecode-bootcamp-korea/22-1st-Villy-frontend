@@ -1,8 +1,9 @@
 @import '../../../styles/variables.scss';
+
 .Order {
   @include display-flex;
   flex-direction: column;
-  margin-top: 90px;
+  margin-top: 300px;
   .orderTitle {
     margin-bottom: 30px;
     font-size: 20px;
