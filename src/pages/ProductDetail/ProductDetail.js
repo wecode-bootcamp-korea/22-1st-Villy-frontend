@@ -25,6 +25,7 @@ export class ProductDetail extends Component {
         this.setState({
           productData: data.message[0],
         });
+        console.log(`res`, data);
       });
   }
 
