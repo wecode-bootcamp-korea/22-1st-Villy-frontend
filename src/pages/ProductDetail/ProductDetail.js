@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GET_PRODUCTS_API, POST_ADD_CART_API } from '../../config.js';
+import { GET_PRODUCTS_API, CARTLIST_API } from '../../config.js';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 
@@ -29,10 +29,11 @@ export class ProductDetail extends Component {
 
   postCart = () => {
     const id = this.props.match.params.productID;
+
     if (this.state.productData.cart_exist) {
       return;
     } else {
-      fetch(`${POST_ADD_CART_API}`, {
+      fetch(`${CARTLIST_API}`, {
         method: 'POST',
         body: JSON.stringify({
           productID: id,
@@ -69,6 +70,7 @@ export class ProductDetail extends Component {
         productTablet,
         cart_exist,
       } = this.state.productData;
+
       return (
         <div className="ProductDetail">
           <main style={{ backgroundColor: BACKGROUND_COLOR[productID - 1] }}>
