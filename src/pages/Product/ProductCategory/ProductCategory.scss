@@ -1,0 +1,20 @@
+@import '../../../styles/variables.scss';
+
+.ProductCheckBox {
+  @include display-flex;
+  width: 100px;
+  padding-bottom: 5px;
+
+  input {
+    margin: 0 5px 10px 0;
+  }
+
+  label {
+    @include display-flex;
+
+    .iconImage {
+      width: 30px;
+      margin-right: 5px;
+    }
+  }
+}
