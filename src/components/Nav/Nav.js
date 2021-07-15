@@ -28,7 +28,7 @@ class Nav extends React.Component {
 }
 
 const MENU_LIST = [
-  { name: '추천상품', link: '/' },
+  { name: '추천상품', link: '/recommend' },
   { name: '제품보기', link: '/product' },
   { name: '고객후기', link: '/' },
   { name: '장바구니', link: '/cart' },

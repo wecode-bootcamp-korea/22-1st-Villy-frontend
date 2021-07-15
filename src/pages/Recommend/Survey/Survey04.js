@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
+import { GET_PRODUCTS_API } from '../../../config';
+
 import './Survey.scss';
 
 export class Survey04 extends Component {
   render() {
-    const { surveyId, handlePrevSubmmit, handleCheckBox } = this.props;
+    const { surveyId, handlePrevSubmmit, handleCheckBox, filtered } =
+      this.props;
     return (
       <div className="Survey survey04">
         <h2 className="surveyTitle">
@@ -66,7 +69,12 @@ export class Survey04 extends Component {
             >
               이전
             </button>
-            <button className="nextButton" onClick={handleCheckBox}>
+            <button
+              className="nextButton"
+              onClick={() =>
+                this.props.history.push(`${GET_PRODUCTS_API}?${filtered}`)
+              }
+            >
               제출
             </button>
           </div>
