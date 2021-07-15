@@ -70,12 +70,7 @@ export class Survey04 extends Component {
             >
               이전
             </button>
-            <button
-              className="nextButton"
-              //  onClick={() => this.go}
-            >
-              제출
-            </button>
+            <button className="nextButton">제출</button>
           </div>
         </div>
       </div>

@@ -63,18 +63,6 @@ export class Recommend extends Component {
     this.setState({ surveyId: id + 1 });
   };
 
-  //category-filter-fetch
-  // fetchFiltering = () => {
-  //   const query = makeCondition(this.state.filterState);
-  //   fetch(`${GET_PRODUCTS_API}?${query}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         productCard: data.message,
-  //       });
-  //     });
-  // };
-
   makeCondition = () => {
     const filterMatch = {
       bone: 1,
@@ -97,16 +85,6 @@ export class Recommend extends Component {
       ''
     );
     return filtered;
-    // console.log(filtered);
-    // // return filtered;
-
-    // return fetch(`${GET_PRODUCTS_API}?${filtered}`)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({
-    //       productCard: data.message,
-    //     });
-    //   });
   };
 
   handleCheckBox = event => {
@@ -122,8 +100,6 @@ export class Recommend extends Component {
       this.makeCondition
     );
   };
-
-  // go = () => {};
 
   render() {
     console.log(this.makeCondition());
