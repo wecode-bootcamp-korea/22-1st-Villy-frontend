@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GET_PRODUCTS_API, CARTLIST } from '../../config.js';
+import { GET_PRODUCTS_API, CARTLIST_API } from '../../config.js';
 import { FaCreativeCommons, FaCreativeCommonsPdAlt } from 'react-icons/fa';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 
@@ -47,7 +47,7 @@ export class ProductDetail extends Component {
       return;
       // this.addedCartAlert();
     } else {
-      fetch(`${CARTLIST}`, {
+      fetch(`${CARTLIST_API}`, {
         method: 'POST',
         body: JSON.stringify({
           productID: id,
