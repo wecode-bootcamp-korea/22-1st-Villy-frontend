@@ -18,37 +18,40 @@ class Signup extends React.Component {
     });
   };
 
+  // doValidation = () => {
+  //   const userInputs = Object.entries(this.state);
+  //   userInputs.forEach(el => el.every(validationFor[el[0]](el[1])));
+  // };
+
   doValidation = () => {
     const userInputs = Object.entries(this.state);
-    userInputs.forEach(el => {
-      if (!validationFor[el[0]](el[1])) {
-        return alert('양식에 맞지 않습니다');
-      }
-    });
-    return this.requestSignup();
+    console.log(userInputs.every(el => validationFor[el[0]](el[1])));
   };
 
   requestSignup = () => {
     const { name, mobile, email, password } = this.state;
-    fetch(`${POST_SIGNUP_API}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-        mobile,
-        email,
-        password,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.access_token) {
-          alert('회원가입 성공');
-          localStorage.setItem('access_token', res.access_token);
-          this.goToMain();
-        } else {
-          alert('회원가입 실패');
-        }
-      });
+    if (this.doValidation()) {
+      fetch(`${POST_SIGNUP_API}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          mobile,
+          email,
+          password,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.access_token) {
+            alert('회원가입 성공');
+            localStorage.setItem('access_token', res.access_token);
+            this.goToMain();
+          } else {
+            alert('회원가입 실패');
+          }
+        });
+    }
+    return alert('양식에 맞지 않습니다!');
   };
 
   goToMain = () => this.props.history.push('/');
@@ -77,6 +80,11 @@ class Signup extends React.Component {
                     value={`${this.state[value]}`}
                     placeholder={placeholder}
                     onChange={this.handleInput}
+                    onKeyPress={
+                      index === INPUT_INFO.length - 1
+                        ? this.handleKeyPress
+                        : undefined
+                    }
                   />
                 </div>
               );
@@ -88,7 +96,7 @@ class Signup extends React.Component {
               type="submit"
               className="signupSubmit"
               onKeyPress={this.handleKeyPress}
-              onClick={this.doValidation}
+              onClick={this.requestSignup}
             >
               회원가입
             </button>
