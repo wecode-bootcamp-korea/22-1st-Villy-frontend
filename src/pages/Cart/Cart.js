@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CARTLIST, POST_ORDER_API } from '../../../src/config.js';
+import { CARTLIST_API, POST_ORDER_API } from '../../../src/config.js';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -13,7 +13,7 @@ class Cart extends React.Component {
   }
 
   responseQuantity = (productID, quantity) => {
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -24,7 +24,7 @@ class Cart extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
@@ -83,18 +83,18 @@ class Cart extends React.Component {
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
-    fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
+    fetch(`${CARTLIST_API}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     });
   };
 
   handleDeleteAll = () => {
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
-      fetch(`${CARTLIST}`, {
+      fetch(`${CARTLIST_API}`, {
         headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())

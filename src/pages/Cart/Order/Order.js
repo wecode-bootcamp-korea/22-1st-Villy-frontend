@@ -1,5 +1,5 @@
 import React from 'react';
-import { POST_ORDER_API } from '../../../../src/config.js';
+import { GET_ORDER_API } from '../../../../src/config.js';
 import { Link } from 'react-router-dom';
 import './Order.scss';
 
@@ -13,7 +13,7 @@ class Order extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${POST_ORDER_API}`, {
+    fetch(`${GET_ORDER_API}`, {
       headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
