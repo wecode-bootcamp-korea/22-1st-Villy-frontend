@@ -12,7 +12,6 @@ export class ProductDetail extends Component {
     this.state = {
       productData: {},
       recommendToggleOn: false,
-      addedCartAlertList: [],
     };
   }
 
@@ -59,7 +58,7 @@ export class ProductDetail extends Component {
     if (!this.state.productData.productID) {
       return <div>..Loading</div>;
     } else {
-      const { recommendToggleOn, addedCartAlertList } = this.state;
+      const { recommendToggleOn } = this.state;
       const {
         icon_image_url,
         productDescription,
@@ -86,7 +85,7 @@ export class ProductDetail extends Component {
                 ))}
               </div>
               {productDescription.split(`\n`).map((line, index) => (
-                <p key={index} className="productDescription">
+                <p key={index} className="productDetailDescription">
                   {line}
                 </p>
               ))}
