@@ -18,14 +18,9 @@ class Signup extends React.Component {
     });
   };
 
-  // doValidation = () => {
-  //   const userInputs = Object.entries(this.state);
-  //   userInputs.forEach(el => el.every(validationFor[el[0]](el[1])));
-  // };
-
   doValidation = () => {
     const userInputs = Object.entries(this.state);
-    console.log(userInputs.every(el => validationFor[el[0]](el[1])));
+    return userInputs.every(el => validationFor[el[0]](el[1]));
   };
 
   requestSignup = () => {
@@ -50,8 +45,9 @@ class Signup extends React.Component {
             alert('회원가입 실패');
           }
         });
+    } else {
+      return alert('양식의 맞지 않습니다!');
     }
-    return alert('양식에 맞지 않습니다!');
   };
 
   goToMain = () => this.props.history.push('/');
