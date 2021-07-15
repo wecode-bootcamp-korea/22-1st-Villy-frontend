@@ -9,6 +9,8 @@ import { Survey02 } from './Survey/Survey02';
 import { Survey03 } from './Survey/Survey03';
 import { Survey04 } from './Survey/Survey04';
 
+// import { makeCondition } from '../../utils/productUtils';
+
 import './Recommend.scss';
 
 export class Recommend extends Component {
@@ -23,8 +25,17 @@ export class Recommend extends Component {
         growth: false,
         skin: false,
       },
+      name: '',
     };
   }
+
+  handleInput = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+
+    console.log(event.target.name);
+  };
 
   handleNextSubmmit = surveyId => {
     const newAnswer = [...this.state.answer, { id: surveyId }];
@@ -52,7 +63,18 @@ export class Recommend extends Component {
     this.setState({ surveyId: id + 1 });
   };
 
-  // 카테고리 조건
+  //category-filter-fetch
+  // fetchFiltering = () => {
+  //   const query = makeCondition(this.state.filterState);
+  //   fetch(`${GET_PRODUCTS_API}?${query}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         productCard: data.message,
+  //       });
+  //     });
+  // };
+
   makeCondition = () => {
     const filterMatch = {
       bone: 1,
@@ -74,26 +96,18 @@ export class Recommend extends Component {
       },
       ''
     );
+    return filtered;
+    // console.log(filtered);
+    // // return filtered;
 
-    // fetch(`${GET_PRODUCTS_API}?${filtered}`)
+    // return fetch(`${GET_PRODUCTS_API}?${filtered}`)
     //   .then(res => res.json())
     //   .then(data => {
     //     this.setState({
     //       productCard: data.message,
     //     });
     //   });
-    console.log(`filtered>>>>>`, `${GET_PRODUCTS_API}?${filtered}`);
   };
-
-  // fetchFilter = () => {
-  //   fetch(`${GET_PRODUCTS_API}?${filtered}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         productCard: data.message,
-  //       });
-  //     });
-  // };
 
   handleCheckBox = event => {
     const checkBoxName = event.target.name;
@@ -109,7 +123,10 @@ export class Recommend extends Component {
     );
   };
 
+  // go = () => {};
+
   render() {
+    console.log(this.makeCondition());
     const survey = {
       1: (
         <SurveyWelcome
@@ -122,6 +139,7 @@ export class Recommend extends Component {
           surveyId={this.state.surveyId}
           handleNextSubmmit={this.handleNextSubmmit}
           handlePrevSubmmit={this.handlePrevSubmmit}
+          handleInput={this.handleInput}
         />
       ),
       3: (
@@ -129,6 +147,8 @@ export class Recommend extends Component {
           surveyId={this.state.surveyId}
           handleNextSubmmit={this.handleNextSubmmit}
           handlePrevSubmmit={this.handlePrevSubmmit}
+          handleInput={this.handleInput}
+          name={this.state.name}
         />
       ),
       4: (
@@ -136,6 +156,8 @@ export class Recommend extends Component {
           surveyId={this.state.surveyId}
           handleNextSubmmit={this.handleNextSubmmit}
           handlePrevSubmmit={this.handlePrevSubmmit}
+          handleInput={this.handleInput}
+          name={this.state.name}
         />
       ),
       5: (
@@ -144,6 +166,10 @@ export class Recommend extends Component {
           handlePrevSubmmit={this.handlePrevSubmmit}
           handleNextSubmmit={this.handleNextSubmmit}
           handleCheckBox={this.handleCheckBox}
+          handleInput={this.handleInput}
+          name={this.state.name}
+          makeCondition={this.makeCondition}
+          history={this.props.history}
         />
       ),
     };

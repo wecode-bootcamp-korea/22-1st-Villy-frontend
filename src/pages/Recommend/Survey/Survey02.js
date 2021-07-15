@@ -10,7 +10,7 @@ export class Survey02 extends Component {
         <h2 className="surveyTitle">
           질문{this.props.surveyId - 1}
           <br />
-          <strong>데이터받아오기/님의 성별을 알려주세요.</strong>
+          <strong>{this.props.name}님의 성별을 알려주세요.</strong>
         </h2>
         <hr />
 

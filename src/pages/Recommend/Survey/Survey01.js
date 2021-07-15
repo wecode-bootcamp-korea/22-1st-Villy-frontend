@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 import './Survey.scss';
 
 export class Survey01 extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: '',
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     name: '',
+  //   };
+  // }
 
-  handleInput = event => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
+  // handleInputProps = event => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
 
   render() {
     const { surveyId, handleNextSubmmit, handlePrevSubmmit } = this.props;
@@ -28,9 +28,9 @@ export class Survey01 extends Component {
         <hr />
         <form className="surveyForm">
           <input
-            onChange={this.handleInput}
+            onChange={this.props.handleInput}
             name="name"
-            value={this.state.name}
+            value={this.props.name}
             className="inputText"
             autoComplete="off"
             type="text hidden"

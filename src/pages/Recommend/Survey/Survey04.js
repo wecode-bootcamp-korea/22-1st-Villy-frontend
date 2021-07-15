@@ -8,13 +8,14 @@ export class Survey04 extends Component {
   render() {
     const { surveyId, handlePrevSubmmit, handleCheckBox, filtered } =
       this.props;
+    console.log(`this.history`, this.props);
     return (
       <div className="Survey survey04">
         <h2 className="surveyTitle">
           질문{this.props.surveyId - 1}
           <br />
           <strong>
-            데이터받아오기//님이 불편하시거나 걱정되는 것을 모두 선택하세요.
+            {this.props.name}님이 불편하시거나 걱정되는 것을 모두 선택하세요.
           </strong>
           <span span className="subtitle">
             우선적으로 관리가 필요한 것을 선택하세요.
@@ -71,9 +72,7 @@ export class Survey04 extends Component {
             </button>
             <button
               className="nextButton"
-              onClick={() =>
-                this.props.history.push(`${GET_PRODUCTS_API}?${filtered}`)
-              }
+              //  onClick={() => this.go}
             >
               제출
             </button>
