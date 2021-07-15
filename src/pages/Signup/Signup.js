@@ -91,7 +91,7 @@ class Signup extends React.Component {
               type="submit"
               className="signupSubmit"
               onKeyPress={this.handleKeyPress}
-              onClick={this.doValidation}
+              onClick={this.requestSignup}
             >
               회원가입
             </button>
