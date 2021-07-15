@@ -18,7 +18,7 @@ export class ProductCard extends Component {
     }
 
     // event bubbling stop
-    event.preventDefault();
+    event.stopPropagation();
     const newProductCard = { ...this.props.productCard };
     newProductCard.cart_exist = true;
 
