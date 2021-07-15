@@ -17,16 +17,27 @@ export class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`, {
-      headers: { Authorization: localStorage.getItem('access_token') },
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productData: data.message[0],
+    if (localStorage.getItem('access_token') === null) {
+      fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productData: data.message[0],
+          });
+          console.log(`res`, data);
         });
-        console.log(`res`, data);
-      });
+    } else {
+      fetch(`${GET_PRODUCTS_API}/${this.props.match.params.productID}`, {
+        headers: { Authorization: localStorage.getItem('access_token') },
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productData: data.message[0],
+          });
+          console.log(`res`, data);
+        });
+    }
   }
 
   // addedCartAlert = () => {
