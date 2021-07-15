@@ -25,7 +25,8 @@ class Signup extends React.Component {
       if (!validationFor[el[0]](el[1])) {
         return alert('양식에 맞지 않습니다');
       } else {
-        this.requestSignup();
+        console.log(`성공`);
+        // this.requestSignup();
       }
     });
   };
