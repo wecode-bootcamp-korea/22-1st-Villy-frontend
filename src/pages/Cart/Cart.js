@@ -29,10 +29,14 @@ class Cart extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          cartList: res.product,
-          point: res.point,
-        });
+        if (res.message === 'INVAILD_USER') {
+          this.props.history.push('/login');
+        } else {
+          this.setState({
+            cartList: res.product,
+            point: res.point,
+          });
+        }
       });
   }
 
@@ -114,22 +118,23 @@ class Cart extends React.Component {
 
   order = () => {
     const { cartList } = this.state;
-
     cartList.forEach(list => {
       for (let i in DELETE_PROPERTY) {
         delete list[DELETE_PROPERTY[i]];
       }
     });
-
     const orderList = { ...cartList };
-
     fetch(`${POST_ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
         products: orderList,
       }),
-    }).then(this.props.history.push('/order'));
+    }).then(
+      setTimeout(() => {
+        this.props.history.push('/order');
+      }, 100)
+    );
   };
 
   render() {
