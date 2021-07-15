@@ -24,11 +24,9 @@ class Signup extends React.Component {
     userInputs.forEach(el => {
       if (!validationFor[el[0]](el[1])) {
         return alert('양식에 맞지 않습니다');
-      } else {
-        console.log(`성공`);
-        // this.requestSignup();
       }
     });
+    return this.requestSignup();
   };
 
   // Back이랑 연결하는 fetch 함수
