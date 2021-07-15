@@ -1,0 +1,15 @@
+{
+  "productID": 3,
+  "productName": "VitaminB2",
+  "productPrice": 12400,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 B2는 건강한 피부, 손톱, 발톱, 그리고 머리털을 만드는 효능이 있다.\n 특히, 성장과 세포 재생을 도와고 구내염을 예방하기도 한다.\n 체내 유해한 활성 산소를 제어하는 항산화제 역할을 한다.",
+  "icon_image_url": ["images/therapy.svg"],
+  "icon_name": ["성장"],
+  "summary": [
+    "스트레스완화에 도움",
+    "신체의 성장 지원",
+    "건강한 피부, 탄력있는 피부 유지"
+  ]
+}

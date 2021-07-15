@@ -1,0 +1,15 @@
+{
+  "productID": 9,
+  "productName": "VitaminE",
+  "productPrice": 9900,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 E는 혈액 순환을 촉힌하며 이는 머리카락 성장에 잇어서 필수적이다.\n 그리고 항산화 작용으로 콜레스테롤 수치를 낮춰주고 노화방지에 도움을 준다. \n우리 몸에 좋지 않은 화학 반응으로부터 세포를 보호하는 역할을 한다.",
+  "icon_image_url": ["images/bone.svg", "images/height.svg"],
+  "icon_name": ["모발", "피부"],
+  "summary": [
+    "몸의 산화 방지",
+    "근육의 기능 정상화 유지",
+    "머리카락에 수분을 공급"
+  ]
+}
