@@ -7,4 +7,4 @@ export const GET_PRODUCTS_API = `${BASE_URL}/products`;
 
 export const CARTLIST_API = `${BASE_URL}/carts`;
 
-export const GET_ORDER_API = `${BASE_URL}/orders`;
+export const ORDER_API = `${BASE_URL}/orders`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CARTLIST, POST_ORDER_API } from '../../../src/config.js';
+import { CARTLIST_API, ORDER_API } from '../../../src/config.js';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -14,7 +14,7 @@ class Cart extends React.Component {
 
   // 백엔드에 데이터 보내는 함수
   responseQuantity = (productID, quantity) => {
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -26,7 +26,7 @@ class Cart extends React.Component {
 
   // 백엔드랑 연결
   componentDidMount() {
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       headers: { Authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
@@ -95,7 +95,7 @@ class Cart extends React.Component {
       cartList => cartList.productID !== this.state.cartList[idx].productID
     );
     this.setState({ cartList: newCartList });
-    fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
+    fetch(`${CARTLIST_API}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     });
@@ -103,11 +103,11 @@ class Cart extends React.Component {
 
   // 장바구니 전체 삭제 함수
   handleDeleteAll = () => {
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
     }).then(
-      fetch(`${CARTLIST}`, {
+      fetch(`${CARTLIST_API}`, {
         headers: { Authorization: localStorage.getItem('access_token') },
       })
         .then(res => res.json())
@@ -127,7 +127,7 @@ class Cart extends React.Component {
       }
     });
     const orderList = { ...cartList };
-    fetch(`${POST_ORDER_API}`, {
+    fetch(`${ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
