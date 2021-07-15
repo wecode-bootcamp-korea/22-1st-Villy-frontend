@@ -267,5 +267,3 @@ class Cart extends React.Component {
   }
 }
 export default Cart;
-
-const DELETE_PROPERTY = ['productName', 'productPrice', 'thumbnail_image_url'];

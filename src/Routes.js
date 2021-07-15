@@ -7,6 +7,7 @@ import Main from './pages/Main/Main';
 import Product from './pages/Product/Product';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Signup from './pages/Signup/Signup';
+// import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Recommend from './pages/Recommend/Recommend';
 import Cart from './pages/Cart/Cart';
 import Order from './pages/Cart/Order/Order';
@@ -22,6 +23,7 @@ class Routes extends React.Component {
           <Route exact path="/product" component={Product} />
           <Route exact path="/productDetail" component={ProductDetail} />
           <Route exact path="/signup" component={Signup} />
+          {/* <Route exact path="/product/:productID" component={ProductDetail} /> */}
           <Route exact path="/recommend" component={Recommend} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/order" component={Order} />
