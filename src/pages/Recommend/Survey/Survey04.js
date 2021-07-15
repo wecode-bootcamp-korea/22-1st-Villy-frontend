@@ -6,9 +6,7 @@ import './Survey.scss';
 
 export class Survey04 extends Component {
   render() {
-    const { surveyId, handlePrevSubmmit, handleCheckBox, filtered } =
-      this.props;
-    console.log(`this.history`, this.props);
+    const { surveyId, handlePrevSubmmit, handleCheckBox } = this.props;
     return (
       <div className="Survey survey04">
         <h2 className="surveyTitle">
@@ -70,7 +68,14 @@ export class Survey04 extends Component {
             >
               이전
             </button>
-            <button className="nextButton">제출</button>
+            <button
+              onClick={() =>
+                this.props.history.push(`product?${this.props.makeCondition()}`)
+              }
+              className="nextButton"
+            >
+              제출
+            </button>
           </div>
         </div>
       </div>

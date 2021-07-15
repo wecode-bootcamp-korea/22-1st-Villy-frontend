@@ -21,7 +21,6 @@ export class Product extends Component {
     };
   }
 
-  // cart_exit state 변경
   changeProductCard = (productCard, index) => {
     const newProductCardList = [...this.state.productCard];
     newProductCardList[index] = productCard;
@@ -31,16 +30,24 @@ export class Product extends Component {
   };
 
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productCard: data.message,
+    if (this.props.history.location.search) {
+      fetch(`${GET_PRODUCTS_API}${this.props.history.location.search}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productCard: data.message,
+          });
         });
-      });
+    } else
+      fetch(`${GET_PRODUCTS_API}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productCard: data.message,
+          });
+        });
   }
 
-  //category-filter-fetch
   fetchFiltering = () => {
     const query = makeCondition(this.state.filterState);
     fetch(`${GET_PRODUCTS_API}?${query}`)
@@ -68,7 +75,7 @@ export class Product extends Component {
 
   render() {
     const { productCard } = this.state;
-
+    console.log(`this.props.history`, this.props.history.location.search);
     return (
       <div className="Product">
         <header className="productHeader">

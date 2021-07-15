@@ -33,8 +33,6 @@ export class Recommend extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-
-    console.log(event.target.name);
   };
 
   handleNextSubmmit = surveyId => {
@@ -102,7 +100,6 @@ export class Recommend extends Component {
   };
 
   render() {
-    console.log(this.makeCondition());
     const survey = {
       1: (
         <SurveyWelcome
