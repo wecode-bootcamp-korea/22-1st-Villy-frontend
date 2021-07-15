@@ -1,0 +1,15 @@
+{
+  "productID": 6,
+  "productName": "VitaminB9",
+  "productPrice": 11900,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 B9는 DNA 합성 및 복구, 세포 분열 및 세포 성장을 포함한 수많은 신체 기능에 필요하다.\n 태아의 신경고 혈관 발달에 중요하에 임산부와 노인에게 좋다.",
+  "icon_image_url": ["images/therapy.svg"],
+  "icon_name": ["성장"],
+  "summary": [
+    "노인 남성의 피로 해소와 체력증진에 도움",
+    "위장, 입 안의 점막 보호",
+    "기형아 예방"
+  ]
+}
