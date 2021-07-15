@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import { CARTLIST } from '../../../config';
+import { CARTLIST_API } from '../../../config';
 
 import ProductIcon from './ProductIcon/ProductIcon';
 import ProductDescription from './ProductDescription/ProductDescription';
@@ -22,7 +22,7 @@ export class ProductCard extends Component {
     newProductCard.cart_exist = true;
 
     this.props.changeProductCard(newProductCard, this.props.index);
-    fetch(`${CARTLIST}`, {
+    fetch(`${CARTLIST_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
