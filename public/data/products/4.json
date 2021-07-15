@@ -1,0 +1,15 @@
+{
+  "productID": 4,
+  "productName": "VitaminB3",
+  "productPrice": 12000,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 B3는 음주 후에 숙취를 유발하는 물질인 아세트알데하이드의 분해를 돕는다.\n 따라서 비타민 B3가 부족하면 술에 심하게 취하거나 숙취가 생길 수 있다. \n또한 피부병, 구토, 변비, 설사, 소화장애, 두통, 피로, 기억상실 등의 증상이 나타날 수 있다.",
+  "icon_image_url": ["images/height.svg"],
+  "icon_name": ["피부"],
+  "summary": [
+    "신경과민 및 불면증 개선",
+    "만성두통과 편두통 예방",
+    "머리카락의 윤기 개선"
+  ]
+}

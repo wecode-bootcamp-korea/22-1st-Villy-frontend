@@ -12,7 +12,6 @@ class Login extends React.Component {
     };
   }
 
-  // 입력 함수
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -20,7 +19,6 @@ class Login extends React.Component {
     });
   };
 
-  // Back이랑 연결하는 fetch 함수
   requestLogin = () => {
     fetch(`${POST_SIGNIN_API}`, {
       method: 'POST',

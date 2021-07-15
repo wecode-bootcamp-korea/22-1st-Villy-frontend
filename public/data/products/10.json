@@ -1,0 +1,11 @@
+{
+  "productID": 10,
+  "productName": "VitaminH",
+  "productPrice": 27500,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 H는 탄수화물, 아미노산, 지방 등 대사에 관여한다.\n 골수의 기능을 도와 혈구의 형성을 원할하게 하며 남성 호르몬 분비에도 관여한다.\n 또한 모발조직 생성에 필요한 영양성분이다.",
+  "icon_image_url": ["images/bone.svg", "images/therapy.svg"],
+  "icon_name": ["모발", "성장"],
+  "summary": ["피부염 예방", "성장 정지 예방", "백발방지 및 탈.모.방.지"]
+}

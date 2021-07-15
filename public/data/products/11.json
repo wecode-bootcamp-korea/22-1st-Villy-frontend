@@ -1,0 +1,15 @@
+{
+  "productID": 11,
+  "productName": "VitaminK",
+  "productPrice": 13800,
+  "productTablet": 30,
+  "thumbnail_image_url": "fas fa-pills",
+  "productDescription": "비타민 K는 지용성 비타민의 한 종류로서 상처가 났을 때 빠르게 혈액이 응고되어 과다 출혈을 막아준다.\n 그리고 칼슘의 흡수를 도와 뼈 건강을 지켜주는 역할을 한다.",
+  "icon_image_url": ["images/hairstyle.svg"],
+  "icon_name": ["뼈"],
+  "summary": [
+    "뼈 조직의 단백질 합성",
+    "내출혈을 예방",
+    "미용시술에 의한 멍 진행을 단축시킴"
+  ]
+}
