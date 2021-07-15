@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { POST_SIGNIN_API } from '../../../src/config.js';
+import { POST_SIGNIN_API } from '../../../src/config.js';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -12,7 +12,6 @@ class Login extends React.Component {
     };
   }
 
-  // 입력 함수
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
@@ -20,28 +19,27 @@ class Login extends React.Component {
     });
   };
 
-  // Back이랑 연결하는 fetch 함수
-  // requestLogin = () => {
-  //   fetch(`${POST_SIGNIN_API}`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       email: this.state.userId,
-  //       password: this.state.userPw,
-  //       //로그인 test용 하드코딩
-  //       // name: '김코드',
-  //       // mobile: '010-1234-2223',
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       if (res.access_token) {
-  //         alert('로그인 성공');
-  //         localStorage.setItem('access_token', res.access_token);
-  //       } else {
-  //         alert('로그인 실패');
-  //       }
-  //     });
-  // };
+  requestLogin = () => {
+    fetch(`${POST_SIGNIN_API}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.userId,
+        password: this.state.userPw,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.access_token) {
+          alert('로그인 성공');
+          localStorage.setItem('access_token', res.access_token);
+          this.goToMain();
+        } else {
+          alert('로그인 실패');
+        }
+      });
+  };
+
+  goToMain = () => this.props.history.push('/');
 
   render() {
     const { userId, userPw } = this.state;
