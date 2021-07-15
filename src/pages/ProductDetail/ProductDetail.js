@@ -77,10 +77,10 @@ export class ProductDetail extends Component {
               <div className="propertyIcons">
                 {icon_image_url.map((icon, index) => (
                   <img
+                    alt="icon"
                     className="propertyIcon"
                     key={index}
                     src={icon}
-                    alt="icon"
                   />
                 ))}
               </div>
