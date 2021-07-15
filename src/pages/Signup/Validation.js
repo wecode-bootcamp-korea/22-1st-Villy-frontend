@@ -5,11 +5,11 @@ function validationEmail(email) {
   return reg_email.test(email);
 }
 
-function validationPwd(pw) {
+function validationpasswordd(password) {
   // 영문+숫자+특수문자를 포함하는 6~20자리
-  const reg_pwd =
+  const reg_passwordd =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/;
-  return reg_pwd.test(pw);
+  return reg_passwordd.test(password);
 }
 
 function validationName(name) {
@@ -29,5 +29,5 @@ export const validationFor = {
   name: validationName,
   mobile: validationMobile,
   email: validationEmail,
-  pw: validationPwd,
+  password: validationpasswordd,
 };

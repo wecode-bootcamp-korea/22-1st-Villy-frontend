@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+import { CARTLIST_API } from '../../../config';
 
 import ProductIcon from './ProductIcon/ProductIcon';
 import ProductDescription from './ProductDescription/ProductDescription';
@@ -9,18 +11,23 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import './ProductCard.scss';
 
 export class ProductCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      addCart: false,
-    };
-  }
+  addCart = event => {
+    const { cart_exist } = this.props.productCard;
+    if (cart_exist) {
+      return;
+    }
 
-  handleCartButton = event => {
     event.preventDefault();
+    const newProductCard = { ...this.props.productCard };
+    newProductCard.cart_exist = true;
 
-    this.setState({
-      addCart: !this.state.addCart,
+    this.props.changeProductCard(newProductCard, this.props.index);
+    fetch(`${CARTLIST_API}`, {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        productID: event.target.name,
+      }),
     });
   };
 
@@ -34,11 +41,13 @@ export class ProductCard extends Component {
       summary,
       productTablet,
       productPrice,
+      cart_exist,
+      productID,
     } = this.props.productCard;
 
     return (
       <li className="ProductCard" style={{ backgroundColor }}>
-        <Link to="/detail">
+        <Link to={`product/${this.props.productCard.productID}`}>
           <header className="productCardHeader">
             <div className="nameBox">
               <h2>
@@ -77,12 +86,13 @@ export class ProductCard extends Component {
           <footer className="productCardFooter">
             <p className="add">더보기</p>
             <button
+              name={productID}
               className="cartBtn"
-              onClick={this.handleCartButton}
-              disabled={this.state.addCart}
+              disabled={cart_exist}
+              onClick={this.addCart}
             >
-              {!this.state.addCart && <AiOutlinePlus className="addIcon" />}
-              {this.state.addCart ? '장바구니 추가됨' : '장바구니 담기'}
+              {!cart_exist && <AiOutlinePlus className="addIcon" />}
+              {cart_exist ? '장바구니 추가됨' : '장바구니 담기'}
             </button>
           </footer>
         </Link>
@@ -91,4 +101,4 @@ export class ProductCard extends Component {
   }
 }
 
-export default ProductCard;
+export default withRouter(ProductCard);

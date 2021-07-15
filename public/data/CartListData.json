@@ -1,0 +1,30 @@
+[
+  {
+    "productID": 1,
+    "thumbnail_image_url": "/images/pill1.jpeg",
+    "productName": "pill_1",
+    "productPrice": 1000,
+    "quantity": 1
+  },
+  {
+    "productID": 2,
+    "thumbnail_image_url": "/images/pill1.jpeg",
+    "productName": "pill_2",
+    "productPrice": 1000,
+    "quantity": 1
+  },
+  {
+    "productID": 3,
+    "thumbnail_image_url": "/images/pill1.jpeg",
+    "productName": "pill_3",
+    "productPrice": 1000,
+    "quantity": 1
+  },
+  {
+    "productID": 4,
+    "thumbnail_image_url": "/images/pill1.jpeg",
+    "productName": "pill_4",
+    "productPrice": 1000,
+    "quantity": 1
+  }
+]
