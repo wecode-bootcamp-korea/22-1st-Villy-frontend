@@ -31,12 +31,26 @@ class Cart extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          cartList: res.product,
-          point: res.point,
-        });
+        if (res.message === 'INVAILD_USER') {
+          this.props.history.push('/login');
+        } else {
+          this.setState({
+            cartList: res.product,
+            point: res.point,
+          });
+        }
       });
   }
+
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         cartList: res.product,
+  //         point: res.point,
+  //       });
+  //       console.log(`res`, res);
+  //     });
+  // }
 
   // componentDidUpdate() {
   //   fetch(`${CARTLIST}`, {
@@ -77,10 +91,6 @@ class Cart extends React.Component {
 
   // 장바구니 개별 삭제 함수
   handleDeleteSelect = idx => {
-    console.log(
-      `this.state.cartList[idx].productID`,
-      this.state.cartList[idx].productID
-    );
     // const newCartList = this.state.cartList.filter(
     //   cartList => cartList.productID !== this.state.cartList[idx].productID
     // );
@@ -127,14 +137,17 @@ class Cart extends React.Component {
       }
     });
     const orderList = { ...cartList };
-    console.log(`orderList`, orderList);
     fetch(`${POST_ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
         products: orderList,
       }),
-    }).then(this.props.history.push('/order'));
+    }).then(
+      setTimeout(() => {
+        this.props.history.push('/order');
+      }, 100)
+    );
   };
 
   render() {
