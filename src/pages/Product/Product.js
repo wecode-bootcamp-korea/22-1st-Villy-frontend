@@ -50,18 +50,15 @@ export class Product extends Component {
       },
       ''
     );
-    console.log(filtered);
-  };
 
-  // fetchFilter = () => {
-  //   fetch(`${GET_PRODUCTS_API}?${filtered}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         productCard: data.message,
-  //       });
-  //     });
-  // };
+    fetch(`${GET_PRODUCTS_API}?${filtered}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productCard: data.message,
+        });
+      });
+  };
 
   handleCheckBox = event => {
     const checkBoxName = event.target.name;
