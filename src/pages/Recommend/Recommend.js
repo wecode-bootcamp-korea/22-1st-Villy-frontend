@@ -15,7 +15,7 @@ export class Recommend extends Component {
   constructor() {
     super();
     this.state = {
-      surveyId: 5,
+      surveyId: 1,
       answer: [],
       filterState: {
         bone: false,
@@ -35,11 +35,11 @@ export class Recommend extends Component {
   };
 
   handlePrevSubmmit = surveyId => {
-    const PreviousAnsswer = this.state.answer.filter(previous => {
+    const previousAnswer = this.state.answer.filter(previous => {
       return previous.surveyId !== surveyId;
     });
     this.setState({
-      answer: PreviousAnsswer,
+      answer: previousAnswer,
     });
     this.handlPrevButton(surveyId);
   };
@@ -52,6 +52,7 @@ export class Recommend extends Component {
     this.setState({ surveyId: id + 1 });
   };
 
+  // 카테고리 조건
   makeCondition = () => {
     const filterMatch = {
       bone: 1,
@@ -74,15 +75,25 @@ export class Recommend extends Component {
       ''
     );
 
-    fetch(`${GET_PRODUCTS_API}?${filtered}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productCard: data.message,
-        });
-      });
+    // fetch(`${GET_PRODUCTS_API}?${filtered}`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({
+    //       productCard: data.message,
+    //     });
+    //   });
     console.log(`filtered>>>>>`, `${GET_PRODUCTS_API}?${filtered}`);
   };
+
+  // fetchFilter = () => {
+  //   fetch(`${GET_PRODUCTS_API}?${filtered}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         productCard: data.message,
+  //       });
+  //     });
+  // };
 
   handleCheckBox = event => {
     const checkBoxName = event.target.name;
@@ -94,9 +105,7 @@ export class Recommend extends Component {
           [checkBoxName]: checkBoxNameState,
         },
       },
-      () => {
-        this.makeCondition();
-      }
+      this.makeCondition
     );
   };
 
@@ -134,7 +143,6 @@ export class Recommend extends Component {
           surveyId={this.state.surveyId}
           handlePrevSubmmit={this.handlePrevSubmmit}
           handleNextSubmmit={this.handleNextSubmmit}
-          makeCondition={this.makeCondition}
           handleCheckBox={this.handleCheckBox}
         />
       ),
