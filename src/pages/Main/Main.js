@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import FootSlide from './Footer/FootSlide';
 import './Main.scss';
 
@@ -18,7 +21,9 @@ export class Main extends Component {
               <br /> 이미 <strong className="recomendPeple">587,064명</strong>이
               추천받았습니다.
             </p>
-            <button className="recommendButton">지금 시작하기</button>
+            <Link to="/recommend">
+              <button className="recommendButton">지금 시작하기</button>
+            </Link>
           </header>
         </main>
         <section className="footSlideTop">

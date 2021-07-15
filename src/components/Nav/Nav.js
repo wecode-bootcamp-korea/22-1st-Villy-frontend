@@ -69,7 +69,7 @@ class Nav extends PureComponent {
 }
 
 const MENU_LIST = [
-  { name: '추천상품', link: '/' },
+  { name: '추천상품', link: '/recommend' },
   { name: '제품보기', link: '/product' },
   { name: '장바구니', link: '/cart' },
   { name: '로그인', link: '/login' },

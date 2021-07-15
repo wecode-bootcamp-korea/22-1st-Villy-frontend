@@ -1,0 +1,81 @@
+@import '../../../styles/variables.scss';
+
+$color-dark-gray: #999999;
+
+@mixin survey-button {
+  height: 50px;
+  border: 1px solid $color-dark-gray;
+  border-radius: 25px;
+  font : {
+    size: 16px;
+    weight: bold;
+  }
+}
+
+.Survey {
+  .surveyTitle {
+    margin-bottom: 10px;
+    font : {
+      size: 16px;
+      weight: bold;
+    }
+    color: $color-dark-gray;
+
+    strong {
+      display: block;
+      padding: 10px 0 10px;
+      font-size: 24px;
+      color: $color-font;
+    }
+
+    .subtitle {
+      font-weight: normal;
+    }
+  }
+
+  hr {
+    color: $color-dark-gray;
+  }
+
+  .surveyForm {
+    margin-top: 30px;
+    .inputText {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $color-dark-gray;
+      border-radius: 5px;
+      font-size: 18px;
+      color: $color-dark-gray;
+    }
+
+    .checkbox {
+      margin: 20px 0;
+      font-size: 16px;
+
+      .inputGender {
+        margin-right: 15px;
+      }
+    }
+
+    .buttonBox {
+      @include display-flex;
+      justify-content: space-between;
+      margin-top: 50px;
+
+      .previousButton {
+        @include survey-button;
+        flex: 2;
+        margin-right: 100px;
+        background-color: #ffffff;
+        color: $color-font;
+      }
+
+      .nextButton {
+        @include survey-button;
+        flex: 8;
+        background-color: $color-font;
+        color: #ffffff;
+      }
+    }
+  }
+}
