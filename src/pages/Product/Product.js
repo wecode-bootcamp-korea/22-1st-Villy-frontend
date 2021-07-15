@@ -5,12 +5,9 @@ import ProductCategory from './ProductCategory/ProductCategory';
 
 import './Product.scss';
 
-import './Product.scss';
-
 export class Product extends Component {
   constructor() {
     super();
-    // this.myRef = React.createRef();
     this.state = {
       productCard: [],
       filterState: {
@@ -23,8 +20,7 @@ export class Product extends Component {
   }
 
   componentDidMount() {
-    // fetch(`${GET_PRODUCTS_API}`)
-    fetch('./data/productData.json')
+    fetch(`${GET_PRODUCTS_API}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -32,16 +28,6 @@ export class Product extends Component {
         });
       });
   }
-
-  // changeRef = () => {
-  //   this.myRef.current = {
-  //     ...this.myRef.current,
-  //     bone: false,
-  //     hair: false,
-  //     growth: false,
-  //     skin: false,
-  //   };
-  // };
 
   makeCondition = () => {
     const filterMatch = {
@@ -64,30 +50,18 @@ export class Product extends Component {
       },
       ''
     );
-
-    // ref 적용중
-    // const filtered = Object.entries(this.myRef.current).reduce(
-    //   (acc, [key, value]) => {
-    //     if (!acc && value) {
-    //       return acc + `efficacy=${filterMatch[key]}`;
-    //     }
-
-    //     if (value) {
-    //       return acc + `&efficacy=${filterMatch[key]}`;
-    //     }
-    //     return acc;
-    //   },
-    //   ''
-    // );
-
-    fetch(`${GET_PRODUCTS_API}?${filtered}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productCard: data.message,
-        });
-      });
+    console.log(filtered);
   };
+
+  // fetchFilter = () => {
+  //   fetch(`${GET_PRODUCTS_API}?${filtered}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         productCard: data.message,
+  //       });
+  //     });
+  // };
 
   handleCheckBox = event => {
     const checkBoxName = event.target.name;
@@ -99,22 +73,11 @@ export class Product extends Component {
           [checkBoxName]: checkBoxNameState,
         },
       },
-      () => {
-        this.makeCondition();
-      }
+      this.makeCondition
     );
   };
 
-  // handleCheckBox = event => {
-  //   console.log(event.target.name);
-  //   console.log(this.myRef.current);
-  // };
-
   render() {
-    // ref 적용
-    // console.log(this.changeRef);
-    // console.log(this.myRef.current);
-
     const { productCard } = this.state;
 
     return (
@@ -134,6 +97,7 @@ export class Product extends Component {
               key={productCard.id}
               makeCondition={this.makeCondition}
               handleCheckBox={this.handleCheckBox}
+              fetchFilter={this.fetchFilter}
             />
           </form>
 
