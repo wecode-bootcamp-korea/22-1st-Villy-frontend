@@ -18,15 +18,18 @@ export class Product extends Component {
     });
   };
   componentDidMount() {
-    fetch(`${GET_PRODUCTS_API}`)
+    fetch(`${GET_PRODUCTS_API}`, {
+      headers: { Authorization: localStorage.getItem('access_token') },
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productCard: data.message,
+          productData: data.message[0],
         });
-        console.log(`data`, data);
+        console.log(`res`, data);
       });
   }
+
   render() {
     const { productCard } = this.state;
     console.log(`productCard`, productCard);
