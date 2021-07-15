@@ -24,7 +24,7 @@ export class Product extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data.message[0],
+          productCard: data.message,
         });
         console.log(`res`, data);
       });
