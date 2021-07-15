@@ -12,6 +12,12 @@ export class Product extends Component {
     super();
     this.state = {
       productCard: [],
+      filterState: {
+        bone: false,
+        hair: false,
+        growth: false,
+        skin: false,
+      },
     };
   }
 
