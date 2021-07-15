@@ -35,10 +35,10 @@ class Signup extends React.Component {
     fetch(`${POST_SIGNUP_API}`, {
       method: 'POST',
       body: JSON.stringify({
-        name: name,
-        mobile: mobile,
-        email: email,
-        password: password,
+        name,
+        mobile,
+        email,
+        password,
       }),
     })
       .then(res => res.json())
