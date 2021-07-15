@@ -20,6 +20,7 @@ class OrderLayout extends React.Component {
           orderList: res.product[res.product.length - 1],
           point: res.point,
         });
+        console.log(`res`, res);
       });
   }
   render() {

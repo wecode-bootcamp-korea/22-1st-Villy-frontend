@@ -38,6 +38,18 @@ class Cart extends React.Component {
       });
   }
 
+  // componentDidUpdate() {
+  //   fetch(`${CARTLIST}`, {
+  //     headers: { Authorization: localStorage.getItem('access_token') },
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         cartList: res.product,
+  //       });
+  //     });
+  // }
+
   // + 버튼 개수 증가 함수
   handleIncrement = index => {
     const newCartList = [...this.state.cartList];
@@ -65,10 +77,14 @@ class Cart extends React.Component {
 
   // 장바구니 개별 삭제 함수
   handleDeleteSelect = idx => {
-    const newCartList = this.state.cartList.filter(
-      cartList => cartList.productID !== this.state.cartList[idx].productID
+    console.log(
+      `this.state.cartList[idx].productID`,
+      this.state.cartList[idx].productID
     );
-    this.setState({ cartList: newCartList });
+    // const newCartList = this.state.cartList.filter(
+    //   cartList => cartList.productID !== this.state.cartList[idx].productID
+    // );
+    // this.setState({ cartList: newCartList });
     fetch(`${CARTLIST}?item=${this.state.cartList[idx].productID}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('access_token') },
