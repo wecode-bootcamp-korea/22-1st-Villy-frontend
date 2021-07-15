@@ -11,7 +11,6 @@ class Signup extends React.Component {
     mobile: '',
   };
 
-  // 입력 함수
   handleInput = e => {
     const { name, value } = e.target;
     this.setState({
@@ -29,7 +28,6 @@ class Signup extends React.Component {
     return this.requestSignup();
   };
 
-  // Back이랑 연결하는 fetch 함수
   requestSignup = () => {
     const { name, mobile, email, password } = this.state;
     fetch(`${POST_SIGNUP_API}`, {
@@ -55,7 +53,6 @@ class Signup extends React.Component {
 
   goToMain = () => this.props.history.push('/');
 
-  // 입력 완료 후 실행되는 함수
   handleKeyPress = e => {
     if (e.key === 'Enter') {
       this.requestSignup();
