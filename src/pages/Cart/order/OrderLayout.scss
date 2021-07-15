@@ -5,14 +5,23 @@
   flex-direction: column;
   margin-top: 300px;
   .orderTitle {
-    margin-bottom: 30px;
-    font-size: 20px;
+    display: flex;
+    margin-bottom: 40px;
+    font-size: 30px;
     font-weight: bolder;
+    .orderLine {
+      padding-left: 10px;
+      text-decoration: underline;
+      text-underline-position: under;
+    }
   }
   .orderContent {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: $color-logo;
+    font-size: 20px;
     text-align: center;
-    font-size: 15px;
-    line-height: 1.4;
+    line-height: 2;
     .orderNum {
       font-weight: bolder;
     }
@@ -20,7 +29,7 @@
   .orderBtn {
     width: 200px;
     padding: 15px;
-    margin: 40px 0px 50px 0px;
+    margin: 40px 0px 0px 0px;
     color: white;
     background-color: $color-logo;
     border-radius: 30px;

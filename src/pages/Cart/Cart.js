@@ -111,6 +111,7 @@ class Cart extends React.Component {
       }
     });
     const orderList = { ...cartList };
+    console.log(`orderList`, orderList);
     fetch(`${POST_ORDER_API}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },

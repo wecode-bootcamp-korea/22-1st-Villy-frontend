@@ -1,11 +1,12 @@
 import React from 'react';
-import { CARTLIST, POST_ORDER_API } from '../../../../src/config.js';
+import { POST_ORDER_API } from '../../../../src/config.js';
+import { Link } from 'react-router-dom';
 import './OrderLayout.scss';
 class OrderLayout extends React.Component {
   constructor() {
     super();
     this.state = {
-      orderList: {},
+      orderList: [],
       point: 0,
     };
   }
@@ -16,24 +17,27 @@ class OrderLayout extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          orderList: res.product[res.length - 1],
+          orderList: res.product[res.product.length - 1],
           point: res.point,
         });
-        console.log(`res`, res);
       });
   }
   render() {
-    const { orderNumber, point } = this.state;
+    const { orderList, point } = this.state;
     return (
       <div className="Order">
-        <h1 className="orderTitle">주문해주셔서 감사합니다!</h1>
+        <h1 className="orderTitle">
+          주문이 <p className="orderLine"> 완료 </p>되었습니다!
+        </h1>
         <div className="orderContent">
-          <p class="orderNum">주문번호 :{orderNumber}</p>
-          <p className="orderNum">잔여 포인트 :{point}</p>
+          <p className="orderNum">주문 번호 : {orderList.orderNumber}</p>
+          <p className="orderNum">잔여 포인트 : {point}</p>
         </div>
-        <button type="submit" className="orderBtn">
-          홈으로
-        </button>
+        <Link to="/product">
+          <button type="submit" className="orderBtn">
+            더 둘러보기
+          </button>
+        </Link>
       </div>
     );
   }
