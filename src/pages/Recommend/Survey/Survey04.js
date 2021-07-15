@@ -4,7 +4,7 @@ import './Survey.scss';
 
 export class Survey04 extends Component {
   render() {
-    const { surveyId, handleNextSubmmit, handlePrevSubmmit } = this.props;
+    const { surveyId, handlePrevSubmmit, handleCheckBox } = this.props;
     return (
       <div className="Survey survey04">
         <h2 className="surveyTitle">
@@ -20,19 +20,24 @@ export class Survey04 extends Component {
         <hr />
         <form className="surveyForm">
           <div className="checkbox">
-            <input className="inputGender" type="checkbox" />
+            <input id="1" name="bone" className="inputGender" type="checkbox" />
             <label>뼈</label>
           </div>
           <div className="checkbox">
-            <input className="inputGender" type="checkbox" />
+            <input id="2" name="hair" className="inputGender" type="checkbox" />
             <label>모발</label>
           </div>
           <div className="checkbox">
-            <input className="inputGender" type="checkbox" />
+            <input
+              id="3"
+              name="growth"
+              className="inputGender"
+              type="checkbox"
+            />
             <label>성장</label>
           </div>
           <div className="checkbox">
-            <input className="inputGender" type="checkbox" />
+            <input id="4" name="skin" className="inputGender" type="checkbox" />
             <label>피부</label>
           </div>
           <div className="buttonBox">
@@ -42,10 +47,7 @@ export class Survey04 extends Component {
             >
               이전
             </button>
-            <button
-              className="nextButton"
-              onClick={() => handleNextSubmmit(surveyId)}
-            >
+            <button className="nextButton" onClick={handleCheckBox}>
               제출
             </button>
           </div>

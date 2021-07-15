@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// import { GET_PRODUCTS_API } from '../../config';
+
 import { SurveyWelcome } from './Survey/SurveyWelcome';
 import { Survey01 } from './Survey/Survey01';
 import { Survey02 } from './Survey/Survey02';
@@ -15,21 +17,34 @@ export class Recommend extends Component {
     this.state = {
       surveyId: 1,
       answer: [],
+      // filterState: {
+      //   bone: false,
+      //   hair: false,
+      //   growth: false,
+      //   skin: false,
+      // },
     };
   }
 
   handleNextSubmmit = surveyId => {
+    const newAnswer = [...this.state.answer, { id: surveyId }];
     this.setState({
-      answer: this.state.answer.concat({ id: surveyId }),
+      answer: newAnswer,
     });
     this.handleNextButton(surveyId);
   };
 
   handlePrevSubmmit = surveyId => {
-    this.setState({
-      answer: this.state.answer.pop({ id: surveyId }),
+    // console.log(surveyId);
+    // console.log(this.state.answer);
+    // console.log(surveyId);
+    const PreviousAnsswer = this.state.answer.filter(previous => {
+      return previous.surveyId !== surveyId;
     });
-    this.handlePrevButton(surveyId);
+    this.setState({
+      answer: PreviousAnsswer,
+    });
+    this.handlPrevButton(surveyId);
   };
 
   handlPrevButton = id => {
@@ -40,7 +55,55 @@ export class Recommend extends Component {
     this.setState({ surveyId: id + 1 });
   };
 
+  // makeCondition = () => {
+  //   const filterMatch = {
+  //     bone: 1,
+  //     hair: 2,
+  //     growth: 3,
+  //     skin: 4,
+  //   };
+
+  //   const filtered = Object.entries(this.state.filterState).reduce(
+  //     (acc, [key, value]) => {
+  //       if (!acc && value) {
+  //         return acc + `efficacy=${filterMatch[key]}`;
+  //       }
+
+  //       if (value) {
+  //         return acc + `&efficacy=${filterMatch[key]}`;
+  //       }
+  //       return acc;
+  //     },
+  //     ''
+  //   );
+
+  //   fetch(`${GET_PRODUCTS_API}?${filtered}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         productCard: data.message,
+  //       });
+  //     });
+  // };
+
+  // handleCheckBox = event => {
+  //   const checkBoxName = event.target.name;
+  //   const checkBoxNameState = !this.state.filterState[checkBoxName];
+  //   this.setState(
+  //     {
+  //       filterState: {
+  //         ...this.state.filterState,
+  //         [checkBoxName]: checkBoxNameState,
+  //       },
+  //     },
+  //     () => {
+  //       this.makeCondition();
+  //     }
+  //   );
+  // };
+
   render() {
+    console.log(this.state.answer);
     const survey = {
       1: (
         <SurveyWelcome
@@ -74,6 +137,8 @@ export class Recommend extends Component {
           surveyId={this.state.surveyId}
           handlePrevSubmmit={this.handlePrevSubmmit}
           handleNextSubmmit={this.handleNextSubmmit}
+          makeCondition={this.makeCondition}
+          handleCheckBox={this.handleCheckBox}
         />
       ),
     };

@@ -35,7 +35,6 @@ export class Survey01 extends Component {
             autoComplete="off"
             type="text hidden"
             placeholder="이름"
-            required
           />
           <div className="buttonBox">
             <button

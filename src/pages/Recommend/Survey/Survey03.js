@@ -20,9 +20,8 @@ export class Survey03 extends Component {
           <input
             className="inputText"
             autoComplete="off"
-            type="text"
+            type="text hidden"
             placeholder="나이"
-            required
           />
           <div className="buttonBox">
             <button
