@@ -3,32 +3,30 @@
 .ProductDetail {
   main {
     @include display-flex(center, center);
-    height: 550px;
+    height: 650px;
     padding-right: 100px;
+    padding-top: 80px;
 
     .headTextWrap {
       @include display-flex(space-around, flex-start);
       flex-direction: column;
       height: 450px;
       width: 500px;
-      // margin: 100px 0;
-
-      .summary {
-        line-height: 1.4;
-        font-size: 13px;
-      }
 
       h1 {
         font-size: 36px;
         line-height: 1.25;
         font-weight: bold;
         color: $color-font;
+        text-decoration: underline;
+        text-underline-position: under;
       }
 
       .propertyIcons {
-        @include display-flex(space-around, center);
+        @include display-flex(flex-start, center);
         width: 150px;
         height: 40px;
+        margin: 0 0 25px 0;
 
         .propertyIcon {
           height: 30px;
@@ -42,20 +40,25 @@
       }
 
       .productSaleInfo {
-        @include display-flex(space-around, center);
+        @include display-flex(flex-start, center);
         width: 200px;
         height: 40px;
         font-weight: bold;
         font-size: 20px;
+
+        .tablet {
+          margin-right: 20px;
+        }
       }
 
       .certificationIcons {
-        @include display-flex(space-around, center);
+        @include display-flex(flex-start, center);
         width: 200px;
         height: 40px;
 
         .certificationIconList {
-          padding-left: 15px;
+          margin-right: 40px;
+          margin-left: 10px;
 
           .certificationIcon {
             font-size: 40px;
@@ -89,8 +92,8 @@
         }
       }
     }
-    i {
-      font-size: 100px;
+    .productImage {
+      height: 50px;
       margin-left: 50px;
     }
   }

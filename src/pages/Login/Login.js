@@ -56,6 +56,7 @@ class Login extends React.Component {
               className="loginInput"
               placeholder="이메일 또는 전화번호를 입력하세요."
               onChange={this.handleChange}
+              autoComplete="off"
             />
             <input
               type="password"
@@ -63,6 +64,7 @@ class Login extends React.Component {
               className="loginInput"
               placeholder="비밀번호를 입력하세요."
               onChange={this.handleChange}
+              autoComplete="off"
             />
             <div className="loginButton">
               <button

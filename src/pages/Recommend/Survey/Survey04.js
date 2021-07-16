@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { GET_PRODUCTS_API } from '../../../config';
+// import { GET_PRODUCTS_API } from '../../../config';
 
 import './Survey.scss';
 

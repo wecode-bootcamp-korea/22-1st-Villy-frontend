@@ -11,16 +11,18 @@ $color-light-gray: #cccccc;
 .Recommend {
   @include display-flex;
   height: 100vh;
-  padding: 0 200px;
+  padding: 80px 300px 0;
   background-color: $color-bg;
 
   .surveyModal {
-    width: 100%;
+    max-width: 500px;
+    min-width: 800px;
+
     .surveyBox {
       position: relative;
       display: flex;
       flex-direction: column;
-      padding: 50px 150px;
+      padding: 30px 100px;
       background-color: #ffffff;
 
       .surveyHeader {
@@ -67,8 +69,10 @@ $color-light-gray: #cccccc;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 800px) {
   .Recommend {
-    padding: 0 50px;
+    .surveyModal {
+      width: 100%;
+    }
   }
 }

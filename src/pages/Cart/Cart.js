@@ -36,6 +36,7 @@ class Cart extends React.Component {
             cartList: res.product,
             point: res.point,
           });
+          console.log(`res`, res);
         }
       });
   }
@@ -104,13 +105,14 @@ class Cart extends React.Component {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
-        products: orderList,
+        products: { ...orderList },
       }),
     }).then(
       setTimeout(() => {
         this.props.history.push('/order');
       }, 100)
     );
+    console.log(`orderList`, orderList);
   };
 
   render() {
@@ -146,9 +148,11 @@ class Cart extends React.Component {
                 몇가지 건강설문을 통해 <br />
                 나만을 위한 영양성분을 찾아보세요.
               </p>
-              <button type="submit" className="nullBtn">
-                나만의 영양성분 찾기
-              </button>
+              <Link to="./recommend">
+                <button type="submit" className="nullBtn">
+                  나만의 영양성분 찾기
+                </button>
+              </Link>
             </div>
           </div>
         </div>

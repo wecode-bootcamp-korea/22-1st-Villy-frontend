@@ -31,7 +31,9 @@ export class Product extends Component {
 
   componentDidMount() {
     if (this.props.history.location.search) {
-      fetch(`${GET_PRODUCTS_API}${this.props.history.location.search}`)
+      fetch(`${GET_PRODUCTS_API}${this.props.history.location.search}`, {
+        headers: { Authorization: localStorage.getItem('access_token') },
+      })
         .then(res => res.json())
         .then(data => {
           this.setState({
@@ -39,7 +41,9 @@ export class Product extends Component {
           });
         });
     } else
-      fetch(`${GET_PRODUCTS_API}`)
+      fetch(`${GET_PRODUCTS_API}`, {
+        headers: { Authorization: localStorage.getItem('access_token') },
+      })
         .then(res => res.json())
         .then(data => {
           this.setState({
@@ -75,7 +79,9 @@ export class Product extends Component {
 
   render() {
     const { productCard } = this.state;
+
     console.log(`this.props.history`, this.props.history.location.search);
+    // console.log(`this.state.filterState.name`, this.state.filterState[key]);
     return (
       <div className="Product">
         <header className="productHeader">
@@ -92,6 +98,7 @@ export class Product extends Component {
             <ProductCategory
               key={productCard.id}
               filtering={this.filtering}
+              // checked={this.state.checked}
               makeCondition={this.makeCondition}
               handleCheckBox={this.handleCheckBox}
             />

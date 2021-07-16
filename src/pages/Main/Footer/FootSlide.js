@@ -9,21 +9,26 @@ export class FootSlide extends Component {
       slideCardNumber: 0,
     };
   }
+
   componentDidMount() {
     this.slideIntervalId.current = setInterval(this.moveNextSlide, 2500);
   }
+
   componentWillUnmount() {
     clearInterval(this.slideIntervalId.current);
   }
+
   moveNextSlide = () => {
     const { slideCardNumber } = this.state;
     const nextSlideCardNumber =
       slideCardNumber > SLIDE_LIST.length - 2 ? 0 : slideCardNumber + 1;
     this.setState({ slideCardNumber: nextSlideCardNumber });
   };
+
   slideHandler = e => {
     this.setState({ slideCardNumber: Number(e.currentTarget.value) });
   };
+
   render() {
     const { slideCardNumber } = this.state;
     return (
