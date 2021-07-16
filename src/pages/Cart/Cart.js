@@ -36,6 +36,7 @@ class Cart extends React.Component {
             cartList: res.product,
             point: res.point,
           });
+          console.log(`res`, res);
         }
       });
   }
@@ -104,13 +105,14 @@ class Cart extends React.Component {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
-        products: orderList,
+        products: { ...orderList },
       }),
     }).then(
       setTimeout(() => {
         this.props.history.push('/order');
       }, 100)
     );
+    console.log(`orderList`, orderList);
   };
 
   render() {
