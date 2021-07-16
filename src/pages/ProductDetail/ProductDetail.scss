@@ -3,8 +3,9 @@
 .ProductDetail {
   main {
     @include display-flex(center, center);
-    height: 550px;
+    height: 650px;
     padding-right: 100px;
+    padding-top: 80px;
 
     .headTextWrap {
       @include display-flex(space-around, flex-start);
@@ -89,8 +90,8 @@
         }
       }
     }
-    i {
-      font-size: 100px;
+    .productImage {
+      height: 50px;
       margin-left: 50px;
     }
   }

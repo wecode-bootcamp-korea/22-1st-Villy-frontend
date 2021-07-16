@@ -3,19 +3,6 @@ import React, { Component } from 'react';
 import './Survey.scss';
 
 export class Survey01 extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     name: '',
-  //   };
-  // }
-
-  // handleInputProps = event => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
-
   render() {
     const { surveyId, handleNextSubmmit, handlePrevSubmmit } = this.props;
     return (
@@ -30,7 +17,7 @@ export class Survey01 extends Component {
           <input
             onChange={this.props.handleInput}
             name="name"
-            value={this.props.name}
+            // value={this.props.name}
             className="inputText"
             autoComplete="off"
             type="text hidden"

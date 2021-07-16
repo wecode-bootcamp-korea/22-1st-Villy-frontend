@@ -11,6 +11,7 @@ export class ProductCategory extends Component {
             type="checkbox"
             name={category.name}
             onChange={this.props.handleCheckBox}
+            checked={this.props.name}
           />
           <label>
             <img className="iconImage" alt={category.alt} src={category.src} />

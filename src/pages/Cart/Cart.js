@@ -146,9 +146,11 @@ class Cart extends React.Component {
                 몇가지 건강설문을 통해 <br />
                 나만을 위한 영양성분을 찾아보세요.
               </p>
-              <button type="submit" className="nullBtn">
-                나만의 영양성분 찾기
-              </button>
+              <Link to="./recommend">
+                <button type="submit" className="nullBtn">
+                  나만의 영양성분 찾기
+                </button>
+              </Link>
             </div>
           </div>
         </div>

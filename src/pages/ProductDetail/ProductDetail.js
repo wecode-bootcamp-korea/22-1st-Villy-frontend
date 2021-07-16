@@ -82,7 +82,7 @@ export class ProductDetail extends Component {
                     alt="icon"
                     className="propertyIcon"
                     key={index}
-                    src={icon}
+                    src={`/${icon}`}
                   />
                 ))}
               </div>
@@ -113,7 +113,11 @@ export class ProductDetail extends Component {
                 장바구니 담기
               </button>
             </header>
-            <i className={thumbnail_image_url}></i>
+            <img
+              className="productImage"
+              src={thumbnail_image_url}
+              alt="productImage"
+            />
           </main>
           <section className="comment">
             <div className="question">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { GET_PRODUCTS_API } from '../../config';
+// import { GET_PRODUCTS_API } from '../../config';
 
 import { SurveyWelcome } from './Survey/SurveyWelcome';
 import { Survey01 } from './Survey/Survey01';

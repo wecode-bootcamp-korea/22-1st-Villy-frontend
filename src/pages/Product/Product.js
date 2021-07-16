@@ -75,7 +75,9 @@ export class Product extends Component {
 
   render() {
     const { productCard } = this.state;
+
     console.log(`this.props.history`, this.props.history.location.search);
+    // console.log(`this.state.filterState.name`, this.state.filterState[key]);
     return (
       <div className="Product">
         <header className="productHeader">
@@ -92,6 +94,7 @@ export class Product extends Component {
             <ProductCategory
               key={productCard.id}
               filtering={this.filtering}
+              // checked={this.state.checked}
               makeCondition={this.makeCondition}
               handleCheckBox={this.handleCheckBox}
             />
