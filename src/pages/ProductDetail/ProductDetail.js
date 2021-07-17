@@ -12,7 +12,7 @@ export class ProductDetail extends Component {
     this.state = {
       productData: {},
       recommendToggleOn: false,
-      // addedCartAlertList: [],
+      addedCartAlertList: [],
     };
   }
 
@@ -40,24 +40,21 @@ export class ProductDetail extends Component {
     }
   }
 
-  // addedCartAlert = () => {
-  //   const { addedCartAlertList } = this.state;
-  //   console.log(`added`, addedCartAlertList);
-  //   const copyAddedCartAlertList = [...addedCartAlertList];
-  //   copyAddedCartAlertList.push('');
-  //   console.log(`object`, copyAddedCartAlertList);
-  //   // this.setState({ copyAddedCartAlertList: copyAddedCartAlertList });
-  //   // setTimeout(() => {
-  //   //   copyAddedCartAlertList.pop();
-  //   //   this.setState({ addedCartAlertList: copyAddedCartAlertList });
-  //   // }, 3000);
-  // };
+  addedCartAlert = () => {
+    const { addedCartAlertList } = this.state;
+
+    addedCartAlertList.push('');
+    this.setState({ copyAddedCartAlertList: addedCartAlertList });
+    setTimeout(() => {
+      addedCartAlertList.pop();
+      this.setState({ addedCartAlertList: addedCartAlertList });
+    }, 3000);
+  };
 
   postCart = () => {
     const id = this.props.match.params.productID;
     if (this.state.productData.cart_exist) {
-      return;
-      // this.addedCartAlert();
+      this.addedCartAlert();
     } else {
       fetch(`${CARTLIST_API}`, {
         method: 'POST',
@@ -173,15 +170,15 @@ export class ProductDetail extends Component {
               </div>
             )}
           </section>
-          {/* <div className="addedCartAlertWrap">
-            {addedCartAlertList.map((list, index) => {
+          <div className="addedCartAlertWrap">
+            {this.state.addedCartAlertList.map((list, index) => {
               return (
                 <div key={index} className="addedCartAlert">
                   <p>이미 추가되었습니다.</p>
                 </div>
               );
             })}
-          </div> */}
+          </div>
         </div>
       );
     }
